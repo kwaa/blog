@@ -13,9 +13,9 @@
 >
 	{#if post.cover}
 		<figure class="overflow-hidden order-first md:order-last">
-			<!-- <img class="object-cover object-center h-full w-full transform transition-transform ease-in-out duration-500 group-hover:scale-120" src={post.cover} alt={post.cover} loading="lazy" /> -->
+			<!-- <img class="object-cover object-center h-full w-full transform-gpu transition-transform ease-in-out duration-500 group-hover:scale-120" src={post.cover} alt={post.cover} loading="lazy" /> -->
 			<Picture
-				class="object-cover object-center h-full w-full transform transition-transform ease-in-out duration-500 group-hover:scale-120"
+				class="object-cover object-center h-full w-full transform-gpu transition-transform ease-in-out duration-500 group-hover:scale-120"
 				src={post.cover}
 				alt={post.cover}
 			/>

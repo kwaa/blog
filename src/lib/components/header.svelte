@@ -29,7 +29,7 @@
 
 <header
 	id="header"
-	class="navbar fixed w-screen z-50 mb-2 shadow-lg bg-neutral bg-opacity-50 backdrop-filter backdrop-blur rounded-none text-neutral-content transform transition-transform ease-in-out duration-250"
+	class="navbar fixed w-screen z-50 mb-2 shadow-lg bg-neutral bg-opacity-50 backdrop-filter backdrop-blur rounded-none text-neutral-content transform-gpu transition-transform ease-in-out duration-250"
 	class:-translate-y-32={!pin || scrollY === 0}
 >
 	<div class="flex-1">
@@ -51,12 +51,12 @@
 	id="totop"
 	on:click={() => window.scrollTo(0,0)}
 	aria-label="scroll to top"
-	class="btn btn-circle btn-lg fixed z-50 backdrop-filter backdrop-blur border-none shadow-lg bg-opacity-50 hover:bg-opacity-60 bottom-6 right-6 transform transition-transform ease-in-out duration-250"
+	class="btn btn-circle btn-lg fixed z-50 backdrop-filter backdrop-blur border-none shadow-lg bg-opacity-50 hover:bg-opacity-60 bottom-6 right-6 transform-gpu transition-transform ease-in-out duration-250"
 	class:translate-y-24={!pin || scrollY === 0}
 >
 	<svg class="h-16 w-16 fixed stroke-accent stroke-width-3">
 		<circle
-			class="transform origin-center -rotate-90 stroke-accent stroke-width-4 stroke-cap-round fill-transparent"
+			class="transform-gpu transition-transform origin-center -rotate-90 stroke-accent stroke-width-4 stroke-cap-round fill-transparent"
 			r="30"
 			cx="32"
 			cy="32"
