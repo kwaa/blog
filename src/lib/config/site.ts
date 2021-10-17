@@ -24,7 +24,7 @@ const site: Sites = {
 		email: '',
 		bio: ''
 	},
-	url: import.meta.env.VITE_DOMAIN_URL ?? 'https://urara-test.netlify.app',
+	url: import.meta.env.VITE_DOMAIN_URL ?? 'https://kwaa.dev',
 	themeColor: '#3D4451',
 	since: '2019'
 }

@@ -8,7 +8,7 @@
 	<div class="prose">
 		<p>
 			{#each Object.entries(footerConfig.nav) as [name, href], i}
-				<a {href} sveltekit:prefetch class="inline-block">{name}</a>
+				<a {href} rel="noopener external" target="_blank">{name}</a>
 				{#if i < Object.keys(footerConfig.nav).length - 1}
 					<span> · </span>
 				{/if}
