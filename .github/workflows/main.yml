@@ -18,7 +18,7 @@ jobs:
           node-version: '16'
           check-latest: true
       - name: Build
-        run: export MODE=workers && npm run build
+        run: npm i && export MODE=workers && npm run build
       - name: Publish
         uses: cloudflare/wrangler-action@1.3.0
         with:
