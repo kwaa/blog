@@ -1,13 +1,9 @@
 ---
-title: 'Grounded Grid / KGPT 资料整理 & 笔记'
+title: 'Grounded Grid 资料整理 & 笔记'
 date: 2021-09-17
-lastmod: 2021-09-28
+lastmod: 2021-10-18
 tags:
-  - 静电耳放
-  - Kevin Gilmore
-  - Head-Case
   - Grounded Grid
-  - KGPT
 descr: 去年年底我就有制作 Grounded Grid 的想法，但直到出现这篇文章为止还是没正式开工。嗯... 在我做出来之前会一直更新进度，直到放弃或者做出来为止。
 ---
 
@@ -40,17 +36,15 @@ DIY 嘛，主流的也就 KG 系了。但是价格——好家伙 Grounded Grid 
 
 ### 制作难点
 
-首先是资料难找。不像 Linkwitz 的音箱直接用 miniDSP，这是要自己打板焊接的。
+首先是资料难找，必须把一个线程从头翻到尾——找不到有效信息还得翻 KGSSHV Carbon 和 KGSSHV 的线程
 
-唯一比较有用地方也就 Head-Case，但必须把一个线程从头翻到尾。（Grounded Grid 作为 KGSSHV Carbon 的儿子和 KGSSHV 的孙子，找不到有效信息还得翻它们的线程）
+然后是材料难凑，基本总有一些元件缺货或者停售。像
 
 ## 准备
 
-现在买不到 Kemet 550V 680uF 的电容（GRHV 需要四个），有货了就准备开始。
-
 ### PCB-Gerber
 
-目前最新的 Google Drive 链接是 [folders/1r3g2TAtBUaBdiMorTWX7yYgeJ7maQbYW](https://drive.google.com/drive/folders/1r3g2TAtBUaBdiMorTWX7yYgeJ7maQbYW?usp=sharing)
+[Gerbers](https://www.head-case.org/forums/topic/17783-google-drive-for-gerbers-seems-broken-but-drive-folder-for-schematics-seems-ok/?tab=comments#comment-864655)
 
 Grounded Grid / GRHV 相关的文件有：
 
@@ -60,4 +54,19 @@ Grounded Grid / GRHV 相关的文件有：
 - grhvrightnocap2.zip（GRHV 单片无电容位版右侧 v1.81）
 - grhvleftnocap2.zip（GRHV 单片无电容位版左侧 v1.8）
 
-所以 GRHV 能下载到的最新版本 gerber 文件是右侧 1.81，左侧 1.8。因为无电容版
+GRHV 能下载到的最新版本 gerber 文件是右侧 1.81，左侧 1.8。
+
+所以我需要两片 Grounded Grid 耳放板和两片 GRHV 单片瘦版右侧。
+为什么只需要右侧？左侧有用不到的低压电源部分——虽然不打算做 GRLV，但可以用淘宝的 STUDER900 低压电源。打板种类越少越省钱是这样了。
+
+### BOM
+
+Head-Case 找到的 BOM 列表有：
+
+- [GG by joehpj](https://www.head-case.org/forums/topic/12452-grounded-grid/page/5/?tab=comments#comment-737324)
+- [GRHV by joehpj](https://www.head-case.org/forums/topic/12894-blue-hawaii-bjt-build-thread/?tab=comments#comment-760209)
+- [GRHV by Hirsch2k](https://www.head-case.org/forums/topic/12330-kgsshv-carbon-build-thread/page/62/?tab=comments#comment-806732)
+
+但 GRHV 所需的元件并不全都有货，之后我会按照 PCB 丝印和上面这些单独整理一个 BOM 表。
+
+> 未完待续...

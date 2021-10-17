@@ -2,9 +2,10 @@
 title: '2021 · 十月 · 博客重构 & 浅谈部署'
 date: 2021-10-10
 lastmod: 2021-10-17
+descr: 我决定在双十这一天发布新博客（虽然又往后推了一周）。
 ---
 
-我决定在双十这一天发布新博客。
+我决定在双十这一天发布新博客（虽然又往后推了一周）。
 看看都改变了些什么：
 
 ## Based on Urara
@@ -139,7 +140,7 @@ route = "kwaa.dev/*"
 然后是一套 build.yml。
 
 ```yaml
-name: Deploy to Cloudflare Workers Sites
+name: Deploy Blog
 
 on:
   push:
@@ -148,11 +149,18 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
-    runs-on: ubuntu-20.04
-    name: Deploy
+  build-and-deploy:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          check-latest: true
+      - name: Build
+        run: npm i && export MODE=workers && npm run build
       - name: Publish
         uses: cloudflare/wrangler-action@1.3.0
         with:

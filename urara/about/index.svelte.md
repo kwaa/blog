@@ -16,18 +16,26 @@ cover: 'assets/bg.webp'
 
 巴别：
 
-- zh-N
-  - 我能以地道的中文交流。
-- en-2
-  - I have intermediate knowledge of English.
-- ja-1
-  - 私は簡単な日本語を話せます。
-
-欢迎友好交流。
+<div class="overflow-x-auto">
+<table class="table w-full rounded-box overflow-hidden my-4 children:children:(border-none text-dark-900)">
+  <tr>
+    <th class="!bg-green-300 text-xl font-semibold">zh-N</th> 
+    <td class="!bg-green-100">我能以地道的中文交流。</td>
+  </tr>
+  <tr>
+    <th class="!bg-cyan-300 text-xl font-semibold">en-2</th> 
+    <td class="!bg-cyan-100">I have intermediate knowledge of English.</td>
+  </tr>
+  <tr>
+    <th class="!bg-blue-300 text-xl font-semibold">ja-1</th> 
+    <td class="!bg-blue-100">私は簡単な日本語を話せます。</td>
+  </tr>
+</table>
+</div>
 
 ### 联系
 
-我主要使用 Telegram 和 Discord:
+我主要使用这两种 IM 软件：
 
 - Telegram @kwaabot
 - Discord 917#1929
@@ -134,10 +142,10 @@ PC & VR 玩家，设备 Valve Index。
 
 ```ts
 type Friend = {
-  title: string // 网站标题 什么都可以。（昵称，站点标题，或者昵称 + 站点标题）
-  url: string // 网站 URL
-  descr?: string // 描述，可选。我没什么想法所以最好不要让我想
-  avatar?: string // 头像 URL，没有或不稳定可以不填。
+	title: string // 网站标题 什么都可以。（昵称，站点标题，或者昵称 + 站点标题）
+	url: string // 网站 URL
+	descr?: string // 描述，可选。我没什么想法所以最好不要让我想
+	avatar?: string // 头像 URL，没有或不稳定可以不填。
 }
 ```
 
