@@ -11,7 +11,7 @@ priority: ['About', 0]
 
 ## 关于我
 
-<Profile subname="zh-N / en-2 / ja-1" bio="地球人，目标赴日。<br>追求普世价值，讨厌集权专制和国家 / 民族主义者。<br>欢迎联系，请说明来自博客以免被当作垃圾信息。" avatar="assets/any@512.webp" >
+<Profile subname="zh-N / en-2 / ja-1" bio="地球人，目标赴日。<br>追求普世价值，讨厌威权政府和民族主义者。<br>欢迎联系，请说明来自博客以免被当作垃圾信息。" avatar="assets/any@512.webp" >
 
 <div class="flex flex-col md:flex-row gap-4 mt-4">
 <a href="https://t.me/kwaabot" rel="noopener external" target="_blank" class="flex-1 relative overflow-hidden btn btn-block border-none bg-[#26A5E4] hover:bg-[#0088CC]">
@@ -107,6 +107,8 @@ PC & VR 玩家，设备 Valve Index。
   - 接上一条。xxxai.eth 或 xxxai.eth.link
 
 ## 友链申请
+
+> 友链页面暂未完成，目前不开放友链申请
 
 大体沿用之前的友链标准。
 
