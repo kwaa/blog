@@ -12,6 +12,7 @@ built with:
 special thanks:
 
 - [@michaeloliverx](https://github.com/pngwn/MDsveX/issues/294#issuecomment-907029639)
+- [@jthegedus](https://github.com/sveltejs/kit/issues/1258#issuecomment-874482104)
 
 ## Quick Start
 

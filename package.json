@@ -4,10 +4,10 @@
 	"scripts": {
 		"clean": "node urara.js clean",
 		"watch": "node urara.js watch",
-		"kitdev": "export NODE_OPTIONS=--max_old_space_size=4096 && svelte-kit dev",
+		"kitdev": "export NODE_OPTIONS=--max_old_space_size=6144 && svelte-kit dev",
 		"dev": "npm-run-all -p -r watch \"kitdev -- {@} \" --",
 		"prebuild": "node urara.js build",
-		"build": "export NODE_OPTIONS=--max_old_space_size=4096 && svelte-kit build",
+		"build": "export NODE_OPTIONS=--max_old_space_size=6144 && svelte-kit build",
 		"postbuild": "node urara.js clean",
 		"preview": "svelte-kit preview",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
