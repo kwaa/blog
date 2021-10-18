@@ -8,7 +8,7 @@
 			rel="icon"
 			href={icons.favicon.src}
 			sizes={icons.favicon.sizes ?? ''}
-			type={icons.favicon.type}
+			type={icons.favicon.type ?? ''}
 		/>
 	{/if}
 	{#if icons.px192}
@@ -16,7 +16,7 @@
 			rel="icon"
 			href={icons.px192.src}
 			sizes={icons.px192.sizes ?? ''}
-			type={icons.px192.type ?? 'image/png'}
+			type={icons.px192.type ?? ''}
 		/>
 	{/if}
 	{#if icons.appleTouchIcon}
@@ -24,7 +24,7 @@
 			rel="apple-touch-icon"
 			href={icons.appleTouchIcon.src}
 			sizes={icons.appleTouchIcon.sizes ?? ''}
-			type={icons.appleTouchIcon.type ?? 'image/png'}
+			type={icons.appleTouchIcon.type ?? ''}
 		/>
 	{/if}
 </svelte:head>
