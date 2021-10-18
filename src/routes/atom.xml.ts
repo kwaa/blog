@@ -1,8 +1,8 @@
 import type { EndpointOutput } from '@sveltejs/kit'
 import site from '$lib/config/site'
-import { modules, Post, PostModule, allPosts as posts } from '$lib/utils/posts'
+import { modules, PostModule, allPosts as posts } from '$lib/utils/posts'
 
-const render = async (posts: Post[]): Promise<string> => `<?xml version='1.0' encoding='utf-8'?>
+const render = async (): Promise<string> => `<?xml version='1.0' encoding='utf-8'?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>${site.title}</title>
   ${ site.subtitle ? `<subtitle>${site.subtitle}</subtitle>` : ''}
@@ -18,7 +18,7 @@ const render = async (posts: Post[]): Promise<string> => `<?xml version='1.0' en
   ${posts
 		.map(
 			post => `<entry>
-    <title>${post.title}</title>
+    <title><![CDATA[${post.title}]]></title>
     <link href="${post.slug}" />
     <id>${site.url}/${post.path}</id>
     <published>${new Date(post.date).toJSON()}</published>
@@ -41,6 +41,6 @@ export const get = async (): Promise<EndpointOutput> => {
 		headers: {
 			'Content-Type': 'application/atom+xml; charset=utf-8'
 		},
-		body: await render(posts)
+		body: await render()
 	}
 }

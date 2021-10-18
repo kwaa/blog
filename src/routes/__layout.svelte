@@ -16,7 +16,7 @@
 	// @ts-ignore: Cannot find module 'virtual:windi-devtools' or its corresponding type declarations.
 	if (browser) import('virtual:windi-devtools')
 	// import Head from '$lib/components/head.svelte'
-	onMount(async () => {
+	onMount(() => {
 		if (browser) {
 			// @ts-ignore: Can not find module 'virtual:windi-devtools' or its corresponding type declarations.
 			// await import('virtual:windi-devtools')
