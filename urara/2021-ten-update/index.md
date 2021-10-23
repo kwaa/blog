@@ -145,7 +145,7 @@ name: Deploy Blog
 on:
   push:
     branch:
-    - main
+      - main
   workflow_dispatch:
 
 jobs:

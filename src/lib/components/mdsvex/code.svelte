@@ -1,3 +1,3 @@
 <code class="badge !badge-ghost font-mono">
-	<slot />
+  <slot />
 </code>

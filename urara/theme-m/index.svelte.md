@@ -116,16 +116,16 @@ impl From<&'a str> for State {
 
 ```json
 [
-	{
-		"title": "apples",
-		"count": [12000, 20000],
-		"description": { "text": "...", "sensitive": false }
-	},
-	{
-		"title": "oranges",
-		"count": [17500, null],
-		"description": { "text": "...", "sensitive": false }
-	}
+  {
+    "title": "apples",
+    "count": [12000, 20000],
+    "description": { "text": "...", "sensitive": false }
+  },
+  {
+    "title": "oranges",
+    "count": [17500, null],
+    "description": { "text": "...", "sensitive": false }
+  }
 ]
 ```
 
@@ -149,19 +149,19 @@ class SomeClass:
 <title>Title</title>
 
 <style>
-	body {
-		width: 500px;
-	}
+  body {
+    width: 500px;
+  }
 </style>
 
 <script type="application/javascript">
-	function $init() {
-		return true
-	}
+  function $init() {
+    return true
+  }
 </script>
 
 <body>
-	<p checked class="title" id="title">Title</p>
+  <p checked class="title" id="title">Title</p>
 </body>
 ```
 
@@ -276,22 +276,22 @@ import Foundation
 
 ```css
 @font-face {
-	font-family: Chunkfive;
-	src: url('Chunkfive.otf');
+  font-family: Chunkfive;
+  src: url('Chunkfive.otf');
 }
 
 body,
 .usertext {
-	color: #f0f0f0;
-	background: #600;
-	font-family: Chunkfive, sans;
+  color: #f0f0f0;
+  background: #600;
+  font-family: Chunkfive, sans;
 }
 
 @import url(print.css);
 @media print {
-	a[href^='http']::after {
-		content: attr(href);
-	}
+  a[href^='http']::after {
+    content: attr(href);
+  }
 }
 ```
 

@@ -73,12 +73,12 @@ updated: 2021-09-30 20:30:40
 
 ```ts
 export const date: { locales: string; options: Intl.DateTimeFormatOptions } = {
-	locales: 'ja-JP',
-	options: {
-		weekday: 'long',
-		month: 'long',
-		day: 'numeric'
-	}
+  locales: 'ja-JP',
+  options: {
+    weekday: 'long',
+    month: 'long',
+    day: 'numeric'
+  }
 }
 ```
 

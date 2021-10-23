@@ -1,8 +1,9 @@
 export const config = {
-	nav: {
-		About: 'about',
-		Urara: 'urara'
-	}
+  nav: {
+    About: 'about',
+    Urara: 'urara',
+    Friends: 'friends'
+  }
 }
 
 export { config as default }

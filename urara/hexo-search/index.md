@@ -36,50 +36,45 @@ ES6+ 香到我直接不用 mdui.JQ 了。
 
 ```html
 <form onkeydown="if (event.keyCode == 13) return false" class="mdui-textfield mdui-m-b-2">
-	<i class="mdui-icon material-icons">search</i>
-	<input
-		id="local-input"
-		type="search"
-		name="q"
-		class="mdui-textfield-input"
-		placeholder="<%= __('common.search') %>"
-		disabled />
+  <i class="mdui-icon material-icons">search</i>
+  <input
+    id="local-input"
+    type="search"
+    name="q"
+    class="mdui-textfield-input"
+    placeholder="<%= __('common.search') %>"
+    disabled />
 </form>
 <div id="local-result" style="min-height:100vh; transition: all .4s" class="mdui-list"></div>
 <script>
-	fetch(
-		`<% if(theme.search.local.url) { %><%- theme.search.local.url %><% } else { %><%- url_for('search.json') %><% } %>`
-	).then(res =>
-		res.json().then(data => {
-			document.getElementById('local-input').disabled = false
-			document.getElementById('local-input').addEventListener('input', () => {
-				let keyword = document.getElementById('local-input').value.trim().toLowerCase()
-				document.getElementById('local-result').innerHTML = ''
-				if (keyword.length <= 0) return
-				data.forEach(({ title, content, url }) => {
-					const append = excerpt =>
-						document.getElementById('local-result').insertAdjacentHTML(
-							'beforeend',
-							`
+  fetch(
+    `<% if(theme.search.local.url) { %><%- theme.search.local.url %><% } else { %><%- url_for('search.json') %><% } %>`
+  ).then(res =>
+    res.json().then(data => {
+      document.getElementById('local-input').disabled = false
+      document.getElementById('local-input').addEventListener('input', () => {
+        let keyword = document.getElementById('local-input').value.trim().toLowerCase()
+        document.getElementById('local-result').innerHTML = ''
+        if (keyword.length <= 0) return
+        data.forEach(({ title, content, url }) => {
+          const append = excerpt =>
+            document.getElementById('local-result').insertAdjacentHTML(
+              'beforeend',
+              `
                         <a href=${url} class="mdui-list-item mdui-ripple">
                             <div class="mdui-list-item-content">
                                 <div class="mdui-list-item-title mdui-list-item-one-line">${title}</div>
                                 <div class="mdui-list-item-text mdui-list-item-two-line">${excerpt}</div>
                             </div>
                         </a>`
-						)
-					if (content.toLowerCase().includes(keyword))
-						append(
-							content.substring(
-								content.toLowerCase().indexOf(keyword) - 9,
-								content.toLowerCase().indexOf(keyword) + 130
-							)
-						)
-					else if (title.toLowerCase().includes(keyword)) append(content.substring(0, 139))
-				})
-			})
-		})
-	)
+            )
+          if (content.toLowerCase().includes(keyword))
+            append(content.substring(content.toLowerCase().indexOf(keyword) - 9, content.toLowerCase().indexOf(keyword) + 130))
+          else if (title.toLowerCase().includes(keyword)) append(content.substring(0, 139))
+        })
+      })
+    })
+  )
 </script>
 ```
 
@@ -105,18 +100,18 @@ https://*.workers.dev/?siteSearch=站点&q=关键字
 
 ```json
 {
-	"items": [
-		{
-			"title": "标题1",
-			"link": "链接1",
-			"snippet": "描述1"
-		},
-		{
-			"title": "标题2",
-			"link": "链接2",
-			"snippet": "描述2"
-		}
-	]
+  "items": [
+    {
+      "title": "标题1",
+      "link": "链接1",
+      "snippet": "描述1"
+    },
+    {
+      "title": "标题2",
+      "link": "链接2",
+      "snippet": "描述2"
+    }
+  ]
 }
 ```
 
@@ -129,13 +124,13 @@ https://*.workers.dev/?siteSearch=站点&q=关键字
 
 ```javascript
 const file = {
-	'kwaa.dev': 'https://kwaa.dev/search.json',
-	'https://kwaa.dev': 'https://kwaa.dev/search.json'
+  'kwaa.dev': 'https://kwaa.dev/search.json',
+  'https://kwaa.dev': 'https://kwaa.dev/search.json'
 }
 let data = {}
 
 addEventListener('fetch', event => {
-	event.respondWith(handleRequest(event.request))
+  event.respondWith(handleRequest(event.request))
 })
 ```
 
@@ -143,34 +138,30 @@ addEventListener('fetch', event => {
 
 ```javascript
 async function getdata(searchSite) {
-	await fetch(searchSite)
-		.then(res => res.json())
-		.then(json => (data[searchSite] = json))
+  await fetch(searchSite)
+    .then(res => res.json())
+    .then(json => (data[searchSite] = json))
 }
 async function search(searchTerm, searchSite) {
-	searchTerm = JSON.parse('"' + searchTerm.trim().toLowerCase() + '"')
-	if (!data[searchSite]) await getdata(searchSite)
-	let res = { items: [] }
-	data[searchSite].forEach(({ title, content, url }) => {
-		const push = content =>
-			res.items.push({
-				title: title,
-				link: url,
-				snippet: content
-			})
-		if (content.toLowerCase().includes(searchTerm))
-			push(
-				content
-					.replace(/<[^>]+>/g, '')
-					.substring(
-						content.toLowerCase().indexOf(searchTerm) - 9,
-						content.toLowerCase().indexOf(searchTerm) + 130
-					)
-			)
-		else if (title.toLowerCase().includes(searchTerm))
-			push(content.replace(/<[^>]+>/g, '').substring(0, 139))
-	})
-	return JSON.stringify(res)
+  searchTerm = JSON.parse('"' + searchTerm.trim().toLowerCase() + '"')
+  if (!data[searchSite]) await getdata(searchSite)
+  let res = { items: [] }
+  data[searchSite].forEach(({ title, content, url }) => {
+    const push = content =>
+      res.items.push({
+        title: title,
+        link: url,
+        snippet: content
+      })
+    if (content.toLowerCase().includes(searchTerm))
+      push(
+        content
+          .replace(/<[^>]+>/g, '')
+          .substring(content.toLowerCase().indexOf(searchTerm) - 9, content.toLowerCase().indexOf(searchTerm) + 130)
+      )
+    else if (title.toLowerCase().includes(searchTerm)) push(content.replace(/<[^>]+>/g, '').substring(0, 139))
+  })
+  return JSON.stringify(res)
 }
 ```
 
@@ -178,69 +169,60 @@ async function search(searchTerm, searchSite) {
 
 ```javascript
 async function handleRequest(request) {
-	const { searchParams } = new URL(request.url)
-	let searchTerm = searchParams.get('q'),
-		searchSite
-	if (searchTerm == undefined) {
-		return new Response('usage:\n\
+  const { searchParams } = new URL(request.url)
+  let searchTerm = searchParams.get('q'),
+    searchSite
+  if (searchTerm == undefined) {
+    return new Response('usage:\n\
         ?siteSearch=<site>&q=<keyword>\n\
         required: q', { status: 404 })
-	}
-	if (searchParams.get('siteSearch')) {
-		searchSite = site[searchParams.get('siteSearch')]
-	} else {
-		searchSite = Object.values(site)[0]
-	}
-	return new Response(await search(searchTerm, searchSite), {
-		status: 200,
-		headers: new Headers({
-			'access-control-allow-origin': '*',
-			'access-control-allow-methods': 'GET,POST,PUT,PATCH,TRACE,DELETE,HEAD,OPTIONS',
-			'access-control-max-age': '1728000'
-		})
-	})
+  }
+  if (searchParams.get('siteSearch')) {
+    searchSite = site[searchParams.get('siteSearch')]
+  } else {
+    searchSite = Object.values(site)[0]
+  }
+  return new Response(await search(searchTerm, searchSite), {
+    status: 200,
+    headers: new Headers({
+      'access-control-allow-origin': '*',
+      'access-control-allow-methods': 'GET,POST,PUT,PATCH,TRACE,DELETE,HEAD,OPTIONS',
+      'access-control-max-age': '1728000'
+    })
+  })
 }
 ```
 
 在页面里显示结果：
 
 ```html
-<form
-	action="servlet"
-	method="post"
-	onsubmit="return searchAPI(this.searchTerm.value);"
-	class="mdui-textfield mdui-m-b-2">
-	<i class="mdui-icon material-icons">search</i>
-	<input
-		id="searchTerm"
-		type="search"
-		name="q"
-		class="mdui-textfield-input"
-		placeholder="<%= __('common.search') %>" />
+<form action="servlet" method="post" onsubmit="return searchAPI(this.searchTerm.value);" class="mdui-textfield mdui-m-b-2">
+  <i class="mdui-icon material-icons">search</i>
+  <input id="searchTerm" type="search" name="q" class="mdui-textfield-input" placeholder="<%= __('common.search') %>" />
 </form>
 <div id="api-result" style="min-height:100vh; transition: all .4s" class="mdui-list"></div>
 <script>
-	function searchAPI(searchTerm) {
-		fetch(
-			`https://search.kwaa.workers.dev/?q=${searchTerm}<% if(theme.search.api.site !== false) { %>&siteSearch=<% if(theme.search.api.site == '') { %><%= config.root %><% } else { %><%= theme.search.api.site %><% }} if (theme.search.api.key && theme.search.api.id) { %>&key=<%= theme.search.api.key %>&cx=<%= theme.search.api.id %><% } %>`
-		).then(res =>
-			res.json().then(json =>
-				json.items.forEach(({ title, link, snippet }) =>
-					document.getElementById('api-result').insertAdjacentHTML(
-						'beforeend',
-						`
+  function searchAPI(searchTerm) {
+    fetch(
+      `https://search.kwaa.workers.dev/?q=${searchTerm}<% if(theme.search.api.site !== false) { %>&siteSearch=<% if(theme.search.api.site == '') { %><%= config.root %><% } else { %><%= theme.search.api.site %><% }} if (theme.search.api.key && theme.search.api.id) { %>&key=<%= theme.search.api.key %>&cx=<%= theme.search.api.id %><% } %>`
+    ).then(res =>
+      res.json().then(json =>
+        json.items.forEach(({ title, link, snippet }) =>
+          document.getElementById('api-result').insertAdjacentHTML(
+            'beforeend',
+            `
             <a class="mdui-list-item mdui-ripple" href="${link}">
                 <div class="mdui-list-item-content">
                     <div class="mdui-list-item-title mdui-list-item-one-line">${title}</div>
                     <div class="mdui-list-item-text mdui-list-item-two-line">${snippet}</div>
                 </div>
             </a>`
-					)
-				)
-			)
-		)
-		return false
-	}
+          )
+        )
+      )
+    )
+    return false
+  }
 </script>
 ```
 

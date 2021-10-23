@@ -1,8 +1,38 @@
 import type { EndpointOutput } from '@sveltejs/kit'
 import site from '$lib/config/site'
-import { modules, PostModule, allPosts as posts } from '$lib/utils/posts'
+import type { Post, PostModule } from '$lib/utils/posts'
 
-// fetch('/index.json').then(res => res.json()).then(json => console.log(json))
+const posts: Record<number, Post[]> = { 500: [] }
+
+Object.entries(import.meta.globEager<PostModule>('/src/routes/**/index.{md,svelte.md,svx}'))
+  .map(([postpath, module]) => ({
+    slug: postpath,
+    path: postpath.replace(/\/src\/routes\/|\/index.md|\/index.svelte.md|\/index.svx/g, ''),
+    html: module.default
+      .render()
+      .html // eslint-disable-next-line no-control-regex
+      .replace(/[\u0000-\u001F]/g, '')
+      .replace(/[\r\n]/g, '')
+      .match(/<main [^>]+>(.*?)<\/main>/gi)[0]
+      .replace(/( class=")(.*?)(")/gi, '')
+      .replace(/( style=")(.*?)(")/gi, '')
+      .replace(/(<span>)(.*?)(<\/span>)/gi, '$2')
+      .replace(/(<main>)(.*?)(<\/main>)/gi, '$2'),
+    ...(module?.metadata ?? undefined)
+  }))
+  .sort((a, b) => (b.date ?? '').localeCompare(a.date ?? ''))
+  .forEach(post =>
+    post.priority === undefined
+      ? posts[500].push(post)
+      : posts[post.priority[1]]
+        ? posts[post.priority[1]].push(post)
+        : (() => {
+            posts[post.priority[1]] = []
+            posts[post.priority[1]].push(post)
+          })()
+  )
+
+const testPosts = Object.entries(posts).flatMap(([, value]) => value)
 
 const render = async (): Promise<string> => `<?xml version='1.0' encoding='utf-8'?>
 <feed xmlns="http://www.w3.org/2005/Atom">
@@ -16,7 +46,7 @@ const render = async (): Promise<string> => `<?xml version='1.0' encoding='utf-8
   </author>
   <id>${site.url}/</id>
   <generator>SvelteKit/Urara</generator>
-  ${posts
+  ${testPosts
     .map(
       post => `<entry>
     <title type="html"><![CDATA[${post.title}]]></title>
@@ -27,12 +57,7 @@ const render = async (): Promise<string> => `<?xml version='1.0' encoding='utf-8
         post.descr ? `\n    <summary type="html"><![CDATA[${post.descr.toString()}]]></summary>` : ''
       }
     <content type="html">
-      <![CDATA[${(modules[post.slug] as PostModule).default
-        .render()
-        .html // eslint-disable-next-line no-control-regex
-        .replace(/[\u0000-\u001F]/g, '')
-        .replace(/[\r\n]/g, '')
-        .match(/<main [^>]+>(.*?)<\/main>/g)}]]>
+      <![CDATA[${post.html}]]>
     </content>
   </entry>`
     )

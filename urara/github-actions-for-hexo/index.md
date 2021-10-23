@@ -25,10 +25,10 @@ tags:
 
 ```js
 addEventListener('fetch', event => {
-	let url = new URL(event.request.url)
-	const redirectTo = 'kwaa.dev'
-	url.hostname = redirectTo
-	event.respondWith(Response.redirect(url, 301))
+  let url = new URL(event.request.url)
+  const redirectTo = 'kwaa.dev'
+  url.hostname = redirectTo
+  event.respondWith(Response.redirect(url, 301))
 })
 ```
 
@@ -79,22 +79,22 @@ let minifyInline = require('gulp-minify-inline')
 
 // html
 gulp.task('minify-html', function () {
-	return gulp
-		.src('./public/**/*.html')
-		.pipe(htmlclean())
-		.pipe(
-			htmlmin({
-				removeComments: true,
-				minifyJS: true,
-				minifyCSS: true,
-				minifyURLs: true
-			})
-		)
-		.pipe(gulp.dest('./public'))
+  return gulp
+    .src('./public/**/*.html')
+    .pipe(htmlclean())
+    .pipe(
+      htmlmin({
+        removeComments: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true
+      })
+    )
+    .pipe(gulp.dest('./public'))
 })
 // inline
 gulp.task('minify-inline', function () {
-	return gulp.src('./public/**/*.html').pipe(minifyInline()).pipe(gulp.dest('./public'))
+  return gulp.src('./public/**/*.html').pipe(minifyInline()).pipe(gulp.dest('./public'))
 })
 // task
 gulp.task('default', gulp.series('minify-html', 'minify-inline'))

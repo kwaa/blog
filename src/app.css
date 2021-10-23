@@ -1,55 +1,47 @@
 html {
-	scroll-behavior: smooth;
-	@apply overflow-x-hidden overflow-y-scroll break-words;
-}
-
-body {
-	@apply bg-base-200 min-h-screen;
+  scroll-behavior: smooth;
+  @apply !bg-base-200 overflow-x-hidden overflow-y-scroll break-words;
 }
 
 ::selection {
-	@apply bg-primary text-primary-content;
-}
-
-.h-virtuallist {
-	height: calc(100vh - 64px);
+  @apply bg-primary text-primary-content;
 }
 
 .btn-primary:hover {
-	@apply bg-primary-focus border-primary-focus;
+  @apply bg-primary-focus border-primary-focus;
 }
 
 .btn-secondary:hover {
-	@apply bg-secondary-focus border-secondary-focus;
+  @apply bg-secondary-focus border-secondary-focus;
 }
 
 .btn-accent:hover {
-	@apply bg-accent-focus border-accent-focus;
+  @apply bg-accent-focus border-accent-focus;
 }
 
 .btn-ghost:hover,
 .btn-link:hover {
-	@apply bg-base-content bg-opacity-20 border-opacity-0;
+  @apply bg-base-content bg-opacity-20 border-opacity-0;
 }
 
 .prose blockquote {
-	@apply font-semibold border-l-4 border-base-content text-base-content border-opacity-20 pl-4 pr-4;
+  @apply font-semibold border-l-4 border-base-content text-base-content border-opacity-20 pl-4 pr-4;
 }
 
 .prose p {
-	@apply mb-3;
+  @apply mb-3;
 }
 
 .prose h1 {
-	@apply text-3xl font-semibold;
+  @apply text-3xl font-semibold;
 }
 
 .prose h2 {
-	@apply text-2xl font-semibold;
+  @apply text-2xl font-semibold;
 }
 
 .prose h4 {
-	@apply text-base font-semibold;
+  @apply text-base font-semibold;
 }
 
 .prose h1,
@@ -58,86 +50,86 @@ h3,
 h4,
 h5,
 h6 {
-	@apply font-semibold mb-4 mt-6;
+  @apply font-semibold mb-4 mt-6;
 }
 
 .prose .shiki {
-	@apply mockup-code p-5 mb-4 text-base !bg-neutral overflow-x-scroll children:(!p-0 !bg-transparent);
+  @apply mockup-code p-5 mb-4 text-base !bg-neutral overflow-x-scroll children:(!p-0 !bg-transparent);
 }
 
 .prose .shiki::before {
-	@apply -ml-5;
+  @apply -ml-5;
 }
 
 .prose .shiki code {
-	@apply children:pr-5;
+  @apply children:pr-5;
 }
 
 .prose dl {
-	@apply text-base pl-8 mb-4;
+  @apply text-base pl-8 mb-4;
 }
 
 .prose ol {
-	@apply text-base pl-8 list-decimal mb-4;
+  @apply text-base pl-8 list-decimal mb-4;
 }
 
 .prose ul {
-	@apply text-base pl-8 list-disc mb-4;
+  @apply text-base pl-8 list-disc mb-4;
 }
 
 .prose kbd {
-	@apply kbd;
+  @apply kbd;
 }
 
 .prose hr {
-	@apply border-none divider;
+  @apply border-none divider;
 }
 
 .prose input {
-	@apply checkbox checkbox-xs;
+  @apply checkbox checkbox-xs;
 }
 
 .card {
-	@apply bg-base-100;
+  @apply bg-base-100;
 }
 
 .card-body {
-	@apply <md:!p-4;
+  @apply <md:!p-4;
 }
 
 .collapse {
-	@apply relative grid overflow-hidden;
+  @apply relative grid overflow-hidden;
 }
 
 .collapse-title,
 .collapse > input[type='checkbox'] {
-	@apply p-4 md:px-8;
+  @apply p-4 md:px-8;
 }
 
 .collapse-content,
 .collapse-title,
 .collapse > input[type='checkbox'] {
-	@apply row-start-1 col-start-1;
+  @apply row-start-1 col-start-1;
 }
 
 .collapse > input[type='checkbox'] {
-	@apply appearance-none opacity-0;
+  @apply appearance-none opacity-0;
 }
 
 .collapse-content {
-	@apply row-start-2 overflow-hidden;
+  @apply row-start-2 overflow-hidden;
 }
 
 .collapse-open .collapse-content,
 .collapse:focus:not(.collapse-close) .collapse-content,
 .collapse:not(.collapse-close) input[type='checkbox']:checked ~ .collapse-content {
-	@apply max-h-9000px;
+  @apply max-h-9000px;
 }
 
 .spoiler {
-	@apply transition-colors ease-in-out bg-base-content hover:bg-transparent focus:bg-transparent;
+  @apply transition-colors ease-in-out bg-base-content hover:bg-transparent focus:bg-transparent;
 }
 
 #footer a {
-	@apply transition-all ease-in-out text-base-content underline underline-transparent opacity-75 hover:(opacity-100 text-secondary-focus underline-secondary-focus);
+  @apply transition-all ease-in-out text-base-content underline underline-transparent opacity-75 hover:(opacity-100 text-secondary-focus underline-secondary-focus);
 }

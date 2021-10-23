@@ -18,24 +18,24 @@ tags:
 
 ```js
 addEventListener('fetch', event => {
-	const host = 'objectstorage.ap-seoul-1.oraclecloud.com' /* 对象存储的hostname */
-	const path = '/n/xxxxxxxxxxxx/b/standard/o/' /* 对象存储的pathname */
-	let url = new URL(event.request.url)
-	url.hostname = host
-	if (!url.pathname.startsWith(path)) {
-		if (url.pathname == '/') {
-			return new Response({ status: 403 })
-		} else {
-			url.pathname = path + url.pathname
-		}
-	}
-	let request = new Request(url, event.request)
-	event.respondWith(
-		fetch(request, {
-			headers: {
-				'Access-Control-Allow-Origin': '*'
-			}
-		})
-	)
+  const host = 'objectstorage.ap-seoul-1.oraclecloud.com' /* 对象存储的hostname */
+  const path = '/n/xxxxxxxxxxxx/b/standard/o/' /* 对象存储的pathname */
+  let url = new URL(event.request.url)
+  url.hostname = host
+  if (!url.pathname.startsWith(path)) {
+    if (url.pathname == '/') {
+      return new Response({ status: 403 })
+    } else {
+      url.pathname = path + url.pathname
+    }
+  }
+  let request = new Request(url, event.request)
+  event.respondWith(
+    fetch(request, {
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
+    })
+  )
 })
 ```
