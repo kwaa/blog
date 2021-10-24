@@ -28,6 +28,7 @@
   export let cover = undefined
 
   // const posts = listPosts(0)
+  let allPosts = undefined
   let post = undefined
   let index = undefined
   let prev = undefined
@@ -35,19 +36,16 @@
 
   onMount(() => {
     if (browser) {
-      const allPosts: Urara.Post[] = Object.entries(JSON.parse(localStorage.getItem('posts')) as Record<number, Urara.Post[]>).flatMap(([, value]) => value)
+      // const allPosts: Urara.Post[] = Object.entries(JSON.parse(localStorage.getItem('posts')) as Record<number, Urara.Post[]>).flatMap(([, value]) => value)
+      allPosts = Object.entries(JSON.parse(localStorage.getItem('posts'))).flatMap(([, value]) => value)
       const pathname = window.location.pathname.slice(1)
       post = allPosts.find(post => post.path === pathname)
       index = allPosts.findIndex(post => post.path === pathname)
       prev = allPosts[index + 1]
       next = allPosts[index - 1]
     }
-    // index = posts.findIndex(post => post.path === $page.path.slice(1))
-    // prev = posts[index + 1]
-    // next = posts[index - 1]
   })
 
-  // $: post = posts.find(post => post.path === $page.path.slice(1))
 </script>
 
 <svelte:head>

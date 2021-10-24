@@ -24,7 +24,7 @@
   onMount(() => {
     if (browser) {
       allPosts = Object.entries(JSON.parse(localStorage.getItem('posts')) as Record<number, Urara.Post[]>).flatMap(
-        ([key, value]) => (parseInt(key) >= 1 ? value : [])
+        ([key, value]) => (parseInt(key) > 0 ? value : [])
       )
       // allPosts = JSON.parse(localStorage.getItem('posts'))
       allTags = genTags(allPosts)
