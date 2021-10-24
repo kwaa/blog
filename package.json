@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "scripts": {
     "clean": "node urara.js clean",
-    "watch": "node urara.js watch",
-    "kitdev": "export NODE_OPTIONS=--max_old_space_size=6144 && svelte-kit dev",
-    "dev": "npm-run-all -p -r watch \"kitdev -- {@} \" --",
+    "dev:watch": "node urara.js watch",
+    "dev:kit": "export NODE_OPTIONS=--max_old_space_size=6144 && svelte-kit dev",
+    "dev": "npm-run-all -p -r dev:watch \"dev:kit -- {@} \" --",
     "prebuild": "node urara.js build",
     "build": "export NODE_OPTIONS=--max_old_space_size=6144 && svelte-kit build",
     "postbuild": "node urara.js clean",

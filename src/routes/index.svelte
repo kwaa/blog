@@ -26,11 +26,7 @@
       allPosts = Object.entries(JSON.parse(localStorage.getItem('posts')) as Record<number, Urara.Post[]>).flatMap(
         ([key, value]) => (parseInt(key) > 0 ? value : [])
       )
-      // allPosts = JSON.parse(localStorage.getItem('posts'))
       allTags = genTags(allPosts)
-      console.log(`allPosts, ${allPosts}`)
-      console.log(localStorage.getItem('posts'))
-      // console.log(`allTags, ${allTags}`)
     }
     tags = $page.query.get('tags') ? $page.query.get('tags').split(',') : []
     tags?.forEach(tag => document.getElementById(tag).classList.toggle('!btn-secondary'))
