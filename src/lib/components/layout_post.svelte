@@ -1,4 +1,4 @@
-<script context="module">
+<script lang="ts" context="module">
   import a from '$lib/components/mdsvex/a.svelte'
   import img from '$lib/components/mdsvex/img.svelte'
   import code from '$lib/components/mdsvex/code.svelte'
