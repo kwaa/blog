@@ -1,10 +1,11 @@
 import type { EndpointOutput } from '@sveltejs/kit'
 import site from '$lib/config/site'
-import { Post, listPosts } from '$lib/utils/posts'
+import posts from '$lib/utils/posts'
 
-const render = async (posts: Post[]): Promise<string> => `<?xml version='1.0' encoding='utf-8'?>
+const render = async (): Promise<string> => `<?xml version='1.0' encoding='utf-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    ${posts
+    ${Object.entries(posts)
+      .flatMap(([, value]) => value)
       .map(
         post => `<url>
         <loc>${site.url}/${post.path}</loc>
@@ -20,6 +21,6 @@ export const get = async (): Promise<EndpointOutput> => {
     headers: {
       'Content-Type': 'application/xml; charset=utf-8'
     },
-    body: await render(listPosts(0))
+    body: await render()
   }
 }

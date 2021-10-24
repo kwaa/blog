@@ -15,7 +15,7 @@
   import Utterances from '$lib/components/extra/utterances.svelte'
   import { onMount } from 'svelte'
   // import { page } from '$app/stores'
-  import { listPosts } from '$lib/utils/posts'
+  // import { listPosts } from '$lib/utils/posts'
   import site from '$lib/config/site'
   import { browser } from '$app/env'
 
@@ -27,7 +27,7 @@
   export let descr = undefined
   export let cover = undefined
 
-  const posts = listPosts(0)
+  // const posts = listPosts(0)
   let post = undefined
   let index = undefined
   let prev = undefined
@@ -35,11 +35,12 @@
 
   onMount(() => {
     if (browser) {
+      const allPosts: Urara.Post[] = Object.entries(JSON.parse(localStorage.getItem('posts')) as Record<number, Urara.Post[]>).flatMap(([, value]) => value)
       const pathname = window.location.pathname.slice(1)
-      post = posts.find(post => post.path === pathname)
-      index = posts.findIndex(post => post.path === pathname)
-      prev = posts[index + 1]
-      next = posts[index - 1]
+      post = allPosts.find(post => post.path === pathname)
+      index = allPosts.findIndex(post => post.path === pathname)
+      prev = allPosts[index + 1]
+      next = allPosts[index - 1]
     }
     // index = posts.findIndex(post => post.path === $page.path.slice(1))
     // prev = posts[index + 1]
@@ -62,16 +63,15 @@
     <div class="card-body">
       <h1 class="card-title text-3xl">{title ?? ''}</h1>
       <PostDate {date} {lastmod} {priority} />
-      {#if cover}
-        <figure class="-mx-4 md:-mx-8 !w-auto my-4">
-          <!-- <img src={cover} alt={cover} loading="lazy" /> -->
-          <Picture class="w-full" src={cover} alt={cover} />
-        </figure>
-      {:else}
+      {#if !cover}
         <div class="divider" />
       {/if}
       <main class="prose">
-        <slot />
+        {#if cover}<figure class="-mx-4 md:-mx-8 !w-auto my-4">
+            <!-- <img src={cover} alt={cover} loading="lazy" /> -->
+            <Picture class="w-full" src={cover} alt={cover} />
+          </figure>
+        {/if}<slot />
       </main>
       {#if tags}
         <div class="divider my-0" />

@@ -17,18 +17,15 @@
   import Header from '$lib/components/header.svelte'
   import 'virtual:windi.css'
   import '../app.css'
-  // @ts-ignore: Cannot find module 'virtual:windi-devtools' or its corresponding type declarations.
-  if (browser) import('virtual:windi-devtools')
-  // import Head from '$lib/components/head.svelte'
-  export let posts
+  export let posts = undefined
+  if (browser) {
+    // @ts-ignore: Cannot find module 'virtual:windi-devtools' or its corresponding type declarations.
+    import('virtual:windi-devtools')
+    localStorage.setItem('posts', JSON.stringify(posts))
+    localStorage.setItem('updated', new Date().toLocaleString())
+  }
   onMount(() => {
     if (browser) {
-      // @ts-ignore: Can not find module 'virtual:windi-devtools' or its corresponding type declarations.
-      // await import('virtual:windi-devtools')
-      localStorage.setItem('posts', JSON.stringify(posts))
-      localStorage.setItem('updated', new Date().toLocaleString())
-      console.log(posts)
-
       if (!localStorage.getItem('theme') && window.matchMedia) {
         document.documentElement.setAttribute(
           'data-theme',

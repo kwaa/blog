@@ -8,15 +8,30 @@
   import Footer from '$lib/components/footer.svelte'
   import IndexPost from '$lib/components/index_post.svelte'
   import Skeleton from '$lib/components/skeleton.svelte'
-  import { allPosts } from '$lib/utils/posts'
-  import { allTags } from '$lib/utils/tags'
+  // import { Post, allPosts } from '$lib/utils/posts'
+  // import { genTags, allTags } from '$lib/utils/tags'
+  // import type { Post } from '$lib/utils/posts'
+  import { genTags } from '$lib/utils/tags'
   import { page } from '$app/stores'
   import { fly } from 'svelte/transition'
+  import { browser } from '$app/env'
 
+  let allPosts: Urara.Post[]
+  let allTags: Record<string, number>
   let loaded: boolean
   let [posts, tags, years] = [[], [''], []]
 
-  onMount(async () => {
+  onMount(() => {
+    if (browser) {
+      allPosts = Object.entries(JSON.parse(localStorage.getItem('posts')) as Record<number, Urara.Post[]>).flatMap(
+        ([key, value]) => (parseInt(key) >= 1 ? value : [])
+      )
+      // allPosts = JSON.parse(localStorage.getItem('posts'))
+      allTags = genTags(allPosts)
+      console.log(`allPosts, ${allPosts}`)
+      console.log(localStorage.getItem('posts'))
+      // console.log(`allTags, ${allTags}`)
+    }
     tags = $page.query.get('tags') ? $page.query.get('tags').split(',') : []
     tags?.forEach(tag => document.getElementById(tag).classList.toggle('!btn-secondary'))
     loaded = true
@@ -34,7 +49,7 @@
     window.history.replaceState({}, '', `/`)
   }
 
-  $: if (tags) posts = !tags ? allPosts : allPosts.filter(post => tags.every(tag => post.tags?.includes(tag)))
+  $: if (loaded && tags) posts = !tags ? allPosts : allPosts.filter(post => tags.every(tag => post.tags?.includes(tag)))
 
   $: if (posts) years = [new Date().toJSON().substring(0, 4)]
 </script>
@@ -52,11 +67,13 @@
       {/if}
     </div>
     <div class="collapse-content">
-      {#each Object.entries(allTags) as [tag]}
-        <button id={tag} on:click={() => toggleTag(tag)} class="btn btn-sm btn-ghost mt-2 mr-2">
-          #{tag}
-        </button>
-      {/each}
+      {#if allTags}
+        {#each Object.entries(allTags) as [tag]}
+          <button id={tag} on:click={() => toggleTag(tag)} class="btn btn-sm btn-ghost mt-2 mr-2">
+            #{tag}
+          </button>
+        {/each}
+      {/if}
     </div>
   </label>
 

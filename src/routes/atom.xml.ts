@@ -1,8 +1,6 @@
 import type { EndpointOutput } from '@sveltejs/kit'
 import site from '$lib/config/site'
-import { modules, PostModule, allPosts as posts } from '$lib/utils/posts'
-
-// fetch('/index.json').then(res => res.json()).then(json => console.log(json))
+import posts from '$lib/utils/posts'
 
 const render = async (): Promise<string> => `<?xml version='1.0' encoding='utf-8'?>
 <feed xmlns="http://www.w3.org/2005/Atom">
@@ -16,7 +14,8 @@ const render = async (): Promise<string> => `<?xml version='1.0' encoding='utf-8
   </author>
   <id>${site.url}/</id>
   <generator>SvelteKit/Urara</generator>
-  ${posts
+  ${Object.entries(posts)
+    .flatMap(([key, value]) => (+key > 0 ? value : []))
     .map(
       post => `<entry>
     <title type="html"><![CDATA[${post.title}]]></title>
@@ -27,12 +26,7 @@ const render = async (): Promise<string> => `<?xml version='1.0' encoding='utf-8
         post.descr ? `\n    <summary type="html"><![CDATA[${post.descr.toString()}]]></summary>` : ''
       }
     <content type="html">
-      <![CDATA[${(modules[post.slug] as PostModule).default
-        .render()
-        .html // eslint-disable-next-line no-control-regex
-        .replace(/[\u0000-\u001F]/g, '')
-        .replace(/[\r\n]/g, '')
-        .match(/<main [^>]+>(.*?)<\/main>/g)}]]>
+      <![CDATA[${post.html}]]>
     </content>
   </entry>`
     )

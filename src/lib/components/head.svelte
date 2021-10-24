@@ -2,8 +2,7 @@
   import site from '$lib/config/site'
   import HeadIcon from '$lib/components/head_icon.svelte'
   import HeadOpenGraph from './head_opengraph.svelte'
-  import type { Post } from '$lib/utils/posts'
-  export let post: Post = undefined
+  export let post: Urara.Post = undefined
 </script>
 
 <svelte:head>
