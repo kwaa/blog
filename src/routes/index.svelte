@@ -56,7 +56,7 @@
 
 <Head />
 
-<div class="pt-8 pb-4 px-4 lg:(pt-16 pb-8 px-0) mx-auto w-screen md:w-screen-md">
+<div class="px-4 lg:px-0 mx-auto w-screen md:w-screen-md">
   <label tabindex="0" class="collapse bg-base-100 shadow-xl rounded-box collapse-arrow mb-8">
     <input type="checkbox" />
     <div class="collapse-title text-xl font-medium">

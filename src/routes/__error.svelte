@@ -9,11 +9,11 @@
   }
 </script>
 
-<script>
+<script lang="ts">
   import Head from '$lib/components/head.svelte'
   import Footer from '$lib/components/footer.svelte'
-  export let status
-  export let message
+  export let status: string
+  export let message: string
   console.log(status, message)
 </script>
 
