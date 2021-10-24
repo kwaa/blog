@@ -1,6 +1,7 @@
 import preprocess from 'svelte-preprocess'
 import adapterStatic from '@sveltejs/adapter-static'
-import adapterWorkers from '@sveltejs/adapter-cloudflare-workers'
+// import adapterWorkers from '@sveltejs/adapter-cloudflare-workers'
+import adapterWorkers from '@snuffydev/adapter-cloudflare-cache'
 import WindiCSS from 'vite-plugin-windicss'
 import { mdsvex } from 'mdsvex'
 import { mdsvexConfig } from './mdsvex.config.js'
