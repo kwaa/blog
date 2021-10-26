@@ -45,7 +45,6 @@
       next = allPosts[index - 1]
     }
   })
-
 </script>
 
 <svelte:head>

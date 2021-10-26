@@ -8,9 +8,6 @@
   import Footer from '$lib/components/footer.svelte'
   import IndexPost from '$lib/components/index_post.svelte'
   import Skeleton from '$lib/components/skeleton.svelte'
-  // import { Post, allPosts } from '$lib/utils/posts'
-  // import { genTags, allTags } from '$lib/utils/tags'
-  // import type { Post } from '$lib/utils/posts'
   import { genTags } from '$lib/utils/tags'
   import { page } from '$app/stores'
   import { fly } from 'svelte/transition'
@@ -21,15 +18,22 @@
   let loaded: boolean
   let [posts, tags, years] = [[], [''], []]
 
+  $: if (browser) {
+    allPosts = Object.entries(JSON.parse(localStorage.getItem('posts')) as Record<number, Urara.Post[]>).flatMap(
+      ([key, value]) => (parseInt(key) > 0 ? value : [])
+    )
+    allTags = genTags(allPosts)
+  }
+
+  $: if (loaded && tags) posts = !tags ? allPosts : allPosts.filter(post => tags.every(tag => post.tags?.includes(tag)))
+
+  $: if (posts) years = [new Date().toJSON().substring(0, 4)]
+
   onMount(() => {
     if (browser) {
-      allPosts = Object.entries(JSON.parse(localStorage.getItem('posts')) as Record<number, Urara.Post[]>).flatMap(
-        ([key, value]) => (parseInt(key) > 0 ? value : [])
-      )
-      allTags = genTags(allPosts)
+      tags = $page.query.get('tags') ? $page.query.get('tags').split(',') : []
+      tags?.forEach(tag => document.getElementById(tag).classList.toggle('!btn-secondary'))
     }
-    tags = $page.query.get('tags') ? $page.query.get('tags').split(',') : []
-    tags?.forEach(tag => document.getElementById(tag).classList.toggle('!btn-secondary'))
     loaded = true
   })
 
@@ -44,10 +48,6 @@
     tags = []
     window.history.replaceState({}, '', `/`)
   }
-
-  $: if (loaded && tags) posts = !tags ? allPosts : allPosts.filter(post => tags.every(tag => post.tags?.includes(tag)))
-
-  $: if (posts) years = [new Date().toJSON().substring(0, 4)]
 </script>
 
 <Head />
