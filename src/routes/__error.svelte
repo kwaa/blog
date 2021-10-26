@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-  export function load({ error, status }) {
+  export const load = ({ error, status }) => {
     return {
       props: {
         status: status,
