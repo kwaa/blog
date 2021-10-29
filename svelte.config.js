@@ -1,6 +1,7 @@
 import preprocess from 'svelte-preprocess'
 import adapterStatic from '@sveltejs/adapter-static'
 import adapterWorkers from '@sveltejs/adapter-cloudflare-workers'
+import adapterVercel from '@sveltejs/adapter-vercel'
 // import adapterWorkers from '@snuffydev/adapter-cloudflare-cache'
 import WindiCSS from 'vite-plugin-windicss'
 import { mdsvex } from 'mdsvex'
@@ -16,7 +17,9 @@ const config = {
     adapter:
       process.env.MODE === 'workers'
         ? adapterWorkers()
-        : adapterStatic({
+        : process.env.MODE === 'vercel'
+          ? adapterVercel()
+          : adapterStatic({
             pages: 'build',
             assets: 'build',
             fallback: null
