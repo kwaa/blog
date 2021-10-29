@@ -30,7 +30,7 @@
           {/if}
         </a>
       {:else}
-        {friend.html ?? ''}
+        {friend.html}
       {/if}
     {/each}
   {/if}

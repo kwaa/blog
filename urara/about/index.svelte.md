@@ -27,32 +27,35 @@ priority: ['About', 0]
 
 ### 编程
 
-主要是前端，但是很多都沾一点（即全沾）
+主要是前端，不过很多都沾一点（即全沾）
 
 面向 Google & MDN & StackOverflow 编程，还点了一些 Linux 技能（Arch & Debian 用户）
 
 进化路线：JavaScript(this 真不会) => ESNext(离不开语法糖) => Node.js/NPM(会用) => TypeScript(新手上路)
 
-比较熟悉：
+开始尝试函数式编程。
 
-- JavaScript(ESNext) / Node.js & NPM # All-In-JS
-- MDUI / Bootstrap / jQuery # 老三样
-- TailwindCSS / WindiCSS / DaisyUI / SvelteKit # 写完 Urara 熟练度高了不少，全程 @apply
-- Arch / Debian / Docker # 的启动与关闭（雾）
+> +++ 不敢写精通 / ++ 熟练 / + 了解 / - 会用 / * 想学
 
-会一点：
+#### 语言
 
-- TypeScript # 勉强写 Interface / Type 程度的能力
-- Python # 会用 pip 和写点脚本程度的能力
-- Express / Koa # 用过，确实只会一点
-- Angular # 用过，确实只会一点
+`++ JavaScript (+ TypeScript), ` `++ HTML, ` `+ CSS, ` `- Python, ` `* Elixir, ` `* Rust`
 
-还想学：
+#### 前端框架 / 库
 
-- Elixir # 没有人能拒绝管道操作符，如果有就定义一个宏
-- Phoenix & LiveView # 以后有灵感的话想试试
-- Rust # 都进 Linux 内核了，我的眼光没错（就是提不起劲学）
-- React & GraphQL # 要恰饭，而我又不太想用 Vue
+`++ MDUI/Bootstrap,` `+ Svelte/SvelteKit, ` `+ WindiCSS/TailwindCSS/DaisyUI, ` `-jQuery, ` `* React, ` `* RxJS`
+
+#### 后端框架 / 库
+
+`- Express/Koa, ` `* Phoenix`
+
+#### 环境
+
+`++ Nodejs/NPM, ` `+ Linux, ` `+ Docker, ` `+ GitHub, ` `- Git`
+
+#### 其他
+
+`* Electron, ` `* Flutter`
 
 ### 游戏
 
@@ -87,7 +90,7 @@ PC & VR 玩家，设备 Valve Index。
 
 ## 关于本站
 
-本站创建于 2019 年 10 月，是我的第四个博客（内容全部清除算一次）
+本站创建于 2019 年 10 月，是我的 ~~第四~~ 第五个博客（内容全部清除算一次）
 目前从 Hexo 迁移到自己设计的 Urara，站点部署在 Cloudflare Workers Site。
 
 依赖项：
@@ -99,12 +102,13 @@ PC & VR 玩家，设备 Valve Index。
 
 时间线：
 
-- 2015-09: 第一个博客，使用 WordPress. | destroyed
-- 2017-08: 第二个博客，使用 ZeroNet. | unknown
-- 2018-07: 第三个博客，使用 Typecho. | destroyed
-- 2019-10: 第四个博客，使用 Hexo. | blog.917.moe
-- 2020-08: 博客重构. | kwaa.dev
-- 2021-10: 博客重构, 使用 SvelteKit/Urara. | kwaa.dev
+- 2015-09: 第一个博客，使用 WordPress | destroyed
+- 2017-08: 第二个博客，使用 ZeroNet | unknown
+- 2018-01: 第三个博客，使用 Typecho - typecho-theme-material | destroyed
+- 2018-03: 第四个博客，使用 Hexo - hexo-theme-material | destroyed - 已转移部分文章
+- 2019-10: 第五个博客，使用 Hexo - 写了 hexo-theme-m | blog.917.moe
+- 2020-08: 重写 hexo-theme-m | kwaa.dev
+- 2021-10: 博客重构，在 SvelteKit/MDSveX 的基础上写了 Urara | kwaa.dev
 
 还有什么要做的吗？
 

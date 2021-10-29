@@ -7,17 +7,15 @@
 </script>
 
 <script lang="ts">
+  import { onMount } from 'svelte'
+  import { browser } from '$app/env'
+  import site from '$lib/config/site'
   import Head from '$lib/components/head.svelte'
   import Footer from '$lib/components/footer.svelte'
   import PostDate from '$lib/components/post_date.svelte'
   import Pagination from '$lib/components/pagination.svelte'
   import Picture from '$lib/components/extra/picture.svelte'
   import Utterances from '$lib/components/extra/utterances.svelte'
-  import { onMount } from 'svelte'
-  // import { page } from '$app/stores'
-  // import { listPosts } from '$lib/utils/posts'
-  import site from '$lib/config/site'
-  import { browser } from '$app/env'
 
   export let title = undefined
   export let date = undefined
@@ -58,7 +56,7 @@
 <div class="px-4 lg:px-0 mx-auto w-full max-w-screen-md">
   <div class="card shadow-xl mb-8">
     <div class="card-body">
-      <h1 class="card-title text-3xl">{title ?? ''}</h1>
+      <h1 class="card-title text-3xl">{title ?? post.path}</h1>
       <PostDate {date} {lastmod} {priority} />
       {#if !cover}
         <div class="divider" />

@@ -1,3 +1,6 @@
+<script lang="ts" context="module">
+  export const prerender = true
+</script>
 <script lang="ts">
   export let user = undefined
   export let repo = undefined

@@ -1,12 +1,11 @@
 <script lang="ts">
-  import { prefix, source as pictureSource } from '$lib/config/img'
+  import { source as pictureSource } from '$lib/config/img'
+  import srcReplace from '$lib/utils/imgsrc'
   let className = undefined
   export { className as class }
   export let src = undefined
   export let alt = undefined
-
-  if (src.startsWith('/')) src = src.slice(1)
-  if (!src.startsWith('http')) src = `${prefix}${src}`
+  src = srcReplace(src)
 </script>
 
 <picture>

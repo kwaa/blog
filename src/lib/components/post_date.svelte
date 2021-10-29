@@ -19,7 +19,7 @@
     <span class="hover:(opacity-50 sibling:opacity-100)">{post.priority[0]}</span>
     <span class="text-primary opacity-0">PRIORITY: {post.priority[1]}</span>
   {:else}
-    <span class="hover:(opacity-50 sibling:opacity-100)">{stringDate ?? ''}</span>
-    <span class="text-primary opacity-0">LASTMOD: {stringLastmod ?? ''}</span>
+    <span class="hover:(opacity-50 sibling:opacity-100)">{stringDate}</span>
+    <span class="text-primary opacity-0">LASTMOD: {stringLastmod}</span>
   {/if}
 </p>

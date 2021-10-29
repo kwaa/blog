@@ -1,3 +1,8 @@
+/**
+ * Generate Tags List
+ * @param posts flatten posts list
+ * @returns tags list with count
+ */
 export const genTags = (posts: Urara.Post[]): Record<string, number> => {
   const tags: Record<string, number> = {}
   posts.forEach(post =>

@@ -6,7 +6,7 @@
 
   let contentCover, contentIcons
 
-  $: if (post) contentCover = srcReplace(post.cover ?? '', { absolute: true, alternative: true }).src
+  // $: if (post) contentCover = post?.cover ? srcReplace(post.cover, { absolute: true, alternative: true }).src : undefined
   $: contentIcons = srcReplace(icons.maskable512.src ?? icons.px512.src, { absolute: true })
 </script>
 
@@ -23,7 +23,7 @@
     <meta property="article:modified_time" content={post.lastmod} />
     <meta property="article:tag" content={post.tags} />
     {#if post.cover}
-      <meta property="og:image" content={contentCover} />
+      <meta property="og:image" content={post?.cover ? srcReplace(post.cover, { absolute: true, alternative: true }).src : undefined} />
       <meta name="twitter:card" content="summary_large_image" />
     {:else}
       <meta property="og:image" content={contentIcons} />

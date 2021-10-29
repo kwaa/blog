@@ -35,7 +35,7 @@
   </div>
   <div class="flex-none">
     {#if headerConfig.nav}
-      {#each Object.entries(headerConfig.nav) as [name, href]}
+      {#each Object.entries(headerConfig.nav) as [href, name]}
         <a {href} sveltekit:prefetch class="btn btn-ghost normal-case">{name}</a>
       {/each}
     {/if}

@@ -1,10 +1,10 @@
 import type { EndpointOutput } from '@sveltejs/kit'
 import site from '$lib/config/site'
-import posts from '$lib/utils/posts'
+import { genPosts } from '$lib/utils/posts'
 
 const render = async (): Promise<string> => `<?xml version='1.0' encoding='utf-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    ${Object.entries(posts)
+    ${Object.entries(genPosts())
       .flatMap(([, value]) => value)
       .map(
         post => `<url>

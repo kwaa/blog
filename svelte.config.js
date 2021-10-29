@@ -39,6 +39,7 @@ const config = {
     target: 'body',
     vite: {
       mode: process.env.MODE || 'development',
+      envPrefix: 'URARA_',
       plugins: [
         WindiCSS({
           config: 'windi.config.js',

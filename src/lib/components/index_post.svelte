@@ -29,7 +29,7 @@
     </h1>
     <PostDate type="index" {post} />
     {#if post.descr}
-      <p class="mb-auto">{post.descr ?? ''}</p>
+      <p class="mb-auto">{post.descr}</p>
     {/if}
     {#if post.path}
       <div class="card-actions mt-auto md:-mb-4 -ml-4">
@@ -42,7 +42,7 @@
           >
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
-          {post.path}
+          {post.path.slice(1)}
         </a>
       </div>
     {/if}
