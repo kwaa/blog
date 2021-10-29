@@ -1,6 +1,7 @@
 /// <reference types="@sveltejs/kit" />
 
 interface ImportMetaEnv extends Record<string, string> {
+  URARA_SITE_PROTOCOL?: string;
   URARA_SITE_DOMAIN?: string
   URARA_IMG_PREFIX?: string
 }

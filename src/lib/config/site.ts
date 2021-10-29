@@ -8,6 +8,8 @@ interface Sites {
   } & {
     [key: string]: string
   }
+  protocol?: string
+  domain?: string
   url: string
   themeColor?: string
   since?: string
@@ -24,6 +26,8 @@ const site: Sites = {
     email: '',
     bio: ''
   },
+  protocol: import.meta.env.URARA_SITE_PROTOCOL ?? 'https',
+  domain: import.meta.env.URARA_SITE_DOMAIN ?? 'kwaa.dev',
   url: import.meta.env.URARA_SITE_DOMAIN ?? 'https://kwaa.dev',
   themeColor: '#3D4451',
   since: '2019'

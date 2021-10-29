@@ -4,7 +4,7 @@
   import srcReplace from '$lib/utils/imgsrc'
   export let post
 
-  let contentCover, contentIcons
+  let contentIcons
 
   // $: if (post) contentCover = post?.cover ? srcReplace(post.cover, { absolute: true, alternative: true }).src : undefined
   $: contentIcons = srcReplace(icons.maskable512.src ?? icons.px512.src, { absolute: true })
