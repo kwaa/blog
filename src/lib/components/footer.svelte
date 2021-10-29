@@ -9,7 +9,7 @@
 <footer id="footer" class="{className} p-10 footer bg-base-300 text-base-content footer-center rounded-box">
   <div class="prose">
     <p>
-      {#each Object.entries(footerConfig.nav) as [name, href], i}
+      {#each Object.entries(footerConfig.nav) as [href, name], i}
         <a {href} rel="noopener external" target="_blank">{name}</a>
         {#if i < Object.keys(footerConfig.nav).length - 1}
           <span class="mr-1">·</span>

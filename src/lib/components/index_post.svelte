@@ -3,7 +3,7 @@
   export let index = undefined
   import { fly } from 'svelte/transition'
   import PostDate from '$lib/components/post_date.svelte'
-  import Picture from './extra/picture.svelte'
+  import Picture from '$lib/components/extra/picture.svelte'
 </script>
 
 <div
@@ -12,7 +12,7 @@
   class="card md:card-side shadow-xl hover:shadow-2xl transition-shadow ease-in-out duration-250 group mb-8"
 >
   {#if post.cover}
-    <figure class="overflow-hidden order-first md:order-last">
+    <figure class="overflow-hidden order-first md:order-last rounded-box shadow-lg">
       <!-- <img class="object-cover object-center h-full w-full transform-gpu transition-transform ease-in-out duration-500 group-hover:scale-120" src={post.cover} alt={post.cover} loading="lazy" /> -->
       <Picture
         class="object-cover object-center h-full w-full transform-gpu transition-transform ease-in-out duration-500 group-hover:scale-120"
