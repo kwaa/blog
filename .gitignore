@@ -7,3 +7,4 @@ static/
 workers-site/
 build/
 dist/
+.vercel_build_output/
