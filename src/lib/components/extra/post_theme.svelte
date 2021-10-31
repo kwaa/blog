@@ -3,6 +3,5 @@
 </script>
 
 {@html `
-<style ✂prettier:content✂="Cg=="></style>
 ${theme ?? ''}
 `}
