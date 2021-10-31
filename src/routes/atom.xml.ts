@@ -1,5 +1,5 @@
 import type { EndpointOutput } from '@sveltejs/kit'
-import site from '$lib/config/site'
+import { site } from '$lib/config/site'
 import { genPosts } from '$lib/utils/posts'
 
 const render = async (): Promise<string> => `<?xml version='1.0' encoding='utf-8'?>

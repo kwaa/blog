@@ -5,5 +5,3 @@ export const config = {
     'friends': 'Friends'
   }
 }
-
-export { config as default }

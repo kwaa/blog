@@ -1,8 +1,8 @@
 <script lang="ts">
-  import site from '$lib/config/site'
-  import { config as headerConfig } from '$lib/config/header'
   import { browser } from '$app/env'
-  import Theme from '$lib/components/theme.svelte'
+  import { site } from '$lib/config/site'
+  import { config as headerConfig } from '$lib/config/header'
+  import Theme from '$lib/components/header_theme.svelte'
 
   let pin: boolean
   let percent: number

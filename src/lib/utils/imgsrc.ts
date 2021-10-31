@@ -1,4 +1,4 @@
-import site from '$lib/config/site'
+import { site } from '$lib/config/site'
 import { prefix } from '$lib/config/img'
 
 /**

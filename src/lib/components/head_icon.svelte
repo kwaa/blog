@@ -1,5 +1,5 @@
 <script lang="ts">
-  import icons from '$lib/config/icons'
+  import { icons } from '$lib/config/icons'
 </script>
 
 <svelte:head>

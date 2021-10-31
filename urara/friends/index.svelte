@@ -1,9 +1,9 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import { browser } from '$app/env'
+  import { Friend, friends } from '$lib/config/friends'
   import Head from '$lib/components/head.svelte'
   import Footer from '$lib/components/footer.svelte'
-  import friends, { Friend } from '$lib/config/friends'
   import FriendComponent from '$lib/components/extra/friend.svelte'
 
   const rnd = Math.random()

@@ -1,15 +1,12 @@
 <script lang="ts">
   import { indexConfig, layoutConfig } from '$lib/config/date'
-  export let post = undefined
-  export let date = undefined
-  export let lastmod = undefined
-  export let priority = undefined
+  export let post: Urara.Post = undefined
+  export let date: Urara.Post['date'] = undefined
+  export let lastmod: Urara.Post['lastmod'] = undefined
+  export let priority: Urara.Post['priority'] = undefined
   export let type = undefined
-
+  if (!post) post = { date, lastmod, priority }
   let config = type === 'index' ? indexConfig : layoutConfig
-
-  if (!post) post = { date: date, lastmod: lastmod, priority: priority }
-
   const stringDate = new Date(post.date).toLocaleDateString(config.locales, config.options)
   const stringLastmod = post.lastmod ? new Date(post.lastmod).toLocaleDateString(config.locales, config.options) : stringDate
 </script>

@@ -9,11 +9,11 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import { browser } from '$app/env'
-  import site from '$lib/config/site'
+  import { site } from '$lib/config/site'
   import Head from '$lib/components/head.svelte'
   import Footer from '$lib/components/footer.svelte'
-  import PostDate from '$lib/components/post_date.svelte'
-  import Pagination from '$lib/components/pagination.svelte'
+  import Date from '$lib/components/post_date.svelte'
+  import Pagination from '$lib/components/post_pagination.svelte'
   import Picture from '$lib/components/extra/picture.svelte'
   import Utterances from '$lib/components/extra/utterances.svelte'
 
@@ -26,7 +26,7 @@
   export let cover = undefined
 
   // const posts = listPosts(0)
-  let allPosts = undefined
+  let posts = undefined
   let post = undefined
   let index = undefined
   let prev = undefined
@@ -35,12 +35,11 @@
   onMount(() => {
     if (browser) {
       // const allPosts: Urara.Post[] = Object.entries(JSON.parse(localStorage.getItem('posts')) as Record<number, Urara.Post[]>).flatMap(([, value]) => value)
-      allPosts = Object.entries(JSON.parse(localStorage.getItem('posts'))).flatMap(([, value]) => value)
-      const pathname = window.location.pathname.slice(1)
-      post = allPosts.find(post => post.path === pathname)
-      index = allPosts.findIndex(post => post.path === pathname)
-      prev = allPosts[index + 1]
-      next = allPosts[index - 1]
+      posts = Object.entries(JSON.parse(localStorage.getItem('posts'))).flatMap(([, value]) => value)
+      post = posts.find(post => post.path === window.location.pathname.slice(1))
+      index = posts.findIndex(post => post.path === window.location.pathname.slice(1))
+      prev = posts[index + 1]
+      next = posts[index - 1]
     }
   })
 </script>
@@ -48,7 +47,7 @@
 <svelte:head>
   <title>{title ?? post.path} | {site.title}</title>
   <meta name="description" content={descr ?? site.descr} />
-  {#if tags}<meta name="keywords" content={tags} />{/if}
+  {#if tags}<meta name="keywords" content={tags.toString()} />{/if}
 </svelte:head>
 
 <Head {post} />
@@ -57,7 +56,7 @@
   <div class="card shadow-xl mb-8">
     <div class="card-body">
       <h1 class="card-title text-3xl">{title ?? post.path}</h1>
-      <PostDate {date} {lastmod} {priority} />
+      <Date {date} {lastmod} {priority} />
       {#if !cover}
         <div class="divider" />
       {/if}

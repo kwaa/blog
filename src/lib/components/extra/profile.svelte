@@ -2,7 +2,7 @@
   export const prerender = true
 </script>
 <script lang="ts">
-  import site from '$lib/config/site'
+  import { site } from '$lib/config/site'
   export let avatar: string
   export let name: string
   export let subname: string

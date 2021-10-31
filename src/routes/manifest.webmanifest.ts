@@ -1,6 +1,6 @@
 import type { EndpointOutput } from '@sveltejs/kit'
+import { manifest } from '$lib/config/manifest'
 import { toSnake } from '$lib/utils/case'
-import manifest from '$lib/config/manifest'
 
 export const get = async (): Promise<EndpointOutput> => {
   return {

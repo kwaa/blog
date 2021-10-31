@@ -15,7 +15,7 @@ interface Sites {
   since?: string
 }
 
-const site: Sites = {
+export const site: Sites = {
   title: './kwaa.dev',
   subtitle: 'Subtitle',
   lang: 'zh',
@@ -32,5 +32,3 @@ const site: Sites = {
   themeColor: '#3D4451',
   since: '2019'
 }
-
-export { site as default }

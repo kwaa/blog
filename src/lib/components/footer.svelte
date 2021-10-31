@@ -1,5 +1,5 @@
 <script lang="ts">
-  import site from '$lib/config/site'
+  import { site } from '$lib/config/site'
   import { config as footerConfig } from '$lib/config/footer'
   let className = undefined
   export { className as class }

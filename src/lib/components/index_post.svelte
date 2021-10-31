@@ -1,9 +1,10 @@
 <script lang="ts">
-  export let post: { cover?: any; path?: string; title?: string; descr?: string }
-  export let index = undefined
   import { fly } from 'svelte/transition'
-  import PostDate from '$lib/components/post_date.svelte'
+  import Date from '$lib/components/post_date.svelte'
   import Picture from '$lib/components/extra/picture.svelte'
+
+  export let post: Urara.Post
+  export let index: number
 </script>
 
 <div
@@ -27,7 +28,7 @@
     >
       <a href={post.path}>{post.title}</a>
     </h1>
-    <PostDate type="index" {post} />
+    <Date type="index" {post} />
     {#if post.descr}
       <p class="mb-auto">{post.descr}</p>
     {/if}

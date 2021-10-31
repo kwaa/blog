@@ -1,5 +1,5 @@
 <script lang="ts">
-  import themes from '$lib/config/themes'
+  import { themes } from '$lib/config/themes'
   import { onMount } from 'svelte'
   import { browser } from '$app/env'
 

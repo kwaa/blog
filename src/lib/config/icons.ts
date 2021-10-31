@@ -1,11 +1,11 @@
-interface Icon extends Record<string, string> {
+export type Icon = {
   src: string
   sizes?: string
   type?: string
   purpose?: string
 }
 
-const icons: { [name: string]: Icon } = {
+export const icons: { [name: string]: Icon } = {
   favicon: {
     src: '/files/icon@48.webp',
     sizes: '48x48',
@@ -41,5 +41,3 @@ const icons: { [name: string]: Icon } = {
     purpose: 'maskable'
   }
 }
-
-export { icons as default }

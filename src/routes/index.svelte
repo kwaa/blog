@@ -18,42 +18,6 @@
   let loaded: boolean
   let [posts, tags, years] = [[], [''], []]
 
-  class selectedTags {
-    private tags: string[] = []
-    private tagsMap: Record<string, boolean> = {}
-
-    public add(tag: string) {
-      if (this.tagsMap[tag]) return
-      this.tags.push(tag)
-      this.tagsMap[tag] = true
-    }
-
-    public toggle (tag: string) {
-      if (this.tagsMap[tag]) {
-        this.tags = this.tags.filter(t => t !== tag)
-        delete this.tagsMap[tag]
-      } else {
-        this.tags.push(tag)
-        this.tagsMap[tag] = true
-      }
-    }
-
-    public remove(tag: string) {
-      if (!this.tagsMap[tag]) return
-      this.tags = this.tags.filter(t => t !== tag)
-      delete this.tagsMap[tag]
-    }
-
-    public get() {
-      return this.tags
-    }
-
-    public clean() {
-      this.tags = []
-      this.tagsMap = {}
-    }
-  }
-
   $: if (browser) {
     allPosts = Object.entries(JSON.parse(localStorage.getItem('posts')) as Record<number, Urara.Post[]>).flatMap(
       ([key, value]) => (parseInt(key) > 0 ? value : [])

@@ -1,12 +1,11 @@
 <script lang="ts">
-  import site from '$lib/config/site'
-  import HeadIcon from '$lib/components/head_icon.svelte'
-  import HeadOpenGraph from '$lib/components/head_opengraph.svelte'
+  import { site } from '$lib/config/site'
+  import Icon from '$lib/components/head_icon.svelte'
+  import OpenGraph from '$lib/components/head_opengraph.svelte'
   export let post: Urara.Post = undefined
 </script>
 
 <svelte:head>
-  <!-- <html lang={site.lang} /> -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="manifest" crossorigin="use-credentials" href="/manifest.webmanifest" />
@@ -24,5 +23,5 @@
   {/if}
 </svelte:head>
 
-<HeadIcon />
-<HeadOpenGraph {post} />
+<Icon />
+<OpenGraph {post} />

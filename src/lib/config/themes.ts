@@ -1,4 +1,4 @@
-const themes = {
+export const themes = {
   light: '🌕 Light',
   dark: '🌑 Dark',
   cupcake: '🧁 Cupcake',
@@ -9,5 +9,3 @@ const themes = {
   aqua: '💦 Aqua',
   dracula: '🧛 Dracula'
 }
-
-export { themes as default }

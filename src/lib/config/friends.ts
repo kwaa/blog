@@ -6,7 +6,7 @@ export interface Friend extends Record<string, string> {
   avatar?: string // 头像
 }
 
-const friends: Friend[] = [
+export const friends: Friend[] = [
   {
     title: "神楽坂ニャン - Lensual's Space",
     href: 'https://lensual.space',
@@ -34,5 +34,3 @@ const friends: Friend[] = [
     name: 'test5'
   }
 ]
-
-export { friends as default }

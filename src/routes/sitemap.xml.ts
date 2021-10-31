@@ -1,5 +1,5 @@
 import type { EndpointOutput } from '@sveltejs/kit'
-import site from '$lib/config/site'
+import { site } from '$lib/config/site'
 import { genPosts } from '$lib/utils/posts'
 
 const render = async (): Promise<string> => `<?xml version='1.0' encoding='utf-8'?>
@@ -8,7 +8,7 @@ const render = async (): Promise<string> => `<?xml version='1.0' encoding='utf-8
       .flatMap(([, value]) => value)
       .map(
         post => `<url>
-        <loc>${site.url}/${post.path}</loc>
+        <loc>${site.url}${post.path}</loc>
         <lastmod>${post.lastmod ? post.lastmod.substr(0, 10) : post.date.substr(0, 10)}</lastmod>
         <priority>${post.priority ? ((1000 - post.priority[1]) / 1000).toFixed(1) : 0.5}</priority>
     </url>`
