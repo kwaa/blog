@@ -4,7 +4,9 @@ node_modules
 /package
 src/routes/**/
 static/
-workers-site/
 build/
 dist/
+workers-site/
 .vercel_build_output/
+.env.local
+.env.**.local

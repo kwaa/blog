@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { site } from '$lib/config/site'
   import { icons } from '$lib/config/icons'
   import srcReplace from '$lib/utils/imgsrc'

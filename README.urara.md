@@ -14,7 +14,17 @@ special thanks:
 - [@michaeloliverx](https://github.com/pngwn/MDsveX/issues/294#issuecomment-907029639)
 - [@jthegedus](https://github.com/sveltejs/kit/issues/1258#issuecomment-874482104)
 
+credits:
+
+- Icons made by [Freepik](https://www.flaticon.com/authors/freepik) from [www.flaticon.com](https://www.flaticon.com)
+
 ## Quick Start
+
+### GitHub Template
+
+[Create a repo from this template on GitHub](https://github.com/importantimport/urara/generate)
+
+### Degit
 
 ```bash
 npx degit importantimport/urara blog && cd blog
@@ -38,7 +48,7 @@ export MODE=workers && npm run build # build for 'workers' mode
 
 ## Adapters
 
-This project uses `@sveltejs/adapter-static@next` by default, but u can use any adapter supported by SvelteKit. View more on [SvelteKit Docs](https://kit.svelte.dev/docs#adapters)
+This project uses `@sveltejs/adapter-static@next` by default, but u can use any adapter supported by SvelteKit. more on [SvelteKit Docs](https://kit.svelte.dev/docs#adapters)
 
 ## Config
 

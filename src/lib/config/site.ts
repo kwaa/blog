@@ -26,7 +26,7 @@ export const site: Sites = {
     email: '',
     bio: ''
   },
-  protocol: import.meta.env.URARA_SITE_PROTOCOL ?? 'https',
+  protocol: import.meta.env.URARA_SITE_PROTOCOL ?? 'https://',
   domain: import.meta.env.URARA_SITE_DOMAIN ?? 'kwaa.dev',
   url: import.meta.env.URARA_SITE_DOMAIN ?? 'https://kwaa.dev',
   themeColor: '#3D4451',
