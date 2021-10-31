@@ -19,7 +19,7 @@
 
 <Head />
 
-<div class="pt-8 pb-4 px-4 lg:(pt-16 pb-8 px-0) mx-auto w-screen md:w-screen-md">
+<div class="px-4 lg:px-0 mx-auto w-full max-w-screen-md">
   <div class="card shadow-xl mb-8">
     <div class="card-body">
       <h1 class="card-title text-3xl">{status}</h1>

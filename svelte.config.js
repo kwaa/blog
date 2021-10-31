@@ -18,26 +18,12 @@ const config = {
       process.env.MODE === 'workers'
         ? adapterWorkers()
         : process.env.MODE === 'vercel'
-          ? adapterVercel()
-          : adapterStatic({
+        ? adapterVercel()
+        : adapterStatic({
             pages: 'build',
             assets: 'build',
             fallback: null
           }),
-    // adapter: adapterNode({
-    // 	out: 'build',
-    // 	precompress: false,
-    // 	env: {
-    // 		host: '0.0.0.0',
-    // 		port: '3000'
-    // 	}
-    // }),
-    // adapter: adapterStatic({
-    // 	pages: 'build',
-    // 	assets: 'build',
-    // 	// fallback: null
-    // }),
-    // adapter: adapterNetlify(),
     // hydrate the <div id="svelte"> element in src/app.html
     target: 'body',
     vite: {

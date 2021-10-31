@@ -24,48 +24,50 @@ credits:
 
 [Create a repo from this template on GitHub](https://github.com/importantimport/urara/generate)
 
-### Degit
+### Local
 
 ```bash
-npx degit importantimport/urara blog && cd blog
-rm -f COPYING
-npm i && npm run dev
+$ npx degit importantimport/urara blog
+$ cd blog
+$ rm -f COPYING .github/ # remove useless file
 ```
 
-## Arguments
+## Developing
 
-some example:
+Once you've created a project and installed dependencies with
+`pnpm install` (or `npm install` or `yarn`), start a development
+server:
 
 ```bash
-npm run dev -- --host 0.0.0.0 # http://0.0.0.0:3000
-npm run dev -- --host 0.0.0.0 --port 8964 # http://0.0.0.0:8964
+npm run dev
+
+# http://0.0.0.0:3000
+npm run dev -- --host 0.0.0.0
+
+# http://0.0.0.0:8080
+npm run dev -- --host 0.0.0.0 --port 8080
 ```
+
+## Building
+
+This template uses `@sveltejs/adapter-static@next` by default, but u can use any adapter supported by SvelteKit. more on [SvelteKit Docs](https://kit.svelte.dev/docs#adapters)
 
 ```bash
-export MODE=production && npm run build # build for 'production' mode
-export MODE=workers && npm run build # build for 'workers' mode
+export MODE=production && npm run build
+
+# build for 'workers' mode
+export MODE=workers && npm run build
+
+# build for 'netlify' mode
+export MODE=netlify && npm run build
+
+# build for 'vercel' mode
+export MODE=vercel && npm run build
 ```
 
-## Adapters
-
-This project uses `@sveltejs/adapter-static@next` by default, but u can use any adapter supported by SvelteKit. more on [SvelteKit Docs](https://kit.svelte.dev/docs#adapters)
-
-## Config
-
-All configuration files are stored in the `/src/lib/config/` folder, u can use `.env` files to configure each operating mode individually:
-
-```ts
-const site: Sites = {
-  ...,
-  url: import.meta.env.VITE_SITE_URL
-}
-```
-
-```bash
-# ./env.workers
-MODE_ENV=production
-VITE_SITE_URL=https://urara.workers.dev
-```
+> You can preview the built app with `npm run preview`, regardless of
+> whether you installed an adapter. This should _not_ be used to serve
+> your app in production.
 
 ## License
 

@@ -25,7 +25,6 @@
   export let descr = undefined
   export let cover = undefined
 
-  // const posts = listPosts(0)
   let posts = undefined
   let post = undefined
   let index = undefined
@@ -58,7 +57,7 @@
       <h1 class="card-title text-3xl">{title ?? post.path}</h1>
       <Date {date} {lastmod} {priority} />
       {#if !cover}
-        <div class="divider" />
+        <div class="divider mt-0" />
       {/if}
       <main class="prose">
         {#if cover}<figure class="-mx-4 md:-mx-8 !w-auto my-4">
@@ -79,8 +78,8 @@
       {/if}
     </div>
   </div>
-  {#if post}
-    {#if !post.priority || post.priority[1] > 0}
+  {#if posts && post}
+    {#if (posts.length > 1 && !post.priority) || post.priority[1] > 0}
       <Pagination {next} {prev} />
     {/if}
     {#if !post.comment || post.comment !== false}

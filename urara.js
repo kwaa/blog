@@ -135,6 +135,9 @@ switch (process.argv[2]) {
     rmDir(`static`)
     rm(`src/routes`)
     break
+  case '404':
+    console.log('TODO')
+    break
   default:
     output('red', 'error', 'invalid arguments')
     break

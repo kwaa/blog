@@ -7,7 +7,7 @@ export const manifest = {
   shortName: site.title,
   lang: site.lang,
   description: site.descr,
-  startUrl: site.url,
+  startUrl: '/',
   scope: '/',
   display: 'standalone',
   orientation: 'portrait',

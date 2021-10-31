@@ -5,4 +5,4 @@ export const source = [
   }
 ]
 
-export const prefix = import.meta.env.URARA_IMG_PREFIX ?? ''
+export const prefix = import.meta.env.URARA_IMG_PREFIX ?? undefined

@@ -35,9 +35,30 @@
   </div>
   <div class="flex-none">
     {#if headerConfig.nav}
-      {#each Object.entries(headerConfig.nav) as [href, name]}
-        <a {href} sveltekit:prefetch class="btn btn-ghost normal-case">{name}</a>
-      {/each}
+      <nav class="<lg:hidden">
+        {#each Object.entries(headerConfig.nav) as [href, name]}
+          <a {href} sveltekit:prefetch class="btn btn-ghost normal-case">{name}</a>
+        {/each}
+      </nav>
+      <div class="lg:hidden dropdown dropdown-end">
+        <div tabindex="0" class="btn btn-square btn-ghost">
+          <!-- prettier-ignore -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 fill-none" viewBox="0 0 24 24">
+            <path stroke="current cap-round join-round width-2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+          </svg>
+        </div>
+        <ul
+          tabindex="0"
+          class="p-2 shadow-2xl menu dropdown-content bg-base-200 text-base-content rounded-box w-52"
+          class:hidden={pin === false}
+        >
+          {#each Object.entries(headerConfig.nav) as [href, name]}
+            <li>
+              <a {href}>{name}</a>
+            </li>
+          {/each}
+        </ul>
+      </div>
     {/if}
     <Theme {pin} />
   </div>

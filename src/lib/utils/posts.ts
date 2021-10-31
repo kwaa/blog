@@ -24,11 +24,18 @@ export const genPosts = (): Record<number, Urara.Post[]> => {
     .forEach(post =>
       post.priority === undefined
         ? posts[500].push(post)
-        : posts[post.priority[1]]
-        ? posts[post.priority[1]].push(post)
+        : Array.isArray(post.priority)
+        ? posts[post.priority[1]]
+          ? posts[post.priority[1]].push(post)
+          : (() => {
+              posts[post.priority[1]] = []
+              posts[post.priority[1]].push(post)
+            })()
+        : posts[post.priority]
+        ? posts[post.priority].push(post)
         : (() => {
-            posts[post.priority[1]] = []
-            posts[post.priority[1]].push(post)
+            posts[post.priority] = []
+            posts[post.priority].push(post)
           })()
     )
   return posts

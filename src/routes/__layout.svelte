@@ -1,11 +1,17 @@
 <script lang="ts" context="module">
   export const prerender = true
   export const load = async ({ page, fetch }) => {
-    const res = await fetch('/posts.json')
-    if (res.ok) return {
+    const res = await fetch('/_posts.json')
+    if (res.ok)
+      return {
+        props: {
+          path: page.path,
+          posts: await res.json()
+        }
+      }
+    return {
       props: {
-        path: page.path,
-        posts: await res.json()
+        path: page.path
       }
     }
   }

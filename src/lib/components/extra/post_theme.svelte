@@ -1,13 +1,8 @@
 <script lang="ts">
-    export let theme = undefined
+  export let theme = undefined
 </script>
 
-{@html 
-
-`
-<style>
-</style>
+{@html `
+<style ✂prettier:content✂="Cg=="></style>
 ${theme ?? ''}
-`
-
-}
+`}

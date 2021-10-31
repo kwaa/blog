@@ -1,8 +1,7 @@
 /// <reference types="@sveltejs/kit" />
 
-interface ImportMetaEnv extends Record<string, string> {
-  URARA_SITE_PROTOCOL?: string;
-  URARA_SITE_DOMAIN?: string
+interface ImportMetaEnv {
+  URARA_SITE_URL?: string
   URARA_IMG_PREFIX?: string
 }
 
@@ -16,10 +15,10 @@ declare namespace Urara {
     title?: string
     date?: string
     lastmod?: string
-    tags?: string[]
-    priority?: [string, number]
     descr?: string
-    cover?: string
+    tags?: string[]
+    priority?: number | [string, number]
+    cover?: string | [string, string]
   }
   interface PostModule {
     default: { render: () => { html: string; head: string; css: { code: string } } }
