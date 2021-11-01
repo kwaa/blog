@@ -26,14 +26,14 @@
       />
       <meta name="twitter:card" content="summary_large_image" />
     {:else}
-      <meta property="og:image" content={validate(icons.maskable512.src ?? icons.px512.src, { absolute: true })} />
+      <meta property="og:image" content={validate(icons.maskable512.src ?? icons.any512.src, { absolute: true })} />
       <meta name="twitter:card" content="summary" />
     {/if}
   {:else}
     <meta property="og:title" content={site.title} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={site.url} />
-    <meta property="og:image" content={validate(icons.maskable512.src ?? icons.px512.src, { absolute: true })} />
+    <meta property="og:image" content={validate(icons.maskable512.src ?? icons.any512.src, { absolute: true })} />
     <meta property="og:description" content={site.descr} />
   {/if}
   {#if site.author.twitter}

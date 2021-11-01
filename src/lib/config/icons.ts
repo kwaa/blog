@@ -7,35 +7,35 @@ export type Icon = {
 
 export const icons: { [name: string]: Icon } = {
   favicon: {
-    src: '/files/icon@48.webp',
-    sizes: '48x48',
-    type: 'image/webp'
+    src: '/favicon.ico',
+    sizes: '24x24',
+    type: 'image/png'
   },
   appleTouchIcon: {
-    src: '/files/icon@180.webp',
+    src: '/assets/any@180.webp',
     sizes: '180x180',
     type: 'image/webp'
   },
-  px192: {
-    src: '/files/icon@192.webp',
+  any192: {
+    src: '/assets/any@192.webp',
     sizes: '192x192',
     type: 'image/webp',
     purpose: 'any'
   },
-  px512: {
-    src: '/files/icon@512.png',
+  any512: {
+    src: '/assets/any@512.png',
     sizes: '512x512',
     type: 'image/png',
     purpose: 'any'
   },
   maskable192: {
-    src: '/files/icon-maskable@192.webp',
+    src: '/assets/maskable@192.webp',
     sizes: '192x192',
     type: 'image/webp',
     purpose: 'maskable'
   },
   maskable512: {
-    src: '/files/icon-maskable@512.png',
+    src: '/assets/maskable@512.png',
     sizes: '512x512',
     type: 'image/png',
     purpose: 'maskable'

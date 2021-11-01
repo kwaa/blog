@@ -7,8 +7,10 @@
   {#if icons.favicon}
     <link rel="icon" href={validate(icons.favicon.src)} sizes={icons.favicon.sizes} type={icons.favicon.type} />
   {/if}
-  {#if icons.px192}
-    <link rel="icon" href={validate(icons.px192.src)} sizes={icons.px192.sizes} type={icons.px192.type} />
+  {#if icons.any192}
+    <link rel="icon" href={validate(icons.any192.src)} sizes={icons.any192.sizes} type={icons.any192.type} />
+  {:else if icons.maskable192}
+    <link rel="icon" href={validate(icons.maskable192.src)} sizes={icons.maskable192.sizes} type={icons.maskable192.type} />
   {/if}
   {#if icons.appleTouchIcon}
     <link

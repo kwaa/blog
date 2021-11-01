@@ -9,6 +9,7 @@
   let config = type === 'index' ? indexConfig : layoutConfig
   const stringDate = new Date(post.date).toLocaleDateString(config.locales, config.options)
   const stringLastmod = post.lastmod ? new Date(post.lastmod).toLocaleDateString(config.locales, config.options) : stringDate
+  if (!Array.isArray(post?.priority)) post.priority = [`${post.priority}`, post.priority]
 </script>
 
 <p class="font-semibold children:(transition-opacity ease-in-out duration-250) pb-2 mb-auto">

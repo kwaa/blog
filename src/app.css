@@ -32,6 +32,14 @@ html {
   @apply mb-3;
 }
 
+.prose a {
+  @apply text-secondary transition-all ease-in-out underline underline-transparent;
+}
+
+.prose a:hover {
+  @apply text-secondary-focus underline-secondary-focus
+}
+
 .prose h1 {
   @apply text-3xl font-semibold;
 }
@@ -94,7 +102,7 @@ h6 {
 }
 
 .card-body {
-  @apply <md:!p-4;
+  @apply <md:p-4;
 }
 
 .collapse {

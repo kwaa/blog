@@ -1,6 +1,5 @@
 <script lang="ts">
   import Picture from '$lib/components/extra/picture.svelte'
-  // import srcReplace from '$lib/utils/imgsrc'
   // let className = undefined
   // export { className as class }
   export let src: string

@@ -2,6 +2,7 @@
   import { fly } from 'svelte/transition'
   import Date from '$lib/components/post_date.svelte'
   import Picture from '$lib/components/extra/picture.svelte'
+  import Cover from '$lib/components/post_cover.svelte'
 
   export let post: Urara.Post
   export let index: number
@@ -15,18 +16,19 @@
   {#if post.cover}
     <figure class="overflow-hidden order-first md:order-last rounded-box shadow-lg">
       <!-- <img class="object-cover object-center h-full w-full transform-gpu transition-transform ease-in-out duration-500 group-hover:scale-120" src={post.cover} alt={post.cover} loading="lazy" /> -->
-      <Picture
+      <!-- <Picture
         class="object-cover object-center h-full w-full transform-gpu transition-transform ease-in-out duration-500 group-hover:scale-120"
         src={post.cover}
         alt={post.cover}
-      />
+      /> -->
+      <Cover class="object-cover object-center h-full w-full transform-gpu transition-transform ease-in-out duration-500 group-hover:scale-120" cover={post.cover} />
     </figure>
   {/if}
   <div class="card-body">
     <h1
       class="card-title text-3xl transition-all ease-in-out underline underline-4 underline-transparent hover:underline-primary"
     >
-      <a href={post.path}>{post.title}</a>
+      <a href={post.path}>{post.title ?? post.path.slice(1)}</a>
     </h1>
     <Date type="index" {post} />
     {#if post.descr}

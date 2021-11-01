@@ -1,6 +1,8 @@
 # Urara
 
-> Urara ~~(Urara the name does not inspired from meirochou)~~ blog template
+Sweet & Powerful SvelteKit blog template.
+
+[Live Demo](https://urara-demo.netlify.app) | [Documentation](https://importantimport.github.io/urara-docs) | [Discussions](https://github.com/importantimport/urara/discussions)
 
 built with:
 
@@ -20,14 +22,16 @@ credits:
 
 ## Quick Start
 
-### GitHub Template
+### GitHub
 
 [Create a repo from this template on GitHub](https://github.com/importantimport/urara/generate)
 
 ### Local
 
+This template recommends using [pnpm](https://pnpm.io) and [@antfu/ni](https://github.com/antfu/ni).
+
 ```bash
-$ npx degit importantimport/urara blog
+$ nx degit importantimport/urara blog
 $ cd blog
 $ rm -f COPYING .github/ # remove useless file
 ```
@@ -35,17 +39,17 @@ $ rm -f COPYING .github/ # remove useless file
 ## Developing
 
 Once you've created a project and installed dependencies with
-`pnpm install` (or `npm install` or `yarn`), start a development
+`ni`, start a development
 server:
 
 ```bash
-npm run dev
+nr dev
 
 # http://0.0.0.0:3000
-npm run dev -- --host 0.0.0.0
+nr dev --host 0.0.0.0
 
 # http://0.0.0.0:8080
-npm run dev -- --host 0.0.0.0 --port 8080
+nr dev --host 0.0.0.0 --port 8080
 ```
 
 ## Building
@@ -53,16 +57,16 @@ npm run dev -- --host 0.0.0.0 --port 8080
 This template uses `@sveltejs/adapter-static@next` by default, but u can use any adapter supported by SvelteKit. more on [SvelteKit Docs](https://kit.svelte.dev/docs#adapters)
 
 ```bash
-export MODE=production && npm run build
+MODE=production nr build
 
 # build for 'workers' mode
-export MODE=workers && npm run build
+MODE=workers nr build
 
 # build for 'netlify' mode
-export MODE=netlify && npm run build
+MODE=netlify nr build
 
 # build for 'vercel' mode
-export MODE=vercel && npm run build
+MODE=vercel nr build
 ```
 
 > You can preview the built app with `npm run preview`, regardless of

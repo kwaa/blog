@@ -5,7 +5,6 @@ categories:
   - 折腾
 tags:
   - Urara
-  - Svelte
   - SvelteKit
   - MDSveX
   - WindiCSS
@@ -27,6 +26,15 @@ tags:
 > 一层层套下来的话实际上是 SvelteKit/MDSveX/Urara，但这样写不好看
 
 ## The Zen of Urara / Urara 之道
+
+写到这种程度虽然说不上复杂，但也不怎么简洁了；所以我选的关键词是 **Sweet & Powerful**:
+
+- Sweet: 在结构上符合我的需求。
+- Powerful: 基于模式的配置文件，All-In-One 文件夹和好底子带来的自由度
+
+不算开发/构建时生成的 static / build，真正存放数据的文件夹只有两个—— `src` 和 `urara`。
+
+其中 `src` 放配置文件，前端组件，纯函数，主页/错误页等不需要单独文件夹的源码，`urara` 则把页面和文件整理到了一起，在开发/构建时分别复制到 `src/routes` 和 `static`。
 
 我在年初设计的时候觉得要有这些特点：
 

@@ -1,6 +1,5 @@
 <script lang="ts">
   import { source as pictureSource } from '$lib/config/img'
-  // import srcReplace from '$lib/utils/imgsrc'
   import { validate } from '$lib/utils/src'
   let className = undefined
   export { className as class }
