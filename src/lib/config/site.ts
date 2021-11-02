@@ -20,7 +20,7 @@ export const site: Sites = {
   descr: '[DATA EXPUNGED]',
   author: {
     name: '藍',
-    avatar: '',
+    avatar: 'https://kwaa.dev/assets/any@512.webp',
     email: '',
     bio: ''
   },

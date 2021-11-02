@@ -4,14 +4,14 @@
 
 <script lang="ts">
   import { onMount } from 'svelte'
+  import { page } from '$app/stores'
+  import { browser } from '$app/env'
   import Head from '$lib/components/head.svelte'
   import Footer from '$lib/components/footer.svelte'
   import IndexPost from '$lib/components/index_post.svelte'
   import Skeleton from '$lib/components/skeleton.svelte'
   import { genTags } from '$lib/utils/tags'
-  import { page } from '$app/stores'
   import { fly } from 'svelte/transition'
-  import { browser } from '$app/env'
 
   let allPosts: Urara.Post[]
   let allTags: Record<string, number>
@@ -33,8 +33,8 @@
     if (browser) {
       tags = $page.query.get('tags') ? $page.query.get('tags').split(',') : []
       tags?.forEach(tag => document.getElementById(tag).classList.toggle('!btn-secondary'))
+      loaded = true
     }
-    loaded = true
   })
 
   const toggleTag = (tag: string) => {
@@ -53,26 +53,25 @@
 <Head />
 
 <div class="px-4 lg:px-0 mx-auto w-full max-w-screen-md">
-  <label tabindex="0" class="collapse bg-base-100 shadow-xl rounded-box collapse-arrow mb-8">
-    <input type="checkbox" />
-    <div class="collapse-title text-xl font-medium">
-      tags{#if loaded && tags?.length > 0}
-        <span in:fly={{ y: -100, duration: 250, delay: 300 }} out:fly={{ y: 100, duration: 250 }}>
-          ={tags.toString()}
-        </span>
-      {/if}
-    </div>
-    <div class="collapse-content">
-      {#if allTags}
+  {#if allTags && Object.keys(allTags).length > 0}
+    <label tabindex="0" class="collapse bg-base-100 shadow-xl rounded-box collapse-arrow mb-8">
+      <input type="checkbox" />
+      <div class="collapse-title text-xl font-medium">
+        tags{#if loaded && tags?.length > 0}
+          <span in:fly={{ y: -100, duration: 250, delay: 300 }} out:fly={{ y: 100, duration: 250 }}>
+            ={tags.toString()}
+          </span>
+        {/if}
+      </div>
+      <div class="collapse-content">
         {#each Object.entries(allTags) as [tag]}
           <button id={tag} on:click={() => toggleTag(tag)} class="btn btn-sm btn-ghost mt-2 mr-2">
             #{tag}
           </button>
         {/each}
-      {/if}
-    </div>
-  </label>
-
+      </div>
+    </label>
+  {/if}
   {#key posts}
     <!-- {:else} is not used because there is a problem with the transition -->
     {#if posts.length == 0}
@@ -90,8 +89,8 @@
             </h2>
             <button on:click={() => clearTag()} class="btn btn-secondary">
               <!-- prettier-ignore -->
-              <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-6 w-6 mr-2 fill-none stroke-current stroke-cap-round stroke-join-round stroke-width-2" viewBox="0 0 24 24">
-                <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+              <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-6 w-6 mr-2 fill-none" viewBox="0 0 24 24">
+                <path stroke="current cap-round join-round width-2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
               </svg>
               tags = []
             </button>

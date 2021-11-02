@@ -14,7 +14,6 @@
   import Date from '$lib/components/post_date.svelte'
   import Cover from '$lib/components/post_cover.svelte'
   import Pagination from '$lib/components/post_pagination.svelte'
-  import Picture from '$lib/components/extra/picture.svelte'
   import Utterances from '$lib/components/extra/utterances.svelte'
 
   export let title = undefined
@@ -37,10 +36,11 @@
       posts = Object.entries(JSON.parse(localStorage.getItem('posts')))
         .sort(([a], [b]) => parseInt(a) - parseInt(b))
         .flatMap(([, value]) => value)
-      post = posts.find(post => post?.path === window.location.pathname.slice(1))
-      index = posts.findIndex(post => post?.path === window.location.pathname.slice(1))
+      post = posts.find(post => post?.path === window.location.pathname)
+      index = posts.findIndex(post => post?.path === window.location.pathname)
       prev = posts[index + 1]
       next = posts[index - 1]
+      console.log(posts, post, index, prev, next)
     }
   })
 </script>
@@ -63,9 +63,7 @@
       {/if}
       <main class="prose">
         {#if cover}<figure class="-mx-4 md:-mx-8 !w-auto my-4">
-            <!-- <img src={cover} alt={cover} loading="lazy" /> -->
-            <!-- <Picture class="w-full" src={cover} alt={cover} /> -->
-            <Cover class="w-full" {cover} />
+            <Cover {cover} class="w-full" />
           </figure>
         {/if}<slot />
       </main>

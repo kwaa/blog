@@ -14,7 +14,7 @@
         fill="none"
         viewBox="0 0 24 24"
       >
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        <path stroke="cap-round join-round width-2" d="M15 19l-7-7 7-7" />
       </svg>
       <div
         class="card-title text-left mb-0 transition-all ease-in-out underline underline-3 underline-transparent group-hover:underline-primary"
@@ -34,7 +34,7 @@
         fill="none"
         viewBox="0 0 24 24"
       >
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        <path stroke="cap-round join-round width-2" d="M9 5l7 7-7 7" />
       </svg>
       <div
         class="card-title text-right mb-0 transition-all ease-in-out underline underline-3 underline-transparent group-hover:underline-primary"

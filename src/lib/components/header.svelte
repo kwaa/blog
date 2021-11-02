@@ -68,7 +68,7 @@
   id="totop"
   on:click={() => window.scrollTo(0, 0)}
   aria-label="scroll to top"
-  class="btn btn-circle btn-lg fixed z-50 backdrop-filter backdrop-blur border-none shadow-lg bg-opacity-50 hover:bg-opacity-60 bottom-6 right-6 transform-gpu transition-all ease-in-out duration-250"
+  class="btn btn-circle btn-lg fixed z-50 backdrop-filter backdrop-blur border-none shadow-lg bg-opacity-50 hover:bg-opacity-60 bottom-6 right-6 transform-gpu transition-all ease-in-out"
   class:translate-y-24={!pin || scrollY === 0}
 >
   <svg class="h-16 w-16 fixed" stroke="accent width-3">
@@ -81,7 +81,7 @@
       stroke-dashoffset={30 * 2 * Math.PI - (percent / 100) * (30 * 2 * Math.PI)}
     />
   </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" class="inlinw-block h-6 w-6 stroke-current" fill="none" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+  <svg xmlns="http://www.w3.org/2000/svg" class="inlinw-block h-6 w-6" fill="none" viewBox="0 0 24 24">
+    <path stroke="current cap-round join-round width-2" d="M5 15l7-7 7 7" />
   </svg>
 </button>

@@ -1,12 +1,10 @@
 <script lang="ts" context="module">
-  export const load = ({ error, status }) => {
-    return {
-      props: {
-        status: status,
-        message: error.message
-      }
+  export const load = ({ error, status }) => ({
+    props: {
+      status: status,
+      message: error.message
     }
-  }
+  })
 </script>
 
 <script lang="ts">

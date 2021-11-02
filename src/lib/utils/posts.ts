@@ -37,6 +37,6 @@ export const genPosts = (): Record<number, Urara.Post[]> => {
             posts[post.priority] = []
             posts[post.priority].push(post)
           })()
-        })
+    })
   return posts
 }

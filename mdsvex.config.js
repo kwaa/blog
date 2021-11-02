@@ -27,10 +27,7 @@ export const mdsvexConfig = {
   highlight: {
     highlighter
   },
-  remarkPlugins: [
-    remarkAbbr,
-    remarkSpoiler
-  ],
+  remarkPlugins: [remarkAbbr, remarkSpoiler],
   rehypePlugins: [
     rehypeSlug,
     [

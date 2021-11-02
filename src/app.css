@@ -37,7 +37,7 @@ html {
 }
 
 .prose a:hover {
-  @apply text-secondary-focus underline-secondary-focus
+  @apply text-secondary-focus underline-secondary-focus;
 }
 
 .prose h1 {
