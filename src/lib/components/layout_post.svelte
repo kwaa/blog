@@ -34,7 +34,9 @@
   onMount(() => {
     if (browser) {
       // const allPosts: Urara.Post[] = Object.entries(JSON.parse(localStorage.getItem('posts')) as Record<number, Urara.Post[]>).flatMap(([, value]) => value)
-      posts = Object.entries(JSON.parse(localStorage.getItem('posts'))).flatMap(([, value]) => value)
+      posts = Object.entries(JSON.parse(localStorage.getItem('posts')))
+        .sort(([a], [b]) => parseInt(a) - parseInt(b))
+        .flatMap(([, value]) => value)
       post = posts.find(post => post?.path === window.location.pathname.slice(1))
       index = posts.findIndex(post => post?.path === window.location.pathname.slice(1))
       prev = posts[index + 1]

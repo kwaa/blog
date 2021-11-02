@@ -15,7 +15,7 @@
     <title>{post.title ?? post.path} | {site.title}</title>
     <meta name="description" content={post.descr ?? site.descr} />
     {#if post.tags}<meta name="keywords" content={post.tags.toString()} />{/if}
-    <link rel="canonical" href={`${site.url}/${post.path}`} />
+    <link rel="canonical" href={`${site.url + post.path}`} />
   {:else}
     <title>{site.title}</title>
     <meta name="description" content={site.descr} />

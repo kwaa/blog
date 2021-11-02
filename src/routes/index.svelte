@@ -19,9 +19,9 @@
   let [posts, tags, years] = [[], [''], []]
 
   $: if (browser) {
-    allPosts = Object.entries(JSON.parse(localStorage.getItem('posts')) as Record<number, Urara.Post[]>).flatMap(
-      ([key, value]) => (parseInt(key) > 0 ? value : [])
-    )
+    allPosts = Object.entries(JSON.parse(localStorage.getItem('posts')) as Record<number, Urara.Post[]>)
+      .sort(([a], [b]) => parseInt(a) - parseInt(b))
+      .flatMap(([key, value]) => (parseInt(key) > 0 ? value : []))
     allTags = genTags(allPosts)
   }
 

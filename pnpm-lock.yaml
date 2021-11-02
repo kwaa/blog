@@ -30,6 +30,12 @@ specifiers:
   typescript: ^4.4.4
   vite: ^2.6.13
   vite-plugin-windicss: ^1.4.12
+  workbox: ^0.0.0
+  workbox-cacheable-response: ^6.3.0
+  workbox-expiration: ^6.3.0
+  workbox-precaching: ^6.3.0
+  workbox-routing: ^6.3.0
+  workbox-strategies: ^6.3.0
 
 devDependencies:
   '@sveltejs/adapter-cloudflare-workers': 1.0.0-next.25
@@ -61,6 +67,12 @@ devDependencies:
   typescript: 4.4.4
   vite: 2.6.13
   vite-plugin-windicss: 1.4.12_vite@2.6.13
+  workbox: 0.0.0
+  workbox-cacheable-response: 6.3.0
+  workbox-expiration: 6.3.0
+  workbox-precaching: 6.3.0
+  workbox-routing: 6.3.0
+  workbox-strategies: 6.3.0
 
 packages:
 
@@ -473,6 +485,13 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /babel-runtime/6.26.0:
+    resolution: {integrity: sha1-llxwWGaOgrVde/4E/yM3vItWR/4=}
+    dependencies:
+      core-js: 2.6.12
+      regenerator-runtime: 0.11.1
+    dev: true
+
   /bail/2.0.1:
     resolution: {integrity: sha512-d5FoTAr2S5DSUPKl85WNm2yUwsINN8eidIdIwsOge2t33DaOfOdSmmsI11jMN3GmALCXaw+Y6HMVHDzePshFAA==}
     dev: true
@@ -588,6 +607,12 @@ packages:
 
   /concat-map/0.0.1:
     resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
+    dev: true
+
+  /core-js/2.6.12:
+    resolution: {integrity: sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==}
+    deprecated: core-js@<3.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Please, upgrade your dependencies to the actual version of core-js.
+    requiresBuild: true
     dev: true
 
   /cross-spawn/6.0.5:
@@ -1235,6 +1260,10 @@ packages:
 
   /hosted-git-info/2.8.9:
     resolution: {integrity: sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==}
+    dev: true
+
+  /idb/6.1.5:
+    resolution: {integrity: sha512-IJtugpKkiVXQn5Y+LteyBCNk1N8xpGV3wWZk9EVtZWH8DYkjBn0bX1XnGP9RkyZF0sAcywa6unHqSWKe7q4LGw==}
     dev: true
 
   /ignore/4.0.6:
@@ -2027,6 +2056,10 @@ packages:
       picomatch: 2.3.0
     dev: true
 
+  /regenerator-runtime/0.11.1:
+    resolution: {integrity: sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==}
+    dev: true
+
   /regexpp/3.2.0:
     resolution: {integrity: sha512-pq2bWo9mVD43nbts2wGv17XLiNLya+GklZ8kaDLV2Z08gDCsGpnKn9BFMepvWuHCbyVvY7J5o5+BVvoQbmlJLg==}
     engines: {node: '>=8'}
@@ -2723,6 +2756,49 @@ packages:
   /word-wrap/1.2.3:
     resolution: {integrity: sha512-Hz/mrNwitNRh/HUAtM/VT/5VH+ygD6DV7mYKZAtHOrbs8U7lvPS6xf7EJKMF0uW1KJCl0H701g3ZGus+muE5vQ==}
     engines: {node: '>=0.10.0'}
+    dev: true
+
+  /workbox-cacheable-response/6.3.0:
+    resolution: {integrity: sha512-oYCRGF6PFEmJJkktdxYw/tcrU8N5u/2ihxVSHd+9sNqjNMDiXLqsewcEG544f1yx7gq5/u6VcvUA5N62KzN1GQ==}
+    dependencies:
+      workbox-core: 6.3.0
+    dev: true
+
+  /workbox-core/6.3.0:
+    resolution: {integrity: sha512-SufToEV3SOLwwz3j+P4pgkfpzLRUlR17sX3p/LrMHP/brYKvJQqjTwtSvaCkkAX0RPHX2TFHmN8xhPP1bpmomg==}
+    dev: true
+
+  /workbox-expiration/6.3.0:
+    resolution: {integrity: sha512-teYuYfM3HFbwAD/nlZDw/dCMOrCKjsAiMRhz0uOy9IkfBb7vBynO3xf118lY62X6BfqjZdeahiHh10N0/aYICg==}
+    dependencies:
+      idb: 6.1.5
+      workbox-core: 6.3.0
+    dev: true
+
+  /workbox-precaching/6.3.0:
+    resolution: {integrity: sha512-bND3rUxiuzFmDfeKywdvOqK0LQ5LLbOPk0eX22PlMQNOOduHRxzglMpgHo/MR6h+8cPJ3GpxT8hZ895/7bHMqQ==}
+    dependencies:
+      workbox-core: 6.3.0
+      workbox-routing: 6.3.0
+      workbox-strategies: 6.3.0
+    dev: true
+
+  /workbox-routing/6.3.0:
+    resolution: {integrity: sha512-asajX5UPkaoU4PB9pEpxKWKkcpA+KJQUEeYU6NlK0rXTCpdWQ6iieMRDoBTZBjTzUdL3j3s1Zo2qCOSvtXSYGg==}
+    dependencies:
+      workbox-core: 6.3.0
+    dev: true
+
+  /workbox-strategies/6.3.0:
+    resolution: {integrity: sha512-SYZt40y+Iu5nA+UEPQOrAuAMMNTxtUBPLCIaMMb4lcADpBYrNP1CD+/s2QsrxzS651a8hfi06REKt+uTp1tqfw==}
+    dependencies:
+      workbox-core: 6.3.0
+    dev: true
+
+  /workbox/0.0.0:
+    resolution: {integrity: sha1-JvXng0q/gxeMfEVO3JG8Yf741sM=}
+    dependencies:
+      babel-runtime: 6.26.0
     dev: true
 
   /wrappy/1.0.2:

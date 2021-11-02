@@ -3,7 +3,7 @@
  * @returns posts list with priority
  */
 export const genPosts = (): Record<number, Urara.Post[]> => {
-  const posts: Record<number, Urara.Post[]> = { 500: [] }
+  let posts: Record<number, Urara.Post[]> = { 500: [] }
   Object.entries(import.meta.globEager<Urara.PostModule>('/src/routes/**/index.{md,svelte.md,svx}'))
     .map(([postpath, module]) => ({
       slug: postpath,
@@ -21,7 +21,7 @@ export const genPosts = (): Record<number, Urara.Post[]> => {
       ...(module?.metadata ?? undefined)
     }))
     .sort((a, b) => (b.date ??= '1989-06-04').localeCompare((a.date ??= '1989-06-04')))
-    .forEach(post =>
+    .forEach(post => {
       post.priority === undefined
         ? posts[500].push(post)
         : Array.isArray(post.priority)
@@ -37,6 +37,6 @@ export const genPosts = (): Record<number, Urara.Post[]> => {
             posts[post.priority] = []
             posts[post.priority].push(post)
           })()
-    )
+        })
   return posts
 }
