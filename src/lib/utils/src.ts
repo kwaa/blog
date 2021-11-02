@@ -8,7 +8,7 @@ import { prefix } from '$lib/config/img'
  * @returns - validated src.
  */
 export const validate = (src: string, options?: { absolute?: boolean }): string => {
-  if (!src.startsWith('/')) src += '/'
-  if (!src.includes('://')) src = options?.absolute ? `${(prefix ?? site.url) + src}` : `${(prefix ?? '') + src}`
+  if (!src.startsWith('/')) src = `/${src}`
+  if (!src.includes('://')) src = options?.absolute ? (prefix ?? site.url) + src : (prefix ?? '') + src
   return src
 }
