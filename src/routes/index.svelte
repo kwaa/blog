@@ -4,6 +4,7 @@
 
 <script lang="ts">
   import { onMount } from 'svelte'
+  import { fly } from 'svelte/transition'
   import { page } from '$app/stores'
   import { browser } from '$app/env'
   import Head from '$lib/components/head.svelte'
@@ -11,7 +12,6 @@
   import IndexPost from '$lib/components/index_post.svelte'
   import Skeleton from '$lib/components/skeleton.svelte'
   import { genTags } from '$lib/utils/tags'
-  import { fly } from 'svelte/transition'
 
   let allPosts: Urara.Post[]
   let allTags: Record<string, number>
@@ -37,13 +37,13 @@
     }
   })
 
-  const toggleTag = (tag: string) => {
+  const toggle = (tag: string) => {
     document.getElementById(tag).classList.toggle('!btn-secondary')
     tags.includes(tag) ? (tags = tags.filter(tagName => tagName != tag)) : (tags = [...tags, tag])
     window.history.replaceState({}, '', tags.length != 0 ? `?tags=${tags.toString()}` : `/`)
   }
 
-  const clearTag = () => {
+  const clean = () => {
     tags.forEach(tag => document.getElementById(tag).classList.remove('!btn-secondary'))
     tags = []
     window.history.replaceState({}, '', `/`)
@@ -65,7 +65,7 @@
       </div>
       <div class="collapse-content">
         {#each Object.entries(allTags) as [tag]}
-          <button id={tag} on:click={() => toggleTag(tag)} class="btn btn-sm btn-ghost mt-2 mr-2">
+          <button id={tag} on:click={() => toggle(tag)} class="btn btn-sm btn-ghost mt-2 mr-2">
             #{tag}
           </button>
         {/each}
@@ -87,10 +87,12 @@
             <h2>
               Not found: {tags?.length != 0 ? `[${tags.map(tag => `'${tag}'`).toString()}]` : ''}
             </h2>
-            <button on:click={() => clearTag()} class="btn btn-secondary">
-              <!-- prettier-ignore -->
+            <button on:click={() => clean()} class="btn btn-secondary">
               <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-6 w-6 mr-2 fill-none" viewBox="0 0 24 24">
-                <path stroke="current cap-round join-round width-2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                <path
+                  stroke="current cap-round join-round width-2"
+                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                />
               </svg>
               tags = []
             </button>
@@ -99,7 +101,7 @@
       {/if}
     {/if}
     {#each posts as post, index}
-      {#if !post.priority && !years.includes(post.date.substring(0, 4))}
+      {#if post.date && !post.priority && !years.includes(post.date.substring(0, 4))}
         <div class="divider mb-8">
           {years.push(post.date.substring(0, 4)) && post.date.substring(0, 4)}
         </div>

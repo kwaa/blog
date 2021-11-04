@@ -21,6 +21,7 @@
     <meta name="description" content={site.descr} />
     <link rel="canonical" href={site.url} />
   {/if}
+  <slot />
 </svelte:head>
 
 <Icon />

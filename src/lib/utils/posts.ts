@@ -18,9 +18,9 @@ export const genPosts = (): Record<number, Urara.Post[]> => {
         .replace(/( style=")(.*?)(")/gi, '')
         .replace(/(<span>)(.*?)(<\/span>)/gi, '$2')
         .replace(/(<main>)(.*?)(<\/main>)/gi, '$2'),
-      ...(module?.metadata ?? undefined)
+      ...module?.metadata
     }))
-    .sort((a, b) => (b.date ??= '1989-06-04').localeCompare((a.date ??= '1989-06-04')))
+    .sort((a, b) => (b.date ?? '1989-06-04').localeCompare((a.date ?? '1989-06-04')))
     .forEach(post => {
       post.priority === undefined
         ? posts[500].push(post)

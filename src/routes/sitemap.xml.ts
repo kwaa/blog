@@ -2,16 +2,23 @@ import type { EndpointOutput } from '@sveltejs/kit'
 import { site } from '$lib/config/site'
 import { genPosts } from '$lib/utils/posts'
 
+const posts = genPosts()
 const render = async (): Promise<string> => `<?xml version='1.0' encoding='utf-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    ${Object.entries(genPosts())
-      .flatMap(([, value]) => value)
-      .map(
-        post => `<url>
-        <loc>${site.url + post.path}</loc>
-        <lastmod>${post.lastmod ? post.lastmod.substr(0, 10) : post.date.substr(0, 10)}</lastmod>
-        <priority>${post.priority ? ((1000 - post.priority[1]) / 1000).toFixed(1) : 0.5}</priority>
-    </url>`
+    ${Object.entries(posts)
+      .flatMap(([, posts]) =>
+        posts.map(
+          post => `
+        <url>
+            <loc>${site.url + post.path}</loc>
+            <lastmod>${post.lastmod ? post.lastmod.substr(0, 10) : post.date.substr(0, 10)}</lastmod>
+            <priority>${
+              post.priority
+                ? ((1000 - (Array.isArray(post.priority) ? post.priority[1] : post.priority)) / 1000).toFixed(1)
+                : 0.5
+            }</priority>
+        </url>`
+        )
       )
       .join('')}
 </urlset>`

@@ -3,7 +3,6 @@
   import { config as footerConfig } from '$lib/config/footer'
   let className = undefined
   export { className as class }
-  // import { site, footer as footerConf } from '$lib/urara.config'
 </script>
 
 <footer id="footer" class="{className} p-10 footer bg-base-300 text-base-content footer-center rounded-box">

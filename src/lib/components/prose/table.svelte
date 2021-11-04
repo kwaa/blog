@@ -1,4 +1,4 @@
-<div class="overflow-x-auto">
+<div class="overflow-x-auto mb-4">
   <table class="table w-full">
     <slot />
   </table>

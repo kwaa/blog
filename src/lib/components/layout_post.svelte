@@ -1,14 +1,13 @@
 <script lang="ts" context="module">
-  import img from '$lib/components/mdsvex/img.svelte'
-  import code from '$lib/components/mdsvex/code.svelte'
-  import table from '$lib/components/mdsvex/table.svelte'
+  import img from '$lib/components/prose/img.svelte'
+  import code from '$lib/components/prose/code.svelte'
+  import table from '$lib/components/prose/table.svelte'
   export { img, code, table }
 </script>
 
 <script lang="ts">
   import { onMount } from 'svelte'
   import { browser } from '$app/env'
-  import { site } from '$lib/config/site'
   import Head from '$lib/components/head.svelte'
   import Footer from '$lib/components/footer.svelte'
   import Date from '$lib/components/post_date.svelte'
@@ -21,8 +20,8 @@
   export let lastmod = undefined
   export let priority = undefined
   export let tags = undefined
-  export let descr = undefined
   export let cover = undefined
+  // export let descr = undefined
 
   let posts = undefined
   let post = undefined
@@ -32,7 +31,6 @@
 
   onMount(() => {
     if (browser) {
-      // const allPosts: Urara.Post[] = Object.entries(JSON.parse(localStorage.getItem('posts')) as Record<number, Urara.Post[]>).flatMap(([, value]) => value)
       posts = Object.entries(JSON.parse(localStorage.getItem('posts')))
         .sort(([a], [b]) => parseInt(a) - parseInt(b))
         .flatMap(([, value]) => value)
@@ -40,16 +38,9 @@
       index = posts.findIndex(post => post?.path === window.location.pathname)
       prev = posts[index + 1]
       next = posts[index - 1]
-      console.log(posts, post, index, prev, next)
     }
   })
 </script>
-
-<svelte:head>
-  <title>{title ?? post?.path} | {site.title}</title>
-  <meta name="description" content={descr ?? site.descr} />
-  {#if tags}<meta name="keywords" content={tags.toString()} />{/if}
-</svelte:head>
 
 <Head {post} />
 

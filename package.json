@@ -1,6 +1,7 @@
 {
   "name": "urara",
   "version": "0.0.1",
+  "repository": "github:importantimport/urara",
   "scripts": {
     "clean": "node urara.js clean",
     "dev:urara": "node urara.js watch",

@@ -1,3 +1,5 @@
+/* global */
+
 html {
   scroll-behavior: smooth;
   @apply !bg-base-200 overflow-x-hidden overflow-y-scroll break-words;
@@ -7,22 +9,7 @@ html {
   @apply bg-primary text-primary-content;
 }
 
-.btn-primary:hover {
-  @apply bg-primary-focus border-primary-focus;
-}
-
-.btn-secondary:hover {
-  @apply bg-secondary-focus border-secondary-focus;
-}
-
-.btn-accent:hover {
-  @apply bg-accent-focus border-accent-focus;
-}
-
-.btn-ghost:hover,
-.btn-link:hover {
-  @apply bg-base-content bg-opacity-20 border-opacity-0;
-}
+/* prose */
 
 .prose blockquote {
   @apply font-semibold border-l-4 border-base-content text-base-content border-opacity-20 pl-4 pr-4;
@@ -73,7 +60,7 @@ h6 {
   @apply children:pr-5;
 }
 
-.prose dl {
+.prose dl, dd {
   @apply text-base pl-8 mb-4;
 }
 
@@ -97,12 +84,43 @@ h6 {
   @apply checkbox checkbox-xs;
 }
 
+/* modify */
+
 .card {
   @apply bg-base-100;
 }
 
 .card-body {
   @apply <md:p-4;
+}
+
+#footer a {
+  @apply transition-all ease-in-out text-base-content underline underline-transparent opacity-75 hover:(opacity-100 text-secondary-focus underline-secondary-focus);
+}
+
+/* extend */
+
+.spoiler {
+  @apply transition-colors ease-in-out bg-base-content hover:bg-transparent focus:bg-transparent;
+}
+
+/* fix */
+
+.btn-primary:hover {
+  @apply bg-primary-focus border-primary-focus;
+}
+
+.btn-secondary:hover {
+  @apply bg-secondary-focus border-secondary-focus;
+}
+
+.btn-accent:hover {
+  @apply bg-accent-focus border-accent-focus;
+}
+
+.btn-ghost:hover,
+.btn-link:hover {
+  @apply bg-base-content bg-opacity-20 border-opacity-0;
 }
 
 .collapse {
@@ -132,12 +150,4 @@ h6 {
 .collapse:focus:not(.collapse-close) .collapse-content,
 .collapse:not(.collapse-close) input[type='checkbox']:checked ~ .collapse-content {
   @apply max-h-9000px;
-}
-
-.spoiler {
-  @apply transition-colors ease-in-out bg-base-content hover:bg-transparent focus:bg-transparent;
-}
-
-#footer a {
-  @apply transition-all ease-in-out text-base-content underline underline-transparent opacity-75 hover:(opacity-100 text-secondary-focus underline-secondary-focus);
 }

@@ -1,8 +1,8 @@
 import type { EndpointOutput } from '@sveltejs/kit'
 import { site } from '$lib/config/site'
 import { genPosts } from '$lib/utils/posts'
-const posts = genPosts()
 
+const posts = genPosts()
 const render = async (): Promise<string> => `<?xml version='1.0' encoding='utf-8'?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>${site.title}</title>
@@ -21,7 +21,7 @@ const render = async (): Promise<string> => `<?xml version='1.0' encoding='utf-8
     <title type="html"><![CDATA[${post.title}]]></title>
     <link href="${site.url + post.path}" />
     <id>${site.url + post.path}</id>
-    <published>${new Date(post.date).toJSON()}</published>
+    <published>${new Date(post.date ??= '2021-11-01').toJSON()}</published>
     <updated>${new Date(post.lastmod ?? post.date).toJSON()}</updated>${
         post.descr ? `\n    <summary type="html"><![CDATA[${post.descr.toString()}]]></summary>` : ''
       }
