@@ -25,4 +25,4 @@
   })
 </script>
 
-<div id="utterances" class="card bg-base-100 card-body <sm:p-4 shadow-lg mb-8" />
+<div id="utterances" class="mt-4" />

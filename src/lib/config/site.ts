@@ -1,4 +1,4 @@
-interface Sites {
+interface Site {
   title: string
   subtitle?: string
   lang?: string
@@ -13,7 +13,7 @@ interface Sites {
   since?: string
 }
 
-export const site: Sites = {
+export const site: Site = {
   title: './kwaa.dev',
   subtitle: 'Subtitle',
   lang: 'zh',

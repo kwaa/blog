@@ -264,7 +264,7 @@ Utterance 无法自定义样式，我更想自己弄一个评论系统。
 
 ## 开源
 
-<GitHub user="kwaa" repo="m" />
+<GitHub user="importantimport" repo="urara" />
 
 没错：这里有一个 GitHub 组件，仿照官方缩略图做的。
 

@@ -39,11 +39,11 @@ Project 1ST 是由一对六单元耳机头，两条 2.5mm TRRS 对录线和一�
 
 大概像是这样：
 
-![demo](https://cdn.jsdelivr.net/gh/kwaa/kwaa.github.io/source/_posts/project-1st/demo.png)
+![demo](/project-1st/demo.webp)
 
 2.5mm 插针定义：
 
-![trrs](https://cdn.jsdelivr.net/gh/kwaa/kwaa.github.io/source/_posts/project-1st/trrs.png)
+![trrs](/project-1st/trrs.webp)
 
 ### 模拟信号处理器
 
@@ -55,7 +55,7 @@ Project 1ST 是由一对六单元耳机头，两条 2.5mm TRRS 对录线和一�
 
 仿照 Orion ASP 画的 Function Block Diagram，随进度更新：
 
-![diagram](https://cdn.jsdelivr.net/gh/kwaa/kwaa.github.io/source/_posts/project-1st/diagram.png)
+![diagram](/project-1st/diagram.webp)
 
 #### IB - 输入缓冲
 

@@ -10,14 +10,13 @@
 </script>
 
 <div
-  class="card flex flex-col {friend.descr
+  class="card bg-base-100 urara-card-shadow flex flex-col {friend.descr
     ? ''
-    : 'items-center justify-center'} p-2 shadow-xl hover:shadow-2xl transition-shadow h-full w-full"
->
+    : 'items-center justify-center'} p-2 h-full w-full">
   <div class="flex flex-row">
     {#if friend.avatar}
       <div class="flex-0 avatar mr-4">
-        <div class="rounded-full border-3 border-white shadow-xl hover:shadow-2xl transition-shadow w-16 h-16">
+        <div class="rounded-full border-3 border-white shadow-xl transition-shadow w-16 h-16">
           <img src={friend.avatar} alt={friend.title} loading="lazy" />
         </div>
       </div>

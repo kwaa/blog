@@ -15,8 +15,7 @@
 <Head />
 
 <div
-  class="grid grid-cols-1 max-w-90 gap-8 md:(grid-cols-2 max-w-174 gap-6) xl:(grid-cols-4 max-w-304) max-w-screen-sm mx-auto px-4 mb-4 lg:mb-8"
->
+  class="grid grid-cols-1 max-w-90 gap-8 md:(grid-cols-2 max-w-174 gap-6) xl:(grid-cols-4 max-w-304) max-w-screen-sm mx-auto px-4 mb-4 lg:mb-8">
   {#if allFriends.length > 0}
     {#each allFriends as friend, index}
       {#if friend.href}
