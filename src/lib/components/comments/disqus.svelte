@@ -1,18 +1,25 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
+  import { onMount, onDestroy } from 'svelte'
   import { comment } from '$lib/config/comment'
   export let post: Urara.Post
   onMount(() => {
-    window['disqus_config'] = function () {
-      this.page.url = post?.path
-      this.page.identifier = post?.path
-      this.page.title = post?.title
-    }
-    const s = document.createElement('script')
-    s.src = `https://${comment?.['disqus']?.['shortname']}.disqus.com/embed.js` as string
-    s.setAttribute('data-timestamp', +new Date() as unknown as string)
-    document.getElementById('disqus_thread').appendChild(s)
+    const [c,s] = [document.createElement('script'), document.createElement('script')]
+    c.id = 'disqus_config'
+    c.type = 'application/javascript'
+    c.innerHTML = `
+      const disqus_config = function () {
+        this.page.url = '${post.path}'
+        this.page.identifier = '${post.path}'
+        this.page.title = '${post.title ?? post.path}'
+      }`
+    s.id = 'disqus_script'
+    s.src = `https://${comment?.['disqus']?.['shortname']}.disqus.com/embed.js`
+    s.setAttribute('data-timestamp', Date.now().toString())
+    document.head.appendChild(c)
+    document.head.appendChild(s)
   })
+
+  onDestroy(() => document.querySelectorAll('#disqus_config, #disqus_script').forEach(node => node.remove()))
 </script>
 
 <div id="disqus_thread" class="mt-4" />
