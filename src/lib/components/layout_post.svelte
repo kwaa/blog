@@ -75,8 +75,7 @@
       <Pagination {next} {prev} />
     {/if}
     {#if browser && (!post.comment || post.comment !== false)}
-      <!-- <Utterances /> -->
-      <Comment />
+      <Comment {post} />
     {/if}
   {/if}
   <Footer />

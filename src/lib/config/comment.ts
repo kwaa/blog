@@ -10,6 +10,9 @@ export const comment: Comment = {
     repo: 'kwaa/comments',
     lang: 'zh-CN'
   },
+  disqus: {
+    shortname: 'kwaa'
+  },
   utterances: {
     repo: 'kwaa/comments'
   }

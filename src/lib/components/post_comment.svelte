@@ -5,6 +5,7 @@
   const comments = import.meta.globEager('/src/lib/components/comments/*.svelte')
   let current: string = undefined
   onMount(() => (current = toSnake(commentConfig.use[0])))
+  export let post: Urara.Post = undefined
 </script>
 
 <div id="post-comment" class="card bg-base-100 card-body <sm:p-4 urara-card-shadow mb-8">
@@ -14,7 +15,7 @@
         <!-- svelte-ignore a11y-missing-attribute -->
         <a
           on:click={() => (current = toSnake(name))}
-          class="flex-1 tab transition-all duration-500"
+          class="flex-1 tab transition-all"
           class:tab-bordered={commentConfig?.['style'] === 'bordered'}
           class:tab-lifted={commentConfig?.['style'] === 'lifted'}
           class:tab-active={current === toSnake(name)}>
@@ -25,7 +26,7 @@
   {/if}
   {#if current}
     {#key current}
-      <svelte:component this={comments[`/src/lib/components/comments/${current}.svelte`].default} />
+      <svelte:component this={comments[`/src/lib/components/comments/${current}.svelte`].default} {post} />
     {/key}
   {/if}
 </div>
