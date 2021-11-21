@@ -22,7 +22,19 @@
     // s.setAttribute('crossorigin', 'anonymous')
     // s.src = 'https://utteranc.es/client.js'
     // tag.parentNode.insertBefore(s, tag)
+
+    const observer = new MutationObserver(() => {
+      document.getElementById('utterances-loading').remove()
+      observer.disconnect()
+    })
+
+    observer.observe(document.getElementById('utterances'), {
+      childList: true
+    })
   })
 </script>
 
-<div id="utterances" class="mt-4" />
+<div id="utterances-container">
+  <button id="utterances-loading" class="btn btn-lg flex mx-auto my-4 btn-ghost btn-circle loading" />
+  <div id="utterances" class="utterances" />
+</div>

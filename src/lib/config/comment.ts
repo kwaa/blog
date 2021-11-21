@@ -7,6 +7,7 @@ export const comment: Comment = {
   use: ['Utterances', 'Giscus', 'Disqus'],
   style: 'boxed',
   giscus: {
+    src: 'https://giscus.kwaa.dev/client.js',
     repo: 'kwaa/comments',
     lang: 'zh-CN'
   },

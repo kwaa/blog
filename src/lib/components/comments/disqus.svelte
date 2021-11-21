@@ -11,15 +11,22 @@
         this.page.url = '${post.path}'
         this.page.identifier = '${post.path}'
         this.page.title = '${post.title ?? post.path}'
+        ${`this.language = '${comment?.['disqus']?.['lang']}'` ?? ''}
       }`
     s.id = 'disqus_script'
     s.src = `https://${comment?.['disqus']?.['shortname']}.disqus.com/embed.js`
     s.setAttribute('data-timestamp', Date.now().toString())
-    document.head.appendChild(c)
-    document.head.appendChild(s)
+    if (window['DISQUS']) {
+      window['DISQUS'].reset({
+        reload: true
+      })
+    } else {
+      document.head.appendChild(c)
+      document.head.appendChild(s)
+    }
   })
 
   onDestroy(() => document.querySelectorAll('#disqus_config, #disqus_script').forEach(node => node.remove()))
 </script>
 
-<div id="disqus_thread" class="mt-4" />
+<div id="disqus_thread" />

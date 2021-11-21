@@ -5,7 +5,7 @@
   export { className as class }
 </script>
 
-<footer id="footer" class="{className} footer footer-center bg-base-300 text-base-content rounded-box p-10">
+<footer id="footer" class="{className} text-center bg-base-300 text-base-content rounded-box p-10">
   <div class="prose">
     <p>
       {#each Object.entries(footerConfig.nav) as [href, name], i}
