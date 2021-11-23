@@ -66,6 +66,10 @@ echo "Hello World" | gpg --clearsign
 echo "Hello World" | gpg --clearsign
 ```
 
+#### error: gpg failed to sign the data?
+
+把 `export GPG_TTY=$(tty)` 加到 `~/.zshrc`, `~/.bashrc` 或者其他什么 shrc 里。
+
 ### 设置 Git 使用私钥进行签名 (Linux)
 
 看一眼生成的密钥对。
