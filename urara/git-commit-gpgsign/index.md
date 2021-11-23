@@ -92,7 +92,7 @@ git config --global commit.gpgsign true # 全局签名
 
 但这只是为 Linux 环境的 git 进行了配置，对于 GitHub Desktop 是无效的。
 
-所以我绕过 GitHub Desktop 提交 commit 不就行了？VSCode —— 打开远程窗口 —— Connect to Host，启动！
+所以我绕过 GitHub Desktop 提交 commit 不就行了？VSCode > 打开远程窗口 > Connect to Host，启动！
 
 虽然操作起来挺繁琐的，但是得到了好看的 Verified。（并且可以用 gitmoji 之类生成 commit 信息的插件，算是捡到个芝麻吧）
 
@@ -146,9 +146,7 @@ gpg --export-secret-keys -a 8A73844222166F60 # 导出私钥到 private_key.asc
 
 还是打开 Kelopatra，上面有个“设置”。
 
-配置 Kelopatra > GnuPG System > Private Keys 第一个
-
-Expire cached PINs after N seconds，填入想要的秒数（我直接 31536000）
+配置 Kelopatra > GnuPG System > Private Keys 第一个 Expire cached PINs after N seconds，填入想要的秒数（我直接 31536000）
 
 ### 设置 GitHub Desktop 使用私钥进行签名 (Windows)
 
@@ -162,7 +160,7 @@ git config --global user.signingkey 8A73844222166F60 # 指定密钥
 git config --global commit.gpgsign true # 全局签名
 ```
 
-尝试提交一个 commit，很好——它有用。
+尝试提交一个 commit，它有用。
 
 ![Verified](/git-commit-gpgsign/verified.webp)
 
