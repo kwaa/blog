@@ -30,10 +30,12 @@
   //   },
   //   'https://giscus.app'
   // )
-  const observer = new MutationObserver(mutationList => mutationList.forEach(mutation => {
-    if (mutation.type === 'childList') document.getElementById('giscus-loading').remove()
-    sendTheme()
-  }))
+  const observer = new MutationObserver(mutationList =>
+    mutationList.forEach(mutation => {
+      if (mutation.type === 'childList') document.getElementById('giscus-loading').remove()
+      sendTheme()
+    })
+  )
 
   onMount(() => {
     const s = document.createElement('script')

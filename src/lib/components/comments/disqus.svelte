@@ -3,7 +3,7 @@
   import { comment } from '$lib/config/comment'
   export let post: Urara.Post
   onMount(() => {
-    const [c,s] = [document.createElement('script'), document.createElement('script')]
+    const [c, s] = [document.createElement('script'), document.createElement('script')]
     c.id = 'disqus_config'
     c.type = 'application/javascript'
     c.innerHTML = `

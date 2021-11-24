@@ -104,7 +104,7 @@ git config --global commit.gpgsign true # 全局签名
 
 在完成上一章的几天后：
 
-我仔细考虑了一下，既觉得 VSCode 的 Remote-SSH 功能过于繁琐，也不想装一个 *我认为很臃肿的* Git for Windows；
+我仔细考虑了一下，既觉得 VSCode 的 Remote-SSH 功能过于繁琐，也不想装一个 _我认为很臃肿的_ Git for Windows；
 有什么好办法直接为 GitHub Desktop 配置签名呢？
 
 有，那就是直接修改 GitHub Desktop 内置 git.exe 的配置。
