@@ -1,7 +1,8 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte'
-  import { comment } from '$lib/config/comment'
   export let post: Urara.Post
+  export let site: { [x: string]: string }
+  export let config: { [x: string]: string }
   onMount(() => {
     const [c, s] = [document.createElement('script'), document.createElement('script')]
     c.id = 'disqus_config'
@@ -11,10 +12,10 @@
         this.page.url = '${post.path}'
         this.page.identifier = '${post.path}'
         this.page.title = '${post.title ?? post.path}'
-        ${`this.language = '${comment?.['disqus']?.['lang']}'` ?? ''}
+        ${`this.language = '${config.lang}'` ?? ''}
       }`
     s.id = 'disqus_script'
-    s.src = `https://${comment?.['disqus']?.['shortname']}.disqus.com/embed.js`
+    s.src = `https://${config.shortname}.disqus.com/embed.js`
     s.setAttribute('data-timestamp', Date.now().toString())
     if (window['DISQUS']) {
       window['DISQUS'].reset({

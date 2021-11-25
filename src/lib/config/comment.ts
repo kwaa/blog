@@ -4,12 +4,13 @@ interface Comment {
 }
 
 export const comment: Comment = {
-  use: ['Utterances', 'Giscus', 'Disqus'],
+  use: ['Giscus', 'Disqus'],
   style: 'boxed',
   giscus: {
     src: 'https://giscus.kwaa.dev/client.js',
     repo: 'kwaa/comments',
-    lang: 'zh-CN'
+    lang: 'zh-CN',
+    theme: 'urara'
   },
   disqus: {
     shortname: 'kwaa'

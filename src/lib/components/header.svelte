@@ -26,7 +26,7 @@
 <header
   id="header"
   class="navbar fixed w-screen z-50 backdrop-filter backdrop-blur rounded-none transform-gpu transition-all ease-in-out {scrollY <
-  64
+  32
     ? 'bg-transparent text-base-content'
     : 'bg-neutral/50 text-neutral-content shadow-xl'}"
   class:-translate-y-32={!pin}>

@@ -1,10 +1,8 @@
 <script lang="ts">
   import { browser } from '$app/env'
   import { themes } from '$lib/config/themes'
-
   export let pin: boolean
-  let currentTheme: string
-  let currentThemeColor: string
+  let currentTheme: string, currentThemeColor: string
 
   const hex = (
     h: number,

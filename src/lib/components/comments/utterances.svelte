@@ -1,27 +1,18 @@
 <script lang="ts">
-  // import { utterances } from '$lib/urara.config'
   import { onMount } from 'svelte'
-  // export let theme = undefined
+  export let post: Urara.Post
+  export let site: { [x: string]: string }
+  export let config: { [x: string]: string }
   onMount(() => {
     const s = document.createElement('script')
-    // const tag = document.getElementById('utterances')
-    s.setAttribute('repo', 'kwaa/comments')
-    s.setAttribute('issue-term', 'pathname')
-    // if (utterances.label) element.setAttribute('label', utterances.label)
-    s.setAttribute('theme', 'preferred-color-scheme')
+    s.setAttribute('repo', config.repo)
+    s.setAttribute('issue-term', config.issueTerm ?? 'pathname')
+    s.setAttribute('theme', config.theme ?? 'preferred-color-scheme')
     s.setAttribute('crossorigin', 'anonymous')
     s.setAttribute('async', '')
-    s.src = 'https://utteranc.es/client.js'
+    if (config.label) s.setAttribute('label', config.label)
+    s.src = config.src ?? 'https://utteranc.es/client.js'
     document.getElementById('utterances').appendChild(s)
-
-    // const s = document.createElement('script')
-    // const tag = document.getElementById('utterances')
-    // s.setAttribute('repo', 'kwaa/comments')
-    // s.setAttribute('issue-term', 'pathname')
-    // s.setAttribute('theme', 'preferred-color-scheme')
-    // s.setAttribute('crossorigin', 'anonymous')
-    // s.src = 'https://utteranc.es/client.js'
-    // tag.parentNode.insertBefore(s, tag)
 
     const observer = new MutationObserver(() => {
       document.getElementById('utterances-loading').remove()
