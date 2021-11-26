@@ -54,7 +54,7 @@
 
 <div class="px-4 lg:px-0 mx-auto w-full max-w-screen-md">
   {#if allTags && Object.keys(allTags).length > 0}
-    <label tabindex="0" class="collapse bg-base-100 shadow-xl rounded-box collapse-arrow mb-8">
+    <label data-nosnippet tabindex="0" class="collapse bg-base-100 shadow-xl rounded-box collapse-arrow mb-8">
       <input type="checkbox" />
       <div class="collapse-title text-xl font-medium">
         tags{#if loaded && tags?.length > 0}
@@ -98,14 +98,16 @@
         </div>
       {/if}
     {/if}
-    {#each posts as post, index}
-      {#if post.date && !post.priority && !years.includes(post.date.substring(0, 4))}
-        <div class="divider mb-8">
-          {years.push(post.date.substring(0, 4)) && post.date.substring(0, 4)}
-        </div>
-      {/if}
-      <IndexPost {post} {index} />
-    {/each}
+    <main itemprop="mainEntityOfPage" itemscope itemtype="https://schema.org/Blog">
+      {#each posts as post, index}
+        {#if post.date && !post.priority && !years.includes(post.date.substring(0, 4))}
+          <div class="divider mb-8">
+            {years.push(post.date.substring(0, 4)) && post.date.substring(0, 4)}
+          </div>
+        {/if}
+        <IndexPost {post} {index} />
+      {/each}
+    </main>
     <Footer />
   {/key}
 </div>

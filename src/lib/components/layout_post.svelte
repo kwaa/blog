@@ -42,14 +42,14 @@
 <Head post={{ title, date, lastmod, priority, tags, cover, descr }} />
 
 <div class="px-4 lg:px-0 mx-auto w-full max-w-screen-md">
-  <div class="card bg-base-100 shadow-xl mb-8">
+  <article itemscope itemtype="https://schema.org/BlogPosting" class="card bg-base-100 shadow-xl mb-8">
     <div class="card-body <sm:p-4">
-      <h1 class="card-title text-3xl">{title ?? post?.path}</h1>
-      <Date {date} {lastmod} {priority} />
+      <h1 itemprop="name headline" class="card-title text-3xl">{title ?? post?.path}</h1>
+      <Date post={{ date, lastmod, priority }} />
       {#if !cover}
-        <div class="divider mt-0" />
+        <div class="divider" />
       {/if}
-      <main class="urara-prose prose">
+      <main itemprop="articleBody" class="urara-prose prose">
         {#if cover}<figure class="-mx-4 md:-mx-8 !w-auto my-4">
             <Cover {cover} class="w-full" />
           </figure>
@@ -66,7 +66,7 @@
         </div>
       {/if}
     </div>
-  </div>
+  </article>
   {#if posts && post}
     {#if (posts.length > 1 && !post.priority) || post.priority[1] > 0}
       <Pagination {next} {prev} />

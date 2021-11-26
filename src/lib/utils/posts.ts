@@ -2,7 +2,7 @@
  * Generate Posts List
  * @returns posts list with priority
  */
-export const genPosts = (): Record<number, Urara.Post[]> => {
+export const genPosts = async (): Promise<Record<number, Urara.Post[]>> => {
   const posts: Record<number, Urara.Post[]> = { 500: [] }
   Object.entries(import.meta.globEager<Urara.PostModule>('/src/routes/**/index.{md,svelte.md,svx}'))
     .map(([postpath, module]) => ({

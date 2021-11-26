@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte'
-  export let post: Urara.Post
-  export let site: { [x: string]: string }
+  // export let post: Urara.Post
+  // export let site: { [x: string]: string }
   export let config: { [x: string]: string }
   onMount(() => {
     const s = document.createElement('script')

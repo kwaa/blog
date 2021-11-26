@@ -142,6 +142,11 @@ dd {
   @apply max-h-9000px;
 }
 
+.tooltip:hover:before,
+.tooltip:hover:after{
+  @apply opacity-100 delay-75;
+}
+
 /* modify */
 
 #footer a {

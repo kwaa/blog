@@ -6,7 +6,10 @@
   export let index: number
 </script>
 
-<div
+<article
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+  itemprop="blogPost"
   in:fly={{ x: index % 2 ? 100 : -100, duration: 250, delay: 300 }}
   out:fly={{ x: index % 2 ? -100 : 100, duration: 250 }}
   class="card bg-base-100 urara-card-shadow md:card-side group mb-8">
@@ -19,14 +22,15 @@
   {/if}
   <div class="card-body <sm:p-4">
     <h1
+      itemprop="name headline"
       class="card-title text-3xl transition-all ease-in-out underline underline-4 underline-transparent hover:underline-primary">
       <a href={post.path}>{post.title ?? post.path.slice(1)}</a>
     </h1>
-    <Date type="index" {post} />
+    <!-- <Date type="index" {post} /> -->
     {#if post.descr}
-      <p class="mb-auto">{post.descr}</p>
+      <p itemprop="description" class="mb-auto">{post.descr}</p>
     {/if}
-    {#if post.path}
+    <!-- {#if post.path}
       <div class="card-actions mt-auto md:-mb-4 -ml-4">
         <a href={post.path} class="btn btn-link normal-case <sm:rounded-l-none m-0 pl-2">
           <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24">
@@ -35,6 +39,7 @@
           {post.path.slice(1)}
         </a>
       </div>
-    {/if}
+    {/if} -->
+    <Date type="index" {post} />
   </div>
-</div>
+</article>
