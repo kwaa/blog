@@ -9,10 +9,10 @@
   import { browser } from '$app/env'
   import Head from '$lib/components/head.svelte'
   import Footer from '$lib/components/footer.svelte'
-  import IndexPost from '$lib/components/index_post.svelte'
+  import Post from '$lib/components/index_post.svelte'
   import Skeleton from '$lib/components/skeleton.svelte'
   import { genTags } from '$lib/utils/tags'
-import { site } from '$lib/config/site';
+  import { site } from '$lib/config/site'
 
   let allPosts: Urara.Post[]
   let allTags: Record<string, number>
@@ -54,30 +54,67 @@ import { site } from '$lib/config/site';
 <Head />
 
 <div class="flex flex-col flex-nowrap xl:(flex-row flex-wrap)">
-  <div class="flex-1 mx-auto w-full max-w-screen-md order-first xl:(max-w-96 mr-0 px-8)">
-    <div class="flex <xl:flex-row gap-4 sticky top-24 card card-body items-right mb-8">
-      <div class="avatar flex-0 justify-end">
-        <div class="rounded-full shadow-2xl w-32 h-32">
-          <img src={site.author.avatar ?? ''}>
+  {#if loaded}
+    <div
+      in:fly={{ x: 100, duration: 250, delay: 500 }}
+      out:fly={{ x: 100, duration: 250 }}
+      class="flex-1 mx-auto w-full max-w-screen-md order-first xl:(max-w-96 mr-0 px-8)">
+      <div class="flex <xl:flex-row gap-4 sticky top-24 card card-body items-right mb-8">
+        <div class="avatar flex-0 justify-end">
+          <div class="rounded-full shadow-2xl w-32 h-32">
+            <img src={site.author.avatar ?? ''} alt={site.author.name} />
+          </div>
+          <div class="absolute rounded-full w-10 h-10 bottom-0 right-0 bg-base-100 shadow-xl text-xl text-center py-1.5">
+            🌌
+          </div>
         </div>
-        <div class="absolute rounded-full w-10 h-10 bottom-0 right-0 bg-base-100 shadow-xl text-xl text-center py-1.5">🌌</div>
-      </div> 
-      <div class="flex-1 text-right my-auto">
-        <h2 class="card-title text-3xl mt-0">{site.author.name}</h2>
-        <p class="opacity-75">{site.author.bio}</p>
+        <div class="flex-1 text-right my-auto">
+          <h2 class="card-title text-3xl mt-0">{site.author.name}</h2>
+          <p class="opacity-75">{@html site.author.bio}</p>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="flex-none w-full max-w-screen-md <xl:(order-last mx-auto)">
+    <div
+      in:fly={{ x: -100, duration: 250, delay: 500 }}
+      out:fly={{ x: -100, duration: 250 }}
+      class="flex-1 mx-auto w-full max-w-screen-md xl:(order-last max-w-96 ml-0 px-8)">
+      {#if allTags && Object.keys(allTags).length > 0}
+        <label
+          id="tags"
+          data-nosnippet
+          tabindex="0"
+          class="collapse collapse-arrow !children:(bg-base-100 xl:bg-transparent) shadow-xl !xl:sticky xl:(top-24 shadow-none) rounded-box <md:rounded-none mb-8">
+          <input type="checkbox" />
+          <div class="collapse-title text-xl font-medium">
+            tags{#if tags?.length > 0}
+              {#key tags}
+                <span in:fly={{ y: -100, duration: 250, delay: 300 }} out:fly={{ y: 100, duration: 250 }}>
+                  ={tags.toString()}
+                </span>
+              {/key}
+            {/if}
+          </div>
+          <div class="collapse-content">
+            {#each Object.entries(allTags) as [tag]}
+              <button id={tag} on:click={() => toggle(tag)} class="btn btn-sm btn-ghost mt-2 mr-2">
+                #{tag}
+              </button>
+            {/each}
+          </div>
+        </label>
+      {/if}
+    </div>
+  {/if}
+  <div class="flex-none w-full max-w-screen-md <xl:mx-auto">
     {#key posts}
       <!-- {:else} is not used because there is a problem with the transition -->
       {#if posts.length == 0}
         {#if !loaded}
-          <div class="h-screen"></div>
+          <div class="h-screen" />
           <!-- <Skeleton count="5" /> -->
         {:else}
           <div
-            in:fly={{ x: 100, duration: 250, delay: 300 }}
+            in:fly={{ x: 100, duration: 250, delay: 250 }}
             out:fly={{ x: -100, duration: 250 }}
             class="p-10 bg-base-300 text-base-content text-center rounded-box mb-8">
             <div class="prose items-center">
@@ -103,37 +140,10 @@ import { site } from '$lib/config/site';
               {years.push(post.date.substring(0, 4)) && post.date.substring(0, 4)}
             </div>
           {/if}
-          <IndexPost {post} {index} />
+          <Post {post} {index} />
         {/each}
       </main>
       <Footer />
     {/key}
-  </div>
-  <div class="flex-1 mx-auto w-full max-w-screen-md xl:(max-w-96 ml-0 px-8)">  
-    {#if allTags && Object.keys(allTags).length > 0}
-      <label
-        id="tags"
-        data-nosnippet
-        tabindex="0"
-        class="collapse collapse-arrow !children:(bg-base-100 xl:bg-transparent) shadow-xl !xl:sticky xl:(top-24 shadow-none) rounded-box <md:rounded-none mb-8">
-        <input type="checkbox" />
-        <div class="collapse-title text-xl font-medium">
-          tags{#if loaded && tags?.length > 0}
-            {#key tags}
-            <span in:fly={{ y: -100, duration: 250, delay: 300 }} out:fly={{ y: 100, duration: 250 }}>
-              ={tags.toString()}
-            </span>
-            {/key}
-          {/if}
-        </div>
-        <div class="collapse-content">
-          {#each Object.entries(allTags) as [tag]}
-            <button id={tag} on:click={() => toggle(tag)} class="btn btn-sm btn-ghost mt-2 mr-2">
-              #{tag}
-            </button>
-          {/each}
-        </div>
-      </label>
-    {/if}
   </div>
 </div>

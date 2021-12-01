@@ -10,7 +10,7 @@
   itemscope
   itemtype="https://schema.org/BlogPosting"
   itemprop="blogPost"
-  in:fly={{ x: index % 2 ? 100 : -100, duration: 250, delay: 300 }}
+  in:fly={{ x: index % 2 ? 100 : -100, duration: 250, delay: 250 }}
   out:fly={{ x: index % 2 ? -100 : 100, duration: 250 }}
   class="card bg-base-100 urara-card-shadow md:card-side <md:rounded-none group mb-8">
   {#if post.cover}

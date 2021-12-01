@@ -26,8 +26,8 @@
 {#key path}
   <div
     class="min-h-screen pt-24 lg:mb-16"
-    in:fly={{ y: 100, duration: 250, delay: 300 }}
-    out:fly={{ y: -100, duration: 250 }}>
+    in:fly={{ y: 100, duration: 250, delay: 250 }}
+    out:fly={{ y: -100, duration: 250, delay: 250 }}>
     <slot />
   </div>
 {/key}
