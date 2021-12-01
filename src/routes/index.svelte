@@ -73,7 +73,8 @@ import { site } from '$lib/config/site';
       <!-- {:else} is not used because there is a problem with the transition -->
       {#if posts.length == 0}
         {#if !loaded}
-          <Skeleton count="5" />
+          <div class="h-screen"></div>
+          <!-- <Skeleton count="5" /> -->
         {:else}
           <div
             in:fly={{ x: 100, duration: 250, delay: 300 }}
