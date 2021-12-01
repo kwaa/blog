@@ -16,9 +16,9 @@
   {#if post.priority}
     <button
       on:click={() => (currentPriority === 0 ? (currentPriority = 1) : (currentPriority = 0))}
-      class="btn btn-sm {currentPriority === 0
-        ? 'btn-primary text-primary'
-        : 'btn-secondary text-secondary'} bg-opacity-15 border-none !hover:bg-opacity-25 !transition-all ease-in-out !duration-250">
+      class="btn btn-sm bg-base-300/50 text-base-content/75 {currentPriority === 0
+        ? '!hover:(btn-primary text-primary)'
+        : '!hover:(btn-secondary text-secondary)'} bg-opacity-15 border-none !hover:bg-opacity-25 !transition-all ease-in-out !duration-250">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -36,14 +36,12 @@
       <span class:hidden={currentPriority === 1}>{post.priority[0]}</span>
       <span class:hidden={currentPriority === 0}>{post.priority[1]}</span>
     </button>
-    <!-- <span class="hover:(opacity-50 sibling:opacity-100)">{post.priority[0]}</span>
-  <span class="text-primary opacity-0">PRIORITY: {post.priority[1]}</span> -->
   {/if}
   <button
     on:click={() => (currentDate === 'date' ? (currentDate = 'lastmod') : (currentDate = 'date'))}
-    class="btn btn-sm {currentDate === 'date'
-      ? 'btn-primary text-primary'
-      : 'btn-secondary text-secondary'} bg-opacity-15 border-none !hover:bg-opacity-25 !transition-all ease-in-out !duration-250">
+    class="btn btn-sm bg-base-300/50 text-base-content/75 {currentDate === 'date'
+      ? '!hover:(btn-primary text-primary)'
+      : '!hover:(btn-secondary text-secondary)'} bg-opacity-15 border-none !hover:bg-opacity-25 !transition-all ease-in-out !duration-250">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"

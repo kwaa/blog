@@ -20,9 +20,9 @@ export const site: Site = {
   descr: '[DATA EXPUNGED]',
   author: {
     name: '藍',
-    avatar: 'https://kwaa.dev/assets/any@512.webp',
+    avatar: 'https://kwaa.dev/assets/maskable@512.webp',
     email: '',
-    bio: ''
+    bio: '冬は良いけど夏は嫌'
   },
   url: import.meta.env.URARA_SITE_URL ?? 'https://kwaa.dev',
   themeColor: '#3D4451',

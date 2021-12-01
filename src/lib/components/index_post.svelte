@@ -12,15 +12,15 @@
   itemprop="blogPost"
   in:fly={{ x: index % 2 ? 100 : -100, duration: 250, delay: 300 }}
   out:fly={{ x: index % 2 ? -100 : 100, duration: 250 }}
-  class="card bg-base-100 urara-card-shadow md:card-side group mb-8">
+  class="card bg-base-100 urara-card-shadow md:card-side <md:rounded-none group mb-8">
   {#if post.cover}
-    <figure class="overflow-hidden order-first md:order-last rounded-box shadow-lg">
+    <figure class="overflow-hidden order-first md:(order-last rounded-box) shadow-lg">
       <Cover
         class="object-cover object-center h-full w-full transform-gpu transition-transform ease-in-out duration-500 group-hover:scale-120"
         cover={post.cover} />
     </figure>
   {/if}
-  <div class="card-body <sm:p-4">
+  <div class="card-body">
     <h1
       itemprop="name headline"
       class="card-title text-3xl transition-all ease-in-out underline underline-4 underline-transparent hover:underline-primary">

@@ -45,6 +45,8 @@ gpg --quick-gen-key "kwaabot <19530615+username@users.noreply.github.com>" futur
 - cert: 用于验证
 - never: 永不过期
 
+虽然使用子密钥才是最佳实践，但本文只用于 commit 签名，所以没有必要。
+
 接下来要为生成的密钥对设置密码，直接不填跳过。
 
 ### 设置 GPG-Agent 缓存 (Linux)
@@ -96,7 +98,9 @@ git config --global commit.gpgsign true # 全局签名
 
 但这只是为 Linux 环境的 git 进行了配置，对于 GitHub Desktop 是无效的。
 
-所以我绕过 GitHub Desktop 提交 commit 不就行了？VSCode > 打开远程窗口 > Connect to Host，启动！
+所以我绕过 GitHub Desktop 提交 commit 不就行了？在 VSCode Marketplace 安装 [Remote - SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh)。
+
+VSCode 左下角 > 打开远程窗口 > Connect to Host，启动！
 
 虽然操作起来挺繁琐的，但是得到了好看的 Verified。（并且可以用 gitmoji 之类生成 commit 信息的插件，算是捡到个芝麻吧）
 

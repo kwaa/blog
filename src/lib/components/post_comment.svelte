@@ -10,7 +10,7 @@
   $: if (currentComment !== undefined) localStorage.setItem('comment', currentComment)
 </script>
 
-<div id="post-comment" class="card bg-base-100 card-body <sm:p-4 urara-card-shadow mb-8">
+<div id="post-comment" class="card bg-base-100 card-body urara-card-shadow <md:rounded-none mb-8">
   {#if commentConfig.use.length > 1}
     <div class="tabs w-full mb-4" class:tabs-boxed={commentConfig?.['style'] === 'boxed'}>
       {#each commentConfig.use as name}
@@ -28,7 +28,11 @@
   {/if}
   {#if currentComment}
     {#key currentComment}
-      <svelte:component this={comments[`/src/lib/components/comments/${currentComment}.svelte`].default} {post} {site} config={commentConfig?.[currentComment]} />
+      <svelte:component
+        this={comments[`/src/lib/components/comments/${currentComment}.svelte`].default}
+        {post}
+        {site}
+        config={commentConfig?.[currentComment]} />
     {/key}
   {/if}
 </div>

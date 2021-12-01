@@ -41,9 +41,9 @@
 
 <Head post={{ title, date, lastmod, priority, tags, cover, descr }} />
 
-<div class="px-4 lg:px-0 mx-auto w-full max-w-screen-md">
-  <article itemscope itemtype="https://schema.org/BlogPosting" class="card bg-base-100 shadow-xl mb-8">
-    <div class="card-body <sm:p-4">
+<div class="mx-auto w-full max-w-screen-md">
+  <article itemscope itemtype="https://schema.org/BlogPosting" class="card bg-base-100 <md:rounded-none shadow-xl mb-8">
+    <div class="card-body">
       <h1 itemprop="name headline" class="card-title text-3xl">{title ?? post?.path}</h1>
       <Date post={{ date, lastmod, priority }} />
       {#if !cover}

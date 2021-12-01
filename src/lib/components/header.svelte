@@ -52,7 +52,7 @@
         </div>
         <ul
           tabindex="0"
-          class="p-2 shadow-2xl menu dropdown-content bg-base-200 text-base-content rounded-box w-52"
+          class="p-2 shadow-2xl menu dropdown-content bg-base-100 text-base-content rounded-box w-52"
           class:hidden={pin === false}>
           {#each Object.entries(headerConfig.nav) as [href, name]}
             <li>

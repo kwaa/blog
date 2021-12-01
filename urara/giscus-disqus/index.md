@@ -1,6 +1,6 @@
 ---
 title: 评论系统迁移 => Giscus & Disqus
-date: 2021-11-20
+date: 2021-12-01
 ---
 
 时隔两年，我把评论系统从 Utterances 迁移到了 Giscus 和 Disqus。
@@ -73,7 +73,7 @@ date: 2021-11-20
 
 fork 一份并在 Vercel 上导入，Vercel 会自动识别这是一个 Next.js 项目，所以只需要配置环境变量：
 
-> 我生成了一个 [UUID v4](https://www.uuidgenerator.net/version4) 作为 ENVCRYPTION_PASSWORD
+> ENVCRYPTION_PASSWORD? 那当然用 [UUID v4](https://www.uuidgenerator.net/version4)
 
 ![env](/giscus-disqus/env.webp)
 
@@ -126,4 +126,56 @@ document.domain 不起作用，关注点回到 postMessage 上。
 
 Giscus 的 [ADVANCED_USAGE.md](https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md) 写了通过 postMessage 刷新 Giscus 配置的方式，我觉得可以通过这一方式传递 CSS 变量。
 
-但现在的我也不太会改 React/Next.js 源码，于是创建了个讨论 [Idea: custom stylesheets without URL](https://github.com/giscus/giscus/discussions/247) 等作者看到吧。
+~~但现在的我也不太会改 React/Next.js 源码，于是创建了个讨论 [Idea: custom stylesheets without URL](https://github.com/giscus/giscus/discussions/247) 等作者看到吧。~~
+
+等了半个月，并没有理我。我决定继续自己瞎折腾。
+
+#### useRef
+
+搜了一下，我知道了有 useRef 这么个东西。
+
+就不放折腾过程了（只能说我第二次觉得 Prettier 这么阴间）
+
+/pages/widget.tsx:
+
+> 记得改 /lib/types/giscus.ts 里面的 ISetConfigMessage
+
+```ts
+import { ContextType, useContext, useEffect, useState, useRef } from 'react';
+...
+  const ref = useRef(
+    ':root {--p: 259 94.4% 51.2%; --pf: 259 94.3% 41%; --pc: 0 0% 100%; --s: 314 100% 47.1%; --sf: 314 100% 37.1%; --sc: 0 0% 100%; --a: 174 60% 51%; --af: 174 59.8% 41%; --ac: 0 0% 100%; --n: 219 14.1% 27.8%; --nf: 222 13.4% 19%; --nc: 0 0% 100%; --b1: 0 0% 100%; --b2: 210 20% 98%; --b3: 216 12.2% 83.9%; --bc: 215 27.9% 16.9%; --in: 207 89.8% 53.9%; --su: 174 100% 29%; --wa: 36 100% 50%; --er: 14 100% 57.1%}',
+  ); // 默认 DaisyUI Light 主题， 加在 useEffect/handleMessage 的前面
+  useEffect(() => {
+    ...,
+    if ('theme' in newConfig) {
+      setTheme(newConfig.theme);
+      delete newConfig.theme;
+    }
+
+    if ('css' in newConfig) { // 如果 setConfig 包含 css
+      ref.current = newConfig.css; // 写到 ref.current
+      delete newConfig.css;
+    }
+  ...,
+  return (
+    <>
+      <Head>
+        <style type="text/css">{ref.current}</style>
+        ...
+      </Head>
+
+      <main className="w-full mx-auto" data-theme={resolvedTheme}>
+        ...
+      </main>
+
+      <Script
+        src="/js/iframeResizer.contentWindow.min.js"
+        integrity="sha256-rbC2imHDJIBYUIXvf+XiYY+2cXmiSlctlHgI+rrezQo="
+        crossOrigin="anonymous"
+      />
+    </>
+  )
+```
+
+现在可以在加载后套用主题了，至于怎么在初次加载时设置... 我过段时间再琢磨。

@@ -12,6 +12,7 @@
   import IndexPost from '$lib/components/index_post.svelte'
   import Skeleton from '$lib/components/skeleton.svelte'
   import { genTags } from '$lib/utils/tags'
+import { site } from '$lib/config/site';
 
   let allPosts: Urara.Post[]
   let allTags: Record<string, number>
@@ -52,62 +53,86 @@
 
 <Head />
 
-<div class="px-4 lg:px-0 mx-auto w-full max-w-screen-md">
-  {#if allTags && Object.keys(allTags).length > 0}
-    <label data-nosnippet tabindex="0" class="collapse bg-base-100 shadow-xl rounded-box collapse-arrow mb-8">
-      <input type="checkbox" />
-      <div class="collapse-title text-xl font-medium">
-        tags{#if loaded && tags?.length > 0}
-          <span in:fly={{ y: -100, duration: 250, delay: 300 }} out:fly={{ y: 100, duration: 250 }}>
-            ={tags.toString()}
-          </span>
-        {/if}
-      </div>
-      <div class="collapse-content">
-        {#each Object.entries(allTags) as [tag]}
-          <button id={tag} on:click={() => toggle(tag)} class="btn btn-sm btn-ghost mt-2 mr-2">
-            #{tag}
-          </button>
-        {/each}
-      </div>
-    </label>
-  {/if}
-  {#key posts}
-    <!-- {:else} is not used because there is a problem with the transition -->
-    {#if posts.length == 0}
-      {#if !loaded}
-        <Skeleton count="5" />
-      {:else}
-        <div
-          in:fly={{ x: 100, duration: 250, delay: 300 }}
-          out:fly={{ x: -100, duration: 250 }}
-          class="p-10 bg-base-300 text-base-content text-center rounded-box mb-8">
-          <div class="prose items-center">
-            <h2>
-              Not found: {tags?.length != 0 ? `[${tags.map(tag => `'${tag}'`).toString()}]` : ''}
-            </h2>
-            <button on:click={() => clean()} class="btn btn-secondary">
-              <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-6 w-6 mr-2 fill-none" viewBox="0 0 24 24">
-                <path
-                  stroke="current cap-round join-round width-2"
-                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-              </svg>
-              tags = []
-            </button>
-          </div>
+<div class="flex flex-col flex-nowrap xl:(flex-row flex-wrap)">
+  <div class="flex-1 mx-auto w-full max-w-screen-md order-first xl:(max-w-96 mr-0 px-8)">
+    <div class="flex <xl:flex-row gap-4 sticky top-24 card card-body items-right mb-8">
+      <div class="avatar flex-0 justify-end">
+        <div class="rounded-full shadow-2xl w-32 h-32">
+          <img src={site.author.avatar ?? ''}>
         </div>
-      {/if}
-    {/if}
-    <main itemprop="mainEntityOfPage" itemscope itemtype="https://schema.org/Blog">
-      {#each posts as post, index}
-        {#if post.date && !post.priority && !years.includes(post.date.substring(0, 4))}
-          <div class="divider mb-8">
-            {years.push(post.date.substring(0, 4)) && post.date.substring(0, 4)}
+        <div class="absolute rounded-full w-10 h-10 bottom-0 right-0 bg-base-100 shadow-xl text-xl text-center py-1.5">🌌</div>
+      </div> 
+      <div class="flex-1 text-right my-auto">
+        <h2 class="card-title text-3xl mt-0">{site.author.name}</h2>
+        <p class="opacity-75">{site.author.bio}</p>
+      </div>
+    </div>
+  </div>
+  <div class="flex-none w-full max-w-screen-md <xl:(order-last mx-auto)">
+    {#key posts}
+      <!-- {:else} is not used because there is a problem with the transition -->
+      {#if posts.length == 0}
+        {#if !loaded}
+          <Skeleton count="5" />
+        {:else}
+          <div
+            in:fly={{ x: 100, duration: 250, delay: 300 }}
+            out:fly={{ x: -100, duration: 250 }}
+            class="p-10 bg-base-300 text-base-content text-center rounded-box mb-8">
+            <div class="prose items-center">
+              <h2>
+                Not found: {tags?.length != 0 ? `[${tags.map(tag => `'${tag}'`).toString()}]` : ''}
+              </h2>
+              <button on:click={() => clean()} class="btn btn-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-6 w-6 mr-2 fill-none" viewBox="0 0 24 24">
+                  <path
+                    stroke="current cap-round join-round width-2"
+                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                </svg>
+                tags = []
+              </button>
+            </div>
           </div>
         {/if}
-        <IndexPost {post} {index} />
-      {/each}
-    </main>
-    <Footer />
-  {/key}
+      {/if}
+      <main itemprop="mainEntityOfPage" itemscope itemtype="https://schema.org/Blog">
+        {#each posts as post, index}
+          {#if post.date && !post.priority && !years.includes(post.date.substring(0, 4))}
+            <div class="divider mb-8">
+              {years.push(post.date.substring(0, 4)) && post.date.substring(0, 4)}
+            </div>
+          {/if}
+          <IndexPost {post} {index} />
+        {/each}
+      </main>
+      <Footer />
+    {/key}
+  </div>
+  <div class="flex-1 mx-auto w-full max-w-screen-md xl:(max-w-96 ml-0 px-8)">  
+    {#if allTags && Object.keys(allTags).length > 0}
+      <label
+        id="tags"
+        data-nosnippet
+        tabindex="0"
+        class="collapse collapse-arrow !children:(bg-base-100 xl:bg-transparent) shadow-xl !xl:sticky xl:(top-24 shadow-none) rounded-box <md:rounded-none mb-8">
+        <input type="checkbox" />
+        <div class="collapse-title text-xl font-medium">
+          tags{#if loaded && tags?.length > 0}
+            {#key tags}
+            <span in:fly={{ y: -100, duration: 250, delay: 300 }} out:fly={{ y: 100, duration: 250 }}>
+              ={tags.toString()}
+            </span>
+            {/key}
+          {/if}
+        </div>
+        <div class="collapse-content">
+          {#each Object.entries(allTags) as [tag]}
+            <button id={tag} on:click={() => toggle(tag)} class="btn btn-sm btn-ghost mt-2 mr-2">
+              #{tag}
+            </button>
+          {/each}
+        </div>
+      </label>
+    {/if}
+  </div>
 </div>

@@ -20,13 +20,15 @@ html {
 }
 
 .urara-prose > p > a,
+.urara-prose > blockquote > p > a,
 .urara-link {
   background-size: 100% 0.2em;
   background-position: 0 88%;
-  @apply font-semibold bg-gradient-to-r from-secondary to-secondary bg-no-repeat transition-all ease-in-out !no-underline;
+  @apply font-semibold rounded-sm bg-gradient-to-r from-secondary to-secondary bg-no-repeat transition-all ease-in-out !no-underline;
 }
 
 .urara-prose > p > a:hover,
+.urara-prose > blockquote > p > a:hover,
 .urara-link:hover {
   background-size: 100% 100%;
   @apply !text-secondary-content;
@@ -153,14 +155,16 @@ dd {
   @apply transition-all ease-in-out text-base-content font-semibold underline underline-2 underline-transparent opacity-75 hover:(opacity-100 text-secondary underline-secondary);
 }
 
+/* .blur class bug */
+
+.spoiler {
+  @apply bg-base-content hover:bg-transparent focus:bg-transparent transition-all rounded-sm ease-in-out duration-250;
+}
+
 /* extend */
 
 .urara-card-shadow {
   @apply shadow-xl transition-shadow ease-in-out hover:shadow-2xl;
-}
-
-.spoiler {
-  @apply transition-colors ease-in-out bg-base-content focus:bg-transparent;
 }
 
 /* your code here */
