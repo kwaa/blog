@@ -105,7 +105,7 @@
       {/if}
     </div>
   {/if}
-  <div class="flex-none w-full max-w-screen-md <xl:mx-auto">
+  <div class="flex-none w-full max-w-screen-md mx-auto">
     {#key posts}
       <!-- {:else} is not used because there is a problem with the transition -->
       {#if posts.length == 0}
