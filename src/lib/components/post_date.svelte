@@ -18,7 +18,7 @@
       on:click={() => (currentPriority === 0 ? (currentPriority = 1) : (currentPriority = 0))}
       class="btn btn-sm bg-base-300/50 text-base-content/75 {currentPriority === 0
         ? '!hover:(btn-primary text-primary)'
-        : '!hover:(btn-secondary text-secondary)'} bg-opacity-15 border-none !hover:bg-opacity-25 !transition-all ease-in-out !duration-250">
+        : '!hover:(btn-secondary text-secondary)'} bg-opacity-15 border-none !hover:bg-opacity-25 !transition-all ease-in-out !duration-200">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -41,7 +41,7 @@
     on:click={() => (currentDate === 'date' ? (currentDate = 'lastmod') : (currentDate = 'date'))}
     class="btn btn-sm bg-base-300/50 text-base-content/75 {currentDate === 'date'
       ? '!hover:(btn-primary text-primary)'
-      : '!hover:(btn-secondary text-secondary)'} bg-opacity-15 border-none !hover:bg-opacity-25 !transition-all ease-in-out !duration-250">
+      : '!hover:(btn-secondary text-secondary)'} bg-opacity-15 border-none !hover:bg-opacity-25 !transition-all ease-in-out !duration-200">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"

@@ -10,7 +10,7 @@
   import Head from '$lib/components/head.svelte'
   import Footer from '$lib/components/footer.svelte'
   import Post from '$lib/components/index_post.svelte'
-  import Skeleton from '$lib/components/skeleton.svelte'
+  // import Skeleton from '$lib/components/skeleton.svelte'
   import { genTags } from '$lib/utils/tags'
   import { site } from '$lib/config/site'
 
@@ -54,14 +54,13 @@
 <Head />
 
 <div class="flex flex-col flex-nowrap justify-center xl:(flex-row flex-wrap)">
-  <!-- {#if loaded} -->
   <div
-    class="flex-1 mx-auto w-full max-w-screen-md order-first xl:(max-w-96 mr-0 px-8) transition-all duration-400 delay-400 ease-out transform {loaded
+    class="flex-1 w-full max-w-screen-md order-first xl:(max-w-96 delay-400 mr-0 px-8) transition-all duration-400 ease-out transform {loaded
       ? 'translate-x-0 opacity-100'
       : 'translate-x-[100vw] xl:translate-x-96 opacity-0'}">
-    <div class="flex <xl:flex-row gap-4 sticky top-24 card card-body items-right mb-8">
+    <div class="flex <xl:flex-row gap-4 sticky top-24 card card-body items-right">
       <div class="avatar flex-0 justify-end">
-        <div class="rounded-full shadow-2xl w-32 h-32">
+        <div class="rounded-full urara-card-shadow w-32 h-32">
           <img src={site.author.avatar ?? ''} alt={site.author.name} />
         </div>
         <div class="absolute rounded-full w-10 h-10 bottom-0 right-0 bg-base-100 shadow-xl text-xl text-center py-1.5">🌌</div>
@@ -69,11 +68,12 @@
       <div class="flex-1 text-right my-auto">
         <h2 class="card-title text-3xl mt-0">{site.author.name}</h2>
         <p class="opacity-75">{@html site.author.bio}</p>
+        <code class="badge badge-ghost bg-base-300 font-mono mt-2 ml-auto text-right">2E18 657D 8C32 CC47</code>
       </div>
     </div>
   </div>
   <div
-    class="flex-1 mx-auto w-full max-w-screen-md xl:(order-last max-w-96 ml-0 px-8) transition-all duration-400 delay-400 ease-out transform {loaded
+    class="flex-1 w-full max-w-screen-md xl:(order-last max-w-96 delay-400 ml-0 px-8) transition-all duration-400 ease-out transform {loaded
       ? 'translate-x-0 opacity-100'
       : '-translate-x-[100vw] xl:-translate-x-96 opacity-0'}">
     {#if allTags && Object.keys(allTags).length > 0}
@@ -86,7 +86,7 @@
         <div class="collapse-title text-xl font-medium">
           tags{#if tags?.length > 0}
             {#key tags}
-              <span in:fly={{ y: -100, duration: 250, delay: 300 }} out:fly={{ y: 100, duration: 250 }}>
+              <span in:fly={{ y: -100, duration: 200, delay: 200 }} out:fly={{ y: 100, duration: 200 }}>
                 ={tags.toString()}
               </span>
             {/key}
@@ -102,7 +102,6 @@
       </label>
     {/if}
   </div>
-  <!-- {/if} -->
   <div class="flex-none w-full max-w-screen-md">
     {#key posts}
       <!-- {:else} is not used because there is a problem with the transition -->
@@ -112,8 +111,8 @@
           <!-- <Skeleton count="5" /> -->
         {:else}
           <div
-            in:fly={{ x: 100, duration: 250, delay: 250 }}
-            out:fly={{ x: -100, duration: 250 }}
+            in:fly={{ x: 100, duration: 200, delay: 200 }}
+            out:fly={{ x: -100, duration: 200 }}
             class="p-10 bg-base-300 text-base-content text-center rounded-box mb-8">
             <div class="prose items-center">
               <h2>

@@ -18,16 +18,17 @@ const highlighter = async (code, lang) => {
 }
 
 const uraraToc = () => (tree, file) => {
+  if (!file.data.fm) file.data.fm = {}
+  if (file.data.fm?.toc === false) return
   const slugs = new Slugger()
   let toc = []
   visit(tree, 'heading', node => {
     toc.push({
-      level: node.depth,
+      depth: node.depth,
       title: toString(node),
       slug: slugs.slug(toString(node)),
     })
   })
-  if (!file.data.fm) file.data.fm = {}
   file.data.fm.toc = toc
 }
 

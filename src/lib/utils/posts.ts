@@ -4,7 +4,7 @@
  * @returns Promise<Record<number, Urara.Post[]>>
  */
 export const genPosts = async (
-  modules: Record<string, Urara.PostModule> = import.meta.globEager('/src/routes/**/index.{md,svelte.md,svx}')
+  modules: Record<string, Urara.PostModule> = import.meta.globEager<Urara.PostModule>('/src/routes/**/index.{md,svelte.md,svx}')
 ): Promise<Record<number, Urara.Post[]>> =>
   Object.fromEntries(
     (
@@ -15,16 +15,18 @@ export const genPosts = async (
             {
               slug: path,
               path: path.slice(11).replace(/\/index.md|\/index.svelte.md|\/index.svx/, ''),
-              html: module.default
-                .render()
-                .html // eslint-disable-next-line no-control-regex
-                .replace(/[\u0000-\u001F]/g, '')
-                .replace(/[\r\n]/g, '')
-                .match(/<main [^>]+>(.*?)<\/main>/gi)[0]
-                .replace(/( class=")(.*?)(")/gi, '')
-                .replace(/( style=")(.*?)(")/gi, '')
-                .replace(/(<span>)(.*?)(<\/span>)/gi, '$2')
-                .replace(/(<main>)(.*?)(<\/main>)/gi, '$2'),
+              html: import.meta.env.PROD
+                ? module.default
+                    .render()
+                    .html // eslint-disable-next-line no-control-regex
+                    .replace(/[\u0000-\u001F]/g, '')
+                    .replace(/[\r\n]/g, '')
+                    .match(/<main [^>]+>(.*?)<\/main>/gi)[0]
+                    .replace(/( class=")(.*?)(")/gi, '')
+                    .replace(/( style=")(.*?)(")/gi, '')
+                    .replace(/(<span>)(.*?)(<\/span>)/gi, '$2')
+                    .replace(/(<main>)(.*?)(<\/main>)/gi, '$2')
+                : '',
               ...module.metadata
             }
           ])

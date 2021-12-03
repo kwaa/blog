@@ -10,13 +10,13 @@
   itemscope
   itemtype="https://schema.org/BlogPosting"
   itemprop="blogPost"
-  in:fly={{ x: index % 2 ? 100 : -100, duration: 250, delay: 250 }}
-  out:fly={{ x: index % 2 ? -100 : 100, duration: 250 }}
+  in:fly={{ x: index % 2 ? 100 : -100, duration: 200, delay: 200 }}
+  out:fly={{ x: index % 2 ? -100 : 100, duration: 200 }}
   class="card bg-base-100 urara-card-shadow md:card-side <md:rounded-none group mb-8">
   {#if post.cover}
     <figure class="overflow-hidden order-first md:(order-last rounded-box) shadow-lg">
       <Cover
-        class="object-cover object-center h-full w-full transform-gpu transition-transform ease-in-out duration-500 group-hover:scale-120"
+        class="object-cover object-center h-full w-full transform-gpu transition-transform ease-in-out duration-400 group-hover:scale-120"
         cover={post.cover} />
     </figure>
   {/if}
