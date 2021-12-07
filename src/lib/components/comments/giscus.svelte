@@ -79,5 +79,5 @@
 
 <div id="giscus-container">
   <button id="giscus-loading" class="btn btn-lg flex mx-auto my-4 btn-ghost btn-circle loading" />
-  <div id="giscus" class="giscus" />
+  <div id="giscus" class="giscus -mb-4" />
 </div>

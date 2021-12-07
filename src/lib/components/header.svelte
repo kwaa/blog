@@ -15,8 +15,9 @@
   }
 
   $: pin = checkY(scrollY)
-  $: if (browser) percent =
-        Math.round((scrollY / (document.documentElement.scrollHeight - document.documentElement.clientHeight)) * 10000) / 100
+  $: if (browser)
+    percent =
+      Math.round((scrollY / (document.documentElement.scrollHeight - document.documentElement.clientHeight)) * 10000) / 100
 </script>
 
 <svelte:window bind:scrollY />
@@ -29,7 +30,7 @@
     : 'bg-neutral/50 text-neutral-content shadow-xl'}"
   class:-translate-y-32={!pin}>
   <div class="flex-1">
-    <a href="/" class="btn btn-ghost rounded-full normal-case text-lg font-bold">
+    <a href="/" class="btn btn-ghost normal-case text-lg font-bold">
       {site.title}
     </a>
   </div>

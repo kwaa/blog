@@ -30,4 +30,4 @@
   onDestroy(() => document.querySelectorAll('#disqus_config, #disqus_script').forEach(node => node.remove()))
 </script>
 
-<div id="disqus_thread" />
+<div id="disqus_thread" class="-mb-2" />

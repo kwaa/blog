@@ -10,7 +10,7 @@ const render = async (): Promise<string> => `<?xml version='1.0' encoding='utf-8
   <link href="${site.url}/atom.xml" rel="self" />
   <updated>${new Date().toJSON()}</updated>
   <author>
-    <name>${site.author.name}</name>${site.author.email ? `<email>${site.author.email}</email>` : ''}
+    <name>${site.author.name}</name>
   </author>
   <id>${site.url}/</id>
   ${Object.entries(await genPosts())

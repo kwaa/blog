@@ -12,7 +12,7 @@
   <link rel="alternate" type="application/atom+xml" href="/atom.xml" />
   <meta name="theme-color" content={site.themeColor} />
   {#if post}
-    <title>{post.title ?? post.path} | {site.title}</title>
+    <title>{post.title ? `${post.title} | ${site.title}` : site.title + ` - ${site.subtitle}` ?? '' }</title>
     <meta name="description" content={post.descr ?? site.descr} />
     {#if post.tags}<meta name="keywords" content={post.tags.toString()} />{/if}
     <link rel="canonical" href={`${site.url + post.path}`} />

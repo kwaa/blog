@@ -7,9 +7,12 @@ import { visit } from 'unist-util-visit'
 import { toString } from 'mdast-util-to-string'
 import Slugger from 'github-slugger'
 
+// import theme from './material-urara.json' assert { type: 'json' }
+
 const highlighter = async (code, lang) => {
   if (lang === 'plain') lang = 'text'
-  return `{@html \`${await shiki.getHighlighter({ theme: 'material-darker' }).then(highlighter =>
+  // return `{@html \`${await shiki.getHighlighter({ theme: shiki.toShikiTheme(theme) }).then(highlighter =>
+  return `{@html \`${await shiki.getHighlighter({ theme: 'material-default' }).then(highlighter =>
     highlighter
       .codeToHtml(code, lang)
       .replace(/[{}`]/g, c => ({ '{': '&#123;', '}': '&#125;', '`': '&#96;' }[c]))
@@ -26,7 +29,7 @@ const uraraToc = () => (tree, file) => {
     toc.push({
       depth: node.depth,
       title: toString(node),
-      slug: slugs.slug(toString(node)),
+      slug: slugs.slug(toString(node))
     })
   })
   file.data.fm.toc = toc

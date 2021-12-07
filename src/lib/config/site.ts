@@ -14,7 +14,7 @@ interface Site {
 }
 
 const bio = [
-  'じゃあ名前考えようか<br>「ゆめ」とかどう？可愛いでしょ？<br><sub>——ゆめゆめ</sub>',
+  'じゃあ名前考えようか<br>「ゆめ」とかどう？可愛いでしょ？<br><sub>——「ゆめゆめ」</sub>',
   '冬は良いけど夏は嫌<br><sub>——「夏に去りし君を想フ」</sub>',
   'ゴミ溜めで埋もれたまま、星空を眺めてるよ<br><sub>——「ぼくらはみんな意味不明」</sub>',
   '薄氷を履み回れ踊れ、醒！<br><sub>——「ムーンウォークフィーバー」</sub>',
@@ -37,8 +37,9 @@ export const site: Site = {
   author: {
     name: '藍',
     avatar: 'https://kwaa.dev/assets/maskable@512.webp',
-    email: '',
-    bio: bio[~~(Math.random()*bio.length)]
+    status: '🌌',
+    bio: bio[~~(Math.random() * bio.length)],
+    bioAfter: '<code class="badge badge-ghost bg-base-300 font-mono mt-2 ml-auto text-right">2E18 657D 8C32 CC47</code>'
   },
   url: import.meta.env.URARA_SITE_URL ?? 'https://kwaa.dev',
   themeColor: '#3D4451',

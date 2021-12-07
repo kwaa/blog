@@ -1,7 +1,7 @@
 ---
 title: 关于
 date: 2021-10-05
-lastmod: 2021-10-05
+lastmod: 2021-12-08
 priority: ['About', 0]
 ---
 
@@ -35,27 +35,27 @@ priority: ['About', 0]
 
 开始尝试函数式编程。
 
-> ces `+++` 不敢写精通 / `++` 熟练 / `+` 了解 / `-` 会用 / `*` 想学
+> `+++` 不敢写精通 / `++` 熟练 / `+` 了解 / `-` 会用 / `*` 想学
 
 #### 语言
 
-`++ JavaScript (+ TypeScript), ` `++ HTML, ` `+ CSS, ` `- Python, ` `* Elixir, ` `* Rust`
+`++ JavaScript (+ TypeScript)` `++ HTML` `+ CSS` `- Python` `* Elixir` `* Rust`
 
 #### 前端框架 / 库
 
-`++ MDUI/Bootstrap,` `+ Svelte/SvelteKit, ` `+ WindiCSS/TailwindCSS/DaisyUI, ` `-jQuery, ` `* React, ` `* RxJS`
+`++ MDUI/Bootstrap` `+ Svelte/SvelteKit` `+ WindiCSS/TailwindCSS/DaisyUI` `- jQuery` `* React` `* RxJS`
 
 #### 后端框架 / 库
 
-`- Express/Koa, ` `* Phoenix`
+`- Express/Koa` `* Phoenix`
 
 #### 环境
 
-`++ Nodejs/NPM, ` `+ Linux, ` `+ Docker, ` `+ GitHub, ` `- Git`
+`++ Nodejs/NPM` `+ Linux` `+ Docker` `+ GitHub` `- Git`
 
 #### 其他
 
-`* Electron, ` `* Flutter`
+`* Electron` `* Flutter`
 
 ### 游戏
 

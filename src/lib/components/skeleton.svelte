@@ -4,7 +4,9 @@
 </script>
 
 {#each { length: (count ??= 1) } as _, index}
-  <div out:fly={{ x: index % 2 ? -100 : 100, duration: 200 }} class="card lg:card-side bg-base-100 shadow-xl <md:rounded-none mb-8">
+  <div
+    out:fly={{ x: index % 2 ? -100 : 100, duration: 200 }}
+    class="card lg:card-side bg-base-100 shadow-xl <md:rounded-none mb-8">
     <div class="card-body">
       <div class="card-title bg-base-300 animate-pulse rounded h-9" />
       <div class="bg-base-300 animate-pulse rounded h-6 w-24 mb-2" />

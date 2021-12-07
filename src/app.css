@@ -56,19 +56,38 @@ h3,
 h4,
 h5,
 h6 {
-  @apply font-semibold mb-4 mt-6;
+  @apply font-semibold mb-4 mt-6 snap-mt-32;
 }
 
 .urara-prose > .shiki {
-  @apply mockup-code p-5 mb-4 text-base !bg-neutral overflow-x-scroll children:(!p-0 !bg-transparent);
+  @apply mockup-code !bg-neutral transition-all ease-in-out duration-400 hover:(-mx-8 rounded-none) overflow-x-scroll pl-5 pb-0.75 mb-4;
 }
 
 .urara-prose > .shiki::before {
-  @apply -ml-5;
+  @apply sticky -left-5 -ml-5;
 }
 
-.urara-prose > .shiki code {
-  @apply children:pr-5;
+.urara-prose > .shiki::-webkit-scrollbar {
+  width: 15px;
+}
+
+.urara-prose > .shiki::-webkit-scrollbar-thumb {
+  border: 5px solid transparent;
+  background-clip: padding-box;
+  border-radius: 9999px;
+  background-color: transparent;
+}
+
+.urara-prose > .shiki:hover::-webkit-scrollbar-thumb {
+  background-color: hsla(var(--nc) / 0.3);
+}
+
+.urara-prose > .shiki:hover::-webkit-scrollbar-thumb:hover {
+  background-color: hsla(var(--nc) / 0.6);
+}
+
+.urara-prose > .shiki > code {
+  @apply bg-transparent inline-block py-0 pl-0 pr-5;
 }
 
 .urara-prose > dl,
@@ -145,7 +164,7 @@ dd {
 }
 
 .tooltip:hover:before,
-.tooltip:hover:after{
+.tooltip:hover:after {
   @apply opacity-100 delay-75;
 }
 

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { dateConfig } from '$lib/config/date'
   export let post: Urara.Post = undefined
-  export let type = undefined
+  export let type: string
   if (post.priority && !Array.isArray(post.priority)) post.priority = [`${post.priority}`, post.priority]
   const config = dateConfig(type)
   const stringDate = new Date(post.date).toLocaleDateString(config.locales, config.options)

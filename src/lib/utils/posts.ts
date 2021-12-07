@@ -1,11 +1,13 @@
 /**
  * Generate Posts List
  * @param modules import.meta.globEager https://vitejs.dev/guide/features.html#glob-import
- * @returns Promise<Record<number, Urara.Post[]>>
+ * @returns Promise<{ [priority: number]: Urara.Post[] }>
  */
 export const genPosts = async (
-  modules: Record<string, Urara.PostModule> = import.meta.globEager<Urara.PostModule>('/src/routes/**/index.{md,svelte.md,svx}')
-): Promise<Record<number, Urara.Post[]>> =>
+  modules: { [path: string]: Urara.PostModule } = import.meta.globEager<Urara.PostModule>(
+    '/src/routes/**/index.{md,svelte.md,svx}'
+  )
+): Promise<{ [priority: number]: Urara.Post[] }> =>
   Object.fromEntries(
     (
       Object.entries(

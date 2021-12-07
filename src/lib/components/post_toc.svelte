@@ -3,28 +3,20 @@
 </script>
 
 <script lang="ts">
-  export let toc = undefined
-  if (Array.isArray(toc)) {
-    let [offset, result] = [-toc[0].depth, []]
-    let levels = [{ children: result }]
-    toc.forEach(o => {
-      levels[o.depth + offset].children = levels[o.depth + offset].children || []
-      levels[o.depth + offset].children.push((levels[o.depth + offset + 1] = o))
-    })
-    toc = levels[0]
-  }
-  const { title, slug, children } = toc
+  import Tree from '$lib/components/post_toc_tree.svelte'
+  export let toc: Urara.PostToc[]
 </script>
 
-{#if title}
-  <a on:click={() => document.getElementById(slug).scrollIntoView({ behavior: 'smooth' })} class="transition-all hover:text-accent" href={'javascript:void(0)'}>{title}</a>
-{/if}
-{#if children}
-  <ul>
-    {#each children as child}
-      <li class="pl-4">
-        <svelte:self toc={child} />
-      </li>
-    {/each}
-  </ul>
-{/if}
+<nav aria-label="TableOfContent" class="sticky top-16 py-8">
+  <Tree
+    count={0}
+    toc={toc.reduce(
+      (acc, heading) => {
+        let parent = acc
+        while (parent.depth + 1 < heading.depth) parent = parent.children[parent.children.length - 1]
+        if (!parent.children?.some(h => h.slug === heading.slug)) parent.children = [...(parent.children ?? []), heading]
+        return acc
+      },
+      { depth: toc[0].depth - 1, children: [] }
+    )} />
+</nav>

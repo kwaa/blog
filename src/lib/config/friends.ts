@@ -1,9 +1,10 @@
-export interface Friend extends Record<string, string> {
+export interface Friend {
   href?: string // URL
   html?: string // HTML
   title?: string // 标题
   descr?: string // 描述
   avatar?: string // 头像
+  name?: string // backwards compatibility
 }
 
 export const friends: Friend[] = [
