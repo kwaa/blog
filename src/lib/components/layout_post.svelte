@@ -8,7 +8,7 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import { browser } from '$app/env'
-  import { page } from '$app/stores'
+  // import { page } from '$app/stores'
   import Head from '$lib/components/head.svelte'
   import Footer from '$lib/components/footer.svelte'
   import Date from '$lib/components/post_date.svelte'
@@ -45,7 +45,7 @@
   onMount(() => (loaded = true))
 </script>
 
-<Head post={{ title, date, lastmod, priority, tags, cover, descr, path: $page.path }} />
+<Head post={{ title, date, lastmod, priority, tags, cover, descr }} />
 
 <div class="flex flex-col flex-nowrap justify-center xl:(flex-row flex-wrap)">
   <!-- {#if browser} -->
