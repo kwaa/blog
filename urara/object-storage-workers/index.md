@@ -8,6 +8,7 @@ categories:
 tags:
   - 对象存储
   - Oracle Cloud
+descr: 目前可以自定域名和省略 path，后续打算加入防盗链和自定 HTTP 头功能。
 ---
 
 目前可以自定域名和省略 path，后续打算加入防盗链和自定 HTTP 头功能。

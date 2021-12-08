@@ -9,7 +9,8 @@ tags:
   - DIY
   - IEM
   - 入耳式耳机
-thumbnail: https://cdn.jsdelivr.net/gh/kwaa/kwaa.github.io/source/_posts/iem-idea/2nd.jpg
+thumbnail: /iem-idea/2nd.webp
+descr: 我把所有的入耳式耳机想法都放在这里，已经实现或正在实际制作的会单独写一篇文章；在这里公开的方案无论是否制作过我都不为实际效果背书。
 ---
 
 我把所有的入耳式耳机想法都放在这里，已经实现或正在实际制作的会单独写一篇文章；在这里公开的方案无论是否制作过我都不为实际效果背书。**特别是未实践/早期设计**

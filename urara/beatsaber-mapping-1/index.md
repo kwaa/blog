@@ -9,9 +9,10 @@ tags:
   - ChroMapper
   - Unity
 cover: beatsaber-mapping-1/beatsaber.webp
+descr: 最近一直没什么可以拿来写博客的东西，直到我开始想自制 Beat Saber 谱面；这是本站第一个连载文章。
 ---
 
-最近一直没什么可以拿来写博客的东西，直到我开始想自制 Beat Saber 谱面；这是本站第一个连载文章。<!-- more -->
+最近一直没什么可以拿来写博客的东西，直到我开始想自制 Beat Saber 谱面；这是本站第一个连载文章。
 
 由于已经事先搜索，我的准备从[Mapping | BSMG Wiki](https://bsmg.wiki/mapping/)开始。
 
