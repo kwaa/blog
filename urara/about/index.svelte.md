@@ -11,7 +11,7 @@ priority: ['About', 0]
 
 ## 关于我
 
-<Profile subname="zh-N / en-2 / ja-1" bio={`地球人，目标赴日。<br>追求普世价值，讨厌威权政府和民族主义者<span class="hidden">：小粉红，战狼，五毛</span>。<br>欢迎联系，请说明来自博客以免被当作垃圾信息。`} >
+<Profile subname="zh-N / en-2 / ja-1" bio={`地球人。<br>追求普世价值，讨厌民族主义者<span class="hidden">：小粉红，战狼，五毛</span>。<br>欢迎联系，请说明来自博客以免被当作垃圾信息。`} >
 
 <div class="flex flex-col md:flex-row gap-4 mt-4">
 <a href="https://t.me/kwaabot" rel="noopener external" target="_blank" class="group flex-1 relative overflow-hidden btn btn-block border-none bg-hex-26a5e4 hover:bg-hex-0088cc">
