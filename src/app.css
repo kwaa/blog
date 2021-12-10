@@ -60,7 +60,7 @@ h6 {
 }
 
 .urara-prose > .shiki {
-  @apply mockup-code !bg-neutral transition-all ease-in-out duration-400 hover:(-mx-8 rounded-none) overflow-x-scroll pl-5 pb-0.75 mb-4;
+  @apply mockup-code !bg-neutral transition-all ease-in-out duration-400 hover:(-mx-8 rounded-none) overflow-x-scroll pl-5;
 }
 
 .urara-prose > .shiki::before {
@@ -68,7 +68,7 @@ h6 {
 }
 
 .urara-prose > .shiki::-webkit-scrollbar {
-  width: 15px;
+  height: 15px;
 }
 
 .urara-prose > .shiki::-webkit-scrollbar-thumb {
@@ -187,3 +187,9 @@ dd {
 }
 
 /* your code here */
+
+code,
+kbd {
+  font-family: 'Source Code Pro', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    ui-sans-serif, sans-serif, monospace;
+}

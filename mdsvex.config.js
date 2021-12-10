@@ -11,7 +11,6 @@ import Slugger from 'github-slugger'
 
 const highlighter = async (code, lang) => {
   if (lang === 'plain') lang = 'text'
-  // return `{@html \`${await shiki.getHighlighter({ theme: shiki.toShikiTheme(theme) }).then(highlighter =>
   return `{@html \`${await shiki.getHighlighter({ theme: 'material-default' }).then(highlighter =>
     highlighter
       .codeToHtml(code, lang)
