@@ -16,9 +16,9 @@
       {/each}
     </p>
     <p>
-      Copyright © {site.since && site.since !== new Date().toJSON().substr(0, 4)
-        ? `${site.since} - ${new Date().toJSON().substr(0, 4)}`
-        : new Date().toJSON().substr(0, 4)}
+      Copyright © {site.since && site.since !== new Date().toJSON().substring(0, 4)
+        ? `${site.since} - ${new Date().toJSON().substring(0, 4)}`
+        : new Date().toJSON().substring(0, 4)}
       {site.author.name}
       <br />
       Powered by

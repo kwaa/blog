@@ -125,9 +125,7 @@ count 记录递归次数，大于 1 时给列表加上 padding-left。
 
 {#if title}
   <a
-    on:click={() => document
-      .getElementById(slug)
-      .scrollIntoView({ behavior: 'smooth' })}
+    on:click={() => document.getElementById(slug).scrollIntoView({ behavior: 'smooth' })}
     class="transition-all hover:text-accent"
     href={'javascript:void(0)'}>
     {title}
