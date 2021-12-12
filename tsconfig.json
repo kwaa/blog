@@ -3,7 +3,7 @@
     "moduleResolution": "node",
     "module": "esnext",
     "lib": ["esnext"],
-    "target": "es2019",
+    "target": "es2020",
     "noEmit": true,
     /**
 			svelte-preprocess cannot figure out whether you have a value or a type, so tell TypeScript
@@ -24,7 +24,6 @@
     "allowJs": true,
     "checkJs": true,
     "paths": {
-      "$lib": ["src/lib"],
       "$lib/*": ["src/lib/*"]
     }
   },

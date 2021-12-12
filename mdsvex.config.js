@@ -7,8 +7,6 @@ import { visit } from 'unist-util-visit'
 import { toString } from 'mdast-util-to-string'
 import Slugger from 'github-slugger'
 
-// import theme from './material-urara.json' assert { type: 'json' }
-
 const highlighter = async (code, lang) => {
   if (lang === 'plain') lang = 'text'
   return `{@html \`${await shiki.getHighlighter({ theme: 'material-default' }).then(highlighter =>

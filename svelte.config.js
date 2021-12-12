@@ -1,8 +1,6 @@
 import preprocess from 'svelte-preprocess'
+import adapterAuto from '@sveltejs/adapter-auto'
 import adapterStatic from '@sveltejs/adapter-static'
-import adapterWorkers from '@sveltejs/adapter-cloudflare-workers'
-import adapterVercel from '@sveltejs/adapter-vercel'
-// import adapterWorkers from '@snuffydev/adapter-cloudflare-cache'
 import WindiCSS from 'vite-plugin-windicss'
 import { mdsvex } from 'mdsvex'
 import { mdsvexConfig } from './mdsvex.config.js'
@@ -14,20 +12,26 @@ const config = {
   // for more information about preprocessors
   preprocess: [mdsvex(mdsvexConfig), preprocess()],
   kit: {
-    adapter:
-      process.env.MODE === 'workers'
-        ? adapterWorkers()
-        : process.env.MODE === 'vercel'
-        ? adapterVercel()
-        : adapterStatic({
-            pages: 'build',
-            assets: 'build',
-            fallback: null
-          }),
+    adapter: Object.keys(process.env).some(key => ['VERCEL', 'CF_PAGES', 'NETLIFY'].includes(key) )
+      ? adapterAuto()
+      : adapterStatic({
+        pages: 'build',
+        assets: 'build',
+        fallback: null
+      }),
+      // process.env.MODE === 'workers'
+      //   ? adapterWorkers()
+      //   : process.env.MODE === 'vercel'
+      //   ? adapterVercel()
+      //   : adapterStatic({
+      //       pages: 'build',
+      //       assets: 'build',
+      //       fallback: null
+      //     }),
     // hydrate the <div id="svelte"> element in src/app.html
     target: 'body',
     vite: {
-      mode: process.env.MODE || 'development',
+      mode: process.env.MODE || 'production',
       envPrefix: 'URARA_',
       plugins: [
         WindiCSS({
