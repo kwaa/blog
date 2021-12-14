@@ -33,7 +33,7 @@
       })
     }
   </script>
-  <script async defer data-website-id="96c6ed7e-f2ce-483a-86df-c44a4bc86827" src="https://umami.kwaa.dev/umami.js"></script>
+  <script async defer data-website-id="96c6ed7e-f2ce-483a-86df-c44a4bc86827" data-do-not-track="true" src="https://umami.kwaa.dev/umami.js"></script>
 </svelte:head>
 
 <Icon />
