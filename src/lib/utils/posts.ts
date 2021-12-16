@@ -19,8 +19,8 @@ export const genPosts = async (
               path: path.slice(11).replace(/\/index.md|\/index.svelte.md|\/index.svx/, ''),
               html: import.meta.env.PROD
                 ? module.default
-                    .render()
-                    .html // eslint-disable-next-line no-control-regex
+                    ?.render()
+                    ?.html // eslint-disable-next-line no-control-regex
                     .replace(/[\u0000-\u001F]/g, '')
                     .replace(/[\r\n]/g, '')
                     .match(/<main [^>]+>(.*?)<\/main>/gi)[0]

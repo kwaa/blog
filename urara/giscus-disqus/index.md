@@ -1,5 +1,5 @@
 ---
-title: 评论系统迁移 => Giscus & Disqus
+title: 评论系统迁移 >> Giscus & Disqus
 date: 2021-12-01
 descr: 时隔两年，我把评论系统从 Utterances 迁移到了 Giscus 和 Disqus。
 ---
