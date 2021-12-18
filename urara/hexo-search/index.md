@@ -93,7 +93,7 @@ ES6+ 香到我直接不用 mdui.JQ 了。
 
 请求地址：
 
-```plain
+```text
 https://*.workers.dev/?siteSearch=站点&q=关键字
 ```
 

@@ -45,7 +45,7 @@ addEventListener('fetch', event => {
 不过实际上应该说是 Instant View 兼容我的博客？
 总之 Theme M 需要写的部分不是很多，下面是本站的模板文件。
 
-```plain
+```text
 ~version: "2.1"
 body:    //article
 cover: $body//div[has-class("mdui-card-media")]//img

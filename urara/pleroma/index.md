@@ -66,7 +66,7 @@ su pleroma -s $SHELL -lc "./bin/pleroma daemon" && sleep 20 && curl http://local
 
 怎么用 Caddy 我就不在这里说了。直接丢 Caddyfile：
 
-```plain
+```text
 :443, me.kwaa.moe
 tls example@sld.tld
 route {

@@ -5,22 +5,21 @@
  */
 export const genPosts = async (
   modules: { [path: string]: Urara.PostModule } = import.meta.globEager<Urara.PostModule>(
-    '/src/routes/**/index.{md,svelte.md,svx}'
+    '/src/routes/**/*.{md,svelte.md,svx}'
   )
 ): Promise<{ [priority: number]: Urara.Post[] }> =>
   Object.fromEntries(
     (
       Object.entries(
         Object.entries(modules)
-          .map(([path, module]) => [
+          .map(([_path, module]) => [
             module.metadata?.priority?.[1] ?? module.metadata?.priority ?? 500,
             {
-              slug: path,
-              path: path.slice(11).replace(/\/index.md|\/index.svelte.md|\/index.svx/, ''),
+              ...module.metadata,
               html: import.meta.env.PROD
                 ? module.default
-                    ?.render()
-                    ?.html // eslint-disable-next-line no-control-regex
+                    .render()
+                    .html // eslint-disable-next-line no-control-regex
                     .replace(/[\u0000-\u001F]/g, '')
                     .replace(/[\r\n]/g, '')
                     .match(/<main [^>]+>(.*?)<\/main>/gi)[0]
@@ -28,8 +27,7 @@ export const genPosts = async (
                     .replace(/( style=")(.*?)(")/gi, '')
                     .replace(/(<span>)(.*?)(<\/span>)/gi, '$2')
                     .replace(/(<main>)(.*?)(<\/main>)/gi, '$2')
-                : '',
-              ...module.metadata
+                : ''
             }
           ])
           .reduce((acc, [priority, post]) => ({ ...acc, [priority]: [...(acc[priority] ?? []), post] }), {})

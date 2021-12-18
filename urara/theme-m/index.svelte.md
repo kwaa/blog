@@ -91,7 +91,7 @@ You just DO WHAT THE FUCK YOU WANT TO!
 当你凝视着 bug，bug 也凝视着你
 不能信任那些 Terminal 或 Editor 用白底的人
 
-```plain
+```text
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
 ```
 
