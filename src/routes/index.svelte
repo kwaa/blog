@@ -7,11 +7,10 @@
   import { fly } from 'svelte/transition'
   import { page } from '$app/stores'
   import { browser } from '$app/env'
-  import Head from '$lib/components/head.svelte'
+  import Flex from '$lib/components/layout_flex.svelte'
   import Footer from '$lib/components/footer.svelte'
   import Post from '$lib/components/index_post.svelte'
   import Profile from '$lib/components/index_profile.svelte'
-  // import Skeleton from '$lib/components/skeleton.svelte'
   import { genTags } from '$lib/utils/tags'
 
   let allPosts: Urara.Post[]
@@ -51,19 +50,11 @@
   }
 </script>
 
-<Head />
-
-<div class="flex flex-col flex-nowrap justify-center <xl:children:mx-auto xl:(flex-row flex-wrap)">
-  <div
-    class="flex-1 w-full max-w-screen-md order-first xl:(max-w-96 delay-400 mr-0 px-8) transition-all duration-400 ease-out transform {loaded
-      ? 'translate-x-0 opacity-100'
-      : 'translate-x-[100vw] xl:translate-x-96 opacity-0'}">
+<Flex>
+  <div slot="left">
     <Profile />
   </div>
-  <div
-    class="flex-1 w-full max-w-screen-md xl:(order-last max-w-96 delay-400 ml-0 px-8) transition-all duration-400 ease-out transform {loaded
-      ? 'translate-x-0 opacity-100'
-      : '-translate-x-[100vw] xl:-translate-x-96 opacity-0'}">
+  <div slot="right">
     {#if allTags && Object.keys(allTags).length > 0}
       <label
         id="tags"
@@ -90,33 +81,28 @@
       </label>
     {/if}
   </div>
-  <div class="flex-none w-full max-w-screen-md">
+  <div slot="center">
     {#key posts}
       <!-- {:else} is not used because there is a problem with the transition -->
-      {#if posts.length == 0}
-        {#if !loaded}
-          <div class="h-screen" />
-          <!-- <Skeleton count="5" /> -->
-        {:else}
-          <div
-            in:fly={{ x: 100, duration: 200, delay: 200 }}
-            out:fly={{ x: -100, duration: 200 }}
-            class="p-10 bg-base-300 text-base-content text-center rounded-box mb-8">
-            <div class="prose items-center">
-              <h2>
-                Not found: {tags?.length != 0 ? `[${tags.map(tag => `'${tag}'`).toString()}]` : ''}
-              </h2>
-              <button on:click={() => clean()} class="btn btn-secondary">
-                <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-6 w-6 mr-2 fill-none" viewBox="0 0 24 24">
-                  <path
-                    stroke="current cap-round join-round width-2"
-                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                </svg>
-                tags = []
-              </button>
-            </div>
+      {#if posts.length === 0 && loaded}
+        <div
+          in:fly={{ x: 100, duration: 200, delay: 200 }}
+          out:fly={{ x: -100, duration: 200 }}
+          class="p-10 bg-base-300 text-base-content text-center rounded-box mb-8">
+          <div class="prose items-center">
+            <h2>
+              Not found: {tags?.length != 0 ? `[${tags.map(tag => `'${tag}'`).toString()}]` : ''}
+            </h2>
+            <button on:click={() => clean()} class="btn btn-secondary">
+              <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-6 w-6 mr-2 fill-none" viewBox="0 0 24 24">
+                <path
+                  stroke="current cap-round join-round width-2"
+                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+              </svg>
+              tags = []
+            </button>
           </div>
-        {/if}
+        </div>
       {/if}
       <main itemprop="mainEntityOfPage" itemscope itemtype="https://schema.org/Blog">
         {#each posts as post, index}
@@ -128,7 +114,9 @@
           <Post {post} {index} />
         {/each}
       </main>
-      <Footer />
     {/key}
+    {#if loaded}
+      <Footer />
+    {/if}
   </div>
-</div>
+</Flex>

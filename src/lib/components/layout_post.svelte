@@ -6,16 +6,14 @@
 </script>
 
 <script lang="ts">
-  import { onMount } from 'svelte'
   import { browser } from '$app/env'
-  // import { page } from '$app/stores'
-  import Head from '$lib/components/head.svelte'
-  import Footer from '$lib/components/footer.svelte'
+  import Flex from '$lib/components/layout_flex.svelte'
   import Date from '$lib/components/post_date.svelte'
   import Toc from '$lib/components/post_toc.svelte'
   import Cover from '$lib/components/post_cover.svelte'
   import Pagination from '$lib/components/post_pagination.svelte'
   import Comment from '$lib/components/post_comment.svelte'
+  import Footer from '$lib/components/footer.svelte'
 
   export let title = undefined
   export let date = undefined
@@ -25,10 +23,8 @@
   export let cover = undefined
   export let descr = undefined
   export let toc = undefined
-  // export let slug = undefined
   export let path = undefined
 
-  let loaded = false
   let posts = undefined
   let post = undefined
   let index = undefined
@@ -44,27 +40,16 @@
     prev = posts[index + 1]
     next = posts[index - 1]
   }
-  onMount(() => (loaded = true))
 </script>
 
-<Head post={{ title, date, lastmod, priority, tags, cover, descr, path }} />
-
-<div class="flex flex-col flex-nowrap justify-center xl:(flex-row flex-wrap)">
-  <!-- {#if browser} -->
-  <div
-    class="flex-1 w-full max-w-screen-md order-first <xl:hidden xl:(max-w-96 delay-400 mr-0 px-8) transition-all duration-400 ease-out transform {loaded
-      ? 'translate-x-0 opacity-100'
-      : 'translate-x-[100vw] xl:translate-x-96 opacity-0'}" />
-  <div
-    class="flex-1 w-full max-w-screen-md <xl:hidden xl:(order-last max-w-96 delay-400 ml-0 px-8) transition-all duration-400 ease-out transform {loaded
-      ? 'translate-x-0 opacity-100'
-      : '-translate-x-[100vw] xl:-translate-x-96 opacity-0'}">
+<Flex {title} {date} {lastmod} {priority} {tags} {cover} {descr} {path}>
+  <div slot="left" />
+  <div slot="right">
     {#if toc.length >= 1}
       <Toc {toc} />
     {/if}
   </div>
-  <!-- {/if} -->
-  <div class="flex-none w-full max-w-screen-md <xl:mx-auto">
+  <div slot="center">
     <article itemscope itemtype="https://schema.org/BlogPosting" class="card bg-base-100 <md:rounded-none shadow-xl mb-8">
       <div class="card-body">
         <h1 itemprop="name headline" class="card-title text-3xl">{title ?? post?.path}</h1>
@@ -100,4 +85,4 @@
     {/if}
     <Footer />
   </div>
-</div>
+</Flex>

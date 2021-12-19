@@ -31,7 +31,7 @@ const bio = [
 
 export const site: Site = {
   title: './kwaa.dev',
-  subtitle: 'Subtitle',
+  subtitle: '',
   lang: 'zh',
   descr: '[DATA EXPUNGED]',
   author: {

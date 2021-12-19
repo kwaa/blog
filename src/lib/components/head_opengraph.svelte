@@ -8,8 +8,8 @@
 <svelte:head>
   <meta property="og:site_name" content={site.title} />
   <meta property="og:locale" content={site.lang} />
-  {#if post}
-    <meta property="og:title" content={post.title ?? post.path} />
+  {#if post?.title}
+    <meta property="og:title" content={post.title} />
     <meta property="og:type" content="article" />
     <meta property="og:url" content={`${site.url + post.path}`} />
     <meta property="og:description" content={post.descr ?? site.descr} />
@@ -28,6 +28,12 @@
       <meta property="og:image" content={validate(icons.maskable512.src ?? icons.any512.src, { absolute: true })} />
       <meta name="twitter:card" content="summary" />
     {/if}
+  {:else if post?.path}
+    <meta property="og:title" content={post.path.slice(1) + ' - ' + site.title} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={site.url + post.path} />
+    <meta property="og:image" content={validate(icons.maskable512.src ?? icons.any512.src, { absolute: true })} />
+    <meta property="og:description" content={site.descr} />
   {:else}
     <meta property="og:title" content={site.title} />
     <meta property="og:type" content="website" />

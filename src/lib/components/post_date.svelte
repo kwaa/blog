@@ -12,7 +12,7 @@
   let currentPriority: number = 0
 </script>
 
-<div class="card-actions mt-6 gap-4 children:m-0">
+<div class="card-actions !mt-auto pt-6 gap-4 children:m-0">
   {#if post.priority}
     <button
       on:click={() => (currentPriority === 0 ? (currentPriority = 1) : (currentPriority = 0))}

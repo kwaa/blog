@@ -12,22 +12,22 @@ const config = {
   // for more information about preprocessors
   preprocess: [mdsvex(mdsvexConfig), preprocess()],
   kit: {
-    adapter: Object.keys(process.env).some(key => ['VERCEL', 'CF_PAGES', 'NETLIFY'].includes(key) )
+    adapter: Object.keys(process.env).some(key => ['VERCEL', 'CF_PAGES', 'NETLIFY'].includes(key))
       ? adapterAuto()
       : adapterStatic({
-        pages: 'build',
-        assets: 'build',
-        fallback: null
-      }),
-      // process.env.MODE === 'workers'
-      //   ? adapterWorkers()
-      //   : process.env.MODE === 'vercel'
-      //   ? adapterVercel()
-      //   : adapterStatic({
-      //       pages: 'build',
-      //       assets: 'build',
-      //       fallback: null
-      //     }),
+          pages: 'build',
+          assets: 'build',
+          fallback: null
+        }),
+    // process.env.MODE === 'workers'
+    //   ? adapterWorkers()
+    //   : process.env.MODE === 'vercel'
+    //   ? adapterVercel()
+    //   : adapterStatic({
+    //       pages: 'build',
+    //       assets: 'build',
+    //       fallback: null
+    //     }),
     // hydrate the <div id="svelte"> element in src/app.html
     target: 'body',
     vite: {

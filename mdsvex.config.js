@@ -9,12 +9,13 @@ import { visit } from 'unist-util-visit'
 import { toString } from 'mdast-util-to-string'
 import Slugger from 'github-slugger'
 
-const highlighter = async (code, lang) => `{@html \`${await shiki.getHighlighter({ theme: 'material-default' }).then(highlighter =>
-  highlighter
-    .codeToHtml(code, { lang })
-    .replace(/[{}`]/g, c => ({ '{': '&#123;', '}': '&#125;', '`': '&#96;' }[c]))
-    .replace(/\\([trn])/g, '&#92;$1')
-)}\` }`
+const highlighter = async (code, lang) =>
+  `{@html \`${await shiki.getHighlighter({ theme: 'material-default' }).then(highlighter =>
+    highlighter
+      .codeToHtml(code, { lang })
+      .replace(/[{}`]/g, c => ({ '{': '&#123;', '}': '&#125;', '`': '&#96;' }[c]))
+      .replace(/\\([trn])/g, '&#92;$1')
+  )}\` }`
 
 const uraraToc = () => (tree, file) => {
   if (!file.data.fm) file.data.fm = {}
@@ -31,28 +32,32 @@ const uraraToc = () => (tree, file) => {
   file.data.fm.toc = toc
 }
 
-const uraraFm = (toc = true, date = true) => (tree, { data, filename }) => {
-  // let { data, filename } = file
-  const filepath = filename.split('/src/routes')[1]
-  let { dir, name } = path.parse(filepath)
-  if (!data.fm) data.fm = {}
-  data.fm.slug = filepath
-  data.fm.path = path.join(dir, `/${name}`.replace('\/index', '').replace('\.svelte', ''))
-  if (toc === true && data.fm?.toc !== false) { // UraraToc
-    let [slugs, toc] = [new Slugger(), []]
-    visit(tree, 'heading', node => {
-      toc.push({
-        depth: node.depth,
-        title: toString(node),
-        slug: slugs.slug(toString(node))
+const uraraFm =
+  (toc = true, date = true) =>
+  (tree, { data, filename }) => {
+    // let { data, filename } = file
+    const filepath = filename.split('/src/routes')[1]
+    let { dir, name } = path.parse(filepath)
+    if (!data.fm) data.fm = {}
+    data.fm.slug = filepath
+    data.fm.path = path.join(dir, `/${name}`.replace('/index', '').replace('.svelte', ''))
+    if (toc === true && data.fm?.toc !== false) {
+      // UraraToc
+      let [slugs, toc] = [new Slugger(), []]
+      visit(tree, 'heading', node => {
+        toc.push({
+          depth: node.depth,
+          title: toString(node),
+          slug: slugs.slug(toString(node))
+        })
       })
-    })
-    data.fm.toc = toc
+      data.fm.toc = toc
+    }
+    if (date === true) {
+      // UraraDate
+      const stats = fs.stat(filename)
+    }
   }
-  if (date === true) { // UraraDate
-    const stats = fs.stat(filename)
-  }
-}
 
 const uraraSpoiler = () => tree => {
   visit(tree, 'paragraph', node => {
@@ -74,6 +79,8 @@ export const mdsvexConfig = {
     dashes: 'oldschool'
   },
   layout: {
+    'flex': './src/lib/components/layout_flex.svelte',
+    'card': './src/lib/components/layout_card.svelte',
     _: './src/lib/components/layout_post.svelte'
   },
   highlight: {
