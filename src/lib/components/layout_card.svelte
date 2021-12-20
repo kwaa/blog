@@ -19,10 +19,10 @@
 </script>
 
 <Flex {title} {date} {lastmod} {priority} {tags} {cover} {descr} {path}>
-  <div slot="left">
+  <div slot="left" class="h-full">
     <slot name="left" />
   </div>
-  <div slot="right">
+  <div slot="right" class="h-full">
     <slot name="right" />
   </div>
   <div slot="center">
