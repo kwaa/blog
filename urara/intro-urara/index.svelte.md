@@ -7,7 +7,7 @@ categories:
 tags:
   - Urara
   - SvelteKit
-  - MDSveX
+  - MDsveX
   - WindiCSS
 ---
 
@@ -28,7 +28,7 @@ tags:
 实际上是以我喜欢的一个 ADV 游戏角色命名的，但我不说是哪个角色。
 
 > 也可以写作 SvelteKit/Urara。
-> 一层层套下来的话实际上是 SvelteKit/MDSveX/Urara，但这样写不好看
+> 一层层套下来的话实际上是 SvelteKit/MDsveX/Urara，但这样写不好看
 
 ## The Zen of Urara / Urara 之道
 
@@ -170,7 +170,7 @@ Dribbble 和 Behance 也没少逛，但我就是很难写好看；于是想起�
 
 - SvelteKit + Vite + TypeScript
   - 为什么是 SvelteKit? 年初构思的时候我是打算用 Sapper 的，然后没多久 SvelteKit 就出来了。至于 TypeScript：既然能用就没理由不用。
-- MDSveX
+- MDsveX
   - Markdown 预处理器，既然用 Svelte 那也就没什么别的选择。
 - WindiCSS + DaisyUI
   - WindiCSS 有更多功能，但配上 SvelteKit 会有些小 bug。（一部分也不算小了... 之前有一次根本无法运行）

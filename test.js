@@ -4,7 +4,7 @@ import * as path from 'path'
 // import chalk from 'chalk'
 
 const config = {
-  extensions: ['svelte', 'svx', 'md', 'js', 'ts'],
+  extensions: ['svelte', 'md', 'js', 'ts'],
   rename: ['404'],
   catch: ['ENOENT', 'EEXIST'],
   parse: {

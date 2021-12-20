@@ -1,8 +1,7 @@
 /// <reference types="@sveltejs/kit" />
 
 interface ImportMetaEnv {
-  URARA_SITE_URL?: string
-  URARA_IMG_PREFIX?: string
+  [key: string]: string | boolean
 }
 
 interface ImportMeta {

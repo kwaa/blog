@@ -41,7 +41,7 @@ export const site: Site = {
     bio: bio[~~(Math.random() * bio.length)],
     bioAfter: '<code class="badge badge-ghost bg-base-300 font-mono mt-2 ml-auto text-right">2E18 657D 8C32 CC47</code>'
   },
-  url: import.meta.env.URARA_SITE_URL ?? 'https://kwaa.dev',
+  url: import.meta.env.URARA_SITE_URL as string ?? 'https://kwaa.dev',
   themeColor: '#3D4451',
   since: '2019'
 }

@@ -74,13 +74,13 @@ const uraraSpoiler = () => tree => {
 
 /** @type {Parameters<typeof import("mdsvex").mdsvex>[0]} */
 export const mdsvexConfig = {
-  extensions: ['.svelte.md', '.md', '.svx'],
+  extensions: ['.svelte.md', '.md'],
   smartypants: {
     dashes: 'oldschool'
   },
   layout: {
-    'flex': './src/lib/components/layout_flex.svelte',
-    'card': './src/lib/components/layout_card.svelte',
+    _flex: './src/lib/components/layout_flex.svelte',
+    _card: './src/lib/components/layout_card.svelte',
     _: './src/lib/components/layout_post.svelte'
   },
   highlight: {

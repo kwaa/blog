@@ -96,7 +96,7 @@ PC & VR 玩家，设备 Valve Index。
 依赖项：
 
 - 前端框架：Svelte / SvelteKit
-- Markdown 预处理器：MDSveX / Remark / Rehype
+- Markdown 预处理器：MDsveX / Remark / Rehype
 - CSS 框架 / 组件库：WindiCSS + DaisyUI
 - 代码高亮：Shiki
 
@@ -108,7 +108,7 @@ PC & VR 玩家，设备 Valve Index。
 - 2018-03: 第四个博客，使用 Hexo - hexo-theme-material | destroyed - 已转移部分文章
 - 2019-10: 第五个博客，使用 Hexo - 写了 hexo-theme-m | blog.917.moe
 - 2020-08: 重写 hexo-theme-m | kwaa.dev
-- 2021-10: 博客重构，在 SvelteKit/MDSveX 的基础上写了 Urara | kwaa.dev
+- 2021-10: 博客重构，在 SvelteKit/MDsveX 的基础上写了 Urara | kwaa.dev
 
 还有什么要做的吗？
 

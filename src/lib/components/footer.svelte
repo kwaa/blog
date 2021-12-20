@@ -5,7 +5,7 @@
   export { className as class }
 </script>
 
-<footer id="footer" class="{className} footer footer-center bg-base-300 text-base-content rounded-box p-8 <md:rounded-none">
+<footer id="footer" class="{className ?? ''} footer footer-center bg-base-300 text-base-content shadow-inner rounded-box <md:rounded-none p-8">
   <div class="prose">
     <p>
       {#each Object.entries(footerConfig.nav) as [href, name], i}
@@ -24,7 +24,7 @@
       Powered by
       <a rel="noopener external" target="_blank" href="https://github.com/sveltejs/kit">SvelteKit</a>
       /
-      <a rel="noopener external" target="_blank" href="https://github.com/pngwn/mdsvex">MDSveX</a>
+      <a rel="noopener external" target="_blank" href="https://github.com/pngwn/mdsvex">MDsveX</a>
       /
       <a rel="noopener external" target="_blank" class="urara-link" href="https://github.com/importantimport/urara">Urara</a>
     </p>

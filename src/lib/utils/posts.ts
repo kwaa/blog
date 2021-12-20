@@ -4,7 +4,7 @@
  * @returns Promise<{ [priority: number]: Urara.Post[] }>
  */
 export const genPosts = async (
-  modules: { [path: string]: Urara.PostModule } = import.meta.globEager<Urara.PostModule>('/src/routes/**/*.{md,svelte.md,svx}')
+  modules: { [path: string]: Urara.PostModule } = import.meta.globEager<Urara.PostModule>('/src/routes/**/*.{md,svelte.md}')
 ): Promise<{ [priority: number]: Urara.Post[] }> =>
   Object.fromEntries(
     (

@@ -5,7 +5,7 @@ updated: 2021-12-05
 tags:
   - Urara
   - SvelteKit
-  - MDSveX
+  - MDsveX
 descr: 我觉得这部分内容完全可以专门开一篇文章，所以它在这里。
 ---
 
