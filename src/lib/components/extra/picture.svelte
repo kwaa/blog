@@ -14,5 +14,5 @@
       <source srcset={src.replace(/\.[^/.]+$/, `.${ext}`)} {type} />
     {/each}
   {/if}
-  <img itemprop="image" class={className} {src} {alt} loading="lazy" />
+  <img itemprop="image" class={className} {src} {alt} loading="lazy" decoding="async" />
 </picture>
