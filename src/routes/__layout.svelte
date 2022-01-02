@@ -2,7 +2,7 @@
   export const prerender = true
   export const load = async ({ page, fetch }) => {
     const res = await fetch('/posts.json')
-    return res.ok ? { props: { path: page.path, posts: await res.json() } } : { props: { path: page.path } }
+    return res.ok ? { props: { path: page.pathname, posts: await res.json() } } : { props: { path: page.pathname } }
   }
 </script>
 

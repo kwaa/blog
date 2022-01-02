@@ -108,14 +108,10 @@ const build = async () => {
 }
 
 const clean = async () => {
-  // cleanFile('urara')
+  cleanFile('urara')
   // cleanDir('src/routes')
   // cleanDir('static')
-  await cleanFile('urara')
-    .then(cleanDir('src/routes'))
-    .then(cleanDir('static'))
 }
-// for await (const f of cleanFile('urara'))
 
 const rename = async () => {
   fs.readdir('build', { withFileTypes: true }).then(files =>
