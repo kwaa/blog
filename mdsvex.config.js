@@ -2,9 +2,8 @@ import shiki from 'shiki'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeExternalLinks from 'rehype-external-links'
-
-import { promises as fs } from 'fs'
-import path from 'path'
+// import { promises as fs } from 'fs'
+import { parse, join } from 'path'
 import { visit } from 'unist-util-visit'
 import { toString } from 'mdast-util-to-string'
 import Slugger from 'github-slugger'
@@ -17,32 +16,15 @@ const highlighter = async (code, lang) =>
       .replace(/\\([trn])/g, '&#92;$1')
   )}\` }`
 
-const uraraToc = () => (tree, file) => {
-  if (!file.data.fm) file.data.fm = {}
-  if (file.data.fm?.toc === false) return
-  const slugs = new Slugger()
-  let toc = []
-  visit(tree, 'heading', node => {
-    toc.push({
-      depth: node.depth,
-      title: toString(node),
-      slug: slugs.slug(toString(node))
-    })
-  })
-  file.data.fm.toc = toc
-}
-
-const uraraFm =
-  (toc = true, date = true) =>
+const remarkUraraFm =
+  () =>
   (tree, { data, filename }) => {
-    // let { data, filename } = file
     const filepath = filename.split('/src/routes')[1]
-    let { dir, name } = path.parse(filepath)
+    let { dir, name } = parse(filepath)
     if (!data.fm) data.fm = {}
     data.fm.slug = filepath
-    data.fm.path = path.join(dir, `/${name}`.replace('/index', '').replace('.svelte', ''))
-    if (toc === true && data.fm?.toc !== false) {
-      // UraraToc
+    data.fm.path = join(dir, `/${name}`.replace('/index', '').replace('.svelte', ''))
+    if (data.fm?.toc !== false) {
       let [slugs, toc] = [new Slugger(), []]
       visit(tree, 'heading', node => {
         toc.push({
@@ -53,13 +35,9 @@ const uraraFm =
       })
       data.fm.toc = toc
     }
-    if (date === true) {
-      // UraraDate
-      const stats = fs.stat(filename)
-    }
   }
 
-const uraraSpoiler = () => tree => {
+const remarkUraraSpoiler = () => tree => {
   visit(tree, 'paragraph', node => {
     const { children } = node
     const text = children[0].value
@@ -86,7 +64,7 @@ export const mdsvexConfig = {
   highlight: {
     highlighter
   },
-  remarkPlugins: [uraraFm, uraraSpoiler],
+  remarkPlugins: [remarkUraraFm, remarkUraraSpoiler],
   rehypePlugins: [
     rehypeSlug,
     [rehypeAutolinkHeadings, { behavior: 'wrap' }],

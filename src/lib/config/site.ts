@@ -28,7 +28,7 @@ const bio = [
   '透明な君は<br>僕を指差してた―。<br><sub>——「少女レイ」</sub>',
   '明日も僕は夢うつつ<br>このまま僕は消えていいのに<br><sub>——「自傷無色」</sub>',
   'それはさあ... それはさあ、それがさあ！<br>逃げ切ったつもりなの？<br><sub>——「脳内革命ガール」</sub>',
-  '声が無くたって、届かなくたって、今もずっと叫んでいる。<br>聞こえますか？私は生きている。<br><sub>——「M\'AIDER遭難ガール」</sub>',
+  "声が無くたって、届かなくたって、今もずっと叫んでいる。<br>聞こえますか？私は生きている。<br><sub>——「M'AIDER遭難ガール」</sub>"
 ]
 
 export const site: Site = {
@@ -43,7 +43,7 @@ export const site: Site = {
     bio: bio[~~(Math.random() * bio.length)],
     bioAfter: '<code class="badge badge-ghost bg-base-300 font-mono mt-2 ml-auto text-right">2E18 657D 8C32 CC47</code>'
   },
-  url: import.meta.env.URARA_SITE_URL as string ?? 'https://kwaa.dev',
+  url: (import.meta.env.URARA_SITE_URL as string) ?? 'https://kwaa.dev',
   themeColor: '#3D4451',
   since: '2019'
 }

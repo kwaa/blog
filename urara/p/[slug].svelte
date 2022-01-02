@@ -1,8 +1,8 @@
 <script lang="ts" context="module">
-  export const load = ({ page }) => {
+  export const load = ({ params }) => {
     return {
       status: 301,
-      redirect: `/${page.params.slug}`
+      redirect: `/${params.slug}`
     }
   }
 </script>

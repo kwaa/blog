@@ -5,7 +5,9 @@
   export { className as class }
 </script>
 
-<footer id="footer" class="{className ?? ''} footer footer-center bg-base-300 text-base-content shadow-inner rounded-box <md:rounded-none p-8">
+<footer
+  id="footer"
+  class="footer footer-center bg-base-300 text-base-content shadow-inner rounded-box <md:rounded-none p-8 {className ?? ''}">
   <div class="prose">
     <p>
       {#each Object.entries(footerConfig.nav) as [href, name], i}

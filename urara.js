@@ -19,18 +19,18 @@ const check = ext => (config.extensions.includes(ext) ? 'src/routes' : 'static')
 const log = (color, msg, dest) =>
   console.log(
     chalk.dim(new Date().toLocaleTimeString() + ' ') +
-      chalk.magentaBright.bold('[urara] ') +
-      chalk[color](msg + ' ') +
-      chalk.dim(dest ?? '')
+    chalk.magentaBright.bold('[urara] ') +
+    chalk[color](msg + ' ') +
+    chalk.dim(dest ?? '')
   )
 
 const error = err => {
   if (config.catch.includes(err.code)) {
     console.log(
       chalk.dim(new Date().toLocaleTimeString() + ' ') +
-        chalk.redBright.bold('[urara] ') +
-        chalk.red('error ') +
-        chalk.dim(err.message)
+      chalk.redBright.bold('[urara] ') +
+      chalk.red('error ') +
+      chalk.dim(err.message)
     )
   } else {
     throw err
@@ -53,8 +53,8 @@ const cpDir = src =>
       file.isDirectory()
         ? mkDir(dest).then(cpDir(dest))
         : file.name.startsWith('.')
-        ? log('cyan', 'ignore file', dest)
-        : cpFile(dest)
+          ? log('cyan', 'ignore file', dest)
+          : cpFile(dest)
     })
   )
 
@@ -82,22 +82,40 @@ const rmDir = src =>
     .then(log('yellow', 'remove dir', path.join('src/routes', src.slice(6))))
     .catch(error)
 
+const cleanFile = src =>
+    fs.readdir(src, { withFileTypes: true }).then(files => {
+      files.forEach(file => {
+        const dest = path.join(src, file.name)
+        file.isDirectory()
+          ? cleanFile(dest)
+          : file.name.startsWith('.')
+            ? log('cyan', 'ignore file', dest)
+            : rmFile(dest)
+      })
+  })
+
+const cleanDir = src =>
+  fs.readdir(src, { withFileTypes: true }).then(files =>
+    files.length === 0
+      ? rmDir(src)
+      : files.forEach(file => {
+        if (file.isDirectory()) cleanDir(path.join(src, file.name))
+      }))
+
 const build = async () => {
   fs.mkdir('static').then(log('green', 'make dir', 'static')).catch(error)
-  cpDir('urara').catch(error)
+  cpDir('urara')
 }
 
 const clean = async () => {
-  fs.rm('static', { recursive: true }).then(log('yellow', 'remove dir', 'static')).catch(error)
-  fs.readdir('src/routes', { withFileTypes: true }).then(files =>
-    files.forEach(file => {
-      if (file.isDirectory()) {
-        const dest = path.join('src/routes', file.name)
-        fs.rm(dest, { recursive: true }).then(log('yellow', 'remove dir', dest)).catch(error)
-      }
-    })
-  )
+  // cleanFile('urara')
+  // cleanDir('src/routes')
+  // cleanDir('static')
+  await cleanFile('urara')
+    .then(cleanDir('src/routes'))
+    .then(cleanDir('static'))
 }
+// for await (const f of cleanFile('urara'))
 
 const rename = async () => {
   fs.readdir('build', { withFileTypes: true }).then(files =>

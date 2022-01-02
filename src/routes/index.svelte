@@ -7,11 +7,11 @@
   import { fly } from 'svelte/transition'
   import { page } from '$app/stores'
   import { browser } from '$app/env'
+  import { genTags } from '$lib/utils/tags'
   import Flex from '$lib/components/layout_flex.svelte'
   import Footer from '$lib/components/footer.svelte'
   import Post from '$lib/components/index_post.svelte'
   import Profile from '$lib/components/index_profile.svelte'
-  import { genTags } from '$lib/utils/tags'
 
   let allPosts: Urara.Post[]
   let allTags: { [tag: string]: number }
@@ -26,12 +26,12 @@
   }
 
   $: if (loaded && tags) posts = !tags ? allPosts : allPosts.filter(post => tags.every(tag => post.tags?.includes(tag)))
-
-  $: if (posts) years = [new Date().toJSON().substring(0, 4)]
+  $: if (posts)
+    years = [posts[0]?.date ? new Date(posts[0].date).toJSON().substring(0, 4) : new Date().toJSON().substring(0, 4)]
 
   onMount(() => {
     if (browser) {
-      tags = $page.query.get('tags') ? $page.query.get('tags').split(',') : []
+      tags = $page.url.searchParams.get('tags') ? $page.url.searchParams.get('tags').split(',') : []
       tags?.forEach(tag => document.getElementById(tag).classList.toggle('!btn-secondary'))
       loaded = true
     }
@@ -50,7 +50,7 @@
   }
 </script>
 
-<Flex>
+<Flex hidden={false}>
   <div slot="left">
     <Profile />
   </div>
@@ -84,39 +84,52 @@
   <div slot="center">
     {#key posts}
       <!-- {:else} is not used because there is a problem with the transition -->
-      {#if posts.length === 0 && loaded}
-        <div
-          in:fly={{ x: 100, duration: 200, delay: 200 }}
-          out:fly={{ x: -100, duration: 200 }}
-          class="p-10 bg-base-300 text-base-content text-center rounded-box mb-8">
-          <div class="prose items-center">
-            <h2>
-              Not found: {tags?.length != 0 ? `[${tags.map(tag => `'${tag}'`).toString()}]` : ''}
-            </h2>
-            <button on:click={() => clean()} class="btn btn-secondary">
-              <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-6 w-6 mr-2 fill-none" viewBox="0 0 24 24">
-                <path
-                  stroke="current cap-round join-round width-2"
-                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-              </svg>
-              tags = []
-            </button>
+      {#if posts.length === 0}
+        {#if loaded}
+          <div
+            in:fly={{ x: 100, duration: 200, delay: 400 }}
+            out:fly={{ x: -100, duration: 200 }}
+            class="p-10 bg-base-300 text-base-content text-center rounded-box mb-8">
+            <div class="prose items-center">
+              <h2>
+                Not found: {tags?.length != 0 ? `[${tags.map(tag => `'${tag}'`).toString()}]` : ''}
+              </h2>
+              <button on:click={() => clean()} class="btn btn-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-6 w-6 mr-2 fill-none" viewBox="0 0 24 24">
+                  <path
+                    stroke="current cap-round join-round width-2"
+                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                </svg>
+                tags = []
+              </button>
+            </div>
           </div>
-        </div>
+          <!-- {:else}
+          <div class="h-screen" /> -->
+        {/if}
       {/if}
       <main itemprop="mainEntityOfPage" itemscope itemtype="https://schema.org/Blog">
         {#each posts as post, index}
-          {#if post.date && !post.priority && !years.includes(post.date.substring(0, 4))}
-            <div class="divider mb-8">
-              {years.push(post.date.substring(0, 4)) && post.date.substring(0, 4)}
-            </div>
-          {/if}
-          <Post {post} {index} />
+          <div
+            in:fly={{ x: index % 2 ? 100 : -100, duration: 200, delay: 400 }}
+            out:fly={{ x: index % 2 ? -100 : 100, duration: 200 }}>
+            {#if post.date && !post.priority && !years.includes(post.date.substring(0, 4))}
+              <div class="divider mb-8">
+                {years.push(post.date.substring(0, 4)) && post.date.substring(0, 4)}
+              </div>
+            {/if}
+            <Post {post} />
+          </div>
         {/each}
       </main>
+      {#if loaded}
+        <div
+          in:fly={{ x: posts.length % 2 ? 100 : -100, duration: 200, delay: 400 }}
+          out:fly={{ x: posts.length % 2 ? -100 : 100, duration: 200 }}>
+          <Footer />
+        </div>
+      {/if}
     {/key}
-    {#if loaded}
-      <Footer />
-    {/if}
+    <!-- {/if} -->
   </div>
 </Flex>
