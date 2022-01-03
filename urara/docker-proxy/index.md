@@ -108,13 +108,13 @@ route {
 > 如果不打算使用 Hysteria 并想为 NaiveProxy 启用 HTTP/3，则在 `-p 443:443 \` 下新增一行：`-p 443:443/udp \`
 
 ```bash
-docker run -d \
---name caddy \
--p 80:80 \
--p 443:443 \
--v /etc/caddy/:/etc/caddy/ \
--v /root/.local/share/caddy:/root/.local/share/caddy \
---restart unless-stopped \
+docker run -d \\
+--name caddy \\
+-p 80:80 \\
+-p 443:443 \\
+-v /etc/caddy/:/etc/caddy/ \\
+-v /root/.local/share/caddy:/root/.local/share/caddy \\
+--restart unless-stopped \\
 kwaabot/caddy
 ```
 
@@ -151,12 +151,12 @@ caddy 之前已经映射了文件夹，所以只需要使用文件夹内的证�
 > 如果设置了 acme_ca，则需要修改证书目录为签发者 URL。
 
 ```bash
-docker run -dt \
---name hysteria \
--p 443:443/udp \
--v /etc/hysteria.json:/etc/hysteria.json \
--v /root/.local/share/caddy/certificates/acme-v02.api.letsencrypt.org-directory/:/etc/hysteria/ \
---restart unless-stopped \
+docker run -dt \\
+--name hysteria \\
+-p 443:443/udp \\
+-v /etc/hysteria.json:/etc/hysteria.json \\
+-v /root/.local/share/caddy/certificates/acme-v02.api.letsencrypt.org-directory/:/etc/hysteria/ \\
+--restart unless-stopped \\
 tobyxdd/hysteria -config /etc/hysteria.json server
 ```
 
@@ -173,11 +173,11 @@ tobyxdd/hysteria -config /etc/hysteria.json server
 说实话这个用不用无所谓，但我还是用了。
 
 ```bash
-docker run -d \
---name watchtower \
--v /var/run/docker.sock:/var/run/docker.sock \
---restart unless-stopped \
-containrrr/watchtower \
+docker run -dt \\
+--name watchtower \\
+-v /var/run/docker.sock:/var/run/docker.sock \\
+--restart unless-stopped \\
+containrrr/watchtower \\
 --cleanup -i 86400
 ```
 
