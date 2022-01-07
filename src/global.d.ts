@@ -1,4 +1,5 @@
 /// <reference types="@sveltejs/kit" />
+/// <reference types="unplugin-icons/types/svelte" />
 
 interface ImportMetaEnv {
   [key: string]: string | boolean
