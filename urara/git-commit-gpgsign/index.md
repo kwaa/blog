@@ -1,6 +1,7 @@
 ---
 title: '使用 GPG 为 Git commit 签名'
 date: 2021-11-23
+lastmod: 2022-01-12
 categories:
   - 笔记
 tags:
@@ -175,3 +176,5 @@ git config --global commit.gpgsign true # 全局签名
 完结！由于内置 git.exe 的目录包含版本号，所以理论上遇到软件更新会需要重新设置。
 
 在我写完这篇文章的时候还没遇到更新，不过应该也快了——2.9.5 发布了 beta 版本。
+
+> 更新：不需要重新设置。
