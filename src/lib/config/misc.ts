@@ -4,7 +4,7 @@ interface Feed {
 }
 
 export const feed: Feed = {
-  limit: 5,
+  limit: 0,
   hub: 'https://pubsubhubbub.appspot.com'
 }
 
