@@ -1,24 +1,22 @@
 <script lang="ts">
   import { site } from '$lib/config/site'
+  import { head } from '$lib/config/head'
+  import { mode } from '$lib/config/misc'
   import Icon from '$lib/components/head_icon.svelte'
   import OpenGraph from '$lib/components/head_opengraph.svelte'
+  import RelMeAuth from '$lib/components/head_relmeauth.svelte'
   export let post: Urara.Post = undefined
-  export let path: string = undefined
 </script>
 
 <svelte:head>
   <meta name="theme-color" content={site.themeColor} />
-  {#if post?.title}
-    <title>{post.title} | {site.title}</title>
+  {#if post}
+    <title>{post.title ? `${post.title} | ${site.title}` : site.title + ` - ${site.subtitle}` ?? ''}</title>
     <link rel="canonical" href={site.url + post.path} />
     <meta name="description" content={post.descr ?? site.descr} />
     {#if post.tags}<meta name="keywords" content={post.tags.toString()} />{/if}
-  {:else if post?.path}
-    <title>{post.path.slice(1)} - {site.title}</title>
-    <meta name="description" content={site.descr} />
-    <link rel="canonical" href={site.url + path} />
   {:else}
-    <title>{site.subtitle ? site.title + ' - ' + site.subtitle : site.title}</title>
+    <title>{site.title}</title>
     <meta name="description" content={site.descr} />
     <link rel="canonical" href={site.url} />
   {/if}
@@ -34,13 +32,10 @@
       })
     }
   </script>
-  <script
-    async
-    defer
-    data-website-id="96c6ed7e-f2ce-483a-86df-c44a4bc86827"
-    data-do-not-track="true"
-    src="https://umami.kwaa.dev/umami.js"></script>
+  <Icon />
+  <OpenGraph {post} />
+  <RelMeAuth />
+  {#each [...head.custom.common, ...(mode === 'prod' ? head.custom.prod : head.custom.dev)] as tag}
+    {@html tag}
+  {/each}
 </svelte:head>
-
-<Icon />
-<OpenGraph {post} />
