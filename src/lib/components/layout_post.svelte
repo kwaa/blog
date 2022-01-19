@@ -50,14 +50,14 @@
     {/if}
   </div>
   <div slot="center">
-    <article itemscope itemtype="https://schema.org/BlogPosting" class="card bg-base-100 <md:rounded-none shadow-xl mb-8">
+    <article itemscope itemtype="https://schema.org/BlogPosting" class="card bg-base-100 <md:rounded-none shadow-xl mb-8 h-entry">
       <div class="card-body">
-        <h1 itemprop="name headline" class="card-title text-3xl">{title ?? post?.path}</h1>
+        <h1 itemprop="name headline" class="card-title text-3xl p-name">{title ?? post?.path}</h1>
         <Date post={{ date, lastmod, priority }} type="layout" />
         {#if !cover}
           <div class="divider my-6" />
         {/if}
-        <main itemprop="articleBody" class="urara-prose prose">
+        <main itemprop="articleBody" class="urara-prose prose e-content">
           {#if cover}
             <Cover {cover} figureClass="-mx-8 !w-auto my-8" imgClass="w-full" />
           {/if}
