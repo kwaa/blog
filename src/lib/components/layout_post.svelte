@@ -52,7 +52,10 @@
   </div>
   <div slot="center">
     <article itemscope itemtype="https://schema.org/BlogPosting" class="card bg-base-100 <md:rounded-none shadow-xl mb-8 h-entry">
-      <a rel="author" class="hidden p-author p-name u-url h-card" href={site.url}>{site.author.name}</a>
+      <div class="hidden h-card p-author">
+        <img class="u-photo" src={site.author.avatar} alt={site.author.name} decoding="async" loading="lazy" />
+        <a rel="author" class="p-name u-url" href={site.url}>{site.author.name}</a>
+      </div>
       <a class="hidden u-url u-uid" href={site.url + path}>{site.url + path}</a>
       <div class="card-body">
         <h1 itemprop="name headline" class="card-title text-3xl p-name">{title ?? path}</h1>
