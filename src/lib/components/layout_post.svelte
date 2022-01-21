@@ -7,6 +7,7 @@
 
 <script lang="ts">
   import { browser } from '$app/env'
+  import { site } from '$lib/config/site'
   import Flex from '$lib/components/layout_flex.svelte'
   import Date from '$lib/components/post_date.svelte'
   import Toc from '$lib/components/post_toc.svelte'
@@ -51,6 +52,8 @@
   </div>
   <div slot="center">
     <article itemscope itemtype="https://schema.org/BlogPosting" class="card bg-base-100 <md:rounded-none shadow-xl mb-8 h-entry">
+      <a rel="author" class="hidden p-author p-name u-url h-card" href={site.url}>{site.author.name}</a>
+      <a class="hidden u-url u-uid" href={site.url + post.path}>{site.url + post.path}</a>
       <div class="card-body">
         <h1 itemprop="name headline" class="card-title text-3xl p-name">{title ?? post?.path}</h1>
         <Date post={{ date, lastmod, priority }} type="layout" />
@@ -67,7 +70,7 @@
           <div class="divider my-0" />
           <div>
             {#each tags as tag}
-              <a href="/?tags={tag}" class="btn btn-sm btn-ghost normal-case mt-2 mr-2">
+              <a href="/?tags={tag}" class="btn btn-sm btn-ghost normal-case mt-2 mr-2 p-category">
                 #{tag}
               </a>
             {/each}

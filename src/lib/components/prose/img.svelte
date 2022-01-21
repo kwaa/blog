@@ -8,4 +8,4 @@
 
 <!-- <img {src} {alt} class="{className ?? rounded-box}" loading="lazy" /> -->
 
-<Picture {src} {alt} class="rounded-lg my-2" />
+<Picture {src} {alt} class="u-photo rounded-lg my-2" />

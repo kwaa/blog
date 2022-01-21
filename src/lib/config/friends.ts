@@ -5,6 +5,7 @@ export interface Friend {
   descr?: string // 描述
   avatar?: string // 头像
   name?: string // backwards compatibility
+  rel?: string // XFN, contact / acquaintance / friend
 }
 
 export const friends: Friend[] = [

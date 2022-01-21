@@ -3,6 +3,7 @@
 </script>
 
 <div class="flex <xl:flex-row gap-4 sticky top-24 card card-body items-right h-card">
+  <a href={site.url} class="hidden u-url" rel="me">{site.title}</a>
   {#if site.author.avatar}
     <div class="flex-0 avatar w-32 h-32 ml-auto my-auto justify-end">
       <div class="rounded-full urara-card-shadow w-32 h-32">
