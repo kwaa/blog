@@ -53,9 +53,9 @@
   <div slot="center">
     <article itemscope itemtype="https://schema.org/BlogPosting" class="card bg-base-100 <md:rounded-none shadow-xl mb-8 h-entry">
       <a rel="author" class="hidden p-author p-name u-url h-card" href={site.url}>{site.author.name}</a>
-      <a class="hidden u-url u-uid" href={site.url + post.path}>{site.url + post.path}</a>
+      <a class="hidden u-url u-uid" href={site.url + path}>{site.url + path}</a>
       <div class="card-body">
-        <h1 itemprop="name headline" class="card-title text-3xl p-name">{title ?? post?.path}</h1>
+        <h1 itemprop="name headline" class="card-title text-3xl p-name">{title ?? path}</h1>
         <Date post={{ date, lastmod, priority }} type="layout" />
         {#if !cover}
           <div class="divider my-6" />
