@@ -11,7 +11,7 @@
 <svelte:head>
   <meta name="theme-color" content={site.themeColor} />
   {#if post}
-    <title>{post.title ? `${post.title} | ${site.title}` : site.title + ` - ${site.subtitle}` ?? ''}</title>
+    <title>{post.title ? `${post.title} | ${site.title}` : site.title + site.subtitle ? ` - ${site.subtitle}` : ''}</title>
     <link rel="canonical" href={site.url + post.path} />
     <meta name="description" content={post.descr ?? site.descr} />
     {#if post.tags}<meta name="keywords" content={post.tags.toString()} />{/if}
