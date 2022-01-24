@@ -31,7 +31,7 @@
       <a rel="noopener external" target="_blank" class="urara-link" href="https://github.com/importantimport/urara">Urara</a>
     </p>
     {#if footerConfig.html}
-      {@html `${footerConfig.html}`}
+      {@html footerConfig.html}
     {/if}
   </div>
 </footer>

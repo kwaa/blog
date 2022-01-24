@@ -2,6 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@iconify-json/heroicons-outline': ^1.0.2
+  '@iconify-json/heroicons-solid': ^1.0.2
   '@sveltejs/adapter-auto': ^1.0.0-next.11
   '@sveltejs/adapter-static': ^1.0.0-next.26
   '@sveltejs/kit': next
@@ -42,9 +43,10 @@ specifiers:
 
 devDependencies:
   '@iconify-json/heroicons-outline': 1.0.2
+  '@iconify-json/heroicons-solid': 1.0.2
   '@sveltejs/adapter-auto': 1.0.0-next.11
   '@sveltejs/adapter-static': 1.0.0-next.26
-  '@sveltejs/kit': 1.0.0-next.232_svelte@3.46.2
+  '@sveltejs/kit': 1.0.0-next.240_svelte@3.46.2
   '@typescript-eslint/eslint-plugin': 4.33.0_3289a875d95a672b97ebf589745c66ef
   '@typescript-eslint/parser': 4.33.0_eslint@7.32.0+typescript@4.5.4
   chalk: 4.1.2
@@ -163,6 +165,12 @@ packages:
       '@iconify/types': 1.0.12
     dev: true
 
+  /@iconify-json/heroicons-solid/1.0.2:
+    resolution: {integrity: sha512-j9SuVhvVAVGhgesuUCzCk3Jk/Rjjh1Mcqg4SXbKv34AMvYpRLBn2LZi1gOv6RW0KmCpDsZ9C+qf5k9VmLc9kxQ==}
+    dependencies:
+      '@iconify/types': 1.0.12
+    dev: true
+
   /@iconify/types/1.0.12:
     resolution: {integrity: sha512-6er6wSGF3hgc1JEZqiGpg21CTCjHBYOUwqLmb2Idzkjiw6ogalGP0ZMLVutCzah+0WB4yP+Zd2oVPN8jvJ+Ftg==}
     dev: true
@@ -243,8 +251,8 @@ packages:
       esbuild: 0.13.15
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.232_svelte@3.46.2:
-    resolution: {integrity: sha512-STQ0hnJozIop8k9I313nwVasBIQ45Z2K1pUOkDVjCSOGijgsj+De5q0prQBtL1ZlqqisfkYlOf8W9gvDSyTLEA==}
+  /@sveltejs/kit/1.0.0-next.240_svelte@3.46.2:
+    resolution: {integrity: sha512-cHdxdSKAdCuty2lYlRHXE4rJZuKd4wur9U63JtPwysTaReMEJl+s9J/LVvyBzaLW/13x8vm/kKqx+DDcI0udlA==}
     engines: {node: '>=14.13'}
     hasBin: true
     peerDependencies:
