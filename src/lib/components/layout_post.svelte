@@ -51,7 +51,10 @@
     {/if}
   </div>
   <div slot="center">
-    <article itemscope itemtype="https://schema.org/BlogPosting" class="card bg-base-100 <md:rounded-none shadow-xl mb-8 h-entry">
+    <article
+      itemscope
+      itemtype="https://schema.org/BlogPosting"
+      class="card bg-base-100 <md:rounded-none shadow-xl mb-8 h-entry">
       <div class="hidden h-card p-author">
         <img class="u-photo" src={site.author.avatar} alt={site.author.name} decoding="async" loading="lazy" />
         <a rel="author" class="p-name u-url" href={site.url}>{site.author.name}</a>
