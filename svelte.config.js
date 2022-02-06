@@ -21,7 +21,7 @@ const config = {
           fallback: null
         }),
     // hydrate the <div id="svelte"> element in src/app.html
-    target: 'body',
+    // target: 'body',
     vite: {
       mode: process.env.MODE || 'production',
       envPrefix: 'URARA_',
