@@ -1,14 +1,17 @@
 <script lang="ts">
   export let toc: Urara.PostToc
   const { title, slug, children } = toc
+  let hover: boolean = false
 </script>
 
 {#if title}
   <a
     on:click={() => document.getElementById(slug).scrollIntoView({ behavior: 'smooth' })}
+    on:mouseenter={() => hover = true}
+    on:mouseleave={() => hover = false}
     id={`toc-link-${slug}`}
     class="transition-all"
-    style={':hover { border-color: hsla(var(--p) / var(--tw-border-opacity, 1)) !important }'}
+    class:!border-primary={hover}
     href={'javascript:void(0)'}>
     {title}
   </a>
