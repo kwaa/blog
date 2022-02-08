@@ -46,7 +46,7 @@
 <Flex {title} {date} {lastmod} {priority} {tags} {cover} {descr} {path}>
   <div slot="left" class="h-full" />
   <div slot="right" class="h-full">
-    {#if toc.length >= 1}
+    {#if toc?.length >= 1}
       <Toc {toc} />
     {/if}
   </div>

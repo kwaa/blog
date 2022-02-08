@@ -7,7 +7,8 @@
   <a
     on:click={() => document.getElementById(slug).scrollIntoView({ behavior: 'smooth' })}
     id={`toc-link-${slug}`}
-    class="transition-all hover:!border-primary"
+    class="transition-all"
+    style={':hover { border-color: hsla(var(--p) / var(--tw-border-opacity, 1)) !important }'}
     href={'javascript:void(0)'}>
     {title}
   </a>
