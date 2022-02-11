@@ -9,8 +9,7 @@
 </script>
 
 <svelte:head>
-  <meta name="theme-color" content={site.themeColor} />
-  {#if post.path}
+  {#if post?.path}
     <title>{post.title ?? post.path} | {site.title}</title>
     <link rel="canonical" href={site.url + post.path} />
     <meta name="description" content={post.descr ?? site.descr} />
@@ -32,10 +31,11 @@
       })
     }
   </script>
-  <Icon />
-  <OpenGraph {post} />
-  <RelMeAuth />
   {#each [...head.custom.common, ...(mode === 'prod' ? head.custom.prod : head.custom.dev)] as tag}
     {@html tag}
   {/each}
 </svelte:head>
+
+<Icon />
+<OpenGraph {post} />
+<RelMeAuth />
