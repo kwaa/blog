@@ -1,8 +1,9 @@
 <script lang="ts" context="module">
-  export const load = ({ error, status }) => ({
+  export const load = ({ url, error, status }) => ({
     props: {
-      status: status,
-      message: error.message
+      status,
+      message: error.message,
+      pathname: url.pathname
     }
   })
 </script>
@@ -12,16 +13,17 @@
   import IconHome from '~icons/heroicons-outline/home'
   export let status: string
   export let message: string
-  console.error(status, message)
+  export let pathname: string
+  console.error(status, pathname, message)
 </script>
 
-<Card>
-  <h1 class="opacity-15 !text-12xl !<md:text-6xl !-mt-2">
+<Card page={{ title: '404', path: pathname }}>
+  <h1 class="opacity-20 text-6xl md:text-[12rem] -mt-2 mb-0">
     {status}
   </h1>
-  <h2 class="-mt-24 <md:-mt-12">{message}</h2>
-  <div>
-    <a href="/" class="btn btn-neutral !text-neutral-content shadow-xl hover:shadow-2xl mt-8">
+  <h2 class="-mt-12 md:-mt-24">{message}</h2>
+  <div class="card-actions">
+    <a href="/" class="btn btn-neutral no-underline shadow-xl hover:shadow-2xl mt-8">
       <IconHome class="inline-block w-6 h-6 -ml-1 mr-2" />
       Back to Home
     </a>

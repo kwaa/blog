@@ -45,15 +45,11 @@
   $: if (intersecting.length > 0) bordered = intersecting
   $: if (intersectingArticle === false) bordered = []
   $: if (browser && bordered)
-    toc.forEach(heading => {
-      if (bordered.includes(heading.slug)) {
-        document.getElementById(`toc-link-${heading.slug}`)?.classList.add('!border-accent')
-        document.getElementById(`toc-item-${heading.slug}`)?.classList.add('bordered')
-      } else {
-        document.getElementById(`toc-link-${heading.slug}`)?.classList.remove('!border-accent')
-        document.getElementById(`toc-item-${heading.slug}`)?.classList.remove('bordered')
-      }
-    })
+    toc.forEach(heading =>
+      bordered.includes(heading.slug)
+        ? document.getElementById(`toc-link-${heading.slug}`)?.classList.add('!border-accent')
+        : document.getElementById(`toc-link-${heading.slug}`)?.classList.remove('!border-accent')
+    )
 </script>
 
 <nav id="post-toc" aria-label="TableOfContent" class="sticky top-16 py-8">
@@ -61,7 +57,7 @@
     toc={toc.reduce(
       (acc, heading) => {
         let parent = acc
-        while (parent.depth + 1 < heading.depth) parent = parent.children[parent.children.length - 1]
+        while (parent.depth + 1 < heading.depth) parent = parent.children.at(-1)
         parent.children = [...(parent.children ?? []), { ...heading, children: [] }]
         return acc
       },

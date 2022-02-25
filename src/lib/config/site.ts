@@ -13,8 +13,6 @@ interface Site {
     github?: string
     twitter?: string
     pgp?: string[]
-    // } & {
-    // [key: string]: string
   }
   url: string
   themeColor?: string
@@ -49,7 +47,6 @@ export const site: Site = {
     avatar: 'https://kwaa.dev/assets/maskable@512.webp',
     status: '🌌',
     bio: bio[~~(Math.random() * bio.length)],
-    // bioAfter: '<code class="badge badge-ghost bg-base-300 font-mono mt-2 ml-auto text-right">2E18 657D 8C32 CC47</code>',
     github: 'kwaa',
     pgp: ['8964 78D9 78EB 0000', '#']
   },

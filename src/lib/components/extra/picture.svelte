@@ -8,7 +8,7 @@
   src = validate(src)
 </script>
 
-<picture>
+<picture class="h-full">
   {#if pictureSource.length > 0}
     {#each pictureSource as { ext, type }}
       <source srcset={src.replace(/\.[^/.]+$/, `.${ext}`)} {type} />

@@ -38,4 +38,8 @@ declare namespace Urara {
     // path?: string
     html?: string
   }
+  interface Page {
+    title?: string
+    path: string
+  }
 }
