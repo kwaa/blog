@@ -10,7 +10,7 @@
   $: if (currentComment !== undefined) localStorage.setItem('comment', currentComment)
 </script>
 
-<div id="post-comment" class="card bg-base-100 card-body urara-card-shadow <md:rounded-none mb-8">
+<div id="post-comment" class="card bg-base-100 card-body shadow-xl hover:shadow-2xl transition-shadow <md:rounded-none mb-8">
   {#if commentConfig.use.length > 1}
     <div class="tabs w-full mb-4" class:tabs-boxed={commentConfig?.['style'] === 'boxed'}>
       {#each commentConfig.use as name}

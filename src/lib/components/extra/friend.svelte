@@ -10,7 +10,7 @@
 </script>
 
 <div
-  class="card bg-base-100 urara-card-shadow flex flex-col {friend.descr
+  class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow flex flex-col {friend.descr
     ? ''
     : 'items-center justify-center'} p-2 h-full w-full">
   <div class="flex flex-row">
