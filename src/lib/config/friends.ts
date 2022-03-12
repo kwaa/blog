@@ -17,13 +17,13 @@ export const friends: Friend[] = [
   },
   {
     title: 'testtest',
-    href: 'testte',
+    href: 'https://kwaa.dev',
     descr: 'testtqsatsatsartsa',
     avatar: 'https://kwaa.dev/files/icon@512.webp'
   },
   {
     title: 'testtest2',
-    href: 'testte',
+    href: 'https://kwaa.dev',
     avatar: 'https://kwaa.dev/files/icon@512.webp'
   },
   {
