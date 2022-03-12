@@ -71,8 +71,7 @@ const remarkUraraSpoiler = () => tree =>
     return node
   })
 
-/** @type {Parameters<typeof import("mdsvex").mdsvex>[0]} */
-export const mdsvexConfig = {
+export default /** @type {Parameters<typeof import("mdsvex").mdsvex>[0]} */ {
   extensions: ['.svelte.md', '.md'],
   smartypants: {
     dashes: 'oldschool'

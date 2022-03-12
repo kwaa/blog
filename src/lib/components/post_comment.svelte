@@ -31,7 +31,6 @@
       <svelte:component
         this={comments[`/src/lib/components/comments/${currentComment}.svelte`].default}
         {post}
-        {site}
         config={commentConfig?.[currentComment]} />
     {/key}
   {/if}
