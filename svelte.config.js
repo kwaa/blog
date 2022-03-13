@@ -14,17 +14,24 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
   preprocess: [mdsvex(mdsvexConfig), preprocess({ postcss: true })],
   kit: {
     adapter: Object.keys(process.env).some(key => ['VERCEL', 'CF_PAGES', 'NETLIFY'].includes(key))
-    ? adapterAuto()
-    : process.env.ADAPTER === 'node'
-      ? adapterNode({ out: 'build' })
-      : adapterStatic({
-        pages: 'build',
-        assets: 'build',
-        fallback: null
-      }),
+      ? adapterAuto()
+      : process.env.ADAPTER === 'node'
+        ? adapterNode({ out: 'build' })
+        : adapterStatic({
+          pages: 'build',
+          assets: 'build',
+          fallback: null
+        }),
     csp: { mode: 'auto' },
     prerender: { default: true },
     vite: {
+      build: {
+        rollupOptions: {
+          output: {
+            manualChunks: undefined
+          }
+        }
+      },
       mode: process.env.MODE || 'production',
       envPrefix: 'URARA_',
       css: { postcss },
