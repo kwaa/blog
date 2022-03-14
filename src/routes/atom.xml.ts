@@ -6,7 +6,7 @@ import { genPosts } from '$lib/utils/posts'
 import { genTags } from '$lib/utils/tags'
 
 const render = async (): Promise<string> => {
-  const posts = Object.entries(await genPosts())
+  const posts = Object.entries(genPosts({ postHtml: true }))
     .flatMap(([key, value]) => (+key > 0 ? value : []))
     .sort((a, b) => (b.date ?? '1989-06-04').localeCompare(a.date ?? '1989-06-04'))
     .filter((_, index) => feed.limit === 0 || index < feed.limit)
