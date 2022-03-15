@@ -43,14 +43,13 @@
   //   next = posts[index - 1]
   // }
 
-  $: if (browser)
-    storedPosts.subscribe(storedPosts => {
-      posts = Object.entries(storedPosts).flatMap(([, value]) => value)
-      post = posts.find(post => post?.path === window.location.pathname)
-      index = posts.findIndex(post => post?.path === window.location.pathname)
-      prev = posts[index + 1]
-      next = posts[index - 1]
-    })
+  $: storedPosts.subscribe(storedPosts => {
+    posts = Object.entries(storedPosts).flatMap(([, value]) => value)
+    post = posts.find(post => post?.path === path)
+    index = posts.findIndex(post => post?.path === path)
+    prev = posts[index + 1]
+    next = posts[index - 1]
+  })
 </script>
 
 <Flex {title} {date} {lastmod} {priority} {tags} {cover} {descr} {path}>
