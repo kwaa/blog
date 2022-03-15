@@ -3,7 +3,8 @@
   import { fly } from 'svelte/transition'
   import { page } from '$app/stores'
   import { browser } from '$app/env'
-  import { genTags } from '$lib/utils/tags'
+  // import { genTags } from '$lib/utils/tags'
+  import { posts as storedPosts, tags as storedTags } from '$lib/stores/posts'
   import Flex from '$lib/components/layout_flex.svelte'
   import Footer from '$lib/components/footer.svelte'
   import Post from '$lib/components/index_post.svelte'
@@ -15,12 +16,21 @@
   let loaded: boolean
   let [posts, tags, years] = [[], [''], []]
 
-  $: if (browser) {
-    allPosts = Object.entries(JSON.parse(localStorage.getItem('posts')) as { [priority: number]: Urara.Post[] })
-      .sort(([a], [b]) => parseInt(a) - parseInt(b))
-      .flatMap(([key, value]) => (parseInt(key) > 0 ? value : []))
-    allTags = genTags(allPosts)
-  }
+  $: storedPosts.subscribe(
+    storedPosts =>
+      (allPosts = Object.entries(storedPosts as { [priority: number]: Urara.Post[] }).flatMap(([key, value]) =>
+        parseInt(key) > 0 ? value : []
+      ))
+  )
+
+  $: storedTags.subscribe(storedTags => (allTags = storedTags))
+
+  // $: if (browser) {
+  //   allPosts = Object.entries(JSON.parse(localStorage.getItem('posts')) as { [priority: number]: Urara.Post[] })
+  //     .sort(([a], [b]) => parseInt(a) - parseInt(b))
+  //     .flatMap(([key, value]) => (parseInt(key) > 0 ? value : []))
+  //   allTags = genTags(allPosts)
+  // }
 
   $: if (loaded && tags) posts = !tags ? allPosts : allPosts.filter(post => tags.every(tag => post.tags?.includes(tag)))
   $: if (posts)
@@ -47,7 +57,7 @@
   }
 </script>
 
-<Flex page={{path: '/'}}>
+<Flex page={{ path: '/' }}>
   <div slot="left" class="xl:max-w-sm xl:ml-auto">
     <Profile />
   </div>

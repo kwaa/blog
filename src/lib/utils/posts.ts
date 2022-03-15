@@ -1,22 +1,21 @@
-/**
- * An optional configuration object for `genPosts`
- * @param modules import.meta.globEager<Urara.PostModule> https://vitejs.dev/guide/features.html#glob-import
- * @param postHtml set to true to output html
- */
 interface GenPostsOptions {
+  /** import.meta.globEager<Urara.PostModule> https://vitejs.dev/guide/features.html#glob-import */
   modules?: { [path: string]: Urara.PostModule }
+  /** set to true to output html */
   postHtml?: boolean
 }
+
+type GenPostsFunction = (options?: GenPostsOptions) => { [priority: number]: Urara.Post[] }
 
 /**
  * Generate Posts List
  * @param options - An optional configuration object
- * @returns - { [priority: number]: Urara.Post[] }
+ * @returns - posts list with priority
  */
-export const genPosts = ({
+export const genPosts: GenPostsFunction = ({
   modules = import.meta.globEager<Urara.PostModule>('/src/routes/**/*.{md,svelte.md}'),
   postHtml = false
-}: GenPostsOptions = {}): { [priority: number]: Urara.Post[] } =>
+} = {}) =>
   Object.fromEntries(
     (
       Object.entries(
@@ -51,8 +50,8 @@ export const genPosts = ({
 
 /**
  * Generate Tags List
- * @param posts flatten posts list
- * @returns tags list with count
+ * @param posts - flatten posts list
+ * @returns - tags list with count
  */
 export const genTags = (posts: Urara.Post[]): { [tag: string]: number } => {
   const tags: { [tag: string]: number } = {}
