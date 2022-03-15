@@ -7,15 +7,13 @@
 </script>
 
 <script lang="ts">
-  // import { browser } from '$app/env'
   import { fly } from 'svelte/transition'
-  import { posts, tags } from '$lib/stores/posts'
   import { genTags } from '$lib/utils/posts'
+  import { posts, tags } from '$lib/stores/posts'
   import Header from '$lib/components/header.svelte'
   import '../app.css'
   export let res: { [priority: number]: Urara.Post[] }
   export let path: string
-  // if (browser) localStorage.setItem('posts', JSON.stringify(res))
   posts.set(res)
   tags.set(genTags(Object.entries(res).flatMap(([key, value]) => (parseInt(key) > 0 ? value : []))))
 </script>
