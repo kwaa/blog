@@ -1,14 +1,13 @@
-interface Comment {
-  use: string[]
-  [key: string]: { [key: string]: string | boolean } | string | string[]
-}
+import type { CommentConfig } from '$lib/types/comment'
 
-export const comment: Comment = {
-  use: ['Giscus', 'Disqus'],
+export const comment: CommentConfig = {
+  // use: ['Callback', 'Webmention', 'Giscus', 'Disqus'],
+  use: ['Webmention', 'Giscus', 'Disqus'],
   style: 'boxed',
   webmention: {
-    username: 'username',
-    pingback: true
+    username: 'kwaa.dev',
+    sortBy: 'updated',
+    sortDir: 'down'
   },
   giscus: {
     src: 'https://giscus.kwaa.dev/client.js',
@@ -18,8 +17,5 @@ export const comment: Comment = {
   },
   disqus: {
     shortname: 'kwaa'
-  },
-  utterances: {
-    repo: 'kwaa/comments'
   }
 }

@@ -12,7 +12,7 @@
 
 <div id="post-comment" class="card bg-base-100 card-body shadow-xl hover:shadow-2xl transition-shadow <md:rounded-none mb-8">
   {#if commentConfig.use.length > 1}
-    <div class="tabs w-full mb-4" class:tabs-boxed={commentConfig?.['style'] === 'boxed'}>
+    <div class="tabs w-full mb-8" class:tabs-boxed={commentConfig?.['style'] === 'boxed'}>
       {#each commentConfig.use as name}
         <!-- svelte-ignore a11y-missing-attribute -->
         <a

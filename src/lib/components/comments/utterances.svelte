@@ -1,12 +1,10 @@
 <script lang="ts">
   import { onMount } from 'svelte'
-  // export let post: Urara.Post
-  // export let site: { [x: string]: string }
-  export let config: { [x: string]: string }
+  import type { UtterancesConfig } from '$lib/types/comment'
+  export let config: UtterancesConfig
   onMount(() => {
     const s = document.createElement('script')
     s.setAttribute('repo', config.repo)
-    s.setAttribute('issue-term', config.issueTerm ?? 'pathname')
     s.setAttribute('theme', config.theme ?? 'preferred-color-scheme')
     s.setAttribute('crossorigin', 'anonymous')
     s.setAttribute('async', '')

@@ -1,8 +1,8 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte'
-  // export let post: Urara.Post
-  export let site: { lang: string }
-  export let config: { [x: string]: string }
+  import { site } from '$lib/config/site'
+  import type { GiscusConfig } from '$lib/types/comment'
+  export let config: GiscusConfig
   const sendTheme = (
     el = getComputedStyle(document.documentElement),
     iframe = document.querySelector<HTMLIFrameElement>('iframe.giscus-frame'),
@@ -39,8 +39,8 @@
     const s = document.createElement('script')
     s.setAttribute('data-repo', config.repo)
     s.setAttribute('data-mapping', config.mapping ?? 'pathname')
-    s.setAttribute('data-reactions-enabled', config.reactionsEnabled ?? '1')
-    s.setAttribute('data-emit-metadata', config.emitMetadata ?? '0')
+    s.setAttribute('data-reactions-enabled', config.reactionsEnabled !== false ? '1' : '0')
+    s.setAttribute('data-emit-metadata', config.emitMetadata === true ? '1' : '0')
     s.setAttribute('data-lang', config.lang ?? site.lang)
     s.setAttribute('crossorigin', 'anonymous')
     s.setAttribute('async', '')
@@ -51,8 +51,8 @@
       if (config.theme === 'urara') {
         s.setAttribute(
           'data-theme',
-          'https://gist.githack.com/kwaa/0b081ca4978b3f31b30ec88ccd9aa585/raw/fb45140bdd6282b4d189477d245ba41bc2c6d3a8/style.css'
-          // 'https://gistcdn.githack.com/kwaa/0b081ca4978b3f31b30ec88ccd9aa585/raw/4aaaa703d30dc711770e1b45d2609c16bdfb9649/style.css'
+          // 'https://gist.githack.com/kwaa/0b081ca4978b3f31b30ec88ccd9aa585/raw/fb45140bdd6282b4d189477d245ba41bc2c6d3a8/style.css'
+          'https://gistcdn.githack.com/kwaa/0b081ca4978b3f31b30ec88ccd9aa585/raw/4aaaa703d30dc711770e1b45d2609c16bdfb9649/style.css'
           // 'https://giscus.app/themes/custom_example.css'
         )
       } else {
