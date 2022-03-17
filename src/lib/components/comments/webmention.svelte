@@ -7,31 +7,63 @@
   export let config: WebmentionConfig
   export let post: Urara.Post
 
-  let [page, loaded, end, mentions] = [0, false, false, []]
+  interface WebmentionFeed {
+    type: 'feed'
+    name: 'Webmentions'
+    children: WebmentionEntry[]
+  }
 
-  let sortDirUp = config.sortDir === 'up' ? true : false
+  interface WebmentionEntry {
+    url: string
+    author?: {
+      name?: string
+      photo?: string
+      url?: string
+    }
+    content?: {
+      html?: string
+    }
+    rsvp?: string
+    published?: string
+    'wm-source': string
+    'wm-target': string
+    'wm-id': number
+    'wm-property': 'in-reply-to' | 'like-of' | 'repost-of' | 'bookmark-of' | 'mention-of' | 'rsvp'
+    'wm-private': boolean
+  }
+
+  // const rsvp = {
+  //   yes: '✅',
+  //   no: '❌',
+  //   interested: '💡',
+  //   maybe: '💭'
+  // }
+
+  let [page, loaded, end, mentions, sortDirUp] = [0, false, false, [], config.sortDir === 'up' ? true : false]
 
   const load = async () => {
-    let data = await fetch(
-      `https://webmention.io/api/mentions?page=${page}&per-page=${config.perPage ?? '20'}&sort-by=${
+    let feed: WebmentionFeed = await fetch(
+      `https://webmention.io/api/mentions.jf2?page=${page}&per-page=${config.perPage ?? '20'}&sort-by=${
         config.sortBy ?? 'created'
       }&sort-dir=${sortDirUp ? 'up' : 'down'}${
         config.property ? config.property.forEach(wmProperty => `&wm-property=${wmProperty}`) : ''
       }&target[]=${site.url + post.path}}&target[]=${site.url + post.path}/`
       // }&target=https://indieweb.org`
     ).then(res => res.json())
-    if (data.links.length > 0) {
-      data = {
-        ...data,
-        links: data.links.filter(
-          (link: { activity: { type: string } }) => !(config.filterType ?? ['like']).includes(link.activity.type)
+    if (feed.children.length > 0) {
+      feed = {
+        ...feed,
+        children: feed.children.filter(
+          (entry: WebmentionEntry) =>
+            !(config.blockList?.length > 0 && config.blockList.includes(new URL(entry['wm-source']).origin))
         )
       }
-      if (data.links.length > 0) {
-        mentions = [...mentions, ...data.links]
+      if (feed.children.length > 0) {
+        mentions = [...mentions, ...feed.children]
       } else load()
     } else end = true
-    console.log(data, mentions)
+    console.log(feed, mentions, page)
+    page++
     loaded = true
   }
 
@@ -66,47 +98,44 @@
   </div>
   {#key mentions}
     {#each mentions as mention}
-      {@const activityType = {
-        mention: 'mentioned this',
-        link: 'linked to',
-        reply: 'replied to',
-        repost: 'retweeted',
-        like: 'favourited',
-        quotation: 'test'
-      }[mention.activity.type]}
-      {#if mention.data.url !== null}
-        <div class="p-4 border-2 rounded-2xl border-base-300">
+      {@const [wmProperty, borderColor, textColor] = {
+        'in-reply-to': ['💬 replied', 'border-primary/50', 'text-primary'],
+        'like-of': ['❤️ liked', 'border-secondary/50', 'text-secondary'],
+        'repost-of': ['🔄 reposted', 'border-accent/50', 'text-accent'],
+        'bookmark-of': ['⭐️ bookmarked', 'border-neutral/50', 'text-neutral'],
+        'mention-of': ['💬 mentioned', 'border-base-300/50', 'text-base-content'],
+        rsvp: ['📅 RSVPed', 'border-warning/50', 'text-warning']
+      }[mention['wm-property']]}
+      {#if mention.url !== null}
+        <div class="{borderColor} border-2 rounded-2xl p-4">
           <div class="flex bg-base-200 rounded-lg">
-            {#if mention.data.author?.photo}
+            {#if mention?.author?.photo}
               <img
                 class="w-12 h-12 flex-0 rounded-lg"
-                src={mention.data.author.photo}
-                alt={mention.data.author.name}
+                src={mention.author.photo}
+                alt={mention.author?.name ?? new URL(mention.url).host}
                 loading="lazy"
                 decoding="async" />
             {/if}
             <div class="flex-1 px-4 py-2 m-auto">
               <p>
-                {#if mention.data.author?.url}
-                  <a class="font-semibold" href={mention.data.author.url}>
-                    {mention.data.author?.name ?? new URL(mention.data.url).host}
+                {#if mention?.author?.url}
+                  <a class="font-semibold hover:underline" href={mention.author.url}>
+                    {mention.author?.name ?? new URL(mention.url).host}
                   </a>
                 {:else}
-                  {mention.data.author?.name ?? new URL(mention.data.url).host}
+                  {mention?.author?.name ?? new URL(mention.url).host}
                 {/if}
-                <a class="hover:underline" href={mention.data.url}>
-                  {activityType}
+                <a class="{textColor} hover:underline" href={mention['wm-source']}>
+                  {wmProperty}
                 </a>
-                this post on {mention.data.published ? mention.data.published.slice(0, 10) : mention.verified_date.slice(0, 10)}
+                this post on {mention.published ? mention.published.slice(0, 10) : mention['wm-received'].slice(0, 10)}
               </p>
             </div>
           </div>
-          {#if mention.data.content !== null}
+          {#if mention.content}
             <div class="prose max-w-none break-words mt-4">
-              <!-- {#if mention.data.name !== null}
-            <h3 class="opacity-50">{mention.data.name}</h3>
-          {/if} -->
-              <p>{@html mention.data.content}</p>
+              <p>{@html mention.content?.html ?? mention.content?.text}</p>
             </div>
           {/if}
         </div>

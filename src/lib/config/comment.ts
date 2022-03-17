@@ -6,7 +6,7 @@ export const comment: CommentConfig = {
   style: 'boxed',
   webmention: {
     username: 'kwaa.dev',
-    sortBy: 'updated',
+    sortBy: 'created',
     sortDir: 'down'
   },
   giscus: {

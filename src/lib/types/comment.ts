@@ -7,10 +7,10 @@ export type WebmentionConfig = {
   sortBy?: 'created' | 'updated' | 'published' | 'rsvp'
   /** control the ordering. */
   sortDir?: 'down' | 'up'
-  /** type filler */
-  filterType?: string[]
   /** find links of a specific type. */
   property?: ('in-reply-to' | 'like-of' | 'repost-of' | 'bookmark-of' | 'mention-of' | 'rsvp')[]
+
+  blockList?: string[]
 }
 
 export type GiscusConfig = {
