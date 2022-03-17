@@ -3,7 +3,7 @@ import { prerendering } from '$app/env'
 import { minify } from 'html-minifier'
 import { site } from '$lib/config/site'
 
-const minification_options = {
+const minificationOptions = {
   collapseBooleanAttributes: true,
   collapseWhitespace: true,
   conservativeCollapse: true,
@@ -28,14 +28,10 @@ export const handle: Handle = async ({ event, resolve }) => {
   })
   if (prerendering && response.headers.get('content-type') === 'text/html') {
     const body = await response.text()
-    return new Response(minify(body, minification_options), {
+    return new Response(minify(body, minificationOptions), {
       status: response.status,
       headers: response.headers
     })
   }
   return response
-  // return {
-  //   ...response,
-  //   body: (response.body || '').toString().replace('<html lang="en">', `<html lang="${site.lang}">`)
-  // }
 }
