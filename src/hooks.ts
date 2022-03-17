@@ -11,7 +11,7 @@ const minification_options = {
   html5: true,
   ignoreCustomComments: [/^#/],
   minifyCSS: true,
-  minifyJS: false,
+  minifyJS: true,
   removeAttributeQuotes: true,
   removeComments: true,
   removeOptionalTags: true,
