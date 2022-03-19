@@ -108,7 +108,34 @@ Bridgy 可以将个人网站连接到常见的社交媒体。
 | vercel.json  |    ×    |   √    |    ×     |
 | netlify.toml |    √    |   ×    |    ×     |
 
-TODO...
+目前我的博客部署在 Vercel，所以只有 vercel.json 的示例。
+
+```json
+{
+  "redirects": [
+    {
+      "source": "/.well-known/host-meta",
+      "destination": "https://fed.brid.gy/.well-known/host-meta",
+      "permanent": true
+    },
+    {
+      "source": "/.well-known/host-meta.xrd",
+      "destination": "https://fed.brid.gy/.well-known/host-meta.xrd",
+      "permanent": true
+    },
+    {
+      "source": "/.well-known/host-meta.jrd",
+      "destination": "https://fed.brid.gy/.well-known/host-meta.jrd",
+      "permanent": true
+    },
+    {
+      "source": "/.well-known/webfinger",
+      "destination": "https://fed.brid.gy/.well-known/webfinger",
+      "permanent": true
+    }
+  ]
+}
+```
 
 #### 设置 WebSub (PubSubHubbub)
 

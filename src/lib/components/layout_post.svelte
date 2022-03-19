@@ -69,6 +69,7 @@
         <a rel="author" class="p-name u-url" href={site.url}>{site.author.name}</a>
       </div>
       <a class="hidden u-url u-uid" href={site.url + path}>{site.url + path}</a>
+      <a class="u-in-reply-to" href="https://me.kwaa.moe/notice/AHZFjAktoK8a7r2BtY" />
       <a class="hidden u-url" href="https://fed.brid.gy/">Bridgy Fed</a>
       <div class="card-body gap-0">
         <h1 itemprop="name headline" class="card-title text-3xl p-name">{title ?? path}</h1>
