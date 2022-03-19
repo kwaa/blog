@@ -52,18 +52,16 @@
     )
       .then(res => res.json())
       .then((feed: WebmentionFeed) => {
-        if (feed.children.length > 0) {
-          feed = {
-            ...feed,
-            children: feed.children.filter(
-              (entry: WebmentionEntry) =>
-                !(config.blockList?.length > 0 && config.blockList.includes(new URL(entry['wm-source']).origin))
-            )
-          }
-          if (feed.children.length > 0) {
-            mentions = [...mentions, ...feed.children]
-          } else load()
-        } else end = true
+        if (feed.children.length < 10) end = true
+        feed = {
+          ...feed,
+          children: feed.children.filter(
+            (entry: WebmentionEntry) =>
+              !(config.blockList?.length > 0 && config.blockList.includes(new URL(entry['wm-source']).origin))
+          )
+        }
+        if (feed.children.length > 0) mentions = [...mentions, ...feed.children]
+        else load()
         page++
         loaded = true
       })
@@ -99,13 +97,13 @@
   </div>
   {#key mentions}
     {#each mentions as mention}
-      {@const [wmProperty, borderColor, textColor] = {
-        'in-reply-to': ['💬 replied', 'border-primary/50', 'text-primary'],
-        'like-of': ['❤️ liked', 'border-secondary/50', 'text-secondary'],
-        'repost-of': ['🔄 reposted', 'border-accent/50', 'text-accent'],
-        'bookmark-of': ['⭐️ bookmarked', 'border-neutral/50', 'text-neutral'],
-        'mention-of': ['💬 mentioned', 'border-base-300/50', 'text-base-content'],
-        rsvp: ['📅 RSVPed', 'border-warning/50', 'text-warning']
+      {@const [wmProperty, borderColor, textColor, tooltipColor] = {
+        'in-reply-to': ['💬 replied', 'border-primary/50', 'text-primary', 'tooltip-primary'],
+        'like-of': ['❤️ liked', 'border-secondary/50', 'text-secondary', 'tooltip-secondary'],
+        'repost-of': ['🔄 reposted', 'border-accent/50', 'text-accent', 'tooltip-accent'],
+        'bookmark-of': ['⭐️ bookmarked', 'border-neutral/50', 'text-neutral', 'tooltip-neutral'],
+        'mention-of': ['💬 mentioned', 'border-base-300/50', 'text-base-content', 'tooltip-base-content'],
+        rsvp: ['📅 RSVPed', 'border-warning/50', 'text-warning', 'tooltip-warning']
       }[mention['wm-property']]}
       {#if mention.url !== null}
         <div class="{borderColor} border-2 rounded-2xl p-4">
@@ -121,7 +119,7 @@
             <div class="flex-1 px-4 py-2 m-auto">
               <p>
                 {#if mention?.author?.url}
-                  <a class="font-semibold hover:underline" href={mention.author.url}>
+                  <a class="font-semibold {textColor} hover:underline" href={mention.author.url}>
                     {mention.author?.name ?? new URL(mention.url).host}
                   </a>
                 {:else}
@@ -130,7 +128,12 @@
                 <a class="{textColor} hover:underline" href={mention['wm-source']}>
                   {wmProperty}
                 </a>
-                this post on {mention.published ? mention.published.slice(0, 10) : mention['wm-received'].slice(0, 10)}
+                this post on
+                <span
+                  class="tooltip tooltip-bottom xl:tooltip-right {tooltipColor}"
+                  data-tip={new Date(mention.published ?? mention['wm-received']).toLocaleString()}>
+                  {mention.published ? mention.published.slice(0, 10) : mention['wm-received'].slice(0, 10)}
+                </span>
               </p>
             </div>
           </div>
@@ -157,4 +160,32 @@
   {:else}
     <button id="webmention-loading" class="btn btn-lg btn-block flex btn-ghost loading" />
   {/if}
+  <form id="webmention-form" method="post" action="https://webmention.io/kwaa.dev/webmention">
+    <input type="hidden" name="target" value={site.url + post.path} />
+    <!-- <label for="reply-url">
+      Have you written a <a href="https://indieweb.org/responses">response</a>
+      to this? Let me know the URL:
+    </label> -->
+    <label class="label gap-4">
+      <span class="label-text">send webmentions here:</span>
+      <span class="label-text-alt text-right">
+        or <a
+          class="hover:!text-primary"
+          href="https://quill.p3k.io/?dontask=1&me=https://commentpara.de/&reply={encodeURI(site.url + post.path)}">
+          comment anonymously
+        </a>
+      </span>
+    </label>
+    <div class="flex gap-2">
+      <div class="flex-1">
+        <input
+          class="input input-bordered focus:input-primary w-full"
+          type="text"
+          id="reply-url"
+          name="source"
+          placeholder="https://example.com/my-post" />
+      </div>
+      <button class="btn btn-primary flex-0 mt-auto" type="submit" id="webmention-submit">Send</button>
+    </div>
+  </form>
 </div>
