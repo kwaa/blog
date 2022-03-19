@@ -151,6 +151,7 @@ pre.twoslash data-lsp:hover::before {
 /* your code here */
 
 html {
+  background-attachment: fixed;
   /* background courtesy of gradientmagic.com */
   background-image: repeating-linear-gradient(
       90deg,
