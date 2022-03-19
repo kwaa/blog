@@ -68,9 +68,8 @@
         <img class="u-photo" src={site.author.avatar} alt={site.author.name} decoding="async" loading="lazy" />
         <a rel="author" class="p-name u-url" href={site.url}>{site.author.name}</a>
       </div>
-      <a class="hidden u-url u-uid" href={site.url + path}>{site.url + path}</a>
-      <a class="u-in-reply-to" href="https://me.kwaa.moe/notice/AHZFjAktoK8a7r2BtY" />
-      <a class="hidden u-url" href="https://fed.brid.gy/">Bridgy Fed</a>
+      <a class="hidden u-url u-uid" href={site.url + path} />
+      <!-- <a class="hidden u-url" href="https://fed.brid.gy/" /> -->
       <div class="card-body gap-0">
         <h1 itemprop="name headline" class="card-title text-3xl p-name">{title ?? path}</h1>
         <Date post={{ date, lastmod, priority }} type="layout" />
