@@ -1,23 +1,13 @@
 {
   "redirects": [
     {
-      "source": "/.well-known/host-meta",
-      "destination": "https://fed.brid.gy/.well-known/host-meta",
+      "source": "/.well-known/host-meta*",
+      "destination": "https://fed.brid.gy/.well-known/host-meta*",
       "permanent": true
     },
     {
-      "source": "/.well-known/host-meta.xrd",
-      "destination": "https://fed.brid.gy/.well-known/host-meta.xrd",
-      "permanent": true
-    },
-    {
-      "source": "/.well-known/host-meta.jrd",
-      "destination": "https://fed.brid.gy/.well-known/host-meta.jrd",
-      "permanent": true
-    },
-    {
-      "source": "/.well-known/webfinger",
-      "destination": "https://fed.brid.gy/.well-known/webfinger",
+      "source": "/.well-known/webfinger*",
+      "destination": "https://fed.brid.gy/.well-known/webfinger*",
       "permanent": true
     }
   ]
