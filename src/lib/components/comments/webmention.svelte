@@ -47,7 +47,7 @@
         config.sortBy ?? 'created'
       }&sort-dir=${sortDirUp ? 'up' : 'down'}${
         config.property ? config.property.forEach(wmProperty => `&wm-property=${wmProperty}`) : ''
-      }&target[]=${site.url + post.path}}&target[]=${site.url + post.path}/`
+      }&target[]=${site.url + post.path}&target[]=${site.url + post.path}/`
       // }&target=https://indieweb.org`
     )
       .then(res => res.json())
