@@ -132,7 +132,7 @@ pnpm build && curl -s https://pubsubhubbub.appspot.com/ -d 'hub.mode=publish&hub
 
 ### Indiekit
 
-[Indiekit](https://github.com/getindiekit/indiekit) 是一个小巧但内容强大的服务器，可以作为 Micropub 端点。
+[Indiekit](https://github.com/getindiekit/indiekit) 是一个小巧但功能强大的服务器，可以作为 Micropub 端点。
 
 等 Bridgy Fed 和 PostTypes 完成了我会专门写个 preset-urara 试一下。
 
