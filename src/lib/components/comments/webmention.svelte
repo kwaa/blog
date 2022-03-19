@@ -41,31 +41,32 @@
 
   let [page, loaded, end, mentions, sortDirUp] = [0, false, false, [], config.sortDir === 'up' ? true : false]
 
-  const load = async () => {
-    let feed: WebmentionFeed = await fetch(
+  const load = async () =>
+    await fetch(
       `https://webmention.io/api/mentions.jf2?page=${page}&per-page=${config.perPage ?? '20'}&sort-by=${
         config.sortBy ?? 'created'
       }&sort-dir=${sortDirUp ? 'up' : 'down'}${
         config.property ? config.property.forEach(wmProperty => `&wm-property=${wmProperty}`) : ''
       }&target[]=${site.url + post.path}}&target[]=${site.url + post.path}/`
       // }&target=https://indieweb.org`
-    ).then(res => res.json())
-    if (feed.children.length > 0) {
-      feed = {
-        ...feed,
-        children: feed.children.filter(
-          (entry: WebmentionEntry) =>
-            !(config.blockList?.length > 0 && config.blockList.includes(new URL(entry['wm-source']).origin))
-        )
-      }
-      if (feed.children.length > 0) {
-        mentions = [...mentions, ...feed.children]
-      } else load()
-    } else end = true
-    console.log(feed, mentions, page)
-    page++
-    loaded = true
-  }
+    )
+      .then(res => res.json())
+      .then((feed: WebmentionFeed) => {
+        if (feed.children.length > 0) {
+          feed = {
+            ...feed,
+            children: feed.children.filter(
+              (entry: WebmentionEntry) =>
+                !(config.blockList?.length > 0 && config.blockList.includes(new URL(entry['wm-source']).origin))
+            )
+          }
+          if (feed.children.length > 0) {
+            mentions = [...mentions, ...feed.children]
+          } else load()
+        } else end = true
+        page++
+        loaded = true
+      })
 
   const reset = async () => {
     page = 0
