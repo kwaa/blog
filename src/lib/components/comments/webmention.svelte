@@ -146,46 +146,48 @@
       {/if}
     {/each}
   {/key}
-  {#if end === true}
-    <div class="divider mt-0 -mb-2">END</div>
-  {:else if loaded === true}
-    <button
-      on:click={() => {
-        loaded = false
-        load()
-      }}
-      class="btn btn-primary btn-block">
-      LOAD
-    </button>
+  {#if loaded === true}
+    {#if end !== true}
+      <button
+        on:click={() => {
+          loaded = false
+          load()
+        }}
+        class="btn btn-primary btn-block">
+        LOAD
+      </button>
+    {:else if config.form !== true}
+      <div class="divider mt-0 -mb-2">END</div>
+    {/if}
   {:else}
     <button id="webmention-loading" class="btn btn-lg btn-block flex btn-ghost loading" />
   {/if}
-  <form id="webmention-form" method="post" action="https://webmention.io/kwaa.dev/webmention">
-    <input type="hidden" name="target" value={site.url + post.path} />
-    <!-- <label for="reply-url">
-      Have you written a <a href="https://indieweb.org/responses">response</a>
-      to this? Let me know the URL:
-    </label> -->
-    <label class="label gap-4">
-      <span class="label-text">send webmentions here:</span>
-      <span class="label-text-alt text-right">
-        or <a
-          class="hover:!text-primary"
-          href="https://quill.p3k.io/?dontask=1&me=https://commentpara.de/&reply={encodeURI(site.url + post.path)}">
-          comment anonymously
-        </a>
-      </span>
-    </label>
-    <div class="flex gap-2">
-      <div class="flex-1">
-        <input
-          class="input input-bordered focus:input-primary w-full"
-          type="text"
-          id="reply-url"
-          name="source"
-          placeholder="https://example.com/my-post" />
+  {#if config.form === true}
+    <form id="webmention-form" method="post" action="https://webmention.io/{config.username}webmention">
+      <input type="hidden" name="target" value={site.url + post.path} />
+      <label class="label gap-4">
+        <span class="label-text">send webmentions here:</span>
+        {#if config.commentParade === true}
+          <span class="label-text-alt text-right">
+            or <a
+              class="hover:!text-primary"
+              href="https://quill.p3k.io/?dontask=1&me=https://commentpara.de/&reply={encodeURI(site.url + post.path)}">
+              comment anonymously
+            </a>
+          </span>
+        {/if}
+      </label>
+      <div class="flex gap-2">
+        <div class="flex-1">
+          <input
+            class="input input-bordered focus:input-primary w-full"
+            type="text"
+            id="reply-url"
+            name="source"
+            placeholder="https://example.com/my-post" />
+        </div>
+        <button class="btn btn-primary flex-0 mt-auto" type="submit" id="webmention-submit">Send</button>
       </div>
-      <button class="btn btn-primary flex-0 mt-auto" type="submit" id="webmention-submit">Send</button>
-    </div>
-  </form>
+    </form>
+  {/if}
 </div>

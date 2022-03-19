@@ -7,7 +7,9 @@ export const comment: CommentConfig = {
   webmention: {
     username: 'kwaa.dev',
     sortBy: 'created',
-    sortDir: 'down'
+    sortDir: 'down',
+    form: true,
+    commentParade: true
   },
   giscus: {
     src: 'https://giscus.kwaa.dev/client.js',

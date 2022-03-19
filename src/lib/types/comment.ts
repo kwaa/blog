@@ -9,8 +9,12 @@ export type WebmentionConfig = {
   sortDir?: 'down' | 'up'
   /** find links of a specific type. */
   property?: ('in-reply-to' | 'like-of' | 'repost-of' | 'bookmark-of' | 'mention-of' | 'rsvp')[]
-
+  /** URL array of a webmention you'd like to block. */
   blockList?: string[]
+  /** show the form for sending the webmention. */
+  form?: boolean
+  /** show `or comment anonymously` label text. */
+  commentParade?: boolean
 }
 
 export type GiscusConfig = {
