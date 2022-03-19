@@ -69,7 +69,7 @@
         <a rel="author" class="p-name u-url" href={site.url}>{site.author.name}</a>
       </div>
       <a class="hidden u-url u-uid" href={site.url + path}>{site.url + path}</a>
-      <a class="hidden u-url" href="https://fed.brid.gy">Bridgy Fed</a>
+      <a class="hidden u-url" href="https://fed.brid.gy/">Bridgy Fed</a>
       <div class="card-body gap-0">
         <h1 itemprop="name headline" class="card-title text-3xl p-name">{title ?? path}</h1>
         <Date post={{ date, lastmod, priority }} type="layout" />
