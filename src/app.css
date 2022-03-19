@@ -149,3 +149,40 @@ pre.twoslash data-lsp:hover::before {
 }
 
 /* your code here */
+
+html {
+  /* background courtesy of gradientmagic.com */
+  background-image: repeating-linear-gradient(
+      90deg,
+      hsla(var(--b3) / 0.2) 0px,
+      hsla(var(--b3) / 0.2) 1px,
+      transparent 1px,
+      transparent 21px,
+      hsla(var(--b3) / 0.2) 21px,
+      hsla(var(--b3) / 0.2) 22px,
+      transparent 22px,
+      transparent 72px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      hsla(var(--b3) / 0.2) 0px,
+      hsla(var(--b3) / 0.2) 1px,
+      transparent 1px,
+      transparent 21px,
+      hsla(var(--b3) / 0.2) 21px,
+      hsla(var(--b3) / 0.2) 22px,
+      transparent 22px,
+      transparent 72px
+    ),
+    repeating-linear-gradient(
+      135deg,
+      hsla(var(--b3) / 0.2) 0px,
+      hsla(var(--b3) / 0.2) 1px,
+      transparent 1px,
+      transparent 21px,
+      hsla(var(--b3) / 0.2) 21px,
+      hsla(var(--b3) / 0.2) 22px,
+      transparent 22px,
+      transparent 72px
+    );
+}
