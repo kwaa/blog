@@ -96,7 +96,7 @@ Bridgy 可以将个人网站连接到常见的社交媒体。
 ### Bridgy Fed
 
 我做这些事的源动力。
-让一个静态网站能加入 Fediverse，简直酷到不行！
+让一个静态网站能和 Fediverse 交互，简直酷到不行！
 
 我刚开始写 Urara 的时候就有兼容 ActivityPub 的想法，不过研究了一下作为静态网站实在不太可能就放弃了，没想到能以这种方式实现。
 
@@ -108,7 +108,7 @@ Bridgy 可以将个人网站连接到常见的社交媒体。
 | vercel.json  |    ×    |   √    |    ×     |
 | netlify.toml |    √    |   ×    |    ×     |
 
-目前我的博客部署在 Vercel，所以只有 vercel.json 的示例。
+目前我的博客部署在 Vercel，所以只有 `vercel.json` 的示例，重定向工作正常。
 
 ```json
 {
@@ -154,8 +154,14 @@ pnpm build && curl -s https://pubsubhubbub.appspot.com/ -d 'hub.mode=publish&hub
 每篇帖子都需要向 Bridgy Fed 发送一个 Webmention。
 
 ```html
-<a class="hidden" href="https://fed.brid.gy"></a>
+<a class="hidden" href="https://fed.brid.gy/" />
 ```
+
+末尾带斜杠！末尾带斜杠！末尾带斜杠！重要的事情说三遍！
+
+不过... 不知道为什么测试没有效果。[这里是日志](https://fed.brid.gy/log?key=https%3A%2F%2Fkwaa.dev%2Findieweb+https%3A%2F%2Fme.kwaa.moe%2Fobjects%2Fd659b5c8-9c08-4bc7-be09-310d8da5d303&start_time=1647685451)
+
+Webmention 和 Bridgy Fed 日志状态都是 Complete 来着，奇了怪了。
 
 ### Indiekit
 
