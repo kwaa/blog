@@ -1,6 +1,5 @@
 <script lang="ts" context="module">
   import Image from '$lib/components/prose/img.svelte'
-  // import code from '$lib/components/prose/code.svelte'
   import table from '$lib/components/prose/table.svelte'
   export { Image as img, table }
 </script>
@@ -26,22 +25,13 @@
   export let descr = undefined
   export let toc = undefined
   export let path = undefined
+  export let slug = undefined
 
   let posts = undefined
   let post = undefined
   let index = undefined
   let prev = undefined
   let next = undefined
-
-  // if (browser) {
-  //   posts = Object.entries(JSON.parse(localStorage.getItem('posts')))
-  //     .sort(([a], [b]) => parseInt(a) - parseInt(b))
-  //     .flatMap(([, value]) => value)
-  //   post = posts.find(post => post?.path === window.location.pathname)
-  //   index = posts.findIndex(post => post?.path === window.location.pathname)
-  //   prev = posts[index + 1]
-  //   next = posts[index - 1]
-  // }
 
   $: storedPosts.subscribe(storedPosts => {
     posts = Object.entries(storedPosts).flatMap(([, value]) => value)
@@ -98,7 +88,7 @@
       {#if (posts.length > 1 && !post.priority) || post.priority[1] > 0}
         <Pagination {next} {prev} />
       {/if}
-      {#if browser && (!post.comment || post.comment !== false)}
+      {#if browser && post?.comment !== false}
         <Comment {post} />
       {/if}
     {/if}

@@ -32,23 +32,15 @@
     'wm-private': boolean
   }
 
-  // const rsvp = {
-  //   yes: '✅',
-  //   no: '❌',
-  //   interested: '💡',
-  //   maybe: '💭'
-  // }
-
-  let [page, loaded, end, mentions, sortDirUp] = [0, false, false, [], config.sortDir === 'up' ? true : false]
+  let [page, loaded, end, mentions, sortDirUp] = [0, false, false, [], config?.sortDir === 'up' ? true : false]
 
   const load = async () =>
     await fetch(
-      `https://webmention.io/api/mentions.jf2?page=${page}&per-page=${config.perPage ?? '20'}&sort-by=${
-        config.sortBy ?? 'created'
+      `https://webmention.io/api/mentions.jf2?page=${page}&per-page=${config?.perPage ?? '20'}&sort-by=${
+        config?.sortBy ?? 'created'
       }&sort-dir=${sortDirUp ? 'up' : 'down'}${
-        config.property ? config.property.forEach(wmProperty => `&wm-property=${wmProperty}`) : ''
+        config?.property ? config.property.forEach(wmProperty => `&wm-property=${wmProperty}`) : ''
       }&target[]=${site.url + post.path}&target[]=${site.url + post.path}/`
-      // }&target=https://indieweb.org`
     )
       .then(res => res.json())
       .then((feed: WebmentionFeed) => {
@@ -57,7 +49,7 @@
           ...feed,
           children: feed.children.filter(
             (entry: WebmentionEntry) =>
-              !(config.blockList?.length > 0 && config.blockList.includes(new URL(entry['wm-source']).origin))
+              !(config?.blockList?.length > 0 && config.blockList.includes(new URL(entry['wm-source']).origin))
           )
         }
         if (feed.children.length > 0) mentions = [...mentions, ...feed.children]
@@ -80,7 +72,7 @@
 <div class="flex flex-col gap-8">
   <div class="flex">
     <p class="flex-1 m-auto italic opacity-50">
-      {`sort-by=${config.sortBy ?? 'created'}&sort-dir=${sortDirUp ? 'up' : 'down'}`}
+      {`sort-by=${config?.sortBy ?? 'created'}&sort-dir=${sortDirUp ? 'up' : 'down'}`}
     </p>
     <button
       class="btn btn-ghost btn-sm float-right"
@@ -103,7 +95,19 @@
         'repost-of': ['🔄 reposted', 'border-accent/50', 'text-accent', 'tooltip-accent'],
         'bookmark-of': ['⭐️ bookmarked', 'border-neutral/50', 'text-neutral', 'tooltip-neutral'],
         'mention-of': ['💬 mentioned', 'border-base-300/50', 'text-base-content', 'tooltip-base-content'],
-        rsvp: ['📅 RSVPed', 'border-warning/50', 'text-warning', 'tooltip-warning']
+        rsvp: [
+          `📅 RSVPed ${
+            {
+              yes: '✅',
+              no: '❌',
+              interested: '💡',
+              maybe: '💭'
+            }[mention.rsvp]
+          }`,
+          'border-warning/50',
+          'text-warning',
+          'tooltip-warning'
+        ]
       }[mention['wm-property']]}
       {#if mention.url !== null}
         <div class="{borderColor} border-2 rounded-2xl p-4">
@@ -156,18 +160,18 @@
         class="btn btn-primary btn-block">
         LOAD
       </button>
-    {:else if config.form !== true}
+    {:else if config?.form !== true}
       <div class="divider mt-0 -mb-2">END</div>
     {/if}
   {:else}
     <button id="webmention-loading" class="btn btn-lg btn-block flex btn-ghost loading" />
   {/if}
-  {#if config.form === true}
+  {#if config?.form === true}
     <form id="webmention-form" method="post" action="https://webmention.io/{config.username}webmention">
       <input type="hidden" name="target" value={site.url + post.path} />
-      <label class="label gap-4">
+      <div class="label gap-4">
         <span class="label-text">send webmentions here:</span>
-        {#if config.commentParade === true}
+        {#if config?.commentParade === true}
           <span class="label-text-alt text-right">
             or <a
               class="hover:!text-primary"
@@ -176,7 +180,7 @@
             </a>
           </span>
         {/if}
-      </label>
+      </div>
       <div class="flex gap-2">
         <div class="flex-1">
           <input

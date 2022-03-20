@@ -1,7 +1,6 @@
 import type { CommentConfig } from '$lib/types/comment'
 
 export const comment: CommentConfig = {
-  // use: ['Callback', 'Webmention', 'Giscus', 'Disqus'],
   use: ['Webmention', 'Giscus', 'Disqus'],
   style: 'boxed',
   webmention: {
@@ -21,3 +20,7 @@ export const comment: CommentConfig = {
     shortname: 'kwaa'
   }
 }
+
+// export const comment: CommentConfig = {
+//   use: ['Webmention']
+// }
