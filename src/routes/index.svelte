@@ -5,7 +5,7 @@
   import { browser } from '$app/env'
   // import { genTags } from '$lib/utils/tags'
   import { posts as storedPosts, tags as storedTags } from '$lib/stores/posts'
-  import Flex from '$lib/components/layout_flex.svelte'
+  import Flex from '$lib/components/layouts/_flex.svelte'
   import Footer from '$lib/components/footer.svelte'
   import Post from '$lib/components/index_post.svelte'
   import Profile from '$lib/components/index_profile.svelte'

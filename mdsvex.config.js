@@ -1,4 +1,3 @@
-// import shiki from 'shiki'
 import { escapeSvelte } from 'mdsvex'
 import { lex, parse as parseFence } from 'fenceparser'
 import { renderCodeToHTML, runTwoSlash, createShikiHighlighter } from 'shiki-twoslash'
@@ -11,53 +10,31 @@ import { visit } from 'unist-util-visit'
 import { toString } from 'mdast-util-to-string'
 import Slugger from 'github-slugger'
 
-// const highlighter = async (code, lang) =>
-//   `{@html \`${await shiki.getHighlighter({ theme: 'material-default' }).then(highlighter =>
-//     highlighter
-//       .codeToHtml(code, { lang })
-//       .replace(/[{}`]/g, c => ({ '{': '&#123;', '}': '&#125;', '`': '&#96;' }[c]))
-//       .replace(/\\([trn])/g, '&#92;$1')
-//   )}\` }`
-
-// const highlighter = async (code, lang, meta) => {
-//   let fence, twoslash
-//   try { fence = parse(lex([lang, meta].filter(Boolean).join(' '))) }
-//   catch (error) { throw new Error(`Could not parse the codefence for this code sample \n${code}`) }
-//   if (fence?.twoslash === true) twoslash = runTwoSlash(code, lang)
-//   // const highlighter = await createShikiHighlighter({ theme: 'material-default' })
-//   // const html = renderCodeToHTML(code, lang, fence ?? {}, {}, await createShikiHighlighter({ theme: 'material-default' }), twoslash);
-//   return `{@html \`${escapeSvelte(renderCodeToHTML(code, lang, fence ?? {}, {}, await createShikiHighlighter({ theme: 'material-default' }), twoslash))}\` }`;
-// }
-
-// const highlighter = async (code, lang, meta, fence = parse(lex([lang, meta].filter(Boolean).join(' '))), twoslash = fence?.twoslash === true ? runTwoSlash(code, lang) : {}) =>
-//   `{@html \`${escapeSvelte(renderCodeToHTML(code, lang, fence ?? {}, {}, createShikiHighlighter({ theme: 'material-default' }), twoslash))}\` }`
-
-
 const remarkUraraFm =
   () =>
-    (tree, { data, filename }) => {
-      const filepath = filename.split('/src/routes')[1]
-      let { dir, name } = parse(filepath)
-      if (!data.fm) data.fm = {}
-      data.fm.slug = filepath
-      data.fm.path = join(dir, `/${name}`.replace('/index', '').replace('.svelte', ''))
-      if (data.fm?.toc !== false) {
-        let [slugs, toc] = [new Slugger(), []]
-        visit(tree, 'heading', node => {
-          toc.push({
-            depth: node.depth,
-            title: toString(node),
-            slug: slugs.slug(toString(node))
-          })
+  (tree, { data, filename }) => {
+    const filepath = filename.split('/src/routes')[1]
+    let { dir, name } = parse(filepath)
+    if (!data.fm) data.fm = {}
+    data.fm.slug = filepath
+    data.fm.path = join(dir, `/${name}`.replace('/index', '').replace('.svelte', ''))
+    if (data.fm?.toc !== false) {
+      let [slugs, toc] = [new Slugger(), []]
+      visit(tree, 'heading', node => {
+        toc.push({
+          depth: node.depth,
+          title: toString(node),
+          slug: slugs.slug(toString(node))
         })
-        data.fm.toc = toc
-      }
-      if (!data.fm.date || !data.fm.lastmod) {
-        const { ctime, mtime } = statSync(new URL(`./urara${filepath}`, import.meta.url))
-        if (!data.fm.date) data.fm.date = ctime
-        if (!data.fm.lastmod) data.fm.lastmod = mtime
-      }
+      })
+      data.fm.toc = toc
     }
+    if (!data.fm.date || !data.fm.lastmod) {
+      const { ctime, mtime } = statSync(new URL(`./urara${filepath}`, import.meta.url))
+      if (!data.fm.date) data.fm.date = ctime
+      if (!data.fm.lastmod) data.fm.lastmod = mtime
+    }
+  }
 
 const remarkUraraSpoiler = () => tree =>
   visit(tree, 'paragraph', node => {
@@ -77,20 +54,26 @@ export default /** @type {Parameters<typeof import("mdsvex").mdsvex>[0]} */ {
     dashes: 'oldschool'
   },
   layout: {
-    _flex: './src/lib/components/layout_flex.svelte',
-    _card: './src/lib/components/layout_card.svelte',
-    _: './src/lib/components/layout_post.svelte'
+    article: './src/lib/components/layouts/article.svelte',
+    note: './src/lib/components/layouts/note.svelte',
+    _flex: './src/lib/components/layouts/_flex.svelte',
+    _card: './src/lib/components/layouts/_card.svelte',
+    _: './src/lib/components/layouts/article.svelte'
   },
   highlight: {
     highlighter: async (code, lang, meta) => {
       let fence, twoslash
-      try { fence = parseFence(lex([lang, meta].filter(Boolean).join(' '))) }
-      catch (error) { throw new Error(`Could not parse the codefence for this code sample \n${code}`) }
+      try {
+        fence = parseFence(lex([lang, meta].filter(Boolean).join(' ')))
+      } catch (error) {
+        throw new Error(`Could not parse the codefence for this code sample \n${code}`)
+      }
       if (fence?.twoslash === true) twoslash = runTwoSlash(code, lang)
-      return `{@html \`${escapeSvelte(renderCodeToHTML(code, lang, fence ?? {}, {}, await createShikiHighlighter({ theme: 'material-default' }), twoslash))}\` }`
+      return `{@html \`${escapeSvelte(
+        renderCodeToHTML(code, lang, fence ?? {}, {}, await createShikiHighlighter({ theme: 'material-default' }), twoslash)
+      )}\` }`
     }
   },
-  // highlight: false,
   remarkPlugins: [remarkUraraFm, remarkUraraSpoiler],
   rehypePlugins: [
     rehypeSlug,

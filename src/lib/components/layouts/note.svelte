@@ -1,0 +1,78 @@
+<script lang="ts" context="module">
+  import Image from '$lib/components/prose/img.svelte'
+  import table from '$lib/components/prose/table.svelte'
+  export { Image as img, table }
+</script>
+
+<script lang="ts">
+  import { browser } from '$app/env'
+  import { site } from '$lib/config/site'
+  import { posts as storedPosts } from '$lib/stores/posts'
+  import Flex from '$lib/components/layouts/_flex.svelte'
+  import Date from '$lib/components/post_date.svelte'
+  import Pagination from '$lib/components/post_pagination.svelte'
+  import Comment from '$lib/components/post_comment.svelte'
+  import Footer from '$lib/components/footer.svelte'
+
+  export let title = undefined
+  export let date = undefined
+  export let lastmod = undefined
+  export let priority = undefined
+  export let tags = undefined
+  export let descr = undefined
+  export let toc = undefined
+  export let path = undefined
+  export let slug = undefined
+
+  let posts = undefined
+  let post = undefined
+  let index = undefined
+  let prev = undefined
+  let next = undefined
+
+  $: storedPosts.subscribe(storedPosts => {
+    posts = Object.entries(storedPosts).flatMap(([, value]) => value)
+    post = posts.find(post => post?.path === path)
+    index = posts.findIndex(post => post?.path === path)
+    prev = posts[index + 1]
+    next = posts[index - 1]
+  })
+</script>
+
+<Flex {title} {date} {lastmod} {priority} {tags} {descr} {path}>
+  <article
+    itemscope
+    itemtype="https://schema.org/BlogPosting"
+    class="card bg-base-100 rounded-none md:rounded-box shadow-xl mb-8 h-entry">
+    <div class="hidden h-card p-author">
+      <img class="u-photo" src={site.author.avatar} alt={site.author.name} decoding="async" loading="lazy" />
+      <a rel="author" class="p-name u-url" href={site.url}>{site.author.name}</a>
+    </div>
+    <a class="hidden u-url u-uid" href={site.url + path} />
+    <div class="card-body gap-0">
+      <Date post={{ date, lastmod, priority }} type="layout" />
+      <main itemprop="articleBody" class="mt-8 urara-prose prose p-content">
+        <slot />
+      </main>
+      {#if tags}
+        <div class="divider mt-4 mb-0" />
+        <div>
+          {#each tags as tag}
+            <a href="/?tags={tag}" class="btn btn-sm btn-ghost normal-case mt-2 mr-2 p-category">
+              #{tag}
+            </a>
+          {/each}
+        </div>
+      {/if}
+    </div>
+  </article>
+  {#if posts && post}
+    {#if (posts.length > 1 && !post.priority) || post.priority[1] > 0}
+      <Pagination {next} {prev} />
+    {/if}
+    {#if browser && post?.comment !== false}
+      <Comment {post} />
+    {/if}
+  {/if}
+  <Footer />
+</Flex>

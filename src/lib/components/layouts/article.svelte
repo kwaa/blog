@@ -8,7 +8,7 @@
   import { browser } from '$app/env'
   import { site } from '$lib/config/site'
   import { posts as storedPosts } from '$lib/stores/posts'
-  import Flex from '$lib/components/layout_flex.svelte'
+  import Flex from '$lib/components/layouts/_flex.svelte'
   import Date from '$lib/components/post_date.svelte'
   import Toc from '$lib/components/post_toc.svelte'
   import Cover from '$lib/components/post_cover.svelte'
@@ -25,7 +25,6 @@
   export let descr = undefined
   export let toc = undefined
   export let path = undefined
-  export let slug = undefined
 
   let posts = undefined
   let post = undefined
@@ -84,13 +83,11 @@
         {/if}
       </div>
     </article>
-    {#if posts && post}
-      {#if (posts.length > 1 && !post.priority) || post.priority[1] > 0}
-        <Pagination {next} {prev} />
-      {/if}
-      {#if browser && post?.comment !== false}
-        <Comment {post} />
-      {/if}
+    {#if (posts.length > 1 && !post.priority) || post.priority[1] > 0}
+      <Pagination {next} {prev} />
+    {/if}
+    {#if browser && post?.comment !== false}
+      <Comment {post} />
     {/if}
     <Footer />
   </div>

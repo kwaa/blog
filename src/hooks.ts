@@ -22,16 +22,10 @@ const minificationOptions = {
   sortClassName: true
 }
 
-export const handle: Handle = async ({ event, resolve }) => {
-  const response = await resolve(event, {
-    transformPage: ({ html }) => (site.lang ? html.replace('<html lang="en">', `<html lang="${site.lang}">`) : html)
+export const handle: Handle = async ({ event, resolve }) =>
+  await resolve(event, {
+    transformPage: ({ html }) =>
+      prerendering
+        ? minify(html.replace('<html lang="en">', `<html lang="${site.lang ?? 'en'}">`), minificationOptions)
+        : html.replace('<html lang="en">', `<html lang="${site.lang ?? 'en'})`)
   })
-  if (prerendering && response.headers.get('content-type') === 'text/html') {
-    const body = await response.text()
-    return new Response(minify(body, minificationOptions), {
-      status: response.status,
-      headers: response.headers
-    })
-  }
-  return response
-}
