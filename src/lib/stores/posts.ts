@@ -11,7 +11,7 @@ import { genPosts, genTags } from '$lib/utils/posts'
 export const posts = readable({}, set => {
   mode === 'dev'
     ? set(genPosts({ postHtml: false }))
-    : fetch(site.url + 'posts.json')
+    : fetch(`${site.url}/posts.json`)
         .then(res => res.json())
         .then(data =>
           set(
@@ -33,7 +33,7 @@ export const posts = readable({}, set => {
 export const tags = readable({}, set => {
   mode === 'dev'
     ? set(genTags(Object.entries(genPosts({ postHtml: false })).flatMap(([key, value]) => (parseInt(key) > 0 ? value : []))))
-    : fetch(site.url + 'posts.json')
+    : fetch(`${site.url}/posts.json`)
         .then(res => res.json())
         .then(data =>
           set(
