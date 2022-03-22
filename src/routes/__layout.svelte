@@ -17,7 +17,7 @@
 
 <script lang="ts">
   import { browser } from '$app/env'
-  import { onMount } from 'svelte'
+  // import { onMount } from 'svelte'
   import { fly } from 'svelte/transition'
   import { genTags } from '$lib/utils/posts'
   import { posts, tags } from '$lib/stores/posts'
@@ -28,10 +28,16 @@
   export let path: string
   // posts.set(res)
   // tags.set(genTags(Object.entries(res).flatMap(([key, value]) => (parseInt(key) > 0 ? value : []))))
-  onMount(async () => {
-    if (browser)
-      res = await fetch(`${site.url}/posts.json`).then(res => res.json() as unknown as { [priority: number]: Urara.Post[] })
-  })
+  // onMount(async () => {
+  //   if (browser)
+  //     res = await fetch(`${site.url}/posts.json`).then(res => res.json() as unknown as { [priority: number]: Urara.Post[] })
+  // })
+  $: if (browser)
+    (async () =>
+      (res = await fetch(`${site.url}/posts.json`).then(
+        res => res.json() as unknown as { [priority: number]: Urara.Post[] }
+      )))()
+
   $: if (res) {
     posts.set(res)
     tags.set(genTags(Object.entries(res).flatMap(([key, value]) => (parseInt(key) > 0 ? value : []))))
