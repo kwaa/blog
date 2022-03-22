@@ -2,21 +2,40 @@
   export const prerender = true
   // export const load = async ({ url, fetch }) => {
   //   const res = await fetch('/posts.json')
-  //   return res.ok ? { props: { path: url.pathname, res: await res.json() } } : { props: { path: url.pathname } }
+  //   return res.ok
+  //     ? { props: { path: url.pathname, res: await await fetch('/posts.json').json() } }
+  //     : { props: { path: url.pathname } }
   // }
-  export const load = async ({ url }) => ({ props: { path: url.pathname } })
+  // export const load = async ({ url }) => ({ props: { path: url.pathname } })
+  export const load = async ({ url, fetch }) => ({
+    props: {
+      path: url.pathname,
+      res: import.meta.env.DEV ? await fetch('/posts.json').json() : ''
+    }
+  })
 </script>
 
 <script lang="ts">
+  import { browser } from '$app/env'
   import { fly } from 'svelte/transition'
-  // import { genTags } from '$lib/utils/posts'
-  // import { posts, tags } from '$lib/stores/posts'
+  import { genTags } from '$lib/utils/posts'
+  import { posts, tags } from '$lib/stores/posts'
   import Header from '$lib/components/header.svelte'
   import '../app.css'
-  // export let res: { [priority: number]: Urara.Post[] }
+  import { site } from '$lib/config/site'
+  export let res: { [priority: number]: Urara.Post[] } = undefined
   export let path: string
   // posts.set(res)
   // tags.set(genTags(Object.entries(res).flatMap(([key, value]) => (parseInt(key) > 0 ? value : []))))
+  $: if (browser)
+    (async () =>
+      (res = await fetch(`${site.url}/posts.json`).then(
+        res => res.json() as unknown as { [priority: number]: Urara.Post[] }
+      )))()
+  $: if (res) {
+    posts.set(res)
+    tags.set(genTags(Object.entries(res).flatMap(([key, value]) => (parseInt(key) > 0 ? value : []))))
+  }
 </script>
 
 <Header />
