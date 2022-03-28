@@ -1,5 +1,5 @@
 import { site } from '$lib/config/site'
-import { icons } from '$lib/config/icons'
+import { icon } from '$lib/config/icon'
 import { config as headerConfig } from '$lib/config/header'
 
 export const manifest = {
@@ -14,6 +14,6 @@ export const manifest = {
   orientation: 'portrait',
   backgroundColor: site.themeColor,
   themeColor: site.themeColor,
-  icons: [...Object.values(icons).slice(2)],
+  icons: [...Object.values(icon).slice(2)],
   shortcuts: Object.entries(headerConfig.nav).map(([url, name]) => ({ name, url }))
 }

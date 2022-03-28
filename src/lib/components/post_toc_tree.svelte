@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let toc: Urara.PostToc
+  export let toc: Urara.Post.Article.Toc
   const { title, slug, depth, children } = toc
 </script>
 

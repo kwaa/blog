@@ -12,18 +12,24 @@
   import { fly } from 'svelte/transition'
   import { genTags } from '$lib/utils/posts'
   import { posts, tags } from '$lib/stores/posts'
+  import Head from '$lib/components/head_static.svelte'
   import Header from '$lib/components/header.svelte'
   import '../app.css'
-  export let res: { [priority: number]: Urara.Post[] } = undefined
+  export let res: Urara.Post[]
   export let path: string
   posts.set(res)
-  tags.set(genTags(Object.entries(res).flatMap(([key, value]) => (parseInt(key) > 0 ? value : []))))
+  tags.set(genTags(res))
 </script>
 
-<Header />
+<Head />
+
+<Header {path} />
 
 {#key path}
-  <div class="min-h-screen pt-24 lg:mb-16" in:fly={{ y: 100, duration: 200, delay: 200 }} out:fly={{ y: -100, duration: 200 }}>
+  <div
+    class="bg-base-100 md:bg-base-200 min-h-screen pt-16 lg:pt-24 md:pb-8 lg:pb-16"
+    in:fly={{ y: 100, duration: 200, delay: 200 }}
+    out:fly={{ y: -100, duration: 200 }}>
     <slot />
   </div>
 {/key}

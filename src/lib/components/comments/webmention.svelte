@@ -39,7 +39,7 @@
       `https://webmention.io/api/mentions.jf2?page=${page}&per-page=${config?.perPage ?? '20'}&sort-by=${
         config?.sortBy ?? 'created'
       }&sort-dir=${sortDirUp ? 'up' : 'down'}${
-        config?.property ? config.property.forEach(wmProperty => `&wm-property=${wmProperty}`) : ''
+        config?.property && config.property.forEach(wmProperty => `&wm-property=${wmProperty}`)
       }&target[]=${site.url + post.path}&target[]=${site.url + post.path}/`
     )
       .then(res => res.json())
@@ -110,11 +110,11 @@
         ]
       }[mention['wm-property']]}
       {#if mention.url !== null}
-        <div class="{borderColor} border-2 rounded-2xl p-4">
-          <div class="flex bg-base-200 rounded-lg">
+        <div class="{borderColor} border-2 rounded-box p-4">
+          <div class="flex bg-base-200 rounded-btn">
             {#if mention?.author?.photo}
               <img
-                class="w-12 h-12 flex-0 rounded-lg"
+                class="w-12 h-12 flex-0 rounded-btn"
                 src={mention.author.photo}
                 alt={mention.author?.name ?? new URL(mention.url).host}
                 loading="lazy"

@@ -27,7 +27,7 @@
         rel="noopener external"
         target="_blank"
         class="tooltip tooltip-secondary hover:text-secondary"
-        data-tip="🌸 Based on SvelteKit / MDsveX 🌸"
+        data-tip="🌸 [γ] - Based on SvelteKit / MDsveX 🌸"
         href="https://github.com/importantimport/urara">
         Urara
       </a>

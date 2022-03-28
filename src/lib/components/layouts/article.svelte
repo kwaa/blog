@@ -6,12 +6,12 @@
 
 <script lang="ts">
   import { browser } from '$app/env'
-  import { site } from '$lib/config/site'
   import { posts as storedPosts } from '$lib/stores/posts'
+  import Head from '$lib/components/head.svelte'
   import Flex from '$lib/components/layouts/_flex.svelte'
-  import Date from '$lib/components/post_date.svelte'
-  import Toc from '$lib/components/post_toc.svelte'
   import Cover from '$lib/components/post_cover.svelte'
+  import Status from '$lib/components/post_status.svelte'
+  import Toc from '$lib/components/post_toc.svelte'
   import Pagination from '$lib/components/post_pagination.svelte'
   import Comment from '$lib/components/post_comment.svelte'
   import Footer from '$lib/components/footer.svelte'
@@ -19,10 +19,8 @@
   export let title = undefined
   export let date = undefined
   export let lastmod = undefined
-  export let priority = undefined
   export let tags = undefined
   export let cover = undefined
-  export let descr = undefined
   export let toc = undefined
   export let path = undefined
 
@@ -33,7 +31,7 @@
   let next = undefined
 
   $: storedPosts.subscribe(storedPosts => {
-    posts = Object.entries(storedPosts).flatMap(([, value]) => value)
+    posts = storedPosts
     post = posts.find(post => post?.path === path)
     index = posts.findIndex(post => post?.path === path)
     prev = posts[index + 1]
@@ -41,7 +39,9 @@
   })
 </script>
 
-<Flex {title} {date} {lastmod} {priority} {tags} {cover} {descr} {path}>
+<Head {post} />
+
+<Flex>
   <div slot="left" class="h-full hidden xl:block" />
   <div slot="right" class="h-full hidden xl:block">
     {#if browser && toc?.length >= 1}
@@ -52,23 +52,15 @@
     <article
       itemscope
       itemtype="https://schema.org/BlogPosting"
-      class="card bg-base-100 rounded-none md:rounded-box shadow-xl mb-8 h-entry">
-      <div class="hidden h-card p-author">
-        <img class="u-photo" src={site.author.avatar} alt={site.author.name} decoding="async" loading="lazy" />
-        <a rel="author" class="p-name u-url" href={site.url}>{site.author.name}</a>
-      </div>
-      <a class="hidden u-url u-uid" href={site.url + path} />
-      <!-- <a class="hidden u-url" href="https://fed.brid.gy/" /> -->
+      class="card bg-base-100 rounded-none md:rounded-box md:shadow-xl mb-8 h-entry">
+      {#if cover}
+        <Cover {cover} figureClass="mx-4 md:mx-0 w-auto" imgClass="rounded-box w-full shadow-xl" />
+      {/if}
       <div class="card-body gap-0">
+        <Status post={{ layout: 'article', date, lastmod, path }} />
         <h1 itemprop="name headline" class="card-title text-3xl p-name">{title ?? path}</h1>
-        <Date post={{ date, lastmod, priority }} type="layout" />
-        {#if !cover}
-          <div class="divider my-6" />
-        {/if}
+        <div class="divider my-4" />
         <main itemprop="articleBody" class="urara-prose prose e-content">
-          {#if cover}
-            <Cover {cover} figureClass="-mx-8 !w-auto" imgClass="w-full" />
-          {/if}
           <slot />
         </main>
         {#if tags}
@@ -83,7 +75,7 @@
         {/if}
       </div>
     </article>
-    {#if (posts.length > 1 && !post?.priority) || post?.priority[1] > 0}
+    {#if posts.length > 1 && post}
       <Pagination {next} {prev} />
     {/if}
     {#if browser && post?.comment !== false}

@@ -9,6 +9,7 @@
   import { posts as storedPosts } from '$lib/stores/posts'
   import Head from '$lib/components/head.svelte'
   import Flex from '$lib/components/layouts/_flex.svelte'
+  import Reply from '$lib/components/post_reply.svelte'
   import Status from '$lib/components/post_status.svelte'
   import Pagination from '$lib/components/post_pagination.svelte'
   import Comment from '$lib/components/post_comment.svelte'
@@ -18,6 +19,8 @@
   export let lastmod = undefined
   export let tags = undefined
   export let path = undefined
+
+  export let replyTo = undefined
 
   let posts = undefined
   let post = undefined
@@ -40,9 +43,10 @@
   <article
     itemscope
     itemtype="https://schema.org/BlogPosting"
-    class="card bg-base-100 rounded-none md:rounded-box shadow-xl mb-8 h-entry">
+    class="card bg-base-100 rounded-none md:rounded-box md:shadow-xl mb-8 h-entry">
+    <Reply {replyTo} class="mt-4 mx-4" />
     <div class="card-body gap-0">
-      <Status post={{ layout: 'note', date, lastmod, path }} />
+      <Status post={{ layout: 'reply', date, lastmod, path }} />
       <main itemprop="articleBody" class="urara-prose prose p-name p-content">
         <slot />
       </main>

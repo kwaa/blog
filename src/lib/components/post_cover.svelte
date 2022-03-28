@@ -1,6 +1,6 @@
 <script lang="ts">
   import Picture from '$lib/components/extra/picture.svelte'
-  export let cover: Urara.Post['cover']
+  export let cover: Urara.Post.Article['cover']
   export let figureClass: string
   export let imgClass: string
   // let className = undefined

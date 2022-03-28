@@ -1,11 +1,9 @@
 <script lang="ts">
   import { source as pictureSource } from '$lib/config/img'
-  import { validate } from '$lib/utils/src'
   let className = undefined
   export { className as class }
   export let src = undefined
   export let alt = undefined
-  src = validate(src)
 </script>
 
 <picture class="h-full">

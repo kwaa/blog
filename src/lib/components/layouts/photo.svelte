@@ -9,11 +9,13 @@
   import { posts as storedPosts } from '$lib/stores/posts'
   import Head from '$lib/components/head.svelte'
   import Flex from '$lib/components/layouts/_flex.svelte'
+  import Cover from '$lib/components/post_cover.svelte'
   import Status from '$lib/components/post_status.svelte'
   import Pagination from '$lib/components/post_pagination.svelte'
   import Comment from '$lib/components/post_comment.svelte'
   import Footer from '$lib/components/footer.svelte'
 
+  export let cover = undefined
   export let date = undefined
   export let lastmod = undefined
   export let tags = undefined
@@ -41,8 +43,9 @@
     itemscope
     itemtype="https://schema.org/BlogPosting"
     class="card bg-base-100 rounded-none md:rounded-box shadow-xl mb-8 h-entry">
+    <Cover {cover} figureClass="mx-4 md:mx-0 w-auto" imgClass="rounded-box w-full shadow-xl" />
     <div class="card-body gap-0">
-      <Status post={{ layout: 'note', date, lastmod, path }} />
+      <Status post={{ layout: 'photo', date, lastmod, path }} />
       <main itemprop="articleBody" class="urara-prose prose p-name p-content">
         <slot />
       </main>
