@@ -45,6 +45,7 @@
     itemtype="https://schema.org/BlogPosting"
     class="card bg-base-100 rounded-none md:rounded-box md:shadow-xl mb-8 h-entry">
     <Reply {replyTo} class="mt-4 mx-4" />
+    <a class="hidden" href="https://fed.brid.gy/">Bridgy Fed</a>
     <div class="card-body gap-0">
       <Status post={{ layout: 'reply', date, lastmod, path }} />
       <main itemprop="articleBody" class="urara-prose prose p-name p-content">
