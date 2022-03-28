@@ -16,7 +16,9 @@
   let loaded: boolean
   let [posts, tags, years] = [[], [], []]
 
-  $: storedPosts.subscribe(storedPosts => (allPosts = storedPosts as Urara.Post[]))
+  $: storedPosts.subscribe(
+    storedPosts => (allPosts = (storedPosts as Urara.Post[]).filter(post => !post.flags?.includes('hidden')))
+  )
 
   $: storedTags.subscribe(storedTags => (allTags = storedTags as string[]))
 

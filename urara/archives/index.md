@@ -1,6 +1,7 @@
 ---
 title: DATA EXPUNGED
-priority: -1
+flags:
+  - hidden
 ---
 
 恭喜你发现隐藏页面！

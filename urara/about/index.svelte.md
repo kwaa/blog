@@ -2,7 +2,8 @@
 title: 关于
 date: 2021-10-05
 lastmod: 2021-12-08
-priority: ['About', 0]
+flags:
+  - hidden
 ---
 
 <script lang="ts">
