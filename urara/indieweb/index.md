@@ -1,6 +1,9 @@
 ---
 title: IndieWeb, Webmentions
 date: 2022-03-19
+tags:
+  - IndieWeb
+  - Webmentions
 ---
 
 本文参考了：
