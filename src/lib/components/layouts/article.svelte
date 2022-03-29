@@ -33,6 +33,7 @@
   $: storedPosts.subscribe(storedPosts => {
     posts = storedPosts
     post = posts.find(post => post?.path === path)
+    posts = posts.filter(post => !post.flags?.includes('hidden'))
     index = posts.findIndex(post => post?.path === path)
     prev = posts[index + 1]
     next = posts[index - 1]
