@@ -25,13 +25,14 @@
   let prev = undefined
   let next = undefined
 
-  $: storedPosts.subscribe(storedPosts => {
-    posts = storedPosts
-    post = posts.find(post => post?.path === path)
-    index = posts.findIndex(post => post?.path === path)
-    prev = posts.slice(index + 1).find(post => !post.flags?.includes('hidden'))
-    next = posts.slice(0, index - 1).find(post => !post.flags?.includes('hidden'))
-  })
+  $: if (browser)
+    storedPosts.subscribe(storedPosts => {
+      posts = storedPosts
+      post = posts.find(post => post.path === path)
+      index = posts.findIndex(post => post.path === path)
+      prev = posts.slice(index + 1).find(post => !post.flags?.includes('hidden'))
+      next = posts.slice(0, index - 1).find(post => !post.flags?.includes('hidden'))
+    })
 </script>
 
 <Head {post} />
@@ -58,7 +59,7 @@
       {/if}
     </div>
   </article>
-  {#if posts.length > 1 && post}
+  {#if prev || next}
     <Pagination {next} {prev} />
   {/if}
   {#if browser && post?.comment !== false}
