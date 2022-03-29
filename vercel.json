@@ -3,22 +3,22 @@
     {
       "source": "/.well-known/host-meta",
       "destination": "https://fed.brid.gy/.well-known/host-meta",
-      "permanent": true
+      "statusCode": 302
     },
     {
       "source": "/.well-known/host-meta.xrd",
       "destination": "https://fed.brid.gy/.well-known/host-meta.xrd",
-      "permanent": true
+      "statusCode": 302
     },
     {
       "source": "/.well-known/host-meta.jrd",
       "destination": "https://fed.brid.gy/.well-known/host-meta.jrd",
-      "permanent": true
+      "statusCode": 302
     },
     {
       "source": "/.well-known/webfinger",
       "destination": "https://fed.brid.gy/.well-known/webfinger",
-      "permanent": true
+      "statusCode": 302
     }
   ]
 }
