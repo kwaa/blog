@@ -1,6 +1,7 @@
 <script lang="ts">
   import { browser } from '$app/env'
   import { fly } from 'svelte/transition'
+  import { mode } from '$lib/config/misc'
   import { site } from '$lib/config/site'
   import { themes } from '$lib/config/themes'
   import { config as headerConfig } from '$lib/config/header'
@@ -24,7 +25,7 @@
     currentThemeColor = hslToHex(
       ...(getComputedStyle(document.documentElement)
         .getPropertyValue('--b1')
-        .slice(1)
+        .slice(mode === 'dev' ? 1 : 0)
         .replaceAll('%', '')
         .split(' ')
         .map(Number) as [number, number, number])
