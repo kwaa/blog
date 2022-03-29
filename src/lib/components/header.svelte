@@ -32,7 +32,7 @@
   }
 
   $: if (scrollY) {
-    pin = lastY - scrollY >= 0 || scrollY === 0 ? true : false
+    pin = lastY - scrollY >= 2 || scrollY === 0 ? true : false
     lastY = scrollY
     if (browser)
       percent =

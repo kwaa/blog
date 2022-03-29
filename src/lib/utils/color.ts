@@ -8,4 +8,7 @@ export const hslToHex = (
     Math.round(255 * (ll - a * Math.max(Math.min(k - 3, 9 - k, 1), -1)))
       .toString(16)
       .padStart(2, '0')
-) => `#${f(0)}${f(8)}${f(4)}`
+) => {
+  console.log(`input: ${h}, ${s}, ${l}\noutput: #${f(0)}${f(8)}${f(4)}`)
+  return `#${f(0)}${f(8)}${f(4)}`
+}
