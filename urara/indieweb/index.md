@@ -91,11 +91,6 @@ TODO...
 
 ## 额外
 
-### Bridgy
-
-Bridgy 可以将个人网站连接到常见的社交媒体。
-我目前没有这个需求（毕竟不是英文文章），跳过。
-
 ### Bridgy Fed
 
 我做这些事的源动力。
@@ -165,6 +160,11 @@ pnpm build && curl -s https://pubsubhubbub.appspot.com/ -d 'hub.mode=publish&hub
 不过... 不知道为什么测试没有效果。[这里是日志](https://fed.brid.gy/log?key=https%3A%2F%2Fkwaa.dev%2Findieweb+https%3A%2F%2Fme.kwaa.moe%2Fobjects%2Fd659b5c8-9c08-4bc7-be09-310d8da5d303&start_time=1647685451)
 
 Webmention 和 Bridgy Fed 日志状态都是 Complete 来着，奇了怪了。
+
+### Bridgy
+
+Bridgy 可以将个人网站连接到常见的社交媒体。
+我目前没有这个需求（毕竟不是英文文章），跳过。
 
 ### Indiekit
 

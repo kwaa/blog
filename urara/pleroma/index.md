@@ -1,5 +1,5 @@
 ---
-title: 'Pleroma(Soapbox BE+FE) 安装笔记'
+title: 'Pleroma (Soapbox BE+FE) 安装笔记'
 date: 2022-03-23
 tags:
   - Pleroma
@@ -203,6 +203,21 @@ example.com {
     reverse_proxy localhost:4000
   }
 }
+```
+
+## 创建用户
+
+创建一个管理员用户：
+
+```
+cd /opt/pleroma
+sudo -Hu pleroma bash -i -c 'MIX_ENV=prod mix pleroma.user new <username> <your@emailaddress> --admin'
+```
+
+需要注意的是 Pleroma 有个保留字列表，和下面一样的 nickname 都不能注册（哪怕是 admin）。
+
+```
+[".well-known", "~", "about", "activities", "api", "auth", "check_password", "dev", "friend-requests", "inbox", "internal", "main", "media", "nodeinfo", "notice", "oauth", "objects", "ostatus_subscribe", "pleroma", "proxy", "push", "registration", "relay", "settings", "status", "tag", "user-search", "user_exists", "users", "web", "verify_credentials", "update_credentials", "relationships", "search", "confirmation_resend", "mfa"]
 ```
 
 ## 后记
