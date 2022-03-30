@@ -18,7 +18,7 @@
   <div class="avatar mb-4">
     <div
       class="rounded-full border-3 border-white shadow-xl transition-transform transform-gpu duration-1000 hover:rotate-360 ease-in-out w-18 h-18">
-      <img src={avatar ?? site.author.avatar} alt={name ?? site.author.name} loading="lazy" />
+      <img src={avatar ?? site.author.photo} alt={name ?? site.author.name} loading="lazy" />
     </div>
   </div>
   {#if subname}

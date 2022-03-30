@@ -1,23 +1,4 @@
-interface Site {
-  title: string
-  subtitle?: string
-  lang?: string
-  descr?: string
-  author: {
-    name: string
-    avatar: string
-    status?: string
-    bio?: string
-    bioBefore?: string
-    bioAfter?: string
-    github?: string
-    twitter?: string
-    pgp?: string[]
-  }
-  url: string
-  themeColor?: string
-  since?: string
-}
+import type { SiteConfig } from '$lib/types/site'
 
 const bio = [
   'じゃあ名前考えようか<br>「ゆめ」とかどう？可愛いでしょ？<br><sub>——「ゆめゆめ」</sub>',
@@ -37,20 +18,25 @@ const bio = [
   "声が無くたって、届かなくたって、今もずっと叫んでいる。<br>聞こえますか？私は生きている。<br><sub>——「M'AIDER遭難ガール」</sub>"
 ]
 
-export const site: Site = {
+export const site: SiteConfig = {
+  protocol: 'https://',
+  domain: 'kwaa.dev',
   title: './kwaa.dev',
   // subtitle: '',
   lang: 'zh',
   descr: '[DATA EXPUNGED]',
   author: {
     name: '藍',
-    avatar: 'https://kwaa.dev/assets/maskable@512.webp',
+    photo: 'https://kwaa.dev/assets/maskable@512.webp',
     status: '🌌',
     bio: bio[~~(Math.random() * bio.length)],
     github: 'kwaa',
-    pgp: ['8964 78D9 78EB 0000', '#']
+    pgp: {
+      text: '8964 78D9 78EB 0000',
+      link: '#'
+    }
   },
-  url: (import.meta.env.URARA_SITE_URL as string) ?? 'https://kwaa.dev',
-  themeColor: '#3D4451',
-  since: '2019'
+  themeColor: '#3D4451'
 }
+
+export const dev: boolean = import.meta.env.DEV ? true : false

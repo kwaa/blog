@@ -1,10 +1,9 @@
 <script lang="ts">
   import { browser } from '$app/env'
   import { fly } from 'svelte/transition'
-  import { mode } from '$lib/config/misc'
-  import { site } from '$lib/config/site'
-  import { themes } from '$lib/config/themes'
-  import { config as headerConfig } from '$lib/config/header'
+  import { site, dev } from '$lib/config/site'
+  import { theme } from '$lib/config/general'
+  import { header as headerConfig } from '$lib/config/general'
   import { hslToHex } from '$lib/utils/color'
   import IconChevronUp from '~icons/heroicons-solid/chevron-up'
   import IconSearch from '~icons/heroicons-outline/search'
@@ -25,7 +24,7 @@
     currentThemeColor = hslToHex(
       ...(getComputedStyle(document.documentElement)
         .getPropertyValue('--b1')
-        .slice(mode === 'dev' ? 1 : 0)
+        .slice(dev ? 1 : 0)
         .replaceAll('%', '')
         .split(' ')
         .map(Number) as [number, number, number])
@@ -66,9 +65,11 @@
         <a href="/" sveltekit:prefetch class="btn btn-ghost normal-case text-lg">{site.title}</a>
       </div>
       <div class="navbar-end">
-        <button on:click={() => (search = !search)} tabindex="0" class="btn btn-square btn-ghost">
-          <IconSearch />
-        </button>
+        {#if headerConfig.search}
+          <button on:click={() => (search = !search)} tabindex="0" class="btn btn-square btn-ghost">
+            <IconSearch />
+          </button>
+        {/if}
         <div id="change-theme" class="dropdown dropdown-end">
           <div tabindex="0" class="btn btn-square btn-ghost">
             <IconColorSwatch />
@@ -77,17 +78,19 @@
             tabindex="0"
             class="flex shadow-2xl menu dropdown-content bg-base-100 text-base-content rounded-box w-52 p-2 gap-2"
             class:hidden={!pin}>
-            {#each Object.entries(themes) as [theme, name]}
+            {#each theme as { name, text }}
               <button
-                data-theme={theme}
+                data-theme={name}
                 on:click={() => {
-                  currentTheme = theme
-                  localStorage.setItem('theme', theme)
+                  currentTheme = name
+                  localStorage.setItem('theme', name)
                 }}
-                class:border-2={currentTheme === theme}
-                class:border-primary={currentTheme === theme}
+                class:border-2={currentTheme === name}
+                class:border-primary={currentTheme === name}
                 class="btn btn-ghost hover:bg-primary group rounded-lg flex bg-base-100 p-2 transition-all">
-                <p class="flex-1 text-left text-base-content group-hover:text-primary-content transition-color">{name}</p>
+                <p class="flex-1 text-left text-base-content group-hover:text-primary-content transition-color">
+                  {text ?? name}
+                </p>
                 <div class="flex-0 m-auto flex gap-1">
                   <div class="bg-primary w-2 h-4 rounded" />
                   <div class="bg-secondary w-2 h-4 rounded" />

@@ -40,7 +40,7 @@
         config?.sortBy ?? 'created'
       }&sort-dir=${sortDirUp ? 'up' : 'down'}${
         config?.property && config.property.forEach(wmProperty => `&wm-property=${wmProperty}`)
-      }&target[]=${site.url + post.path}&target[]=${site.url + post.path}/`
+      }&target[]=${site.protocol + site.domain + post.path}&target[]=${site.protocol + site.domain + post.path}/`
     )
       .then(res => res.json())
       .then((feed: WebmentionFeed) => {
@@ -168,14 +168,16 @@
   {/if}
   {#if config?.form === true}
     <form id="webmention-form" method="post" action="https://webmention.io/{config.username}/webmention">
-      <input type="hidden" name="target" value={site.url + post.path} />
+      <input type="hidden" name="target" value={site.protocol + site.domain + post.path} />
       <div class="label gap-4">
         <span class="label-text">send webmentions here:</span>
         {#if config?.commentParade === true}
           <span class="label-text-alt text-right">
             or <a
               class="hover:!text-primary"
-              href="https://quill.p3k.io/?dontask=1&me=https://commentpara.de/&reply={encodeURI(site.url + post.path)}">
+              href="https://quill.p3k.io/?dontask=1&me=https://commentpara.de/&reply={encodeURI(
+                site.protocol + site.domain + post.path
+              )}">
               comment anonymously
             </a>
           </span>

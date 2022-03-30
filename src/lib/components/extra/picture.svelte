@@ -1,5 +1,10 @@
 <script lang="ts">
-  import { source as pictureSource } from '$lib/config/img'
+  const pictureSource = [
+    {
+      ext: 'avif',
+      type: 'image/avif'
+    }
+  ]
   let className = undefined
   export { className as class }
   export let src = undefined

@@ -7,7 +7,7 @@
 
 <svelte:head>
   {#if post}
-    <link rel="canonical" href={site.url + post.path} />
+    <link rel="canonical" href={site.protocol + site.domain + post.path} />
     {#if post.layout === 'article'}
       <title>{post.title ?? post.path.slice(1)} | {site.title}</title>
     {:else if post.layout === 'note'}
@@ -18,10 +18,10 @@
     <meta name="description" content={site.descr} />
     {#if page}
       <title>{page.title ?? page.path} | {site.title}</title>
-      <link rel="canonical" href={site.url + page.path} />
+      <link rel="canonical" href={site.protocol + site.domain + page.path} />
     {:else}
       <title>{site.subtitle ? `${site.title} - ${site.subtitle}` : site.title}</title>
-      <link rel="canonical" href={site.url} />
+      <link rel="canonical" href={site.protocol + site.domain} />
     {/if}
   {/if}
 </svelte:head>

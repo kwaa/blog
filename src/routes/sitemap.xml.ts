@@ -8,7 +8,7 @@ const render = async (): Promise<string> => `<?xml version='1.0' encoding='utf-8
       .map(
         post => `
         <url>
-            <loc>${site.url + post.path}</loc>
+            <loc>${site.protocol + site.domain + post.path}</loc>
             ${post.date || post.lastmod ? `<lastmod>${(post.lastmod ?? post.date).substring(0, 10)}</lastmod>` : ''}
             <priority>0.5</priority>
         </url>`
