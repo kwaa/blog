@@ -19,7 +19,7 @@
       <meta property="og:url" content={site.url + post.path} />
       <meta property="og:description" content={post.descr ?? site.descr} />
       {#if post.cover}
-        <meta property="og:image" content="{site.url + post.cover}}" />
+        <meta property="og:image" content={site.url + post.cover} />
         <meta name="twitter:card" content="summary_large_image" />
       {:else}
         <meta property="og:image" content={site.url + icon.maskable512.src ?? icon.any512.src} />

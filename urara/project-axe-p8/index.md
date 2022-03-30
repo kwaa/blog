@@ -1,7 +1,7 @@
 ---
 title: '一年后的成果：STREIN IEM-AXE_P8'
 date: 2020-09-03 23:54:00
-cover: project-axe-p8/p8.webp
+cover: /project-axe-p8/p8.webp
 comment: true
 categories:
   - 音频
