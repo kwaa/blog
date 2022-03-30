@@ -34,7 +34,7 @@
       index = posts.findIndex(post => post.path === path)
       prev = posts.slice(index + 1).find(post => !post.flags?.includes('hidden'))
       next = posts
-        .slice(0, index - 1)
+        .slice(0, index)
         .reverse()
         .find(post => !post.flags?.includes('hidden'))
     })
