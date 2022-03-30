@@ -40,7 +40,7 @@
     })
 </script>
 
-<Head {post} />
+<Head post={{ layout: 'article', title, date, lastmod, tags, cover, path }} />
 
 <Flex>
   <div slot="left" class="h-full hidden xl:block" />

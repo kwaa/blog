@@ -38,7 +38,7 @@
     })
 </script>
 
-<Head {post} />
+<Head post={{ layout: 'reply', date, lastmod, tags, path }} />
 
 <Flex>
   <article

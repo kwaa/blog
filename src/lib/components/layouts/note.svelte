@@ -35,7 +35,7 @@
     })
 </script>
 
-<Head {post} />
+<Head post={{ layout: 'note', date, lastmod, tags, path }} />
 
 <Flex>
   <article
