@@ -22,7 +22,7 @@
 
   $: storedTags.subscribe(storedTags => (allTags = storedTags as string[]))
 
-  $: if (posts) years = [new Date(posts[0].published ?? posts[0].created).toJSON().substring(0, 4)]
+  $: if (posts.length > 1) years = [new Date(posts[0].published ?? posts[0].created).toJSON().substring(0, 4)]
 
   $: if (tags) {
     if (loaded) posts = !tags ? allPosts : allPosts.filter(post => tags.every(tag => post.tags?.includes(tag)))
@@ -98,13 +98,14 @@
       {/if}
       <main itemprop="mainEntityOfPage" itemscope itemtype="https://schema.org/Blog">
         {#each posts as post, index}
+          {@const year = (post.published ?? post.created).substring(0, 4)}
           <div
             in:fly={{ x: index % 2 ? 100 : -100, duration: 200, delay: 400 }}
             out:fly={{ x: index % 2 ? -100 : 100, duration: 200 }}>
-            {#if !years.includes((post.published ?? post.created).substring(0, 4))}
+            {#if !years.includes(year)}
               <div class="divider mb-8">
-                {years.push((post.published ?? post.created).substring(0, 4)) &&
-                  (post.published ?? post.created).substring(0, 4)}
+                {years.push(year) &&
+                  year}
               </div>
             {/if}
             <Post {post} />

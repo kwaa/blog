@@ -1,7 +1,7 @@
 <script lang="ts">
   import { date } from '$lib/config/general'
   import { site } from '$lib/config/site'
-  export let post: Urara.Post = undefined
+  export let post: Urara.Post
   export let index: boolean = false
   export let photo: boolean = false
 
