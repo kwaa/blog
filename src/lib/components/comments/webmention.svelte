@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import { site } from '$lib/config/site'
-  import type { WebmentionConfig } from '$lib/types/comment'
+  import type { WebmentionConfig } from '$lib/types/post'
   import IconSortAscending from '~icons/heroicons-outline/sort-ascending'
   import IconSortDescending from '~icons/heroicons-outline/sort-descending'
   export let config: WebmentionConfig

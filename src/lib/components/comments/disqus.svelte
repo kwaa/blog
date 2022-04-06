@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte'
-  import type { DisqusConfig } from '$lib/types/comment'
+  import type { DisqusConfig } from '$lib/types/post'
   export let post: Urara.Post
   export let config: DisqusConfig
   onMount(() => {
@@ -11,7 +11,7 @@
       const disqus_config = function () {
         this.page.url = '${post.path}'
         this.page.identifier = '${post.path}'
-        this.page.title = '${post.title ?? post.path}'
+        this.page.title = '${post.title ?? post.path.slice(1)}'
         ${`this.language = '${config.lang}'` ?? ''}
       }`
     s.id = 'disqus_script'

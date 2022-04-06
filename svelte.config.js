@@ -16,8 +16,8 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
     adapter: Object.keys(process.env).some(key => ['VERCEL', 'CF_PAGES', 'NETLIFY'].includes(key))
       ? adapterAuto()
       : process.env.ADAPTER === 'node'
-        ? adapterNode({ out: 'build' })
-        : adapterStatic({
+      ? adapterNode({ out: 'build' })
+      : adapterStatic({
           pages: 'build',
           assets: 'build',
           fallback: null

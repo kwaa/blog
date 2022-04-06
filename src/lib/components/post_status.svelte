@@ -1,22 +1,27 @@
 <script lang="ts">
   import { date } from '$lib/config/general'
   import { site } from '$lib/config/site'
-  // const config = dateConfig('layout')
   export let post: Urara.Post = undefined
   export let index: boolean = false
   export let photo: boolean = false
 
-  const stringPublished = new Date(post.date).toLocaleString(date.toPublishedString.locales, date.toPublishedString.options)
-  const stringUpdated = new Date(post.lastmod ?? post.date).toLocaleString(
+  const stringPublished = new Date(post.published ?? post.created).toLocaleString(
+    date.toPublishedString.locales,
+    date.toPublishedString.options
+  )
+  const stringUpdated = new Date(post.updated ?? post.published ?? post.created).toLocaleString(
     date.toUpdatedString.locales,
     date.toUpdatedString.options
   )
-  const jsonPublished = new Date(post.date).toJSON()
-  const jsonUpdated = post.lastmod ? new Date(post.lastmod).toJSON() : jsonPublished
+  const jsonPublished = new Date(post.published ?? post.created).toJSON()
+  const jsonUpdated = new Date(post.updated ?? post.published ?? post.created).toJSON()
 </script>
 
-<div class:mb-8={!index} class="flex flex-wrap justify-between gap-2">
-  {#if !index}
+<div
+  class:mb-8={!index && !post.flags?.includes('hidden-author')}
+  class:mb-4={!index}
+  class="flex flex-wrap justify-between gap-2">
+  {#if !index && !post.flags?.includes('hidden-author')}
     <div class="badge badge-lg badge-ghost shrink-0 text-base-content/75 font-bold gap-1 pl-0 h-card p-author">
       <img
         class="inline-block w-6 h-6 rounded-badge u-photo mr-1"
@@ -32,6 +37,7 @@
   {/if}
   <a
     href={post.path}
+    class:ml-auto={!index}
     class="{photo
       ? 'text-neutral-content !bg-neutral/50 hover:!bg-neutral/80'
       : 'text-base-content/50 px-0 hover:underline'} badge badge-lg badge-ghost text-left bg-transparent border-none font-bold tooltip tooltip-bottom u-url u-uid"
