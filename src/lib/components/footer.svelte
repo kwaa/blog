@@ -8,7 +8,9 @@
 
 <footer
   id="footer"
-  class="footer footer-center bg-base-300 text-base-content shadow-inner rounded-none md:rounded-box p-8 {sticky ? 'sticky bottom-0 z-0 md:static' : ''} {className ?? ''}">
+  class="footer footer-center bg-base-300 text-base-content shadow-inner rounded-none md:rounded-box p-8 {sticky
+    ? 'sticky bottom-0 z-0 md:static'
+    : ''} {className ?? ''}">
   <div class="prose">
     <p>
       {#if footerConfig.nav}

@@ -9,9 +9,7 @@
 </script>
 
 {#if config?.use.length > 0}
-  <div
-    id="post-comment"
-    class="card card-body">
+  <div id="post-comment" class="card card-body">
     {#if config.use.length > 1}
       <div class="tabs w-full mb-8" class:tabs-boxed={config?.['style'] === 'boxed'}>
         {#each config.use as name}

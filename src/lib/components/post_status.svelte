@@ -41,7 +41,9 @@
     class:ml-auto={!index}
     class="{photo
       ? 'text-neutral-content !bg-neutral/50 hover:!bg-neutral/80'
-      : 'text-base-content/50 px-0 hover:underline'} {cover ? 'text-neutral-content/50' : ''} badge badge-lg badge-ghost text-left bg-transparent border-none font-bold tooltip tooltip-bottom u-url u-uid"
+      : 'text-base-content/50 px-0 hover:underline'} {cover
+      ? 'text-neutral-content/50'
+      : ''} badge badge-lg badge-ghost text-left bg-transparent border-none font-bold tooltip tooltip-bottom u-url u-uid"
     data-tip="Updated: {stringUpdated}">
     {stringPublished}
     <time class="hidden" datetime={jsonPublished} itemprop="datePublished">

@@ -46,19 +46,19 @@
   </div>
   <div slot="right" class="xl:max-w-sm">
     {#if allTags && Object.keys(allTags).length > 0}
-        <div
-          class="collapse-content flex md:block overflow-x-auto md:overflow-x-hidden overflow-y-hidden max-h-24 my-auto md:max-h-fit max-w-fit md:max-w-full">
-          {#each allTags as tag}
-            <button
-              id={tag}
-              on:click={() => (tags.includes(tag) ? (tags = tags.filter(tagName => tagName != tag)) : (tags = [...tags, tag]))}
-              class:!btn-secondary={tags.includes(tag)}
-              class:shadow-lg={tags.includes(tag)}
-              class="btn btn-sm btn-ghost normal-case border-dotted border-base-content/20 border-2 my-8 md:my-1 mx-1">
-              #{tag}
-            </button>
-          {/each}
-        </div>
+      <div
+        class="collapse-content flex md:block overflow-x-auto md:overflow-x-hidden overflow-y-hidden max-h-24 my-auto md:max-h-fit max-w-fit md:max-w-full">
+        {#each allTags as tag}
+          <button
+            id={tag}
+            on:click={() => (tags.includes(tag) ? (tags = tags.filter(tagName => tagName != tag)) : (tags = [...tags, tag]))}
+            class:!btn-secondary={tags.includes(tag)}
+            class:shadow-lg={tags.includes(tag)}
+            class="btn btn-sm btn-ghost normal-case border-dotted border-base-content/20 border-2 my-8 md:my-1 mx-1">
+            #{tag}
+          </button>
+        {/each}
+      </div>
     {/if}
   </div>
   <div slot="center">
@@ -71,8 +71,7 @@
           class="bg-base-300 text-base-content shadow-inner text-center md:rounded-box p-10 mb-8">
           <div class="prose items-center">
             <h2>
-              Not found:
-              [{#each tags as tag, i}
+              Not found: [{#each tags as tag, i}
                 '{tag}'{#if i + 1 < tags.length},{/if}
               {/each}]
             </h2>
@@ -83,7 +82,11 @@
           </div>
         </div>
       {/if}
-      <main class="flex flex-col relative bg-base-100 md:bg-transparent md:gap-8 z-10" itemprop="mainEntityOfPage" itemscope itemtype="https://schema.org/Blog">
+      <main
+        class="flex flex-col relative bg-base-100 md:bg-transparent md:gap-8 z-10"
+        itemprop="mainEntityOfPage"
+        itemscope
+        itemtype="https://schema.org/Blog">
         {#each posts as post, index}
           {@const year = (post.published ?? post.created).substring(0, 4)}
           <div
@@ -96,7 +99,7 @@
               </div>
             {/if}
             <Post {post} />
-            </div>
+          </div>
         {/each}
       </main>
       {#if loaded}

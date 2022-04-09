@@ -53,46 +53,43 @@
   </div>
   <div class="flex-none w-full max-w-screen-md mx-auto xl:mx-0">
     <div class="card bg-base-100 rounded-none md:rounded-box md:shadow-xl md:mb-8 lg:mb-16 z-10">
-    <article
-      itemscope
-      itemtype="https://schema.org/BlogPosting"
-      class="h-entry">
-      {#if postConfig.bridgy}
-        <div id="bridgy" class="hidden">
-          {#each flags?.some( flag => flag.startsWith('bridgy') ) ? flags.flatMap( flag => (flag.startsWith('bridgy') ? flag.slice(7) : []) ) : [...(postConfig.bridgy.post ?? []), ...(postConfig.bridgy[layout] ?? [])] as target}
-            {#if target === 'fed'}
-              <a href="https://fed.brid.gy/">fed</a>
-            {:else}
-              <a href="https://brid.gy/publish/{target}">{target}</a>
-            {/if}
-          {/each}
-        </div>
-      {/if}
-      <slot name="top" />
-      <div class="card-body gap-0">
-        <slot name="middle-top" />
-        <Status post={{ layout, created, updated, published, path, flags }} />
-        <slot name="middle-bottom" />
-        <slot name="content" />
-        {#if tags}
-          <div class="divider mt-4 mb-0" />
-          <div>
-            {#each tags as tag}
-              <a href="/?tags={tag}" class="btn btn-sm btn-ghost normal-case mt-2 mr-2 p-category">
-                #{tag}
-              </a>
+      <article itemscope itemtype="https://schema.org/BlogPosting" class="h-entry">
+        {#if postConfig.bridgy}
+          <div id="bridgy" class="hidden">
+            {#each flags?.some( flag => flag.startsWith('bridgy') ) ? flags.flatMap( flag => (flag.startsWith('bridgy') ? flag.slice(7) : []) ) : [...(postConfig.bridgy.post ?? []), ...(postConfig.bridgy[layout] ?? [])] as target}
+              {#if target === 'fed'}
+                <a href="https://fed.brid.gy/">fed</a>
+              {:else}
+                <a href="https://brid.gy/publish/{target}">{target}</a>
+              {/if}
             {/each}
           </div>
         {/if}
-      </div>
-    </article>
-    {#if (prev || next) && !flags?.includes('pagination-disabled')}
-      <Pagination {next} {prev} />
-    {/if}
-    {#if browser && postConfig.comment && !flags?.includes('comment-disabled')}
-      <Comment {post} config={postConfig.comment} />
-    {/if}
-  </div>
+        <slot name="top" />
+        <div class="card-body gap-0">
+          <slot name="middle-top" />
+          <Status post={{ layout, created, updated, published, path, flags }} />
+          <slot name="middle-bottom" />
+          <slot name="content" />
+          {#if tags}
+            <div class="divider mt-4 mb-0" />
+            <div>
+              {#each tags as tag}
+                <a href="/?tags={tag}" class="btn btn-sm btn-ghost normal-case mt-2 mr-2 p-category">
+                  #{tag}
+                </a>
+              {/each}
+            </div>
+          {/if}
+        </div>
+      </article>
+      {#if (prev || next) && !flags?.includes('pagination-disabled')}
+        <Pagination {next} {prev} />
+      {/if}
+      {#if browser && postConfig.comment && !flags?.includes('comment-disabled')}
+        <Comment {post} config={postConfig.comment} />
+      {/if}
+    </div>
     <Footer />
   </div>
 </div>

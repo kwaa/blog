@@ -21,18 +21,20 @@
     itemscope
     itemtype="https://schema.org/BlogPosting"
     itemprop="blogPost"
-    class="card bg-base-100 hover:z-30 hover:shadow-lg md:shadow-xl md:hover:shadow-2xl transition-shadow rounded-none md:rounded-box {post.layout === 'article' && post.cover
+    class="card bg-base-100 hover:z-30 hover:shadow-lg md:shadow-xl md:hover:shadow-2xl transition-shadow rounded-none md:rounded-box {post.layout ===
+      'article' && post.cover
       ? 'image-full group before:!rounded-none'
       : ''}">
     {#if post.layout === 'article' && post.cover}
-        <Cover
+      <Cover
         figureClass="!block"
         imgClass="object-center h-full w-full absolute group-hover:scale-110 transition-transform duration-500 ease-in-out"
         cover={post.cover} />
     {/if}
-    <div class="card-body {post.layout === 'article' && post.cover
-    ? 'md:col-start-1 md:row-start-1 md:text-neutral-content md:z-20'
-    : ''}">
+    <div
+      class="card-body {post.layout === 'article' && post.cover
+        ? 'md:col-start-1 md:row-start-1 md:text-neutral-content md:z-20'
+        : ''}">
       {#if post.layout === 'reply'}
         <Reply replyTo={post.replyTo} class="-mt-4 -mx-4 mb-4" />
       {/if}
