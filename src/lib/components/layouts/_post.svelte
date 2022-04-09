@@ -52,10 +52,11 @@
     <slot name="right" />
   </div>
   <div class="flex-none w-full max-w-screen-md mx-auto xl:mx-0">
+    <div class="card bg-base-100 rounded-none md:rounded-box md:shadow-xl md:mb-8 lg:mb-16 z-10">
     <article
       itemscope
       itemtype="https://schema.org/BlogPosting"
-      class="card bg-base-100 rounded-none md:rounded-box md:shadow-xl mb-8 h-entry">
+      class="h-entry">
       {#if postConfig.bridgy}
         <div id="bridgy" class="hidden">
           {#each flags?.some( flag => flag.startsWith('bridgy') ) ? flags.flatMap( flag => (flag.startsWith('bridgy') ? flag.slice(7) : []) ) : [...(postConfig.bridgy.post ?? []), ...(postConfig.bridgy[layout] ?? [])] as target}
@@ -91,6 +92,7 @@
     {#if browser && postConfig.comment && !flags?.includes('comment-disabled')}
       <Comment {post} config={postConfig.comment} />
     {/if}
+  </div>
     <Footer />
   </div>
 </div>

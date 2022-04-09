@@ -2,7 +2,7 @@
   import type { CommentConfig } from '$lib/types/post'
   import { toSnake } from '$lib/utils/case'
   export let post: Urara.Post
-  export let config: CommentConfig
+  export let config: CommentConfig = undefined
   const comments = import.meta.globEager('/src/lib/components/comments/*.svelte')
   let currentComment: string = undefined
   currentComment = localStorage.getItem('comment') ?? toSnake(config.use[0])
@@ -11,7 +11,7 @@
 {#if config?.use.length > 0}
   <div
     id="post-comment"
-    class="card bg-base-100 card-body md:shadow-xl md:hover:shadow-2xl transition-shadow rounded-none md:rounded-box mb-8">
+    class="card card-body">
     {#if config.use.length > 1}
       <div class="tabs w-full mb-8" class:tabs-boxed={config?.['style'] === 'boxed'}>
         {#each config.use as name}

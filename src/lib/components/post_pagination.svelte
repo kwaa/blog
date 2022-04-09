@@ -6,7 +6,7 @@
 </script>
 
 <nav
-  class="card bg-base-100 md:shadow-xl md:hover:shadow-2xl transition-shadow flex flex-col md:flex-row flex-warp justify-evenly rounded-none md:rounded-box mb-8">
+  class="card flex flex-col md:flex-row flex-warp justify-evenly">
   {#if next}
     <a href={next.path} class="flex-1 card-body group">
       <IconChevronLeft class="h-6 w-6 opacity-50 group-hover:opacity-100 mr-auto mb-2" />

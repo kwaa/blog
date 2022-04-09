@@ -1,13 +1,14 @@
 <script lang="ts">
   import { site } from '$lib/config/site'
   import { footer as footerConfig } from '$lib/config/general'
-  let className = undefined
+  let className: string = undefined
+  let sticky: boolean = true
   export { className as class }
 </script>
 
 <footer
   id="footer"
-  class="footer footer-center bg-base-300 text-base-content shadow-inner rounded-none md:rounded-box p-8 {className ?? ''}">
+  class="footer footer-center bg-base-300 text-base-content shadow-inner rounded-none md:rounded-box p-8 {sticky ? 'sticky bottom-0 z-0 md:static' : ''} {className ?? ''}">
   <div class="prose">
     <p>
       {#if footerConfig.nav}

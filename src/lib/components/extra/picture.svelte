@@ -11,7 +11,7 @@
   export let alt = undefined
 </script>
 
-<picture class="h-full">
+<picture>
   {#if pictureSource.length > 0}
     {#each pictureSource as { ext, type }}
       <source srcset={src.replace(/\.[^/.]+$/, `.${ext}`)} {type} />
