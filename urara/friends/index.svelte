@@ -17,8 +17,8 @@
 
 <Head />
 
-<div class="mx-4 sm:mx-8 md:my-4 lg:mx-16 lg:my-8 xl:mx-32 xl:my-16">
-  <Masonry items={friends} minColWidth={280} maxColWidth={384} gap={32} let:item bind:width bind:height>
-    <FriendComponent friend={item} />
+<!-- <div class="mx-4 sm:mx-8 md:my-4 lg:mx-16 lg:my-8 xl:mx-32 xl:my-16"> -->
+  <Masonry items={friends} minColWidth={280} maxColWidth={384} gap={32} let:item class="mx-4 sm:mx-8 md:my-4 lg:mx-16 lg:my-8 xl:mx-32 xl:my-16" bind:width bind:height>
+    <FriendComponent {item} />
   </Masonry>
-</div>
+<!-- </div> -->

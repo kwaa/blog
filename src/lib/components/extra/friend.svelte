@@ -1,7 +1,8 @@
 <script lang="ts">
   import type { Friend } from '$lib/config/friends'
   import Footer from '$lib/components/footer.svelte'
-  export let friend: Friend = undefined
+  let friend: Friend = undefined
+  export { friend as item }
   export let title: Friend['title'] = undefined
 
   if (!friend)
@@ -12,29 +13,42 @@
 
 {#if friend.id === 'footer'}
   <Footer rounded={true} />
+{:else if friend.html}
+  <a id={friend.id} rel={friend.rel} href={friend.link} class="h-card u-url">
+    {@html friend.html}
+  </a>
 {:else}
-  <div
-    class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow flex flex-col {friend.descr
-      ? ''
-      : 'items-center justify-center'} p-2 h-full w-full">
-    <div class="flex flex-row">
-      {#if friend.avatar}
-        <div class="flex-none avatar mr-4">
-          <div class="rounded-full border-3 border-white shadow-xl transition-shadow w-16 h-16">
-            <img src={friend.avatar} alt={friend.title} loading="lazy" />
+  <a
+    id={friend.id}
+    rel={friend.rel}
+    href={friend.link}
+    class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow h-card u-url">
+    <div class="absolute text-4xl font-bold opacity-5 rotate-6 leading-tight top-4">
+      {friend.name ?? ''}{friend.title ?? ''}
+    </div>
+    <div class="card-body p-4">
+      <div class="flex items-center gap-4">
+        {#if friend.avatar}
+          <div class="avatar {friend.class?.avatar} shrink-0 w-16 mb-auto">
+            <img class="{friend.class?.img ?? 'rounded-xl'} u-photo" src={friend.avatar} alt={friend.title} />
           </div>
+        {:else}
+          <div class="avatar {friend.class?.avatar} placeholder mb-auto">
+            <div class="{friend.class?.img ?? 'bg-neutral-focus text-neutral-content shadow-inner rounded-xl'} w-16">
+              <span class="text-3xl">{(friend.name ?? friend.title).charAt(0)}</span>
+            </div>
+          </div>
+        {/if}
+        <div class="card-title flex-col gap-0 flex-1 items-end">
+          <span class="text-right p-name">{friend.name ?? ''}</span>
+          <span class="opacity-50 text-right">{friend.title}</span>
+        </div>
+      </div>
+      {#if friend.descr}
+        <div class="prose opacity-70 p-note">
+          {friend.descr}
         </div>
       {/if}
-      {#if friend.title}
-        <div class="flex-1 flex text-xl items-center my-2">{friend.title}</div>
-      {/if}
     </div>
-    {#if friend.descr}
-      <div class="flex-1 flex items-center justify-center">
-        <span class="overflow-clip">
-          {friend.descr}
-        </span>
-      </div>
-    {/if}
-  </div>
+  </a>
 {/if}

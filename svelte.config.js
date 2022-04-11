@@ -11,7 +11,7 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
   extensions: ['.svelte', ...mdsvexConfig.extensions],
   // Consult https://github.com/sveltejs/svelte-preprocess
   // for more information about preprocessors
-  preprocess: [mdsvex(mdsvexConfig), preprocess({ postcss: true })],
+  preprocess: [mdsvex(mdsvexConfig), preprocess()],
   kit: {
     adapter: Object.keys(process.env).some(key => ['VERCEL', 'CF_PAGES', 'NETLIFY'].includes(key))
       ? adapterAuto()

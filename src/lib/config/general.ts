@@ -47,8 +47,8 @@ export const head: HeadConfig = {
   custom: {
     prod: [
       // Webmention.io
-      '<link rel="webmention" href="https://webmention.io/kwaa.dev/webmention" />',
-      '<link rel="pingback" href="https://webmention.io/kwaa.dev/xmlrpc" />',
+      // '<link rel="webmention" href="https://webmention.io/kwaa.dev/webmention" />',
+      // '<link rel="pingback" href="https://webmention.io/kwaa.dev/xmlrpc" />',
       // IndieAuth
       '<link rel="authorization_endpoint" href="https://indieauth.com/auth">',
       '<link rel="token_endpoint" href="https://tokens.indieauth.com/token">',

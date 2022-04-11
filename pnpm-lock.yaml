@@ -35,7 +35,7 @@ specifiers:
   shiki: ^0.9.15
   shiki-twoslash: ^3.0.2
   svelte: ^3.47.0
-  svelte-bricks: ^0.1.5
+  svelte-bricks: ^0.1.6
   svelte-check: ^2.6.0
   svelte-preprocess: ^4.10.5
   tailwindcss: ^3.0.23
@@ -86,7 +86,7 @@ devDependencies:
   shiki: 0.9.15
   shiki-twoslash: 3.0.2
   svelte: 3.47.0
-  svelte-bricks: 0.1.5
+  svelte-bricks: 0.1.6
   svelte-check: 2.6.0_postcss@8.4.12+svelte@3.47.0
   svelte-preprocess: 4.10.5_41810887ae6c6d59323116f47e33fa38
   tailwindcss: 3.0.23
@@ -111,8 +111,8 @@ packages:
       find-up: 5.0.0
     dev: true
 
-  /@antfu/utils/0.5.0:
-    resolution: {integrity: sha512-MrAQ/MrPSxbh1bBrmwJjORfJymw4IqSHFBXqvxaga3ZdDM+/zokYF8DjyJpSjY2QmpmgQrajDUBJOWrYeARfzA==}
+  /@antfu/utils/0.5.1:
+    resolution: {integrity: sha512-8Afo0+xvYe1K8Wm4xHTymfTkpzy36aaqDvhXIayUwl+mecMG9Xzl3XjXa6swG6Bk8FBeQ646RyvmsYt6+2Be9g==}
     dev: true
 
   /@babel/code-frame/7.12.11:
@@ -281,7 +281,7 @@ packages:
     resolution: {integrity: sha512-m+rnw7qKHq/XF7DAi4BcFoEAcXBfqqMgQJh8brGEHeqE/RUvgDMjmxsHgWnVpFsG+VmjGyAiI7nwXdliCwEU0Q==}
     dependencies:
       '@antfu/install-pkg': 0.1.0
-      '@antfu/utils': 0.5.0
+      '@antfu/utils': 0.5.1
       '@iconify/types': 1.1.0
       debug: 4.3.4
       kolorist: 1.5.1
@@ -3923,8 +3923,8 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /svelte-bricks/0.1.5:
-    resolution: {integrity: sha512-w0RFqj7PXsMIvDScppcfEEdNw/KWvoXynGgN8W8JByMcKMqxqPIYLdvh798NAsEtUUOLIFYDDTaZ2JD4MX5cEg==}
+  /svelte-bricks/0.1.6:
+    resolution: {integrity: sha512-ZNqO4ZSE+NgyZsXqXJquDoT4NkqErS0RR/4nB7bYTgsxFAQ4Dz2WbxZOmiOhJvm8xaBKNxdm719TCipsZ6Zc0A==}
     dev: true
 
   /svelte-check/2.6.0_postcss@8.4.12+svelte@3.47.0:
@@ -4212,7 +4212,7 @@ packages:
         optional: true
     dependencies:
       '@antfu/install-pkg': 0.1.0
-      '@antfu/utils': 0.5.0
+      '@antfu/utils': 0.5.1
       '@iconify/utils': 1.0.32
       debug: 4.3.4
       kolorist: 1.5.1
