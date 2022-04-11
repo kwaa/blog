@@ -25,7 +25,7 @@
         <li tabindex="0">
           <span class:font-bold={children.some(({ link }) => link === path)} class="justify-between gap-1 max-w-[13rem]">
             {text}
-            <IconChevronRight class="flex-0 w-6 h-6 -mr-2" />
+            <IconChevronRight class="flex-none w-6 h-6 -mr-2" />
           </span>
           <ul class="bg-base-100 text-base-content shadow-lg p-2">
             {#each children as { text, link }}
@@ -49,7 +49,7 @@
       <li tabindex="0">
         <span class:font-bold={children.some(({ link }) => link === path)} class="gap-1">
           {text}
-          <IconChevronDown class="flex-0 w-6 h-6 -mr-1" />
+          <IconChevronDown class="flex-none w-6 h-6 -mr-1" />
         </span>
         <ul class="bg-base-100 text-base-content shadow-lg p-2">
           {#each children as { text, link }}

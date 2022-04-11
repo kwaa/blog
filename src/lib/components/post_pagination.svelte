@@ -29,7 +29,7 @@
       </div>
     </div>
     {#if prev && !prev.cover && !next.cover}
-      <div class="flex-0 divider mx-4 md:divider-horizontal md:mx-0 md:my-4" />
+      <div class="flex-none divider mx-4 md:divider-horizontal md:mx-0 md:my-4" />
     {/if}
   {/if}
   {#if prev}

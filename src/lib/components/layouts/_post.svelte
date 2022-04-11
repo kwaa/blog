@@ -83,13 +83,13 @@
           {/if}
         </div>
       </article>
-      {#if (prev || next) && !flags?.includes('pagination-disabled')}
+      {#if (prev || next) && !flags?.includes('pagination-disabled') && !flags?.includes('hidden')}
         <Pagination {next} {prev} />
       {/if}
       {#if browser && postConfig.comment && !flags?.includes('comment-disabled')}
         <Comment {post} config={postConfig.comment} />
       {/if}
     </div>
-    <Footer />
+    <Footer sticky={true} />
   </div>
 </div>

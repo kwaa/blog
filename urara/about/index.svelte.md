@@ -120,18 +120,21 @@ PC & VR 玩家，设备 Valve Index。
 
 ## 友链申请
 
-> 友链页面暂未完成，目前不开放友链申请
-
-大体沿用之前的友链标准。
+大体沿用之前的友链标准：
 
 请先让我知道你想要申请友链，确认通过后互相添加。
 
 - 先友后链：与我有过至少一次交流
-  - 回复评论每条算一次。IM 软件消息每条算一次。
+  - 留言、IM 软件消息、Fediverse 互动每条算一次。
 - **没有备案号，不是 .cn 或其他中国特色域名**
-  - **非常重要：我真的很讨厌这类东西。**虽然也不喜欢，但萌国 ICP 之类不在此条“备案号”的范围内。
+  - **非常重要。**萌国 ICP 之类由于不具备实际作用，不在此条“备案号”的范围内。
 - 提交的数据格式完整且变更后及时通知
-  - 头像链接要始终有效（没头像可以不填，但不能时不时失效），换域名提醒等
+  - 头像链接要始终有效（没头像可以不填，但不要经常更换链接），迁移域名提醒等
+
+添加友链即代表你已知悉并理解：
+
+- 本站**涉政**。
+- 本站作为 Urara 的试验台，随时可能有无法访问，但通常不会持续很久。
 
 关键的就上面这些了。那么数据格式：
 
@@ -149,7 +152,7 @@ type Friend = {
 提供一块和默认排版一样的空间，在**不影响观感且我能接受**的前提下自由使用 HTML 标签和 WindiCSS / DaisyUI 类名。
 
 - 只能是类名，不能是 CSS / JS
-- 可以通过 data-theme="" 强制设置 DaisyUI 主题，但我不保证主题一直有效
+- 可以通过 data-theme="" 强制设置 daisyUI 主题，但我不保证主题一直有效
 - 图片 / SVG 最多三张，图片必须带 loading="lazy"
 - 嵌套不能过于复杂
 
@@ -163,11 +166,11 @@ export const kwaa: Friend = {
   url: 'https://kwaa.dev',
   descr: '[DATA EXPUNGED]',
   avatar: [
-    'https://kwaa.dev/files/any@512.webp' // 头像面积不大时使用，分辨率可选 192/512/1024
-    'https://kwaa.dev/files/maskable@512.webp' // 头像面积较大时使用，分辨率可选 192/512/1024
+    'https://kwaa.dev/assets/any@512.webp' // 头像面积不大时使用，分辨率可选 192/512/1024
+    'https://kwaa.dev/assets/maskable@512.webp' // 头像面积较大时使用，分辨率可选 192/512/1024
     'any@base64: 见下' // 24px，几乎不拖累加载速度；但需要 style="image-rendering:pixelated" 或 class="image-render-pixel"
   ],
-  banner: 'https://kwaa.dev/files/bg.webp' // 需要背景图时使用
+  banner: 'https://kwaa.dev/assets/bg.webp' // 需要背景图时使用
 }
 ```
 
