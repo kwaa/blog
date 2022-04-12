@@ -10,7 +10,7 @@
     itemscope
     itemtype="https://schema.org/BlogPosting"
     itemprop="blogPost"
-    class="card image-full before:!bg-transparent bg-base-100 hover:shadow-lg md:shadow-xl md:hover:shadow-2xl transition-shadow rounded-none md:rounded-box">
+    class="card image-full before:!bg-transparent bg-base-100 hover:z-30 hover:shadow-lg md:shadow-xl md:hover:shadow-2xl transition-shadow rounded-none md:rounded-box">
     <Cover figureClass="" imgClass="object-cover object-center h-full w-full" cover={post.cover} />
     <div class="card-body mt-auto">
       <Status {post} index={true} photo={true} />

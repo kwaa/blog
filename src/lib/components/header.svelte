@@ -118,17 +118,19 @@
   {/if}
 </header>
 
-<button
-  id="totop"
-  on:click={() => window.scrollTo(0, 0)}
-  aria-label="scroll to top"
-  class="btn btn-circle btn-lg xl:btn-ghost fixed z-50 border-none backdrop-blur xl:backdrop-blur-none shadow-lg xl:shadow-none bg-opacity-50 hover:bg-opacity-60 bottom-6 right-6 transition-all"
-  class:opacity-100={scrollY}
-  class:translate-y-24={!pin || scrollY === 0}>
-  <div class="radial-progress text-accent" style={`--size:4rem; --thickness: 0.25rem; --value:${percent};"`}>
-    <IconChevronUp
-      class="inline-block w-6 h-6 transition-all duration-1000 {percent > 90
-        ? 'text-accent'
-        : 'text-neutral-content xl:text-base-content'}" />
-  </div>
-</button>
+<div
+  class:translate-y-24={!pin || scrollY === 0}
+  class="fixed grid z-50 w-16 h-16 bottom-6 right-6 rounded-full bg-neutral/50 backdrop-blur shadow-lg transition-all">
+  <button
+    id="totop"
+    on:click={() => window.scrollTo(0, 0)}
+    aria-label="scroll to top"
+    class="btn btn-circle btn-lg btn-ghost border-none col-start-1 row-start-1 z-50"
+    class:opacity-100={scrollY}>
+      <IconChevronUp
+        class="inline-block w-6 h-6 transition-all duration-1000 {percent > 97
+          ? 'text-accent'
+          : 'text-neutral-content'}" />
+  </button>
+  <div class="radial-progress text-accent col-start-1	row-start-1" style={`--size:4rem; --thickness: 0.25rem; --value:${percent};"`} />
+</div>

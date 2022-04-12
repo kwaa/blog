@@ -1,9 +1,7 @@
 ---
 title: 'Introducing Urara'
-date: 2021-09-12 16:14:00
-lastmod: 2021-12-16
-categories:
-  - 折腾
+created: 2021-09-12 16:14:00
+updated: 2021-12-16
 tags:
   - Urara
   - SvelteKit

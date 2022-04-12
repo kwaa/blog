@@ -47,7 +47,7 @@
   <div slot="right" class="xl:max-w-sm">
     {#if allTags && Object.keys(allTags).length > 0}
       <div
-        class="collapse-content flex md:block overflow-x-auto md:overflow-x-hidden overflow-y-hidden max-h-24 my-auto md:max-h-fit max-w-fit md:max-w-full">
+        class="collapse-content flex md:block overflow-x-auto md:overflow-x-hidden overflow-y-hidden max-h-24 my-auto md:max-h-fit max-w-fit md:max-w-full md:mb-4">
         {#each allTags as tag}
           <button
             id={tag}
@@ -68,7 +68,7 @@
         <div
           in:fly={{ x: 100, duration: 200, delay: 400 }}
           out:fly={{ x: -100, duration: 200 }}
-          class="bg-base-300 text-base-content shadow-inner text-center md:rounded-box p-10 mb-8">
+          class="bg-base-300 text-base-content shadow-inner text-center md:rounded-box p-10 -mb-2 md:mb-0 relative z-10">
           <div class="prose items-center">
             <h2>
               Not found: [{#each tags as tag, i}
@@ -94,7 +94,6 @@
             out:fly={{ x: index % 2 ? -100 : 100, duration: 200 }}>
             {#if !years.includes(year)}
               <div class="divider my-8 md:mt-0">
-                <!-- {(posts[index - 1]?.published ?? posts[index - 1].created).substring(0, 4)}&nbsp;&nbsp; -->
                 {years.push(year) && year}
               </div>
             {/if}

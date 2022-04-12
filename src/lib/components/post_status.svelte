@@ -46,10 +46,10 @@
       : ''} badge badge-lg badge-ghost text-left bg-transparent border-none font-bold tooltip tooltip-bottom u-url u-uid"
     data-tip="Updated: {stringUpdated}">
     {stringPublished}
-    <time class="hidden" datetime={jsonPublished} itemprop="datePublished">
+    <time class="hidden dt-published" datetime={jsonPublished} itemprop="datePublished">
       {stringPublished}
     </time>
-    <time class="hidden" datetime={jsonUpdated} itemprop="dateModified">
+    <time class="hidden dt-updated" datetime={jsonUpdated} itemprop="dateModified">
       {stringUpdated}
     </time>
   </a>
