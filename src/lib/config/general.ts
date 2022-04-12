@@ -74,6 +74,10 @@ export const header: HeaderConfig = {
       text: 'Urara',
       children: [
         {
+          text: 'Re: Introducting Urara',
+          link: '/intro-urara/re'
+        },
+        {
           text: 'Introducting Urara',
           link: '/intro-urara'
         },
@@ -81,10 +85,6 @@ export const header: HeaderConfig = {
           text: 'Urara 的 ToC (文章目录) 实现',
           link: '/intro-urara/toc'
         }
-        // {
-        //   text: 'Re: Introducting Urara',
-        //   link: '/intro-urara/re'
-        // }
       ]
     },
     {
