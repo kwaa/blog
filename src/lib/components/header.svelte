@@ -127,10 +127,10 @@
     aria-label="scroll to top"
     class="btn btn-circle btn-lg btn-ghost border-none col-start-1 row-start-1 z-50"
     class:opacity-100={scrollY}>
-      <IconChevronUp
-        class="inline-block w-6 h-6 transition-all duration-1000 {percent > 97
-          ? 'text-accent'
-          : 'text-neutral-content'}" />
+    <IconChevronUp
+      class="inline-block w-6 h-6 transition-all duration-1000 {percent > 97 ? 'text-accent' : 'text-neutral-content'}" />
   </button>
-  <div class="radial-progress text-accent col-start-1	row-start-1" style={`--size:4rem; --thickness: 0.25rem; --value:${percent};"`} />
+  <div
+    class="radial-progress text-accent col-start-1	row-start-1"
+    style={`--size:4rem; --thickness: 0.25rem; --value:${percent};"`} />
 </div>
