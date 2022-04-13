@@ -38,7 +38,7 @@
       {#if post.layout === 'reply'}
         <Reply replyTo={post.replyTo} class="-mt-4 -mx-4 mb-4" />
       {/if}
-      <Status {post} index={true} cover={post.layout === 'article' && post.cover} />
+      <Status {post} index={true} cover={post.layout === 'article' && post.cover ? true : false} />
       {#if post.layout === 'article'}
         <h1
           itemprop="name headline"
