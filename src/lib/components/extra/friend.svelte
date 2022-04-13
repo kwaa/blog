@@ -1,14 +1,8 @@
 <script lang="ts">
   import type { Friend } from '$lib/config/friends'
   import Footer from '$lib/components/footer.svelte'
-  let friend: Friend = undefined
-  export { friend as item }
-  export let title: Friend['title'] = undefined
-
-  if (!friend)
-    friend = {
-      title
-    }
+  export let item: unknown
+  let friend = item as unknown as Friend
 </script>
 
 {#if friend.id === 'footer'}
