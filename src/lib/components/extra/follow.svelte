@@ -1,6 +1,6 @@
 <script lang="ts">
   const follow = async e => {
-    const account = new FormData(e.target).get('account')
+    let account = new FormData(e.target).get('account')
     if (account.startsWith('@')) account = account.slice(1)
     const subscribe = await fetch(`https://${account.split('@')[1]}/.well-known/webfinger?resource=acct:${account}`, {
       headers: { Accept: 'application/jrd+json' }
