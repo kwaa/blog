@@ -1,9 +1,7 @@
 ---
 title: '通过 Docker 搭建 NaiveProxy + Hysteria 代理'
-date: 2021-07-13 01:11:11
-lastmod: 2021-12-10
-categories:
-  - 笔记
+created: 2021-07-13 01:11:11
+updated: 2021-12-10
 tags:
   - NaiveProxy
   - Hysteria

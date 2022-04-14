@@ -1,7 +1,7 @@
 ---
 title: '使用 GPG 为 Git commit 签名'
-date: 2021-11-23
-lastmod: 2022-01-12
+created: 2021-11-23
+updated: 2022-01-12
 categories:
   - 笔记
 tags:
