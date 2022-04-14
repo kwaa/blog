@@ -1,16 +1,17 @@
-import type { RequestHandlerOutput } from '@sveltejs/kit'
+import type { RequestHandler } from '@sveltejs/kit'
 import { site } from '$lib/config/site'
 import { feed } from '$lib/config/general'
 import { icon } from '$lib/config/icon'
 import { genPosts } from '$lib/utils/posts'
 
-const render = async (posts = genPosts({ postHtml: true }).filter((_, index) => feed.limit === 0 || index < feed.limit)) => ({
+const render = async (posts = genPosts({ postHtml: true, postLimit: feed.limit, filterHidden: true })) => ({
   version: 'https://jsonfeed.org/version/1.1',
   title: site.title,
   home_page_url: site.protocol + site.domain,
   feed_url: site.protocol + site.domain + '/feed.json',
   description: site.descr,
-  icon: icon.favicon.src,
+  icon: icon.any192.src,
+  favicon: icon.favicon.src,
   authors: [
     {
       name: site.author.name,
@@ -19,9 +20,12 @@ const render = async (posts = genPosts({ postHtml: true }).filter((_, index) => 
     }
   ],
   language: site.lang ?? 'en',
-  hubs: feed?.hub,
+  hubs: feed.hub?.map(hub => ({
+    type: 'WebSub',
+    url: hub
+  })),
   items: posts.map(post => ({
-    id: post.path,
+    id: post.path.slice(1),
     url: site.protocol + site.domain + post.path,
     title: post.title,
     content_html: post.html,
@@ -33,7 +37,7 @@ const render = async (posts = genPosts({ postHtml: true }).filter((_, index) => 
   }))
 })
 
-export const get = async (): Promise<RequestHandlerOutput> => ({
+export const get: RequestHandler = async () => ({
   headers: {
     'Content-Type': 'application/feed+json; charset=utf-8'
   },

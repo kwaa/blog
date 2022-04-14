@@ -128,6 +128,5 @@ export const date: DateConfig = {
 }
 
 export const feed: FeedConfig = {
-  limit: 0,
   hub: ['https://pubsubhubbub.appspot.com', 'https://bridgy-fed.superfeedr.com']
 }

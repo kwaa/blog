@@ -3,6 +3,10 @@ interface GenPostsOptions {
   modules?: { [path: string]: Urara.Post.Module }
   /** set to true to output html */
   postHtml?: boolean
+  /** limit a certain number of posts */
+  postLimit?: number
+  /** hide posts with 'hidden' flag */
+  filterHidden?: boolean
 }
 
 type GenPostsFunction = (options?: GenPostsOptions) => Urara.Post[]
@@ -16,7 +20,9 @@ type GenTagsFunction = (posts: Urara.Post[]) => string[]
  */
 export const genPosts: GenPostsFunction = ({
   modules = import.meta.globEager<Urara.Post.Module>('/src/routes/**/*.{md,svelte.md}'),
-  postHtml = false
+  postHtml = false,
+  postLimit = undefined,
+  filterHidden = false
 } = {}) =>
   Object.entries(modules)
     .map(([, module]) => ({
@@ -36,6 +42,7 @@ export const genPosts: GenPostsFunction = ({
           : ''
     }))
     .sort((a: Urara.Post, b: Urara.Post) => (b.published ?? b.created).localeCompare(a.published ?? a.created))
+    .filter((post, index) => (!filterHidden || !post.flags?.includes('hidden')) && (!postLimit || index < postLimit))
 
 /**
  * Generate Tags List
