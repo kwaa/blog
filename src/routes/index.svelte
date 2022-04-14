@@ -104,15 +104,14 @@
           </div>
         {/each}
       </main>
-      {#if loaded}
-        <div
-          class="sticky bottom-0 md:static md:mt-8"
-          in:fly={{ x: posts.length + (1 % 2) ? 100 : -100, duration: 200, delay: 400 }}
-          out:fly={{ x: posts.length + (1 % 2) ? -100 : 100, duration: 200 }}>
-          <div class="divider mt-0 mb-8 hidden lg:flex" />
-          <Footer />
-        </div>
-      {/if}
+      <div
+        class:hidden={!loaded}
+        class="sticky bottom-0 md:static md:mt-8"
+        in:fly={{ x: posts.length + (1 % 2) ? 100 : -100, duration: 200, delay: 400 }}
+        out:fly={{ x: posts.length + (1 % 2) ? -100 : 100, duration: 200 }}>
+        <div class="divider mt-0 mb-8 hidden lg:flex" />
+        <Footer />
+      </div>
     {/key}
   </div>
 </Flex>
