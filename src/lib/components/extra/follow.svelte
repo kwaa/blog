@@ -1,7 +1,7 @@
 <script lang="ts">
   import IconPaperAirplane from '~icons/heroicons-outline/paper-airplane'
-  let warning: boolean = false
-  let error: string = ''
+  let status: string = ''
+  let statusText: string = ''
   let input: string = ''
   const follow = async (event: Event, account = new FormData(event.target as HTMLFormElement).get('account') as string) =>
     await fetch(
@@ -14,11 +14,11 @@
     )
       .then(res => {
         if (res.ok) {
-          error = ''
+          status = 'success'
           return res.json()
         } else {
-          error = res.status + res.statusText
-          console.log(error)
+          status = 'error'
+          statusText = res.status + res.statusText
           throw Error(res.status + res.statusText)
         }
       })
@@ -27,7 +27,8 @@
       )
       .then(template => (window.location.href = template.replace('{uri}', `dotdev@kwaa.moe`)))
       .catch(error => console.error(error))
-  $: if (input) warning = input.includes('@') && input.includes('.') ? false : true
+  $: if (input)
+    input.length < 5 ? (status = '') : input.includes('@') && input.includes('.') ? (status = 'success') : (status = 'warning')
 </script>
 
 <input type="checkbox" id="remote-follow" class="modal-toggle" />
@@ -44,20 +45,21 @@
           id="account"
           name="account"
           placeholder="username@instance.tld"
-          class:input-warning={warning}
-          class:input-error={error.length > 0}
-          class="input input-bordered flex-1" />
+          class:input-success={status === 'success'}
+          class:input-warning={status === 'warning'}
+          class:input-error={status === 'error'}
+          class="input input-bordered transition-all flex-1" />
         <button type="submit" class="btn btn-square">
           <IconPaperAirplane class="h-6 w-6 rotate-90" />
         </button>
       </label>
-      <div class="label py-0">
-        {#if error.length > 0}
+      {#if statusText}
+        <div class="label py-0">
           <span class="label-text-alt text-error">
-            {error}{#if error === '404'}: Couldn't find user{/if}
+            {statusText}{#if statusText === '404'}: Couldn't find user{/if}
           </span>
-        {/if}
-      </div>
+        </div>
+      {/if}
     </form>
   </div>
 </label>
