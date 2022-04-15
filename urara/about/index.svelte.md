@@ -1,7 +1,7 @@
 ---
 title: 关于
 created: 2021-10-05
-updated: 2021-12-08
+updated: 2022-04-15
 flags:
   - hidden
 ---
@@ -36,35 +36,31 @@ flags:
 
 开始尝试函数式编程。
 
-> `+++` 不敢写精通 / `++` 熟练 / `+` 了解 / `-` 会用 / `*` 想学
+> `+++` 不敢写精通 / `++` 熟练 / `+` 了解 / `-` 会用
 
 #### 语言
 
-`++ JavaScript (+ TypeScript)` `++ HTML` `+ CSS` `- Python` `* Elixir` `* Rust`
+`++ JavaScript (+ TypeScript)` `++ HTML` `+ CSS` `- Python`
 
 #### 前端框架 / 库
 
-`++ MDUI/Bootstrap` `+ Svelte/SvelteKit` `+ WindiCSS/TailwindCSS/DaisyUI` `- jQuery` `* React` `* RxJS`
+`++ MDUI/Bootstrap` `++ Svelte/SvelteKit` `++ WindiCSS/TailwindCSS/DaisyUI` `- jQuery`
 
 #### 后端框架 / 库
 
-`- Express/Koa` `* Phoenix`
+`- Express/Koa`
 
 #### 环境
 
-`++ Nodejs/NPM` `+ Linux` `+ Docker` `+ GitHub` `- Git`
-
-#### 其他
-
-`* Electron` `* Flutter`
+`++ Nodejs/NPM` `++ Linux` `+ Docker` `+ GitHub` `- Git`
 
 ### 游戏
 
 PC & VR 玩家，设备 Valve Index。
-这几年囤积了不少游戏，就不详细写了；可以直接联系我。
 游戏库包括但不限于 MC(JE&BE), CS:GO, R6S, GTAV, GBVS, DL... 喜欢玩 FPS 但是很菜。
+讨厌那些不在地球上的服。
 
-> **不玩任何国服**
+> 2022-04: 去年整了三年 XGPU，今年坐等 Starfield
 
 ### 音乐
 
@@ -86,20 +82,21 @@ PC & VR 玩家，设备 Valve Index。
 
 耳机：
 
-- [IEM-AXE_P8](project-axe-p8)
+- [Nectar Hive](/nectar-hive)
+- [IEM-AXE_P8](/project-axe-p8)
 - SONY XBA-H3
 
 ## 关于本站
 
 本站创建于 2019 年 10 月，是我的 ~~第四~~ 第五个博客（内容全部清除算一次）
-目前从 Hexo 迁移到自己设计的 Urara，站点部署在 Cloudflare Workers Site。
+目前从 Hexo 迁移到自己设计的 Urara，站点部署在 ~~Cloudflare Workers Site~~ Vercel。
 
 依赖项：
 
 - 前端框架：Svelte / SvelteKit
 - Markdown 预处理器：MDsveX / Remark / Rehype
-- CSS 框架 / 组件库：WindiCSS + DaisyUI
-- 代码高亮：Shiki
+- CSS 框架 / 组件库：~~WindiCSS~~ TailwindCSS + DaisyUI
+- 代码高亮：~~Shiki~~ Shiki Twoslash
 
 时间线：
 
@@ -117,33 +114,45 @@ PC & VR 玩家，设备 Valve Index。
   - 我很早就想换成 .ai 域名了，但因为价格较高且不好起名字所以目前没换。
 - ENS/IPFS 分站
   - 接上一条。xxxai.eth 或 xxxai.eth.link
+  - 主网这 gas 看样子是降不下来了
 
 ## 友链申请
 
 大体沿用之前的友链标准：
 
-请先让我知道你想要申请友链，确认通过后互相添加。
+请先让我知道你想要交换友链，确认后互相添加。
 
 - 先友后链：与我有过至少一次交流
-  - 留言、IM 软件消息、Fediverse 互动每条算一次。
+  - 不管在哪里，只要我回复了就算。
 - **没有备案号，不是 .cn 或其他中国特色域名**
   - **非常重要。**萌国 ICP 之类由于不具备实际作用，不在此条“备案号”的范围内。
 - 提交的数据格式完整且变更后及时通知
   - 头像链接要始终有效（没头像可以不填，但不要经常更换链接），迁移域名提醒等
 
-添加友链即代表你已知悉并理解：
-
-- 本站**涉政**。
-- 本站作为 Urara 的试验台，随时可能有无法访问，但通常不会持续很久。
-
-关键的就上面这些了。那么数据格式：
+关键的就上面这些了。那么需要的数据格式：
 
 ```ts
-type Friend = {
-  title: string // 网站标题 什么都可以。（昵称，站点标题，或者昵称 + 站点标题）
-  url: string // 网站 URL
-  descr?: string // 描述，可选。我没什么想法所以最好不要让我想
-  avatar?: string // 头像 URL，没有或不稳定可以不填。
+export type Friend = {
+  id: string // HTML id
+  link?: string // 网站 URL
+  html?: string // 自定义模板，可选
+  title?: string // 网站标题
+  name?: string // 用户名
+  avatar?: string // 头像，可选
+  descr?: string // 描述，可选
+  class?: {
+    /** online / offline 样式用于显示在线状态，一般不会加。 */
+    avatar?: string // 可供自定义的头像类名（默认模板）
+    /**
+     * 通常来说：
+     * rounded-full 圆形头像
+     * mask mask-squircle 超椭圆头像
+     * mask mask-hexagon 六边形头像
+     * mask mask-triangle 三角形头像（不会真有人想用这个吧）
+     * ring ring-primary ring-offset-base-100 ring-offset-2 头像外环，一般不会加。
+     */
+    img?: string // 可供自定义的图片类名（默认模板）
+  }
 }
 ```
 
@@ -152,25 +161,26 @@ type Friend = {
 提供一块和默认排版一样的空间，在**不影响观感且我能接受**的前提下自由使用 HTML 标签和 WindiCSS / DaisyUI 类名。
 
 - 只能是类名，不能是 CSS / JS
-- 可以通过 data-theme="" 强制设置 daisyUI 主题，但我不保证主题一直有效
+- 可以通过 `data-theme="name"` 强制设置 daisyUI 主题，但我不保证主题一直有效（随时可能修改或删除主题且不会通知）
 - 图片 / SVG 最多三张，图片必须带 loading="lazy"
 - 嵌套不能过于复杂
 
-对于这类友链，请直接给 Tailwind Play / Windi Play / Codepen 链接。
+对于这类友链，我提供了一个 [Tailwind Play](https://play.tailwindcss.com/0AHHfFWTgL) 用于二次修改，内含一个默认组件（可能不会及时更新）。
 
 然后是本站的信息：
 
 ```ts
 export const kwaa: Friend = {
-  title: './kwaa.dev' || '藍',
-  url: 'https://kwaa.dev',
-  descr: '[DATA EXPUNGED]',
+  id: 'kwaa',
+  link: 'https://kwaa.dev',
+  title: './kwaa.dev',
+  name: '藍' || '藍#+85CD',
   avatar: [
     'https://kwaa.dev/assets/any@512.webp' // 头像面积不大时使用，分辨率可选 192/512/1024
     'https://kwaa.dev/assets/maskable@512.webp' // 头像面积较大时使用，分辨率可选 192/512/1024
     'any@base64: 见下' // 24px，几乎不拖累加载速度；但需要 style="image-rendering:pixelated" 或 class="image-render-pixel"
   ],
-  banner: 'https://kwaa.dev/assets/bg.webp' // 需要背景图时使用
+  descr: '[DATA EXPUNGED]',
 }
 ```
 
@@ -178,12 +188,19 @@ export const kwaa: Friend = {
 
 [any@base64-有背景](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAAUVBMVEUICz3W29T///+5wccaSXtErbk4ODjz8OZVVVX/7MkVFRXtrpqTJiVHKxPZOjr/+/T/07d1TCNgERn59vb//OPSzMzuuwKZne20srL0mIyWGwVwQ6mkAAAA9UlEQVQoz1WOCbLDIAxDMQYngMna9i/3P2hlGjpEMB7QQzbukoeIrLqbPDHDRCV/91d2TPCDAxn8iWOkCSIGGcF/oBWEkBqB9Z5onazcAfrjPa+WAhlGEMPBTtxBCMEAAzG7lBwBwLzAZL3cT0gp4MEAiG2d8fGITDdA1ixBWweXT8eyKG/bptSB31tARBdbxwDshzLPs/6pHgOoTAYkI/D85Q6ir5UZgSwA51MYIMboopEGsqrKmRl+B7uI5Jr1pTNO8L8AAQBU2/6bKMUCGP/CD0RKaTPgJ6js+aPNLggZKCWVKjKbBOcC0Fr5WmqFfxHfhrwBRawLyITR1qYAAAAASUVORK5CYII=)
 
+交换友链即代表你已知悉并理解：
+
+- 本站**涉政**。
+- 本站作为 Urara 的试验台，随时可能有无法访问，但通常不会持续很久。
+
 ## 捐赠
 
 如果你想。
 
-- ETH/xDAI: 0xaBdB3f715198A4d7e6591b6ebBE8Ccf235e5D752
-  - 唯一指定钱包地址，目前不使用 BSC 及其他公链。什么 Token 都收，但建议使用 xDAI（因为 gas 费低）
+- ETH/xDAI/BSC: 0xaBdB3f715198A4d7e6591b6ebBE8Ccf235e5D752
+  - 唯一指定钱包地址，建议使用 xDAI（因为 gas 费低）
+- XMR: 4BBo16A619wCSWS4rsS2gMihjfhi4nTLdabTAwadJFVoBrGU3qhn6kRXSHmBXXfgURJa5mngD5QekDnNkUPhprGv2VwVPqA
+  - 基本没在用
 
 ## 留言板
 
