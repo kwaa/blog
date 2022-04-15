@@ -20,7 +20,7 @@ const render = async (posts = genPosts({ postHtml: true, postLimit: feed.limit, 
     }
   ],
   language: site.lang ?? 'en',
-  hubs: feed.hub?.map(hub => ({
+  hubs: feed.hubs?.map(hub => ({
     type: 'WebSub',
     url: hub
   })),

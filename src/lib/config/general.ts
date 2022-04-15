@@ -130,5 +130,5 @@ export const date: DateConfig = {
 }
 
 export const feed: FeedConfig = {
-  hub: ['https://pubsubhubbub.appspot.com', 'https://bridgy-fed.superfeedr.com']
+  hubs: ['https://pubsubhubbub.appspot.com', 'https://bridgy-fed.superfeedr.com']
 }
