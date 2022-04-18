@@ -23,6 +23,7 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
           assets: 'build',
           fallback: null
         }),
+    inlineStyleThreshold: 4096,
     csp: { mode: 'auto' },
     prerender: { default: true },
     vite: {
