@@ -46,7 +46,6 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
           srcDir: './build',
           outDir: './.svelte-kit/output/client',
           registerType: 'autoUpdate',
-          injectRegister: 'inline',
           manifest: false,
           workbox: {
             navigateFallback: '/',
