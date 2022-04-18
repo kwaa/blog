@@ -28,9 +28,12 @@
       registerSW({
         onOfflineReady() {}
       })
-      const { offlineReady, updateServiceWorker } = useRegisterSW({
+      const { offlineReady, needRefresh, updateServiceWorker } = useRegisterSW({
         onRegistered(r) {
-          r && setInterval(() => r.update(), 60000)
+          r && setInterval(async () => await r.update(), 60000) && console.log('SW Registered: ' + r)
+        },
+        onRegisterError(error) {
+          console.log('SW registration error', error)
         }
       })
     }
