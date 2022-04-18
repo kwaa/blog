@@ -52,7 +52,16 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
             dontCacheBustURLsMatching: /-[a-f0-9]{8}\./,
             globDirectory: './build/',
             globPatterns: ['robots.txt', '**/*.{js,css,html,ico,png,svg,webmanifest}'],
-            globIgnores: ['**/sw*', '**/workbox-*']
+            globIgnores: ['**/sw*', '**/workbox-*'],
+            runtimeCaching: [
+              {
+                urlPattern: /(.*?)\.(png|jpe?g|svg|gif|webp|avif)/,
+                handler: 'CacheFirst',
+                options: {
+                  cacheName: 'image-cache'
+                }
+              }
+            ]
           }
         })
       ]
