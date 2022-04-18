@@ -3,6 +3,7 @@ import adapterAuto from '@sveltejs/adapter-auto'
 import adapterNode from '@sveltejs/adapter-node'
 import adapterStatic from '@sveltejs/adapter-static'
 import Icons from 'unplugin-icons/vite'
+import { VitePWA } from 'vite-plugin-pwa'
 import { mdsvex } from 'mdsvex'
 import mdsvexConfig from './mdsvex.config.js'
 import postcss from './postcss.config.js'
@@ -40,6 +41,19 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
           autoInstall: true,
           compiler: 'svelte',
           defaultClass: 'inline-block w-6 h-6'
+        }),
+        VitePWA({
+          srcDir: './build',
+          outDir: './.svelte-kit/output/client',
+          registerType: 'autoUpdate',
+          manifest: false,
+          workbox: {
+            navigateFallback: '/',
+            dontCacheBustURLsMatching: /-[a-f0-9]{8}\./,
+            globDirectory: './build/',
+            globPatterns: ['robots.txt', '**/*.{js,css,html,ico,png,svg,webmanifest}'],
+            globIgnores: ['**/sw*', '**/workbox-*']
+          }
         })
       ]
     }

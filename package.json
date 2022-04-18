@@ -60,12 +60,14 @@
     "unist-util-visit": "^4.1.0",
     "unplugin-icons": "^0.14.1",
     "vite": "^2.9.1",
+    "vite-plugin-pwa": "^0.11.13",
     "workbox": "^0.0.0",
     "workbox-cacheable-response": "^6.5.2",
     "workbox-expiration": "^6.5.2",
     "workbox-precaching": "^6.5.2",
     "workbox-routing": "^6.5.2",
-    "workbox-strategies": "^6.5.2"
+    "workbox-strategies": "^6.5.2",
+    "workbox-window": "^6.5.3"
   },
   "type": "module"
 }

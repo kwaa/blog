@@ -9,16 +9,27 @@
 </script>
 
 <script lang="ts">
+  import { onMount } from 'svelte'
+  import { browser, dev } from '$app/env'
   import { fly } from 'svelte/transition'
   import { genTags } from '$lib/utils/posts'
   import { posts, tags } from '$lib/stores/posts'
+  // import { useRegisterSW } from 'virtual:pwa-register/svelte'
   import Head from '$lib/components/head_static.svelte'
   import Header from '$lib/components/header.svelte'
   import '../app.css'
+  import { registerSW } from 'virtual:pwa-register'
   export let res: Urara.Post[]
   export let path: string
   posts.set(res)
   tags.set(genTags(res))
+  onMount(async () => {
+    !dev &&
+      browser &&
+      registerSW({
+        onOfflineReady() {}
+      })
+  })
 </script>
 
 <Head />
