@@ -14,21 +14,23 @@
   import { fly } from 'svelte/transition'
   import { genTags } from '$lib/utils/posts'
   import { posts, tags } from '$lib/stores/posts'
-  // import { useRegisterSW } from 'virtual:pwa-register/svelte'
+  import { useRegisterSW } from 'virtual:pwa-register/svelte'
+  // import { registerSW } from 'virtual:pwa-register'
   import Head from '$lib/components/head_static.svelte'
   import Header from '$lib/components/header.svelte'
   import '../app.css'
-  import { registerSW } from 'virtual:pwa-register'
   export let res: Urara.Post[]
   export let path: string
   posts.set(res)
   tags.set(genTags(res))
   onMount(async () => {
-    !dev &&
-      browser &&
-      registerSW({
-        onOfflineReady() {}
+    if (!dev && browser) {
+      const { offlineReady, updateServiceWorker } = useRegisterSW({
+        onRegistered(r) {
+          r && setInterval(() => r.update(), 60000)
+        }
       })
+    }
   })
 </script>
 
