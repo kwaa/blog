@@ -13,7 +13,7 @@
         {@html tag}
       {/each}
     {:else}
-      {#each [...(head.custom?.common ?? []), ...((dev ? head.custom?.dev : head.custom?.prod) ?? [])] as tag}
+      {#each [...(head.custom.common ?? []), ...((dev ? head.custom.dev : head.custom.prod) ?? [])] as tag}
         {@html tag}
       {/each}
     {/if}
