@@ -10,5 +10,5 @@
 </script>
 
 <figure class={figureClass}>
-  <Picture class="u-photo {imgClass}" {src} {alt} loading="eager" decoding="auto" />
+  <Picture class="u-photo {imgClass}" {src} {alt} loading="lazy" decoding="auto" />
 </figure>
