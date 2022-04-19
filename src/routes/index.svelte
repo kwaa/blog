@@ -28,14 +28,14 @@
   $: if (posts.length > 1) years = [new Date(posts[0].published ?? posts[0].created).toJSON().substring(0, 4)]
 
   $: if (tags) {
-    if (loaded) posts = !tags ? allPosts : allPosts.filter(post => tags.every(tag => post.tags?.includes(tag)))
+    posts = !tags ? allPosts : allPosts.filter(post => tags.every(tag => post.tags?.includes(tag)))
     if (browser && window.location.pathname === '/')
       window.history.replaceState({}, '', tags.length > 0 ? `?tags=${tags.toString()}` : `/`)
   }
 
   onMount(() => {
     if (browser) {
-      tags = $page.url.searchParams.get('tags') ? $page.url.searchParams.get('tags').split(',') : []
+      if ($page.url.searchParams.get('tags')) tags = $page.url.searchParams.get('tags').split(',')
       loaded = true
     }
   })
