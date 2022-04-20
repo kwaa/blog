@@ -22,16 +22,10 @@ const minificationOptions = {
   sortClassName: true
 }
 
-export const handle: Handle = async ({ event, resolve }) => {
-  const response = await resolve(event, {
+export const handle: Handle = async ({ event, resolve }) =>
+  await resolve(event, {
     transformPage: ({ html }) =>
       prerendering
         ? minify(html.replace('<html lang="en">', `<html lang="${site.lang ?? 'en'}">`), minificationOptions)
         : html.replace('<html lang="en">', `<html lang="${site.lang ?? 'en'}">`)
   })
-  response.headers.set('X-Frame-Options', 'SAMEORIGIN')
-  response.headers.set('X-Content-Type-Options', 'nosniff')
-  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
-  response.headers.set('Permissions-Policy', 'camera=(), microphone=()')
-  return response
-}
