@@ -23,14 +23,13 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
           assets: 'build',
           fallback: null
         }),
-    csp: {
-      mode: 'auto'
-      // directives: {
-      // 'style-src': ['self', 'unsafe-inline'],
-      // 'style-src': ['self', 'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU='],
-      // 'script-src': ['self', 'https://*.kwaa.dev']
-      // }
-    },
+    // csp: {
+    // mode: 'auto'
+    // directives: {
+    // 'style-src': ['self', 'unsafe-inline'],
+    // 'script-src': ['self', 'https://*.kwaa.dev']
+    // }
+    // },
     prerender: { default: true },
     vite: {
       build: {
