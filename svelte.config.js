@@ -24,12 +24,12 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
           fallback: null
         }),
     csp: {
-      mode: 'auto',
-      directives: {
-        // 'style-src': ['self', 'unsafe-inline'],
-        'style-src': ['self', 'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU='],
-        'script-src': ['self', 'https://*.kwaa.dev']
-      }
+      mode: 'auto'
+      // directives: {
+      // 'style-src': ['self', 'unsafe-inline'],
+      // 'style-src': ['self', 'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU='],
+      // 'script-src': ['self', 'https://*.kwaa.dev']
+      // }
     },
     prerender: { default: true },
     vite: {
