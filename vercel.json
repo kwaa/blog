@@ -4,6 +4,10 @@
       "source": "/(.*)",
       "headers": [
         {
+          "key": "Access-Control-Allow-Origin",
+          "value": "https://kwaa.dev"
+        },
+        {
           "key": "X-Frame-Options",
           "value": "DENY"
         },
@@ -17,7 +21,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "script-src 'self' 'unsafe-inline' https://*.kwaa.dev"
+          "value": "script-src 'self' https://*.kwaa.dev"
         },
         {
           "key": "Referrer-Policy",
