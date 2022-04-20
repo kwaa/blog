@@ -20,10 +20,6 @@
           "value": "1; mode=block"
         },
         {
-          "key": "Content-Security-Policy",
-          "value": "script-src 'self' https://*.kwaa.dev"
-        },
-        {
           "key": "Referrer-Policy",
           "value": "strict-origin-when-cross-origin"
         },
