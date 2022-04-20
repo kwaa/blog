@@ -25,7 +25,11 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
         }),
     csp: {
       mode: 'auto',
-      directives: { 'script-src': ['self', 'unsafe-inline', 'https://*.kwaa.dev'] }
+      directives: {
+        // 'style-src': ['self', 'unsafe-inline'],
+        'style-src': ['sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU='],
+        'script-src': ['self', 'https://*.kwaa.dev']
+      }
     },
     prerender: { default: true },
     vite: {
