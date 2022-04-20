@@ -1,7 +1,7 @@
 ---
 title: '通过 Docker 搭建 NaiveProxy + Hysteria 代理'
 created: 2021-07-13 01:11:11
-updated: 2021-12-10
+updated: 2022-04-20
 tags:
   - NaiveProxy
   - Hysteria
@@ -21,31 +21,38 @@ descr: 去年年底买的 Virmach 水牛城 VPS，最近我终于想起来还有
 密码忘了遂重装系统——为什么都 2021 年了系统镜像还是只到 Debian 9?!
 如文件名，代理都通过 Docker 容器搭建。所以下面的步骤都是可选的。
 
-### Buster
+### Debian sid
 
-目前的最新发行版是 Buster(10)。我以前试过 testing/bullseye 但是 Docker 安装脚本不支持？等正式版出来再更新了。
+谁能拒绝在 VPS 上一个滚动更新，软件包版本接近 Arch 的 Debian 呢？
 
-马上从 Virmach 预装的 Stretch 升级到 Buster：
+在 Debian bullseye(11) 的基础上升级，更旧的版本最好先升级到 bullseye。
 
 ```bash
-apt update
-sed -i 's/stretch/buster/g' /etc/apt/sources.list
 apt update && apt upgrade
+nano /etc/apt/sources.list
 ```
 
-### Buster Backports
+**删干净**。然后加一行：
 
-由于我并没有使用 testing，新的 Linux 内核就得通过 Backports 安装了。
-不会真的有人想用 4.9 吧？
-
-```bash
-echo deb http://deb.debian.org/debian buster-backports main contrib non-free | tee /etc/apt/sources.list.d/buster-backports.list
-apt update
-apt -t buster-backports upgrade # 更新所有可用的软件包
-reboot
+```text
+deb http://deb.debian.org/debian unstable main contrib non-free
 ```
 
-这么一来内核版本已经到了 5.10.0。虽然也算不上最新，但考虑到这是 Debian 也就能接受了。
+为什么只需要一行？
+
+- deb-src 是源代码存储库——除非你想用 Debtoo，所以不需要。
+- sid/unstable 只有软件包维护者的安全更新，所以也不需要。
+- 由于 sid 是滚动更新，自然也不存在什么 sid-backports, sid-update... 还是不需要。
+
+再运行一次 `apt update && apt upgrade`，准备装 cloud 内核。
+
+#### Linux Cloud
+
+alpine 我用 `linux-virt`，debian 就用 `linux-image-cloud`。
+
+一条命令安装并删除旧内核：`apt install linux-image-cloud-amd64 && apt autoremove`
+
+`reboot` 重连后就是 sid + cloud 了。
 
 ### UFW
 
@@ -54,7 +61,7 @@ reboot
 
 ```bash
 apt install ufw
-ufw allow ssh
+ufw limit ssh
 ufw allow https
 ufw enable # y 回车确认
 ```
@@ -63,9 +70,12 @@ ufw enable # y 回车确认
 
 首先安装 docker... podman / containerd 应该也行，但我没试过。
 
+### Docker
+
+都上 sid 了，当然是直接 apt 安装。
+
 ```bash
-apt install curl
-curl -fsSL https://get.docker.com/ | bash
+apt install docker.io
 ```
 
 ### NaiveProxy
@@ -73,11 +83,10 @@ curl -fsSL https://get.docker.com/ | bash
 先创建一个配置文件，使用你的参数替换掉 `{{注释}}` 的值并去掉 `#注释`：
 
 ```bash
-mkdir /etc/caddy
-nano /etc/caddy/Caddyfile # nano 不会用的话我也救不了了
+mkdir /etc/caddy && nano /etc/caddy/Caddyfile
 ```
 
-```ini
+```ini filename="/etc/caddy/Caddyfile"
 { # 如果不打算使用 Hysteria 并想为 NaiveProxy 启用 HTTP/3，则使用此段。
   servers {
     protocol {
@@ -135,7 +144,7 @@ kwaabot/caddy
 caddy 之前已经映射了文件夹，所以只需要使用文件夹内的证书即可。
 将证书文件夹映射到容器的 `/etc/hysteria/`，最简配置：
 
-```json
+```json filename="/etc/hysteria.json"
 {
   "listen": ":443",
   "cert": "/etc/hysteria/{{域名}}/{{域名}}.crt",
@@ -166,7 +175,7 @@ tobyxdd/hysteria -config /etc/hysteria.json server
 - 映射 `/root/.local/share/caddy/certificates/acme-v02.api.letsencrypt.org-directory/`（证书）文件夹到容器的 `/etc/hysteria/`
 - 重启策略：无论退出状态如何都始终重启容器（除非手动停止）
 
-### 自动更新 Docker 镜像
+### 自动更新镜像
 
 说实话这个用不用无所谓，但我还是用了。
 
@@ -213,7 +222,7 @@ echo -e 'net.ipv4.tcp_congestion_control=bbr\nnet.core.default_qdisc=cake\nnet.i
 
 NaiveProxy 客户端配置（如果使用 HTTP3 则将 https:// 改为 quic://）：
 
-```json
+```json filename="/etc/naive/config.json"
 {
   "listen": "socks://0.0.0.0:{{本地端口1}}",
   "proxy": "https://{{用户名}}:{{密码}}@{{域名}}"
@@ -222,7 +231,7 @@ NaiveProxy 客户端配置（如果使用 HTTP3 则将 https:// 改为 quic://�
 
 Hysteria 客户端配置：
 
-```json
+```json filename="/etc/hysteria.json"
 {
   "server": "{{域名}}:443",
   "obfs": "{{密码}}",
