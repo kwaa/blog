@@ -105,7 +105,7 @@
                 {years.push(year) && year}
               </div>
             {/if}
-            <Post {post} />
+            <Post {post} loading={index < 5 ? 'eager' : 'lazy'} />
           </div>
         {/each}
       </main>

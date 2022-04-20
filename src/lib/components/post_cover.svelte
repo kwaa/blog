@@ -3,6 +3,7 @@
   export let cover: Urara.Post.Article['cover']
   export let figureClass: string
   export let imgClass: string
+  export let loading: 'eager' | 'lazy' = 'lazy'
   // let className = undefined
   // export { className as class }
   let src: string, alt: string
@@ -10,5 +11,5 @@
 </script>
 
 <figure class={figureClass}>
-  <Picture class="u-photo {imgClass}" {src} {alt} loading="lazy" decoding="auto" />
+  <Picture class="u-photo {imgClass}" {src} {alt} {loading} decoding="auto" />
 </figure>
