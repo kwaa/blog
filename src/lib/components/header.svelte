@@ -53,8 +53,8 @@
 <header id="header" class:-translate-y-32={!pin && scrollY > 0} class="fixed z-50 w-screen p-2 transition-all">
   {#if !search}
     <div
-      in:fly={{ x: -50, duration: 200, delay: 200 }}
-      out:fly={{ x: -50, duration: 200 }}
+      in:fly={{ x: -50, duration: 300, delay: 300 }}
+      out:fly={{ x: -50, duration: 300 }}
       class="navbar rounded-btn p-0 min-h-fit transition-all duration-300 ease-in-out {scrollY > 32
         ? 'bg-neutral/50 text-neutral-content backdrop-blur shadow-lg xl:bg-transparent xl:text-base-content xl:backdrop-blur-none xl:shadow-none'
         : ''}">
@@ -105,8 +105,8 @@
     </div>
   {:else}
     <div
-      in:fly={{ x: 50, duration: 200, delay: 200 }}
-      out:fly={{ x: 50, duration: 200 }}
+      in:fly={{ x: 50, duration: 300, delay: 300 }}
+      out:fly={{ x: 50, duration: 300 }}
       class="navbar rounded-btn p-0 min-h-fit transition-all {scrollY > 32
         ? 'bg-neutral/50 text-neutral-content backdrop-blur shadow-lg xl:bg-transparent xl:text-base-content xl:backdrop-blur-none xl:shadow-none'
         : ''}">
