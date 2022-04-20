@@ -24,16 +24,16 @@ const minificationOptions = {
 
 export const handle: Handle = async (
   { event, resolve },
-  response = await resolve(event, {
+  response = resolve(event, {
     transformPage: ({ html }) =>
       prerendering
         ? minify(html.replace('<html lang="en">', `<html lang="${site.lang ?? 'en'}">`), minificationOptions)
         : html.replace('<html lang="en">', `<html lang="${site.lang ?? 'en'}">`)
   })
 ) => ({
-  ...response,
+  ...(await response),
   headers: {
-    ...response.headers,
+    ...(await response.headers),
     'X-Frame-Options': 'SAMEORIGIN',
     'X-Content-Type-Options': 'nosniff',
     'Referrer-Policy': 'strict-origin-when-cross-origin',
