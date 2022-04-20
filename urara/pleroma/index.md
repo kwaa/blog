@@ -13,15 +13,17 @@ cover: /pleroma/pleroma_tan_cofe.webp
 
 2022 更新！我决定装一个新的 ~~Pleroma~~ Soapbox。
 
-- 为什么是 Pleroma?
+- 为什么是 [Pleroma](https://pleroma.social/)?
   - 占用资源在御三家里最少，没有太多我用不到的功能。
-- 为什么是 Soapbox?
+- 为什么是 [Soapbox](https://soapbox.pub)?
   - Soapbox-FE 界面比较好看，至少看起来比较现代了。
   - 既然有 Soapbox-BE 这种西装套自然没理由不用。
 
 ## 准备
 
-从一个干净且装有 Docker 的 Debian VPS 开始；本文默认阅读者有一定的 Linux 使用经验。
+从一个干净且装有 Docker 的 Debian VPS 开始，本文默认读者有一定的 Linux 使用经验。
+
+关于 Debian sid / linux-cloud / UFW / Docker 等基本设置可以参考 [通过 Docker 搭建 NaiveProxy + Hysteria 代理](/docker-proxy) 这篇文章。
 
 ```bash
 # 开始之前先更新一下
@@ -264,4 +266,4 @@ mv about.example about
 
 本来还想部署一个 Matrix 服务，但 Dendrite 和 Conduit 都不支持 OpenID Connect，我又不想用 Synapse。
 
-总之这篇文章就到这里了，欢迎 follow 我的新地址 [kwa@kwaa.moe](https://kwaa.moe/@kwa)！
+总之这篇文章就到这里了，欢迎 follow 我的新账号 [kwa@kwaa.moe](https://kwaa.moe/@kwa)！
