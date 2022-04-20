@@ -23,7 +23,10 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
           assets: 'build',
           fallback: null
         }),
-    csp: { mode: 'auto' },
+    csp: {
+      mode: 'auto',
+      directives: { 'script-src': ['self', 'unsafe-inline', 'https://*.kwaa.dev'] }
+    },
     prerender: { default: true },
     vite: {
       build: {

@@ -22,14 +22,21 @@ const minificationOptions = {
   sortClassName: true
 }
 
-export const handle: Handle = async ({ event, resolve }) =>
-  await resolve(event, {
+export const handle: Handle = async (
+  { event, resolve },
+  response = await resolve(event, {
     transformPage: ({ html }) =>
-      (prerendering
+      prerendering
         ? minify(html.replace('<html lang="en">', `<html lang="${site.lang ?? 'en'}">`), minificationOptions)
         : html.replace('<html lang="en">', `<html lang="${site.lang ?? 'en'}">`)
-      ).replace(
-        /<link rel="modulepreload" href="(\/_app\/chunks\/vendor-[^.]+\.js)">/,
-        (_, url) => `<script defer async src="${url}">`
-      )
   })
+) => ({
+  ...response,
+  headers: {
+    ...response.headers,
+    'X-Frame-Options': 'SAMEORIGIN',
+    'X-Content-Type-Options': 'nosniff',
+    'Referrer-Policy': 'strict-origin-when-cross-origin',
+    'Permissions-Policy': 'camera=(), microphone=()'
+  }
+})
