@@ -6,7 +6,7 @@ tags:
   - SvelteKit
   - MDsveX
   - TailwindCSS
-cover: /intro-urara/re.webp
+cover: /intro-urara/re.avif
 descr: 去年的 Introducting Urara 感觉没写好，索性就重新介绍一下吧。
 ---
 

@@ -39,11 +39,11 @@ ESLyric 这段可能是字数最多的（笑）
 
 子设置搜索，推荐如图设置：
 
-![Settings](/archives/fb2k-tuningrec/1.webp)
+![Settings](/archives/fb2k-tuningrec/1.avif)
 
 默认的桌面歌词是真难看。虽然不怎么用，但在这里给出我的配色方案：
 
-![Color](/archives/fb2k-tuningrec/2.webp)
+![Color](/archives/fb2k-tuningrec/2.avif)
 
 - 未播放: 上 R156 G167 B181, 下 R205 G212 B219
 - 已播放: 上 R0 G91 B234, 下 R0 G198 B251

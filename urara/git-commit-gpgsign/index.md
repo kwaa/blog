@@ -10,7 +10,7 @@ tags:
   - Git
   - GPG
 descr: 为了好看，我为 Urara 的所有 commit 设置了 GPG 签名。
-cover: /git-commit-gpgsign/cover.webp
+cover: /git-commit-gpgsign/cover.avif
 ---
 
 为了好看，我为 [Urara](https://github.com/importantimport/urara) 的所有 commit 设置了 GPG 签名。
@@ -171,7 +171,7 @@ git config --global commit.gpgsign true # 全局签名
 
 尝试提交一个 commit，它有用。
 
-![Verified](/git-commit-gpgsign/verified.webp)
+![Verified](/git-commit-gpgsign/verified.avif)
 
 完结！由于内置 git.exe 的目录包含版本号，所以理论上遇到软件更新会需要重新设置。
 

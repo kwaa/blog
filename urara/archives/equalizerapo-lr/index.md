@@ -32,7 +32,7 @@ descr: 这次这篇玩意是给和我一样设备各种问题的人准备的。
 
 在“播放设备”选择好需要调整的输出接口, 然后重启电脑：
 
-![Configuration](/archives/equalizerapo-lr/config.webp)
+![Configuration](/archives/equalizerapo-lr/config.avif)
 
 重启完毕后打开 Configuration Editor，点击一下下面的绿色 + 号, 选择 Comment。
 输入`Copy: L=R R=L` 然后点击一下开关图标，让它变成白色.

@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { browser } from '$app/env'
+  import { browser, dev } from '$app/env'
   import { fly } from 'svelte/transition'
-  import { site, dev } from '$lib/config/site'
+  import { site } from '$lib/config/site'
   import { theme } from '$lib/config/general'
   import { header as headerConfig } from '$lib/config/general'
   import { hslToHex } from '$lib/utils/color'

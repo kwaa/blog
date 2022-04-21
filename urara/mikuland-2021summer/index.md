@@ -8,7 +8,7 @@ tags:
   - 初音ミク
   - MIKULAND
   - VirtualCast
-cover: /mikuland-2021summer/warerawahare.webp
+cover: /mikuland-2021summer/warerawahare.avif
 ---
 
 前天 Miku 官号投了一首 [満開ダイビング](https://youtu.be/t9eRhC-GAWs)，让我知道了有 [MIKU LAND](https://mikuland.com/) 这么个玩意。~~别问为什么 [Happy Coaster](https://youtu.be/KG-Q2v2kdsw) 那会不知道，问就是只顾着听歌了没注意~~
@@ -69,9 +69,9 @@ Miku + VR, 还等什么？当然是掏钱了！
 
 进入 Room 后，通过 B 键菜单 => ルーム => おすすめ，选择某个房间进入。
 
-![room-1](mikuland-2021summer/room-1.webp)
+![room-1](mikuland-2021summer/room-1.avif)
 
-![room-2](mikuland-2021summer/room-2.webp)
+![room-2](mikuland-2021summer/room-2.avif)
 
 ### 広場
 
@@ -82,13 +82,13 @@ Miku + VR, 还等什么？当然是掏钱了！
 
 感觉不错，但我之后再来就没看到 Miku 了。
 
-![bonodori-1](mikuland-2021summer/bonodori-1.webp)
+![bonodori-1](mikuland-2021summer/bonodori-1.avif)
 
-![bonodori-2](mikuland-2021summer/bonodori-2.webp)
+![bonodori-2](mikuland-2021summer/bonodori-2.avif)
 
-![bonodori-3](mikuland-2021summer/bonodori-3.webp)
+![bonodori-3](mikuland-2021summer/bonodori-3.avif)
 
-![bonodori-4](mikuland-2021summer/bonodori-4.webp)
+![bonodori-4](mikuland-2021summer/bonodori-4.avif)
 
 #### 事件 - グリーティング / Greeting / 问候
 
@@ -106,20 +106,20 @@ Miku + VR, 还等什么？当然是掏钱了！
 
 这些商店本来是不打算写进来的，但是我拍了照片不发又觉得可惜，所以就有了这一节。
 
-![outdoorshop-1](mikuland-2021summer/outdoorshop-1.webp)
+![outdoorshop-1](mikuland-2021summer/outdoorshop-1.avif)
 
-![outdoorshop-2](mikuland-2021summer/outdoorshop-2.webp)
+![outdoorshop-2](mikuland-2021summer/outdoorshop-2.avif)
 
 #### ミクアートギャラリー / MIKU Art gallery / MIKU 美术馆
 
 少数让我满意的场景，因为有画可以看。
 尽管我可以去 pixiv 或者把图片拖到 NeosVR，但这个场景比较有气氛不是吗？
 
-![artgallery-1](mikuland-2021summer/artgallery-1.webp)
+![artgallery-1](mikuland-2021summer/artgallery-1.avif)
 
-![artgallery-2](mikuland-2021summer/artgallery-2.webp)
+![artgallery-2](mikuland-2021summer/artgallery-2.avif)
 
-![artgallery-3](mikuland-2021summer/artgallery-3.webp)
+![artgallery-3](mikuland-2021summer/artgallery-3.avif)
 
 #### リズムゲーム / Rhythm game / 节奏游戏
 
@@ -137,9 +137,9 @@ Miku + VR, 还等什么？当然是掏钱了！
 
 最离谱的是打雪仗场地里手套是单卖的，收费 1000 円。
 
-![snowglobeillumination-1](mikuland-2021summer/snowglobeillumination-1.webp)
+![snowglobeillumination-1](mikuland-2021summer/snowglobeillumination-1.avif)
 
-![snowglobeillumination-2](mikuland-2021summer/snowglobeillumination-2.webp)
+![snowglobeillumination-2](mikuland-2021summer/snowglobeillumination-2.avif)
 
 #### 事件 - 雪ミクスノーショー-Fondant Step-
 
@@ -150,18 +150,18 @@ Miku + VR, 还等什么？当然是掏钱了！
 
 没意思，只是一个海底场景。虽然我可以跑到上面去坐潜艇，但评价并不会因为这么个小玩意而改变。
 
-![左拥右抱](mikuland-2021summer/mermaidstage-1.webp)
+![左拥右抱](mikuland-2021summer/mermaidstage-1.avif)
 
-![花了快一万日元的富裕老哥](mikuland-2021summer/mermaidstage-2.webp)
+![花了快一万日元的富裕老哥](mikuland-2021summer/mermaidstage-2.avif)
 
-![鸭子坐单独来一张](mikuland-2021summer/mermaidstage-3.webp)
+![鸭子坐单独来一张](mikuland-2021summer/mermaidstage-3.avif)
 
 ### パラソルビーチ / Parasol Beach / 阳伞沙滩
 
 也没什么意思，只是一个沙滩场景。拍照点也不能像潜艇那样移动。
 根据现实时间会出现日落，就有人鱼 Miku 和... 这哪位来着？
 
-![parasolbeach-1](mikuland-2021summer/parasolbeach-1.webp)
+![parasolbeach-1](mikuland-2021summer/parasolbeach-1.avif)
 
 ### ホラーハウス / Horror House / 恐怖之家
 
@@ -182,8 +182,8 @@ Miku + VR, 还等什么？当然是掏钱了！
 
 最后放几张合影，这篇文章就这么结束了。这些质量很高的图片会让我感觉没那么亏，但实际上还是血亏。
 
-![snowglobeillumination-3](mikuland-2021summer/snowglobeillumination-3.webp)
+![snowglobeillumination-3](mikuland-2021summer/snowglobeillumination-3.avif)
 
-![snowglobeillumination-4](mikuland-2021summer/snowglobeillumination-4.webp)
+![snowglobeillumination-4](mikuland-2021summer/snowglobeillumination-4.avif)
 
-![snowglobeillumination-5](mikuland-2021summer/snowglobeillumination-5.webp)
+![snowglobeillumination-5](mikuland-2021summer/snowglobeillumination-5.avif)

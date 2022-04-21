@@ -54,15 +54,15 @@ descr: 时隔两年，我把评论系统从 Utterances 迁移到了 Giscus 和 D
 
 > 应用名 / 描述 / 主页随意，回调地址 https://域名/api/oauth/authorized
 
-![GitHub App](/giscus-disqus/github_app.webp)
+![GitHub App](/giscus-disqus/github_app.avif)
 
 取消勾选 Webhook，设置 Discussions 权限为读写，然后直接拖到最下面创建。
 
 创建后第一页就是 `App ID` 和 `Client ID`，往下滑生成 `Client secret` 和 `Private key`；私钥会以文件形式下载。
 
-![Client secret](/giscus-disqus/client_secret.webp)
+![Client secret](/giscus-disqus/client_secret.avif)
 
-![Private key](/giscus-disqus/private_key.webp)
+![Private key](/giscus-disqus/private_key.avif)
 
 点开右边的 Install App，为自己需要启用评论的存储库安装，本节完成。
 
@@ -76,7 +76,7 @@ fork 一份并在 Vercel 上导入，Vercel 会自动识别这是一个 Next.js 
 
 > ENVCRYPTION_PASSWORD? 那当然用 [UUID v4](https://www.uuidgenerator.net/version4)
 
-![env](/giscus-disqus/env.webp)
+![env](/giscus-disqus/env.avif)
 
 设置域名 CNAME 到 cname.vercel-dns.com，搞定。
 

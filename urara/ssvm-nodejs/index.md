@@ -40,7 +40,7 @@ node node/app.js # 编译完就可以运行了
 
 这是一个 Hello World 示例，跑起来大概这样：
 
-![hello](/ssvm-nodejs/hello.webp)
+![hello](/ssvm-nodejs/hello.avif)
 
 新手教程已经完成了，我也该着手修改了。
 做点什么呢？Rust 和 WebAssembly 我都是第一次接触。
@@ -48,7 +48,7 @@ node node/app.js # 编译完就可以运行了
 
 之后我花了两天尝试用 ajaxForm 提交，不过怎么样都是失败。
 
-![web](/ssvm-nodejs/web.webp)
+![web](/ssvm-nodejs/web.avif)
 
 于是就有了现在下面的这个玩意... 反正只说了学习基础知识欸嘿
 
