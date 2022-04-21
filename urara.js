@@ -7,6 +7,7 @@ import { promises as fs } from 'fs'
 import * as path from 'path'
 import chokidar from 'chokidar'
 import chalk from 'chalk'
+import sharp from 'sharp'
 
 const config = {
   extensions: ['svelte', 'md', 'js', 'ts'],
@@ -77,9 +78,10 @@ const cleanDir = src =>
     })
   })
 
-const build = () => {
+const build = async () => {
   mkDir('static', { dest: ['static'] })
-  cpDir('urara')
+  // cpDir('urara')
+  copyDir((await scanDir('urara')).flat())
 }
 
 const clean = () => {
@@ -87,20 +89,55 @@ const clean = () => {
   rmDir('static', { dest: ['static'] })
 }
 
-const rename = () => {
-  fs.readdir('build', { withFileTypes: true }).then(files =>
-    files.forEach(file => {
-      if (file.isDirectory() && config.rename.includes(file.name)) {
-        log('cyan', 'find', file.name)
-        const src = path.join('build', file.name, 'index.html')
-        const dest = path.join('build', file.name + '.html')
-        fs.copyFile(src, dest)
-          .then(log('green', 'copy file', dest))
-          .then(fs.rm(src).then(log('yellow', 'remove file', src)).catch(error))
-          .catch(error)
-      }
-    })
+// TODO: LATEST VERSION
+
+const scanDir = async src =>
+  await fs.readdir(src, { withFileTypes: true }).then(
+    async files =>
+      await Promise.all(
+        files.map(async file =>
+          file.isDirectory()
+            ? [
+                {
+                  src: path.join(src, file.name),
+                  dest: path.join('src/routes', src.slice(5), file.name),
+                  type: 'dir'
+                },
+                {
+                  src: path.join(src, file.name),
+                  dest: path.join('static', src.slice(5), file.name),
+                  type: 'dir'
+                },
+                ...(await scanDir(path.join(src, file.name))).flat()
+              ]
+            : [
+                {
+                  src: path.join(src, file.name),
+                  dest: path.join(check(path.parse(src).ext.slice(1)), src.slice(6), file.name),
+                  type: 'file',
+                  ext: path.parse(file.name).ext,
+                  depth: path.join(src.slice(6), file.name).split('/').length - 1
+                }
+              ]
+        )
+      )
   )
+
+const copyDir = async files =>
+  files.sort((a, b) => a.depth - b.depth).forEach(file => (file.type === 'dir' ? mkDir(file.src, file.dest) : handleFile(file)))
+
+const handleFile = async file => {
+  if (file.ext === '.avif') {
+    cpFile(file.src, file.dest)
+    sharp(file.src)
+      .resize(384)
+      .toFile(file.dest.slice(0, -5) + '_384.avif')
+    sharp(file.src)
+      .resize(768)
+      .toFile(file.dest.slice(0, -5) + '_768.avif')
+  } else {
+    cpFile(file.src, file.dest)
+  }
 }
 
 switch (process.argv[2]) {
@@ -138,8 +175,11 @@ switch (process.argv[2]) {
   case 'clean':
     clean()
     break
-  case 'rename':
-    rename()
+  // case 'rename':
+  //   rename()
+  //   break
+  case 'scan':
+    console.log((await scanDir('urara')).flat())
     break
   default:
     log('red', 'error', 'invalid arguments')

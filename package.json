@@ -69,5 +69,8 @@
     "workbox-strategies": "^6.5.2",
     "workbox-window": "^6.5.3"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "sharp": "^0.30.4"
+  }
 }
