@@ -101,12 +101,14 @@ const scanDir = async src =>
                 {
                   src: path.join(src, file.name),
                   dest: path.join('src/routes', src.slice(5), file.name),
-                  type: 'dir'
+                  type: 'dir',
+                  depth: path.join(src.slice(6), file.name).split('/').length - 1
                 },
                 {
                   src: path.join(src, file.name),
                   dest: path.join('static', src.slice(5), file.name),
-                  type: 'dir'
+                  type: 'dir',
+                  depth: path.join(src.slice(6), file.name).split('/').length - 1
                 },
                 ...(await scanDir(path.join(src, file.name))).flat()
               ]
