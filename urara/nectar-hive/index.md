@@ -1,7 +1,7 @@
 ---
 title: '静电之梦 - Nectar Hive'
 date: 2022-02-12
-cover: '/nectar-hive/hive.webp'
+cover: /nectar-hive/hive.avif
 ---
 
 > 世界是静电的。
@@ -16,11 +16,11 @@ cover: '/nectar-hive/hive.webp'
 
 就疯狂翻 head-case 获取信息，想自己打板买元件做个 Grounded Grid（元件一直缺货，这个想法在 2021 下半年还有，然后我认清了现实）
 
-不知不觉来到了 2021 年，009 现在什么价格？*我超真就龙肉呗都一万五起步了*
+不知不觉来到了 2021 年，009 现在什么价格？_我超真就龙肉呗都一万五起步了_
 
 接着是年末的某一天，我在互联网上四处逛逛，看到了 Hive。
 
-***$599？买！***
+**_$599？买！_**
 
 所以就有了这篇文章。
 
@@ -46,7 +46,7 @@ cover: '/nectar-hive/hive.webp'
 
 比较有意思的是默认耳垫内部是圆形开孔，而我选配的耳垫是耳朵形开孔。
 
-![earpads](/nectar-hive/earpads.webp)
+![earpads](/nectar-hive/earpads.avif)
 
 耳垫通过三个小型魔术贴固定（有点简陋），至于两个耳垫之间的区别我真听不出来。
 
@@ -83,7 +83,7 @@ cover: '/nectar-hive/hive.webp'
 
 > 顺便一提，焊锡用的吃灰 Audio Note... 酱油比鸡贵？不过用量也不多就是
 
-![CAB-SSO](/nectar-hive/sso.webp)
+![CAB-SSO](/nectar-hive/sso.avif)
 
 > 别问，问就是没对好焦
 
@@ -112,19 +112,19 @@ python3.8 autoeq.py --help
 
 #### 生成
 
-> 等待测量文件中。..
-
-<!-- ```bash
+```bash
 python3.8 autoeq.py \\
---input_dir="measurements/crinacle/gras_43ag-7_harman_over-ear_2018/Nectar Hive" \\
+--input_dir="my_measurements/Nectar Hive" \\
 --output_dir="my_results/harman" \\
 --compensation="compensation/harman_over-ear_2018_wo_bass.csv" \\
 --equalize --bass_boost=4 --show_plot --convolution_eq --fs=44100,48000
 ```
 
-### EqualizerAPO
+<!-- ### EqualizerAPO -->
 
-### Wavelet -->
+### Wavelet
+
+直接导入 AutoEQ 生成的 .txt 文件。
 
 ## 听感
 
@@ -148,7 +148,7 @@ python3.8 autoeq.py \\
 至于适合什么歌？我认为我听的歌（VOCALOID, Anisong, J-Pop）它都很适合，可以认为是杂食。
 
 > 对比：Nectar Hive (AutoEQ - Harman OE 2018)
-> 
+>
 > 相比经过 EQ 的 Hive 我会觉得高频有点软（同时人声更近），也别有一番风味。
 
 ### Target
@@ -156,7 +156,7 @@ python3.8 autoeq.py \\
 - **Harman OE 2018**
   - 我（在拥有其他 EQ 前）最喜欢的声音，清亮的高频 & 声底干净。
 - **Optimum HiFi**
-  - 获得测量文件后更新
+  - 完美！非常均衡，很难找到缺点；对我来说基本听什么都很合适。目前的主力 EQ
 
 ### Signature
 
@@ -164,25 +164,12 @@ AutoEq 可以将其他耳机作为目标曲线，这里我使用一些其他品�
 
 需要注意的是这仍然是一种模仿（我觉得可以类比为调整屏幕色温？），无法代表目标耳机的听感。
 
-> 获得测量文件后更新
-
-<!-- - Stax SR-009
-
-- Stax SR-009S
-
-- Sennheiser HE 1 Orpheus 2
-
-- Sennheiser HE 90 Orpheus
-
-- HIFIMAN Shangri-La -->
-
-<!-- - Stax SR-X9000 (Waiting for measurement) -->
-
-<!-- - ES Lab ES-1a (Crinacle)
-
-- DCA Voce (Crinacle)
-
-- Audeze CRBN (Waiting for measurement) -->
+- **Hive - SR-009**
+  - 低频更少，2.5Khz 有个坑会带来一些独特风味？
+- **Hive - SR-009S**
+  - 曲线比 009EQ 润点，其他似乎差不多，偶尔用
+- **Hive - HE1**
+  - 低频比哈曼还多，人声远，基本算是 Miku Symphony 专用。
 
 ## 保养
 
