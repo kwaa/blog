@@ -25,7 +25,11 @@ const minificationOptions = {
 export const handle: Handle = async ({ event, resolve }) =>
   await resolve(event, {
     transformPage: ({ html }) =>
-      prerendering
+      (prerendering
         ? minify(html.replace('<html lang="en">', `<html lang="${site.lang ?? 'en'}">`), minificationOptions)
         : html.replace('<html lang="en">', `<html lang="${site.lang ?? 'en'}">`)
+      ).replace(
+        /<link rel="modulepreload" href="(\/_app\/chunks\/vendor-[^.]+\.js)">/,
+        (_, url) => `<script defer async src="${url}">`
+      )
   })

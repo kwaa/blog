@@ -47,20 +47,20 @@ const cpFile = (src, { stat = 'copy', dest = path.join(check(path.parse(src).ext
 const rmFile = (src, { dest = path.join(check(path.parse(src).ext.slice(1)), src.slice(6)) } = {}) =>
   fs.rm(dest).then(log('yellow', 'remove file', dest)).catch(error)
 
-const cpDir = src =>
-  fs.readdir(src, { withFileTypes: true }).then(files =>
-    files.forEach(file => {
-      const dest = path.join(src, file.name)
-      if (file.isDirectory()) {
-        mkDir(dest)
-        cpDir(dest)
-      } else if (file.name.startsWith('.')) {
-        log('cyan', 'ignore file', dest)
-      } else {
-        cpFile(dest)
-      }
-    })
-  )
+// const cpDir = src =>
+//   fs.readdir(src, { withFileTypes: true }).then(files =>
+//     files.forEach(file => {
+//       const dest = path.join(src, file.name)
+//       if (file.isDirectory()) {
+//         mkDir(dest)
+//         cpDir(dest)
+//       } else if (file.name.startsWith('.')) {
+//         log('cyan', 'ignore file', dest)
+//       } else {
+//         cpFile(dest)
+//       }
+//     })
+//   )
 
 const mkDir = (src, { dest = [path.join('src/routes', src.slice(6)), path.join('static', src.slice(6))] } = {}) => {
   dest.forEach(path => fs.mkdir(path).then(log('green', 'make dir', path)).catch(error))
@@ -70,26 +70,53 @@ const rmDir = (src, { dest = [path.join('src/routes', src.slice(6)), path.join('
   dest.forEach(path => fs.rm(path, { force: true, recursive: true }).then(log('yellow', 'remove dir', path)).catch(error))
 }
 
-const cleanDir = src =>
-  fs.readdir(src, { withFileTypes: true }).then(files => {
-    files.forEach(file => {
-      const dest = path.join(src, file.name)
-      file.isDirectory() ? rmDir(dest) : file.name.startsWith('.') ? log('cyan', 'ignore file', dest) : rmFile(dest)
-    })
-  })
+// const cleanDir = src =>
+//   fs.readdir(src, { withFileTypes: true }).then(files => {
+//     files.forEach(file => {
+//       const dest = path.join(src, file.name)
+//       file.isDirectory() ? rmDir(dest) : file.name.startsWith('.') ? log('cyan', 'ignore file', dest) : rmFile(dest)
+//     })
+//   })
 
 const build = async () => {
-  mkDir('static', { dest: ['static'] })
+  makeDir({ dest: ['static'] })
   // cpDir('urara')
   copyDir((await scanDir('urara')).flat())
 }
 
-const clean = () => {
-  cleanDir('urara')
-  rmDir('static', { dest: ['static'] })
+const clean = async () => {
+  cleanDir(cleanDirExtra((await scanDir('urara')).flat()))
+  removeDir({ dest: ['static'] })
 }
 
 // TODO: LATEST VERSION
+
+const copyFile = ({ src, stat = 'copy', dest = path.join(check(path.parse(src).ext.slice(1)), src.slice(6)) } = {}) =>
+  fs
+    .copyFile(src, dest)
+    .then(log('green', `${stat} file`, dest))
+    .catch(error)
+
+const removeDir = ({ src, dest = [path.join('src/routes', src.slice(6)), path.join('static', src.slice(6))] } = {}) =>
+  dest.forEach(path =>
+    fs
+      .readdir(path)
+      .then(files => {
+        if (!files.length || files.length < 1) {
+          fs.rm(path, { recursive: true }).then(log('yellow', 'remove dir', path)).catch(error)
+        } else {
+          log('cyan', 'ignore non-empty dir', dest)
+          files.forEach(file => console.log(file))
+        }
+      })
+      .catch(error)
+  )
+
+const removeFile = ({ src, dest = path.join(check(path.parse(src).ext.slice(1)), src.slice(6)) } = {}) =>
+  fs.rm(dest).then(log('yellow', 'remove file', dest)).catch(error)
+
+const makeDir = ({ src, dest = [path.join('src/routes', src.slice(6)), path.join('static', src.slice(6))] } = {}) =>
+  dest.forEach(path => fs.mkdir(path).then(log('green', 'make dir', path)).catch(error))
 
 const scanDir = async src =>
   await fs.readdir(src, { withFileTypes: true }).then(
@@ -115,7 +142,7 @@ const scanDir = async src =>
             : [
                 {
                   src: path.join(src, file.name),
-                  dest: path.join(check(path.parse(src).ext.slice(1)), src.slice(6), file.name),
+                  dest: path.join(check(path.parse(file.name).ext.slice(1)), src.slice(6), file.name),
                   type: 'file',
                   ext: path.parse(file.name).ext,
                   depth: path.join(src.slice(6), file.name).split('/').length - 1
@@ -126,21 +153,33 @@ const scanDir = async src =>
   )
 
 const copyDir = async files =>
-  files.sort((a, b) => a.depth - b.depth).forEach(file => (file.type === 'dir' ? mkDir(file.src, file.dest) : handleFile(file)))
+  files
+    .sort((a, b) => a.depth - b.depth)
+    .forEach(file => (file.type === 'dir' ? makeDir({ dest: [file.dest] }) : handleFile(file)))
 
-const handleFile = async file => {
-  if (file.ext === '.avif') {
-    cpFile(file.src, file.dest)
-    sharp(file.src)
-      .resize(384)
-      .toFile(file.dest.slice(0, -5) + '_384.avif')
-    sharp(file.src)
+const cleanDir = files =>
+  files
+    .sort((a, b) => b.depth - a.depth || b.type.localeCompare(a.type))
+    .forEach(file => (file.type === 'dir' ? console.log(file.dest) : removeFile({ dest: file.dest })))
+// console.log(files.sort((a, b) => b.type.localeCompare(a.type) || b.depth - a.depth))
+
+const handleFile = async ({ src, dest, ext }) => {
+  if (ext === '.avif') {
+    copyFile({ src, dest })
+    // sharp(file.src)
+    //   .resize(384)
+    //   .toFile(file.dest.slice(0, -5) + '_384.avif')
+    sharp(src)
       .resize(768)
-      .toFile(file.dest.slice(0, -5) + '_768.avif')
+      .toFile(dest.slice(0, -5) + '_768.avif', (err, info) => console.log(err ? err : info))
+    // log('green', 'generate file', dest.slice(0, -5) + '_768.avif')
   } else {
-    cpFile(file.src, file.dest)
+    copyFile({ src, dest })
   }
 }
+
+const cleanDirExtra = files =>
+  files.flatMap(file => (file.ext === '.avif' ? [file, { ...file, dest: file.dest.slice(0, -5) + '_768.avif' }] : [file]))
 
 switch (process.argv[2]) {
   case 'watch':

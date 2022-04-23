@@ -33,7 +33,7 @@ export const site: SiteConfig = {
     github: 'kwaa',
     pgp: {
       text: '8964 78D9 78EB 0000',
-      link: '#'
+      link: 'https://kwaa.dev/pgp/0x896478D978EB0000.asc'
     }
   },
   themeColor: '#3D4451'

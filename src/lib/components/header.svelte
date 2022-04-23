@@ -66,7 +66,7 @@
       </div>
       <div class="navbar-end">
         {#if headerConfig.search}
-          <button on:click={() => (search = !search)} tabindex="0" class="btn btn-square btn-ghost">
+          <button name="search" on:click={() => (search = !search)} tabindex="0" class="btn btn-square btn-ghost">
             <IconSearch />
           </button>
         {/if}
