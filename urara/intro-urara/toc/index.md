@@ -110,6 +110,8 @@ toc.reduce(
 为什么有个 if?
 因为我发现退出再点进来会多次生成子标题，关键是我也搞不清楚是什么原因（？？？）就只好加个 if 勉强修掉这个 bug 了。
 
+> 更新：将 children 设为空对象 `parent.children = [...(parent.children ?? []), { ...heading, children: [] }]` 解决了这个 bug。
+
 ## ToC 列表
 
 这个比起上面要简单不少，直接递归。
@@ -142,9 +144,69 @@ count 记录递归次数，大于 1 时给列表加上 padding-left。
 {/if}
 ```
 
-## Collapse
+## 标题高亮
 
-比较复杂，先完善别的。
+new IntersectionObserver，目标是：
+
+- 多标题同框时全部高亮
+- 离开文章区域时全部取消高亮
+- 视口没有标题时高亮最后一个激活的标题
+
+尝试了一下传值控制类名，但没用；所以直接操作 DOM。
+
+articleObserver 检测是否在浏览文章并返回布尔值，headingObserver 检测。
+
+```ts
+import { onMount, onDestroy } from 'svelte'
+import { browser } from '$app/env'
+
+let intersecting: string[] = []
+let intersectingArticle: boolean = true
+let bordered: string[] = []
+
+onMount(() => {
+  if (browser) {
+    if (window.screen.availWidth >= 1280) {
+      const headingsObserver = new IntersectionObserver(
+        headings =>
+          headings.forEach(heading =>
+            heading.isIntersecting
+              ? intersecting.push(heading.target.id)
+              : (intersecting = intersecting.filter(h => h !== heading.target.id))
+          ),
+        { rootMargin: '-64px 0px 0px 0px' }
+      )
+      const articleObserver = new IntersectionObserver(article => (intersectingArticle = article[0].isIntersecting))
+      Array.from(document.querySelectorAll('main h2, main h3, main h4, main h5, main h6')).forEach(element =>
+        headingsObserver.observe(element)
+      )
+      articleObserver.observe(document.getElementsByTagName('main')[0])
+    }
+  }
+})
+
+onDestroy(() => {
+  if (browser) {
+    // @ts-ignore: Cannot find name 'headingsObserver'
+    if (typeof headingsObserver !== 'undefined') headingsObserver.disconnect()
+    // @ts-ignore: Cannot find name 'articleObserver'
+    if (typeof headingsObserver !== 'undefined') articleObserver.disconnect()
+  }
+})
+
+$: if (intersecting.length > 0) bordered = intersecting
+$: if (intersectingArticle === false) bordered = []
+$: if (browser && bordered)
+  toc.forEach(heading => {
+    if (bordered.includes(heading.slug)) {
+      document.getElementById(`toc-link-${heading.slug}`)?.classList.add('!border-accent')
+      document.getElementById(`toc-item-${heading.slug}`)?.classList.add('bordered')
+    } else {
+      document.getElementById(`toc-link-${heading.slug}`)?.classList.remove('!border-accent')
+      document.getElementById(`toc-item-${heading.slug}`)?.classList.remove('bordered')
+    }
+  })
+```
 
 ## Slugger 测试
 
