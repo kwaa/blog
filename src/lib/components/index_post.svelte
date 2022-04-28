@@ -11,7 +11,7 @@
     itemscope
     itemtype="https://schema.org/BlogPosting"
     itemprop="blogPost"
-    class="card image-full before:!bg-transparent bg-base-100 hover:z-30 hover:shadow-lg md:shadow-xl md:hover:shadow-2xl transition-shadow rounded-none md:rounded-box">
+    class="card image-full before:!bg-transparent bg-base-100 hover:z-30 hover:shadow-lg md:shadow-xl md:hover:shadow-2xl transition-shadow duration-500 ease-in-out rounded-none md:rounded-box">
     <Cover figureClass="" imgClass="object-cover object-center h-full w-full" cover={post.cover} {loading} />
     <div class="card-body mt-auto">
       <Status {post} index={true} photo={true} />
@@ -22,9 +22,9 @@
     itemscope
     itemtype="https://schema.org/BlogPosting"
     itemprop="blogPost"
-    class="card bg-base-100 hover:z-30 hover:shadow-lg md:shadow-xl md:hover:shadow-2xl transition-shadow rounded-none md:rounded-box {post.layout ===
+    class="card bg-base-100 hover:z-30 hover:shadow-lg md:shadow-xl md:hover:shadow-2xl transition-shadow duration-500 ease-in-out rounded-none md:rounded-box group {post.layout ===
       'article' && post.cover
-      ? 'image-full group before:!rounded-none'
+      ? 'image-full before:!rounded-none'
       : ''}">
     {#if post.layout === 'article' && post.cover}
       <Cover
@@ -44,7 +44,7 @@
       {#if post.layout === 'article'}
         <h1
           itemprop="name headline"
-          class="card-title text-3xl transition-all ease-in-out underline decoration-4 decoration-transparent hover:decoration-primary">
+          class="card-title text-3xl transition-all ease-in-out underline decoration-4 decoration-transparent group-hover:decoration-primary">
           <a itemprop="url" class="u-url" href={post.path}>{post.title ?? post.path.slice(1)}</a>
         </h1>
         {#if post.descr}
