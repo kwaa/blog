@@ -66,7 +66,7 @@
       </div>
       <div class="navbar-end">
         {#if headerConfig.search}
-          <button name="search" on:click={() => (search = !search)} tabindex="0" class="btn btn-square btn-ghost">
+          <button aria-label="search" on:click={() => (search = !search)} tabindex="0" class="btn btn-square btn-ghost">
             <IconSearch />
           </button>
         {/if}
@@ -76,7 +76,7 @@
           </div>
           <ul
             tabindex="0"
-            class="flex shadow-2xl menu dropdown-content bg-base-100 text-base-content rounded-box w-52 p-2 gap-2"
+            class="flex shadow-2xl menu dropdown-content bg-base-100 text-base-content rounded-box w-52 p-2 gap-2 overflow-y-auto h-[21.5rem]"
             class:hidden={!pin}>
             {#each theme as { name, text }}
               <button

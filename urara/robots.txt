@@ -1,0 +1,5 @@
+User-agent: baiduspider
+Disallow: /
+
+User-agent: *
+Sitemap: https://kwaa.dev/sitemap.xml
