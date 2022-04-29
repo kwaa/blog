@@ -59,9 +59,23 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
             navigateFallback: '/',
             dontCacheBustURLsMatching: /-[a-f0-9]{8}\./,
             globDirectory: './build/',
-            globPatterns: ['robots.txt', '**/*.{js,css,html,ico,png,svg,webmanifest}'],
+            globPatterns: ['**/*.{js,css,html,ico,png,svg,webmanifest}'],
             globIgnores: ['**/sw*', '**/workbox-*'],
             runtimeCaching: [
+              {
+                urlPattern: /(.*?)\.html/,
+                handler: 'NetworkOnly',
+                options: {
+                  cacheName: 'html-cache'
+                }
+              },
+              {
+                urlPattern: /(.*?)\.(js|json)/,
+                handler: 'StaleWhileRevalidate',
+                options: {
+                  cacheName: 'js-cache'
+                }
+              },
               {
                 urlPattern: /(.*?)\.(png|jpe?g|svg|gif|webp|avif)/,
                 handler: 'CacheFirst',
