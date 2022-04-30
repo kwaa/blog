@@ -108,7 +108,7 @@
           <div
             in:fly={{ x: index % 2 ? 100 : -100, duration: 300, delay: 500 }}
             out:fly={{ x: index % 2 ? -100 : 100, duration: 300 }}
-            class="rounded-box transition-all duration-500 ease-in-out hover:z-30 hover:shadow-lg md:shadow-xl md:hover:shadow-2xl md:hover:-translate-y-1">
+            class="rounded-box transition-all duration-500 ease-in-out hover:z-30 hover:shadow-lg md:shadow-xl md:hover:shadow-2xl md:hover:-translate-y-0.5">
             <Post {post} loading={index < 5 ? 'eager' : 'lazy'} />
           </div>
         {/each}
