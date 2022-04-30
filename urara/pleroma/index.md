@@ -197,7 +197,7 @@ cp /opt/pleroma/installation/pleroma.service /etc/systemd/system/pleroma.service
 systemctl enable --now pleroma && sleep 20 && curl http://localhost:4000/api/v1/instance
 ```
 
-### 更新 Soapbox-FE
+### 更新 Soapbox-FE 到 1.3.0
 
 Soapbox-BE 自带的 FE 版本是 1.2.3，而最新版本是 1.3.0。
 这显然不怎么好，所以我提供两条命令搞定这个问题。
@@ -210,6 +210,21 @@ busybox unzip soapbox-fe.zip -o -d /opt/pleroma/instance
 ```
 
 更改将立即生效，不需要重启 Pleroma 服务。
+
+### 更新 Soapbox-FE 到 develop 分支
+
+来自 ☆۰•¤ 黛布拉 Official¤•۰★ [(@debula@debula.ml)](https://debula.ml/@debula) 的灵感，Soapbox-FE develop 分支的变化我认为比 1.2.3 到 1.3.0 还大。
+
+依旧是两条命令搞定，不过最好自行找一下最新版。
+
+步骤：GitLab 存储库切换到 `develop` 分支，点进最新一条带绿勾的 commit（如果有错误或警告就换上一条，直到没有为止），找到详情里的 Pipeline 点进去，下面切换到 Jobs 选项卡、复制里面 Stage 为 `build`，Name 为 `build-production` 一项最右边按钮的链接地址。
+
+```bash
+# 下载到 /tmp
+cd /tmp && curl -L https://gitlab.com/soapbox-pub/soapbox-fe/-/jobs/2386984469/artifacts/download?file_type=archive -o soapbox-fe.zip
+# 解压到 /opt/pleroma/instance
+busybox unzip soapbox-fe.zip -o -d /opt/pleroma/instance
+```
 
 ## 设置反向代理
 
@@ -267,3 +282,12 @@ mv about.example about
 本来还想部署一个 Matrix 服务，但 Dendrite 和 Conduit 都不支持 OpenID Connect，我又不想用 Synapse。
 
 总之这篇文章就到这里了，欢迎 follow 我的新账号 [kwa@kwaa.moe](https://kwaa.moe/@kwa)！
+
+TODO：这次的部署只能说是照着官方教程加了点东西，但我还想更进一步。
+
+所以以下内容之后将有可能随机更新：
+
+- Dockerize Pleroma
+  - /opt/pleroma 里就有一个 Dockerfile，不过这次没用上。
+- MinIO 分布式对象存储
+  - 便于管理且能整合多台 VPS 的硬盘

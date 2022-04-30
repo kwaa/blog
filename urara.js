@@ -97,23 +97,76 @@ const copyFile = ({ src, stat = 'copy', dest = path.join(check(path.parse(src).e
     .then(log('green', `${stat} file`, dest))
     .catch(error)
 
-const removeDir = ({ src, dest = [path.join('src/routes', src.slice(6)), path.join('static', src.slice(6))] } = {}) =>
-  dest.forEach(path =>
-    fs
-      .readdir(path)
-      .then(files => {
-        if (!files.length || files.length < 1) {
-          fs.rm(path, { recursive: true }).then(log('yellow', 'remove dir', path)).catch(error)
-        } else {
-          log('cyan', 'ignore non-empty dir', dest)
-          files.forEach(file => console.log(file))
-        }
-      })
-      .catch(error)
+const removeDir = async ({ src, dest = [path.join('src/routes', src.slice(6)), path.join('static', src.slice(6))] } = {}) =>
+  // {
+  //   for await (const files of dest.map(async path => await fs.readdir(path))) {
+  //     if (!files.length || files.length < 1) {
+  //       fs.rm(path, { recursive: true }).then(log('yellow', 'remove dir', path)).catch(error)
+  //     } else {
+  //       log('cyan', 'ignore non-empty dir', dest)
+  //       files.forEach(file => console.log(file))
+  //     }
+  //   }
+  // }
+  await Promise.all(
+    dest.map(
+      async path =>
+        await fs
+          .readdir(path)
+          .then(files => {
+            if (!files.length || files.length < 1) {
+              fs.rm(path, { recursive: true }).then(log('yellow', 'remove dir', path)).catch(error)
+            } else {
+              log('cyan', 'ignore non-empty dir', dest)
+              files.forEach(file => console.log(file))
+            }
+          })
+          .catch(error)
+    )
   )
 
-const removeFile = ({ src, dest = path.join(check(path.parse(src).ext.slice(1)), src.slice(6)) } = {}) =>
-  fs.rm(dest).then(log('yellow', 'remove file', dest)).catch(error)
+// for await (const files of dest.map(async path => fs.readdir(path))) {
+//   if (!files.length || files.length < 1) {
+//     fs.rm(path, { recursive: true }).then(log('yellow', 'remove dir', path)).catch(error)
+//   } else {
+//     log('cyan', 'ignore non-empty dir', dest)
+//     files.forEach(file => console.log(file))
+//   }
+// }
+
+//  {
+//   for (const path of dest) {
+//     await fs
+//       .readdir(path)
+//       .then(files => {
+//         if (!files.length || files.length < 1) {
+//           fs.rm(path, { recursive: true }).then(log('yellow', 'remove dir', path)).catch(error)
+//         } else {
+//           log('cyan', 'ignore non-empty dir', dest)
+//           files.forEach(file => console.log(file))
+//         }
+//       })
+//       .catch(error)
+//   }
+// }
+// dest.forEach(path =>
+//   fs
+//     .readdir(path)
+//     .then(files => {
+//       if (!files.length || files.length < 1) {
+//         fs.rm(path, { recursive: true }).then(log('yellow', 'remove dir', path)).catch(error)
+//       } else {
+//         log('cyan', 'ignore non-empty dir', dest)
+//         files.forEach(file => console.log(file))
+//       }
+//     })
+//     .catch(error)
+// )
+
+const removeFile = async ({ src, dest = path.join(check(path.parse(src).ext.slice(1)), src.slice(6)) } = {}) => {
+  await fs.rm(dest).then(log('yellow', 'remove file', dest)).catch(error)
+  await removeDir({ dest: [path.parse(dest).dir] })
+}
 
 const makeDir = ({ src, dest = [path.join('src/routes', src.slice(6)), path.join('static', src.slice(6))] } = {}) =>
   dest.forEach(path => fs.mkdir(path).then(log('green', 'make dir', path)).catch(error))
@@ -159,8 +212,11 @@ const copyDir = async files =>
 
 const cleanDir = files =>
   files
-    .sort((a, b) => b.depth - a.depth || b.type.localeCompare(a.type))
-    .forEach(file => (file.type === 'dir' ? console.log(file.dest) : removeFile({ dest: file.dest })))
+    .sort((a, b) => b.type.localeCompare(a.type) || b.depth - a.depth)
+    .forEach(async file =>
+      file.type === 'dir' ? await removeDir({ dest: [file.dest] }) : await removeFile({ dest: file.dest })
+    )
+// .forEach(file => (file.type === 'dir' ? console.log(file.dest) : removeFile({ dest: file.dest })))
 // console.log(files.sort((a, b) => b.type.localeCompare(a.type) || b.depth - a.depth))
 
 const handleFile = async ({ src, dest, ext }) => {

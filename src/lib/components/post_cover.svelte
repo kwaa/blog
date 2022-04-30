@@ -4,6 +4,7 @@
   export let figureClass: string
   export let imgClass: string
   export let loading: 'eager' | 'lazy' = 'lazy'
+  export let decoding: 'async' | 'sync' | 'auto' = 'async'
   // let className = undefined
   // export { className as class }
   let src: string, alt: string
@@ -11,5 +12,5 @@
 </script>
 
 <figure class={figureClass}>
-  <Picture class="u-photo {imgClass}" {src} {alt} {loading} decoding="auto" />
+  <Picture class="u-photo {imgClass}" {src} {alt} {loading} {decoding} />
 </figure>

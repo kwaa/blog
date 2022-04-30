@@ -4,6 +4,7 @@
   import Cover from '$lib/components/post_cover.svelte'
   export let post: Urara.Post
   export let loading: 'eager' | 'lazy' = 'lazy'
+  export let decoding: 'async' | 'sync' | 'auto' = 'async'
 </script>
 
 {#if post.layout === 'photo'}
@@ -11,8 +12,8 @@
     itemscope
     itemtype="https://schema.org/BlogPosting"
     itemprop="blogPost"
-    class="card image-full before:!bg-transparent bg-base-100 hover:z-30 rounded-none md:rounded-box">
-    <Cover figureClass="" imgClass="object-cover object-center h-full w-full" cover={post.cover} {loading} />
+    class="card image-full before:!bg-transparent bg-base-100 rounded-none md:rounded-box">
+    <Cover figureClass="" imgClass="object-cover object-center h-full w-full" cover={post.cover} {loading} {decoding} />
     <div class="card-body mt-auto">
       <Status {post} index={true} photo={true} />
     </div>
@@ -22,7 +23,7 @@
     itemscope
     itemtype="https://schema.org/BlogPosting"
     itemprop="blogPost"
-    class="card bg-base-100 hover:z-30 rounded-none md:rounded-box group {post.layout === 'article' && post.cover
+    class="card bg-base-100  rounded-none md:rounded-box group {post.layout === 'article' && post.cover
       ? 'image-full before:!rounded-none'
       : ''}">
     {#if post.layout === 'article' && post.cover}
@@ -30,7 +31,8 @@
         figureClass="!block"
         imgClass="object-center h-full w-full absolute group-hover:scale-110 transition-transform duration-500 ease-in-out"
         cover={post.cover}
-        {loading} />
+        {loading}
+        {decoding} />
     {/if}
     <div
       class="card-body {post.layout === 'article' && post.cover
