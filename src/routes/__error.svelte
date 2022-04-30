@@ -9,16 +9,16 @@
 </script>
 
 <script lang="ts">
-  import Head from '$lib/components/head.svelte'
-  import Footer from '$lib/components/footer.svelte'
-  import IconHome from '~icons/heroicons-outline/home'
+  // import Head from '$lib/components/head.svelte'
+  // import Footer from '$lib/components/footer.svelte'
+  // import IconHome from '~icons/heroicons-outline/home'
   export let status: string
   export let message: string
   export let pathname: string
   console.error(status, pathname, message)
 </script>
 
-<Head page={{ title: status ?? '404', path: pathname ?? '/404' }} />
+<!-- <Head page={{ title: status ?? '404', path: pathname ?? '/404' }} />
 
 <div class="flex flex-col flex-nowrap justify-center xl:flex-row xl:flex-wrap">
   <div class="flex-none w-full max-w-screen-md mx-auto xl:mx-0">
@@ -41,4 +41,6 @@
     </article>
     <Footer sticky={true} class="flex-1 md:flex-initial" />
   </div>
-</div>
+</div> -->
+
+<p>ERROR!!! {status ?? 'status'} {pathname ?? 'pathname'} {message ?? 'message'}</p>
