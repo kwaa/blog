@@ -1,4 +1,4 @@
-<script lang="ts" context="module">
+<!-- <script lang="ts" context="module">
   export const load = ({ url, error, status }) => ({
     props: {
       status,
@@ -16,7 +16,7 @@
   export let message: string
   export let pathname: string
   console.error(status, pathname, message)
-</script>
+</script> -->
 
 <!-- <Head page={{ title: status ?? '404', path: pathname ?? '/404' }} />
 
@@ -43,4 +43,4 @@
   </div>
 </div> -->
 
-<p>ERROR!!! {status ?? 'status'} {pathname ?? 'pathname'} {message ?? 'message'}</p>
+<p>ERROR!!!</p>
