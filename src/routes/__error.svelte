@@ -1,24 +1,18 @@
-<!-- <script lang="ts" context="module">
-  export const load = ({ url, error, status }) => ({
-    props: {
-      status,
-      message: error.message,
-      pathname: url.pathname
-    }
-  })
+<script lang="ts" context="module">
+  export const load = ({ url: { pathname }, error: { message }, status }) => ({ props: { status, message, pathname } })
 </script>
 
 <script lang="ts">
-  // import Head from '$lib/components/head.svelte'
-  // import Footer from '$lib/components/footer.svelte'
-  // import IconHome from '~icons/heroicons-outline/home'
+  import Head from '$lib/components/head.svelte'
+  import Footer from '$lib/components/footer.svelte'
+  import IconHome from '~icons/heroicons-outline/home'
   export let status: string
   export let message: string
   export let pathname: string
   console.error(status, pathname, message)
-</script> -->
+</script>
 
-<!-- <Head page={{ title: status ?? '404', path: pathname ?? '/404' }} />
+<Head page={{ title: status ?? '404', path: pathname ?? '/404' }} />
 
 <div class="flex flex-col flex-nowrap justify-center xl:flex-row xl:flex-wrap">
   <div class="flex-none w-full max-w-screen-md mx-auto xl:mx-0">
@@ -41,6 +35,4 @@
     </article>
     <Footer sticky={true} class="flex-1 md:flex-initial" />
   </div>
-</div> -->
-
-<p>ERROR!!!</p>
+</div>
