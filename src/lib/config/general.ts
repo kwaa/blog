@@ -3,11 +3,11 @@ import type { ThemeConfig, HeadConfig, HeaderConfig, FooterConfig, DateConfig, F
 export const theme: ThemeConfig = [
   {
     name: 'light',
-    text: '🌕 Light'
+    text: '🌕 Shiro'
   },
   {
     name: 'dark',
-    text: '🌑 Dark'
+    text: '🌑 Kuro'
   },
   {
     name: 'cupcake',
