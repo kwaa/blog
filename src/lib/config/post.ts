@@ -15,10 +15,11 @@ export const post: PostConfig = {
       commentParade: true
     },
     giscus: {
-      src: 'https://giscus.kwaa.dev/client.js',
+      // src: 'https://giscus.kwaa.dev/client.js',
       repo: 'kwaa/comments',
       lang: 'zh-CN',
-      theme: 'urara'
+      // theme: 'urara'
+      theme: 'preferred_color_scheme'
     },
     disqus: {
       shortname: 'kwaa'
