@@ -1,7 +1,7 @@
 ---
 title: '静电之梦 - Nectar Hive'
-date: 2022-02-12
-cover: /nectar-hive/hive.avif
+created: 2022-02-12
+photo: /nectar-hive/hive.avif
 ---
 
 > 世界是静电的。

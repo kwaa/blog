@@ -8,7 +8,7 @@ tags:
   - 初音ミク
   - MIKULAND
   - VirtualCast
-cover: /mikuland-2021summer/warerawahare.avif
+photo: /mikuland-2021summer/warerawahare.avif
 ---
 
 前天 Miku 官号投了一首 [満開ダイビング](https://youtu.be/t9eRhC-GAWs)，让我知道了有 [MIKU LAND](https://mikuland.com/) 这么个玩意。~~别问为什么 [Happy Coaster](https://youtu.be/KG-Q2v2kdsw) 那会不知道，问就是只顾着听歌了没注意~~

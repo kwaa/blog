@@ -114,22 +114,22 @@ TODO...
     {
       "source": "/.well-known/host-meta",
       "destination": "https://fed.brid.gy/.well-known/host-meta",
-      "permanent": true
+      "statusCode": 302
     },
     {
       "source": "/.well-known/host-meta.xrd",
       "destination": "https://fed.brid.gy/.well-known/host-meta.xrd",
-      "permanent": true
+      "statusCode": 302
     },
     {
       "source": "/.well-known/host-meta.jrd",
       "destination": "https://fed.brid.gy/.well-known/host-meta.jrd",
-      "permanent": true
+      "statusCode": 302
     },
     {
       "source": "/.well-known/webfinger",
       "destination": "https://fed.brid.gy/.well-known/webfinger",
-      "permanent": true
+      "statusCode": 302
     }
   ]
 }
@@ -152,19 +152,26 @@ pnpm build && curl -s https://pubsubhubbub.appspot.com/ -d 'hub.mode=publish&hub
 每篇帖子都需要向 Bridgy Fed 发送一个 Webmention。
 
 ```html
-<a class="hidden" href="https://fed.brid.gy/" />
+<a class="hidden" href="https://fed.brid.gy/">Bridgy Fed</a>
 ```
 
 末尾带斜杠！末尾带斜杠！末尾带斜杠！重要的事情说三遍！
 
-不过... 不知道为什么测试没有效果。[这里是日志](https://fed.brid.gy/log?key=https%3A%2F%2Fkwaa.dev%2Findieweb+https%3A%2F%2Fme.kwaa.moe%2Fobjects%2Fd659b5c8-9c08-4bc7-be09-310d8da5d303&start_time=1647685451)
-
-Webmention 和 Bridgy Fed 日志状态都是 Complete 来着，奇了怪了。
+不过... 不知道为什么测试没有效果。我开了个 [issue](https://github.com/snarfed/bridgy-fed/issues/122) 询问这一问题，最后得出是 Pleroma 目前不兼容。
 
 ### Bridgy
 
 Bridgy 可以将个人网站连接到常见的社交媒体。
-我目前没有这个需求（毕竟不是英文文章），跳过。
+
+既然 Bridgy Fed 行不通，那这就是一个合理的替代方案。
+
+转到 [brid.gy](https://brid.gy/) 主页，点击 Mastodon 图标并用准备好的账号登录。
+
+然后？然后在需要发布的文章里像 Bridgy Fed 那样添加一个链接，但目标不同：
+
+```html
+<a class="hidden" href="https://brid.gy/publish/mastodon">Bridgy</a>
+```
 
 ### Indiekit
 
@@ -172,8 +179,8 @@ Bridgy 可以将个人网站连接到常见的社交媒体。
 
 等 Bridgy Fed 和 PostTypes 完成了我会专门写个 preset-urara 试一下。
 
-<!-- ## IndieMark - 分数
+## IndieMark - 分数
 
 > 使用 [Indiemark Score calculator](https://aaronjorbin.github.io/indiemark-score/) 计算
 
-截至最后一次更新，本博客的 IndieMark 分数为：**待更新** -->
+截至最后一次更新（2022-04-25），本博客的 IndieMark 分数约为：**3.0**

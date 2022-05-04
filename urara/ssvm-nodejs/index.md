@@ -9,7 +9,7 @@ tags:
   - WebAssembly
   - WASM
   - Node.js
-descr: 偶然看到写 "Rust 代码，领树莓派" ——这种好事怎么能错过？虽然只能领到 Zero W；我本来就对 Rust 比较感兴趣，这次正好尝试一下。
+summary: 偶然看到写 "Rust 代码，领树莓派" ——这种好事怎么能错过？虽然只能领到 Zero W；我本来就对 Rust 比较感兴趣，这次正好尝试一下。
 ---
 
 偶然看到[写 Rust 代码，领树莓派](https://www.v2ex.com/t/693807)

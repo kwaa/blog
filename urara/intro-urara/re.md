@@ -6,8 +6,8 @@ tags:
   - SvelteKit
   - MDsveX
   - TailwindCSS
-cover: /intro-urara/re.avif
-descr: 去年的 Introducting Urara 感觉没写好，索性就重新介绍一下吧。
+photo: /intro-urara/re.avif
+summary: 去年的 Introducting Urara 感觉没写好，索性就重新介绍一下吧。
 ---
 
 去年的 [Introducting Urara](https://kwaa.dev/intro-urara) 感觉没写好，索性就重新介绍一下吧。
@@ -129,7 +129,7 @@ export type SiteConfig = {
   subtitle?: string
   /** site lang. `<html lang={site.lang}>` */
   lang?: string
-  /** site description. `<meta name="description" content={site.descr}>` */
+  /** site description. `<meta name="description" content={site.description}>` */
   descr?: string
 }
 

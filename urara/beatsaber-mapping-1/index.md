@@ -8,8 +8,8 @@ tags:
   - Beat Saber
   - ChroMapper
   - Unity
-cover: /beatsaber-mapping-1/beatsaber.avif
-descr: 最近一直没什么可以拿来写博客的东西，直到我开始想自制 Beat Saber 谱面；这是本站第一个连载文章。
+photo: /beatsaber-mapping-1/beatsaber.avif
+summary: 最近一直没什么可以拿来写博客的东西，直到我开始想自制 Beat Saber 谱面；这是本站第一个连载文章。
 ---
 
 最近一直没什么可以拿来写博客的东西，直到我开始想自制 Beat Saber 谱面；这是本站第一个连载文章。
@@ -26,7 +26,7 @@ descr: 最近一直没什么可以拿来写博客的东西，直到我开始想�
 
 > 很多时间都浪费在安装这该死的软件上。
 
-我参考了 Repo 的 [BUILD.md](https://github.com/Caeden117/ChroMapper/blob/dev/BUILD.md)。~~那么首先我需要安装 [Unity Hub](https://unity3d.com/get-unity/download)~~ 装你妈呢，登录需要绑手机号就因为我是芝麻仁？就因为我是芝麻仁？就因为我是芝麻仁？就因为我是芝麻仁？就因为我是芝麻仁？就因为我是芝麻仁？就因为我是芝麻仁？就因为我是芝麻仁？就因为我是芝麻仁？就因为我是芝麻仁？
+我参考了 Repo 的 [BUILD.md](https://github.com/Caeden117/ChroMapper/blob/dev/BUILD.md)。~~那么首先我需要安装 [Unity Hub](https://unity3d.com/get-unity/download)~~ 装 nm 呢，登录需要绑手机号就因为我是芝麻仁？就因为我是芝麻仁？就因为我是芝麻仁？就因为我是芝麻仁？就因为我是芝麻仁？就因为我是芝麻仁？就因为我是芝麻仁？就因为我是芝麻仁？就因为我是芝麻仁？就因为我是芝麻仁？
 
 经过测试，只要一直开着 Netch 就不会被芝麻特供版恶心到。还好甲骨文 CN2GIA 足够快——于是我顺利通过 **_Google_** 登录了账号，并顺便白嫖了一年 Student Plan。
 
@@ -56,6 +56,6 @@ descr: 最近一直没什么可以拿来写博客的东西，直到我开始想�
 
 ## One More Thing
 
-如果你找到这篇文章是想获取 ChroMapper，又不想遭芝麻版 Unity 的罪；那么我准备了一份不错的礼物。
+如果你找到这篇文章是想获取 ChroMapper，又不想遭特供版 Unity 的罪；那么我准备了一份不错的礼物。
 
 [ipfs://](ipfs://QmZy86M8fB9izJPASdGdTeQdroeGwrjkaguQRkHUTg5VKF?filename=ChroMapper.7z) | [ipfs.io](https://ipfs.io/ipfs/QmZy86M8fB9izJPASdGdTeQdroeGwrjkaguQRkHUTg5VKF?filename=ChroMapper.7z) | [cloudflare-ipfs.com](https://cloudflare-ipfs.com/ipfs/QmZy86M8fB9izJPASdGdTeQdroeGwrjkaguQRkHUTg5VKF?filename=ChroMapper.7z)

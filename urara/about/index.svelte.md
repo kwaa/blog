@@ -3,7 +3,7 @@ title: 关于
 created: 2021-10-05
 updated: 2022-04-15
 flags:
-  - hidden
+  - unlisted
 ---
 
 <script lang="ts">

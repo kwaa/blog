@@ -1,15 +1,12 @@
 ---
 title: '一年后的成果：STREIN IEM-AXE_P8'
-date: 2020-09-03 23:54:00
-cover: /project-axe-p8/p8.avif
-comment: true
-categories:
-  - 音频
+created: 2020-09-03 23:54:00
+photo: /project-axe-p8/p8.avif
 tags:
   - DIY
   - IEM
   - 入耳式耳机
-descr: 经过十五天，IEM-AXE 吃灰了一年的十六个单元做成耳机回到了我手上。
+summary: 经过十五天，IEM-AXE 吃灰了一年的十六个单元做成耳机回到了我手上。
 ---
 
 经过十五天，IEM-AXE 吃灰了一年的十六个单元做成耳机回到了我手上。

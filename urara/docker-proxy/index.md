@@ -6,7 +6,7 @@ tags:
   - NaiveProxy
   - Hysteria
   - Docker
-descr: 去年年底买的 Virmach 水牛城 VPS，最近我终于想起来还有这么个东西闲置着；于是就有了这篇文章。
+summary: 去年年底买的 Virmach 水牛城 VPS，最近我终于想起来还有这么个东西闲置着；于是就有了这篇文章。
 ---
 
 去年年底买的 Virmach 水牛城 VPS，最近我终于想起来还有这么个东西闲置着；于是就有了这篇文章。

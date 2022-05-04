@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Cover from '$lib/components/post_cover.svelte'
+  import Image from '$lib/components/prose/img.svelte'
   import IconChevronLeft from '~icons/heroicons-outline/chevron-left'
   import IconChevronRight from '~icons/heroicons-outline/chevron-right'
   export let prev: Urara.Post = undefined
@@ -10,14 +10,15 @@
   {#if prev}
     <div
       href={prev.path}
-      class:image-full={prev['cover']}
-      class:md:rounded-r-box={next && !next['cover']}
+      class:image-full={prev['photo']}
+      class:md:rounded-r-box={next && !next['photo']}
       class="flex-1 card group rounded-none before:!rounded-none">
-      {#if prev['cover']}
-        <Cover
-          figureClass="!block"
-          imgClass="object-center h-full w-full absolute group-hover:scale-110 transition-transform duration-500 ease-in-out"
-          cover={prev['cover']} />
+      {#if prev['photo']}
+        <figure class="!block">
+          <Image
+            class="object-center h-full w-full absolute group-hover:scale-110 transition-transform duration-500 ease-in-out"
+            src={prev['photo']} />
+        </figure>
       {/if}
       <div class="card-body">
         <IconChevronLeft class="h-6 w-6 opacity-50 group-hover:opacity-100 mr-auto" />
@@ -29,21 +30,22 @@
         </a>
       </div>
     </div>
-    {#if next && !next['cover'] && !prev['cover']}
+    {#if next && !next['photo'] && !prev['photo']}
       <div class="flex-0 divider mx-4 md:divider-horizontal md:mx-0 md:my-4" />
     {/if}
   {/if}
   {#if next}
     <div
       href={next.path}
-      class:image-full={next['cover']}
-      class:md:rounded-l-box={prev && !prev['cover']}
+      class:image-full={next['photo']}
+      class:md:rounded-l-box={prev && !prev['photo']}
       class="flex-1 card group rounded-none before:!rounded-none">
-      {#if next['cover']}
-        <Cover
-          figureClass="!block"
-          imgClass="object-center h-full w-full absolute group-hover:scale-110 transition-transform duration-500 ease-in-out"
-          cover={next['cover']} />
+      {#if next['photo']}
+        <figure class="!block">
+          <Image
+            class="object-center h-full w-full absolute group-hover:scale-110 transition-transform duration-500 ease-in-out"
+            src={next['photo']} />
+        </figure>
       {/if}
       <div class="card-body">
         <a

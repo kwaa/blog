@@ -5,8 +5,8 @@ tags:
   - Pleroma
   - Soapbox
   - Fediverse
-descr: 2022 更新！我决定装一个新的 Pleroma。
-cover: /pleroma/pleroma_tan_cofe.avif
+summary: 2022 更新！我决定装一个新的 Pleroma。
+photo: /pleroma/pleroma_tan_cofe.avif
 ---
 
 > 图片来源 / Image Source: [Releasing Pleroma 2.1.0](https://pleroma.social/blog/2020/08/28/releasing-pleroma-2-1-0/)

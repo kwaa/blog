@@ -3,13 +3,13 @@ title: 'Introducting Theme-M'
 date: 2020-07-26 15:00:00
 updated: 2020-08-14 05:42:00
 comment: true
-cover: /theme-m/cover.avif
+photo: /theme-m/cover.avif
 categories:
   - 折腾
 tags:
   - Theme-M
   - Hexo
-descr: Illustration by LSD, pixiv artwork id 81079118
+summary: Illustration by LSD, pixiv artwork id 81079118
 ---
 
 <script>

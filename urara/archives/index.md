@@ -1,7 +1,7 @@
 ---
 title: DATA EXPUNGED
 flags:
-  - hidden
+  - unlisted
 ---
 
 恭喜你发现隐藏页面！

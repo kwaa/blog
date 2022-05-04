@@ -9,8 +9,8 @@ tags:
   - GitHub Desktop
   - Git
   - GPG
-descr: 为了好看，我为 Urara 的所有 commit 设置了 GPG 签名。
-cover: /git-commit-gpgsign/cover.avif
+summary: 为了好看，我为 Urara 的所有 commit 设置了 GPG 签名。
+photo: /git-commit-gpgsign/cover.avif
 ---
 
 为了好看，我为 [Urara](https://github.com/importantimport/urara) 的所有 commit 设置了 GPG 签名。
