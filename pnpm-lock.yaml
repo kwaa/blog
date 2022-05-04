@@ -31,7 +31,6 @@ specifiers:
   rehype-slug: ^5.0.1
   remark: ^14.0.2
   sharp: ^0.30.4
-  shiki: ^0.9.15
   shiki-twoslash: ^3.0.2
   svelte: ^3.47.0
   svelte-bricks: ^0.1.6
@@ -85,7 +84,6 @@ devDependencies:
   rehype-external-links: 1.0.1
   rehype-slug: 5.0.1
   remark: 14.0.2
-  shiki: 0.9.15
   shiki-twoslash: 3.0.2
   svelte: 3.48.0
   svelte-bricks: 0.1.6
@@ -5431,14 +5429,6 @@ packages:
       vscode-textmate: 5.2.0
     dev: true
 
-  /shiki/0.9.15:
-    resolution: {integrity: sha512-/Y0z9IzhJ8nD9nbceORCqu6NgT9X6I8Fk8c3SICHI5NbZRLdZYFaB233gwct9sU0vvSypyaL/qaKvzyQGJBZSw==}
-    dependencies:
-      jsonc-parser: 3.0.0
-      vscode-oniguruma: 1.6.2
-      vscode-textmate: 5.2.0
-    dev: true
-
   /side-channel/1.0.4:
     resolution: {integrity: sha512-q5XPytqFEIKHkGdiMIrY10mvLRvnQh42/+GoBlFW3b2LXLE2xxJpZFdm94we0BaoV3RwJyGqg5wS7epxTv0Zvw==}
     dependencies:
@@ -6228,10 +6218,6 @@ packages:
       rollup: 2.71.1
     optionalDependencies:
       fsevents: 2.3.2
-    dev: true
-
-  /vscode-oniguruma/1.6.2:
-    resolution: {integrity: sha512-KH8+KKov5eS/9WhofZR8M8dMHWN2gTxjMsG4jd04YhpbPR91fUj7rYQ2/XjeHCJWbg7X++ApRIU9NUwM2vTvLA==}
     dev: true
 
   /vscode-textmate/5.2.0:
