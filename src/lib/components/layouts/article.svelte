@@ -21,22 +21,6 @@
   export let summary = undefined
   export let photo = undefined
   export let toc = undefined
-
-  //     /** post title */
-  //     title?: string
-  //     /** post summary */
-  //     summary?: string
-  //     /** post tags */
-  //     tags?: string[]
-  //     /** enable some advanced features.
-  //      * @property hidden - deprecated, hide this post from the homepage and Atom feed.
-  //      * @property unlisted - hide this post from the homepage and feed.
-  //      * @property draft - mark as draft
-  //      * @property private - equivalent to draft
-  //      * @property bridgy-fed - add a link to Bridgy Fed in the post. https://fed.brid.gy/
-  //      * @property bridgy-{target} - add a link to Bridgy in the post. https://brid.gy/publish/{target}
-  //      */
-  //     flags?: string[]
 </script>
 
 <Head post={{ layout: 'article', created, updated, published, title, tags, summary, photo, path }} />
@@ -55,8 +39,10 @@
     {/if}
   </div>
   <div slot="middle-bottom">
-    <h1 itemprop="name headline" class="card-title text-3xl p-name">{title ?? path.slice(1)}</h1>
-    <div class="divider my-4" />
+    <h1 itemprop="name headline" class="card-title text-3xl mb-8 p-name">{title ?? path.slice(1)}</h1>
+    {#if summary}
+      <p class="hidden p-summary">{summary}</p>
+    {/if}
   </div>
   <main slot="content" itemprop="articleBody" class="urara-prose prose e-content">
     <slot />

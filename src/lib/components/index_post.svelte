@@ -44,7 +44,7 @@
       {#if post.layout === 'reply'}
         <Reply inReplyTo={post.inReplyTo} class="-mt-4 -mx-4 mb-4" />
       {/if}
-      <Status {post} index={true} cover={post.layout === 'article' && post.photo ? true : false} />
+      <Status {post} index={true} featured={post.layout === 'article' && post.photo ? true : false} />
       {#if post.layout === 'article'}
         <h1
           itemprop="name headline"

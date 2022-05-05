@@ -16,7 +16,7 @@
       {#if prev['photo']}
         <figure class="!block">
           <Image
-            class="object-center h-full w-full absolute group-hover:scale-110 transition-transform duration-500 ease-in-out"
+            class="object-center h-full w-full absolute group-hover:scale-105 transition-transform duration-500 ease-in-out"
             src={prev['photo']} />
         </figure>
       {/if}
@@ -25,7 +25,7 @@
         <a
           rel="prev"
           href={prev.path}
-          class="card-title block text-left mb-0 transition-all ease-in-out underline decoration-3 decoration-transparent group-hover:decoration-primary">
+          class="card-title block text-left mb-0 mr-auto bg-[length:100%_0%] bg-[position:0_88%] underline decoration-3 decoration-transparent group-hover:decoration-primary hover:bg-[length:100%_100%] hover:text-primary-content bg-gradient-to-t from-primary to-primary bg-no-repeat transition-all ease-in-out duration-300">
           {prev['title'] ?? prev.path.slice(1)}
         </a>
       </div>
@@ -43,7 +43,7 @@
       {#if next['photo']}
         <figure class="!block">
           <Image
-            class="object-center h-full w-full absolute group-hover:scale-110 transition-transform duration-500 ease-in-out"
+            class="object-center h-full w-full absolute group-hover:scale-105 transition-transform duration-500 ease-in-out"
             src={next['photo']} />
         </figure>
       {/if}
@@ -51,7 +51,7 @@
         <a
           rel="next"
           href={next.path}
-          class="card-title block text-right mb-0 transition-all ease-in-out underline decoration-3 decoration-transparent group-hover:decoration-primary">
+          class="card-title block text-right mb-0 ml-auto bg-[length:100%_0%] bg-[position:0_88%] underline decoration-3 decoration-transparent group-hover:decoration-primary hover:bg-[length:100%_100%] hover:text-primary-content bg-gradient-to-t from-primary to-primary bg-no-repeat transition-all ease-in-out duration-300">
           {next['title'] ?? next.path.slice(1)}
         </a>
         <IconChevronRight class="w-6 h-6 opacity-50 group-hover:opacity-100 ml-auto" />
