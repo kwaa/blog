@@ -21,7 +21,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.kwaa.dev https://*.giscus.app"
+          "value": "style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.kwaa.dev https://giscus.app"
         },
         {
           "key": "Referrer-Policy",
