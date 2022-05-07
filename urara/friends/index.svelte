@@ -1,4 +1,5 @@
 <script lang="ts">
+  // @ts-nocheck
   import Masonry from 'svelte-bricks'
   import { Friend, friends as allFriends } from '$lib/config/friends'
   import Head from '$lib/components/head.svelte'
@@ -10,19 +11,19 @@
     return a
   }
   let items: { id: string }[] = [...fy(allFriends as { id: string }[]), { id: 'footer' }]
-  // let width: number, height: number
+  let width: number, height: number
 </script>
 
 <Head />
 
 <Masonry
   {items}
-  minColWidth={280}
+  minColWidth={384}
   maxColWidth={384}
   gap={32}
   let:item
-  class="mx-4 sm:mx-8 md:my-4 lg:mx-16 lg:my-8 xl:mx-32 xl:my-16">
-  <!-- bind:width -->
-  <!-- bind:height -->
+  class="mx-4 sm:mx-8 md:my-4 lg:mx-16 lg:my-8 xl:mx-32 xl:my-16"
+  bind:width
+  bind:height>
   <FriendComponent {item} />
 </Masonry>

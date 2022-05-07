@@ -17,6 +17,10 @@ export const post: PostConfig = {
     giscus: {
       // src: 'https://giscus.kwaa.dev/client.js',
       repo: 'kwaa/comments',
+      repoID: 'MDEwOlJlcG9zaXRvcnkyODI2MDcyMDI=',
+      category: 'General',
+      categoryID: 'DIC_kwDOENg-Ys4CAvDm',
+      reactionsEnabled: true,
       lang: 'zh-CN',
       // theme: 'urara'
       theme: 'preferred_color_scheme'
