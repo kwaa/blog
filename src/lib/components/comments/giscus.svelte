@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
   import { onMount, onDestroy } from 'svelte'
   import { site } from '$lib/config/site'
   import type { GiscusConfig } from '$lib/types/post'
@@ -38,9 +38,10 @@
   onMount(() => {
     const s = document.createElement('script')
     s.setAttribute('data-repo', config.repo)
-    s.setAttribute('data-mapping', config.mapping ?? 'pathname')
+    s.setAttribute('data-mapping', 'pathname')
     s.setAttribute('data-reactions-enabled', config.reactionsEnabled !== false ? '1' : '0')
     s.setAttribute('data-emit-metadata', config.emitMetadata === true ? '1' : '0')
+    s.setAttribute('data-input-position', config.inputPosition ?? 'bottom')
     s.setAttribute('data-lang', config.lang ?? site.lang)
     s.setAttribute('crossorigin', 'anonymous')
     s.setAttribute('async', '')
@@ -75,9 +76,44 @@
   })
 
   onDestroy(() => observer.disconnect())
+</script> -->
+<script lang="ts">
+  import { onMount } from 'svelte'
+  import { site } from '$lib/config/site'
+  import type { GiscusConfig } from '$lib/types/post'
+  export let config: GiscusConfig
+
+  onMount(() => {
+    const giscus = document.createElement('script')
+    const observer = new MutationObserver(() => {
+      document.getElementById('giscus-loading').remove()
+      observer.disconnect()
+    })
+
+    Object.entries({
+      src: config.src ?? 'https://giscus.app/client.js',
+      'data-repo': config.repo,
+      'data-repo-id': config.repoID,
+      'data-category': config.category ?? '',
+      'data-category-id': config.categoryID,
+      'data-mapping': 'pathname',
+      'data-reactions-enabled': config.reactionsEnabled === false ? '0' : '1',
+      'data-input-position': config.inputPosition ?? 'bottom',
+      'data-theme': config.theme ?? 'preferred_color_scheme',
+      'data-lang': config.lang ?? site.lang ?? 'en',
+      'data-loading': config.loading ?? '',
+      crossorigin: 'anonymous',
+      async: ''
+    }).forEach(([key, value]) => giscus.setAttribute(key, value))
+
+    document.getElementById('giscus-container').appendChild(giscus)
+    observer.observe(document.getElementById('giscus'), {
+      childList: true
+    })
+  })
 </script>
 
 <div id="giscus-container">
   <button id="giscus-loading" class="btn btn-lg flex mx-auto my-4 btn-ghost btn-circle loading" />
-  <div id="giscus" class="giscus -mb-4" />
+  <div id="giscus" class="giscus" />
 </div>
