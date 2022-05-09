@@ -44,24 +44,22 @@ export const theme: ThemeConfig = [
 ]
 
 export const head: HeadConfig = {
-  custom: {
-    prod: [
-      // Webmention.io
-      // '<link rel="webmention" href="https://webmention.io/kwaa.dev/webmention" />',
-      // '<link rel="pingback" href="https://webmention.io/kwaa.dev/xmlrpc" />',
-      // Preconnect
-      '<link href="https://umami.kwaa.dev" rel="preconnect" crossorigin>',
-      // IndieAuth
-      '<link rel="authorization_endpoint" href="https://indieauth.com/auth">',
-      '<link rel="token_endpoint" href="https://tokens.indieauth.com/token">',
-      // Microsub
-      '<link rel="microsub" href="https://aperture.p3k.io/microsub/741">',
-      // Umami Analytics
-      '<script defer data-do-not-track="true" data-website-id="ba1bafad-7768-4723-9395-5cad73a0bf87" src="https://umami.kwaa.dev/umami.js"></script>',
-      // Block Baiduspider
-      '<meta name="baiduspider" content="noindex">'
-    ]
-  },
+  custom: ({ dev }) =>
+    dev
+      ? []
+      : [
+          // Preconnect
+          '<link href="https://umami.kwaa.dev" rel="preconnect" crossorigin>',
+          // IndieAuth
+          '<link rel="authorization_endpoint" href="https://indieauth.com/auth">',
+          '<link rel="token_endpoint" href="https://tokens.indieauth.com/token">',
+          // Microsub
+          '<link rel="microsub" href="https://aperture.p3k.io/microsub/741">',
+          // Umami Analytics
+          '<script defer data-do-not-track="true" data-website-id="ba1bafad-7768-4723-9395-5cad73a0bf87" src="https://umami.kwaa.dev/umami.js"></script>',
+          // Block Baiduspider
+          '<meta name="baiduspider" content="noindex">'
+        ],
   relMe: ['https://kwaa.moe/@kwa']
 }
 

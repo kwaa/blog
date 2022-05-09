@@ -26,6 +26,33 @@ flags:
 </div>
 </Profile>
 
+### PGP
+
+我目前主要使用的 PGP 密钥：
+
+```text
+pub   rsa4096/0x896478D978EB0000 2022-01-07 [C] [expires: 2024-04-22]
+      F9D4 3DF6 8ED4 1062 3D89  8619 8964 78D9 78EB 0000
+uid                   [ultimate] 藍+85CD <kwa@kwaa.dev>
+sub   ed25519/0xDE79FF189995830E 2022-04-22 [S]
+sub   cv25519/0x774062A28FBA3BD4 2022-04-22 [E]
+sub   ed25519/0x4D5B17F0943CD268 2022-04-22 [A]
+```
+
+你可以通过以下方式获取对应公钥的最新版本：
+
+```bash
+gpg --fetch-keys https://kwaa.dev/pgp/0x896478D978EB0000.asc
+```
+
+#### 加密信息
+
+欢迎使用上面的公钥向我发送加密信息。
+
+#### 签名策略
+
+截至目前（2022 年 5 月）我不会对任何公钥进行签名。
+
 ### 编程
 
 主要是前端，不过很多都沾一点（即全沾）
@@ -56,9 +83,10 @@ flags:
 
 ### 游戏
 
-PC & VR 玩家，设备 Valve Index。
-游戏库包括但不限于 MC(JE&BE), CS:GO, R6S, GTAV, GBVS, DL... 喜欢玩 FPS 但是很菜。
-讨厌那些不在地球上的服。
+- PC & VR 玩家
+- SteamVR - Valve Index
+- Steam, Uplay, Origin, Epic, Xbox for PC 都在用
+- 讨厌那些不在地球上的服
 
 > 2022-04: 去年整了三年 XGPU，今年坐等 Starfield
 
@@ -106,7 +134,7 @@ PC & VR 玩家，设备 Valve Index。
 - 2018-03: 第四个博客，使用 Hexo - hexo-theme-material | destroyed - 已转移部分文章
 - 2019-10: 第五个博客，使用 Hexo - 写了 hexo-theme-m | blog.917.moe
 - 2020-08: 重写 hexo-theme-m | kwaa.dev
-- 2021-10: 博客重构，在 SvelteKit/MDsveX 的基础上写了 Urara | kwaa.dev
+- 2021-10: 博客重构，在 MDsveX & SvelteKit 的基础上写了 Urara | kwaa.dev
 
 还有什么要做的吗？
 
@@ -126,8 +154,6 @@ PC & VR 玩家，设备 Valve Index。
   - 不管在哪里和因为什么，只要我回复了就算。
 - **没有 ICP 备案号，不是 .cn 或其他中国特色域名**
   - **非常重要。**萌国 ICP 之类由于不具备实际作用，不在此条“备案号”的范围内。
-- 提交的数据格式完整且变更后及时通知
-  - 头像链接要始终有效（没头像可以不填，但不要经常更换链接），迁移域名提醒等
 
 关键的就上面这些了。那么需要的数据格式：
 
@@ -201,7 +227,7 @@ export const kwaa: Friend = {
 - ETH/xDAI/BSC: 0xaBdB3f715198A4d7e6591b6ebBE8Ccf235e5D752
   - 唯一指定钱包地址，建议使用 xDAI（因为 gas 费低）
 - XMR: 4BBo16A619wCSWS4rsS2gMihjfhi4nTLdabTAwadJFVoBrGU3qhn6kRXSHmBXXfgURJa5mngD5QekDnNkUPhprGv2VwVPqA
-  - 基本没在用
+  - 基本没在用，最好先跟我说一声
 
 ## 留言板
 
