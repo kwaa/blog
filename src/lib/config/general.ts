@@ -48,8 +48,6 @@ export const head: HeadConfig = {
     dev
       ? []
       : [
-          // Preconnect
-          '<link href="https://umami.kwaa.dev" rel="preconnect" crossorigin>',
           // IndieAuth
           '<link rel="authorization_endpoint" href="https://indieauth.com/auth">',
           '<link rel="token_endpoint" href="https://tokens.indieauth.com/token">',
@@ -58,7 +56,7 @@ export const head: HeadConfig = {
           // Umami Analytics
           '<script defer data-do-not-track="true" data-website-id="ba1bafad-7768-4723-9395-5cad73a0bf87" src="https://umami.kwaa.dev/umami.js"></script>',
           // Block Baiduspider
-          '<meta name="baiduspider" content="noindex">'
+          '<meta name="baiduspider" content="noindex, noarchive">'
         ],
   relMe: ['https://kwaa.moe/@kwa']
 }
