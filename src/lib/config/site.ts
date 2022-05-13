@@ -24,7 +24,7 @@ export const site: SiteConfig = {
   title: './kwaa.dev',
   // subtitle: '',
   lang: 'zh',
-  descr: '[DATA EXPUNGED]',
+  description: '[DATA EXPUNGED]',
   author: {
     name: '藍',
     photo: 'https://kwaa.dev/assets/maskable@512.webp',
