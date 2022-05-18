@@ -84,29 +84,29 @@
   export let config: GiscusConfig
 
   onMount(() => {
-    const giscus = document.createElement('script')
+    // const giscus = document.createElement('script')
     const observer = new MutationObserver(() => {
       document.getElementById('giscus-loading').remove()
       observer.disconnect()
     })
 
-    Object.entries({
-      src: config.src ?? 'https://giscus.app/client.js',
-      'data-repo': config.repo,
-      'data-repo-id': config.repoID,
-      'data-category': config.category ?? '',
-      'data-category-id': config.categoryID,
-      'data-mapping': 'pathname',
-      'data-reactions-enabled': config.reactionsEnabled === false ? '0' : '1',
-      'data-input-position': config.inputPosition ?? 'bottom',
-      'data-theme': config.theme ?? 'preferred_color_scheme',
-      'data-lang': config.lang ?? site.lang ?? 'en',
-      'data-loading': config.loading ?? '',
-      crossorigin: 'anonymous',
-      async: ''
-    }).forEach(([key, value]) => giscus.setAttribute(key, value))
+    // Object.entries({
+    //   src: config.src ?? 'https://giscus.app/client.js',
+    //   'data-repo': config.repo,
+    //   'data-repo-id': config.repoID,
+    //   'data-category': config.category ?? '',
+    //   'data-category-id': config.categoryID,
+    //   'data-mapping': 'pathname',
+    //   'data-reactions-enabled': config.reactionsEnabled === false ? '0' : '1',
+    //   'data-input-position': config.inputPosition ?? 'bottom',
+    //   'data-theme': config.theme ?? 'preferred_color_scheme',
+    //   'data-lang': config.lang ?? site.lang ?? 'en',
+    //   'data-loading': config.loading ?? '',
+    //   crossorigin: 'anonymous',
+    //   async: ''
+    // }).forEach(([key, value]) => giscus.setAttribute(key, value))
 
-    document.getElementById('giscus-container').appendChild(giscus)
+    // document.getElementById('giscus-container').appendChild(giscus)
     observer.observe(document.getElementById('giscus'), {
       childList: true
     })
@@ -116,4 +116,18 @@
 <div id="giscus-container">
   <button id="giscus-loading" class="btn btn-lg flex mx-auto my-4 btn-ghost btn-circle loading" />
   <div id="giscus" class="giscus" />
+  <script
+    src={config.src ?? 'https://giscus.app/client.js'}
+    data-repo={config.repo}
+    data-repo-id={config.repoID}
+    data-category={config.category}
+    data-category-id={config.categoryID}
+    data-mapping="pathname"
+    data-reactions-enabled={config.reactionsEnabled === false ? '0' : '1'}
+    data-input-position={config.inputPosition ?? 'bottom'}
+    data-theme={config.theme ?? 'preferred_color_scheme'}
+    data-lang={config.lang ?? 'en'}
+    data-loading={config.loading ?? ''}
+    crossorigin="anonymous"
+    async></script>
 </div>
