@@ -28,6 +28,7 @@
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
     "@unocss/core": "^0.34.0",
+    "autoprefixer": "^10.4.7",
     "chalk": "^4.1.2",
     "chokidar": "^3.5.3",
     "cssnano": "^5.1.7",
