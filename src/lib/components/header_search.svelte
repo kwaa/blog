@@ -1,7 +1,6 @@
 <script lang="ts">
   import { site } from '$lib/config/site'
   import { header as headerConfig } from '$lib/config/general'
-  import IconSearch from '~icons/heroicons-outline/search'
 </script>
 
 <form
