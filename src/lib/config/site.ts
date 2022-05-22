@@ -22,7 +22,6 @@ export const site: SiteConfig = {
   protocol: 'https://',
   domain: 'kwaa.dev',
   title: './kwaa.dev',
-  // subtitle: '',
   lang: 'zh',
   description: '[DATA EXPUNGED]',
   author: {
