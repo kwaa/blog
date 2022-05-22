@@ -2,11 +2,14 @@ import preprocess from 'svelte-preprocess'
 import adapterAuto from '@sveltejs/adapter-auto'
 import adapterNode from '@sveltejs/adapter-node'
 import adapterStatic from '@sveltejs/adapter-static'
-import Icons from 'unplugin-icons/vite'
+// import Icons from 'unplugin-icons/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 import { mdsvex } from 'mdsvex'
 import mdsvexConfig from './mdsvex.config.js'
 import postcss from './postcss.config.js'
+import UnoCSS from 'unocss/vite'
+import { extractorSvelte } from '@unocss/core'
+import { presetIcons } from 'unocss'
 
 export default /** @type {import('@sveltejs/kit').Config} */ {
   extensions: ['.svelte', ...mdsvexConfig.extensions],
@@ -43,10 +46,31 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
       envPrefix: 'URARA_',
       css: { postcss },
       plugins: [
-        Icons({
-          autoInstall: true,
-          compiler: 'svelte',
-          defaultClass: 'inline-block w-6 h-6'
+        // Icons({
+        //   autoInstall: true,
+        //   compiler: 'svelte',
+        //   defaultClass: 'inline-block w-6 h-6'
+        // }),
+        UnoCSS({
+          extractors: [extractorSvelte],
+          presets: [
+            presetIcons({
+              customizations: {
+                iconCustomizer: (_collection, _icon, props) => {
+                  props.height = '1.5rem'
+                  props.width = '1.5rem'
+                  return props
+                }
+              }
+            })
+            // presetWebFonts({
+            //   provider: 'google',
+            //   fonts: {
+            //     sans: 'Poppins',
+            //     mono: 'Fira Code'
+            //   }
+            // })
+          ]
         }),
         VitePWA({
           srcDir: './build',

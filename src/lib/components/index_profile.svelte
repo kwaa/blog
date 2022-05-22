@@ -1,7 +1,5 @@
 <script lang="ts">
   import { site } from '$lib/config/site'
-  import IconKey from '~icons/heroicons-solid/key'
-  import IconUserAdd from '~icons/heroicons-outline/user-add'
 </script>
 
 <div class="flex flex-row xl:flex-col gap-4 sticky top-24 card card-body items-right h-card">
@@ -24,12 +22,12 @@
     <h2 class="text-3xl font-bold mt-0 mb-2 p-name">{site.author.name}</h2>
     <p class="opacity-75 p-note">{@html site.author.bio}</p>
     <label for="remote-follow" class="btn modal-button normal-case mt-4 gap-2">
-      <IconUserAdd />
+      <span class="i-heroicons-outline-user-add" />
       Remote follow
     </label>
     {#if site.author.pgp}
       <a href={site.author.pgp.link} rel="pgpkey" class="btn btn-ghost btn-xs bg-base-300 font-mono rounded-full mt-4">
-        <IconKey class="inline-block w-4 h-4 mr-1" />
+        <span class="i-heroicons-solid-key !w-4 !h-4 mr-1" />
         {site.author.pgp.text}
       </a>
     {/if}

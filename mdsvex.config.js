@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { escapeSvelte } from 'mdsvex'
 import { lex, parse as parseFence } from 'fenceparser'
 import { renderCodeToHTML, runTwoSlash, createShikiHighlighter } from 'shiki-twoslash'

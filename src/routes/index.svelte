@@ -9,7 +9,6 @@
   import Post from '$lib/components/index_post.svelte'
   import Profile from '$lib/components/index_profile.svelte'
   import RemoteFollow from '$lib/components/extra/follow.svelte'
-  import IconTrash from '~icons/heroicons-outline/trash'
 
   let allPosts: Urara.Post[]
   let allTags: string[]
@@ -82,7 +81,7 @@
               {/each}]
             </h2>
             <button on:click={() => (tags = [])} class="btn btn-secondary">
-              <IconTrash class="inline-block w-6 h-6 mr-2" />
+              <span class="i-heroicons-outline-trash mr-2" />
               tags = []
             </button>
           </div>

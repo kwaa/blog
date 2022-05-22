@@ -1,5 +1,4 @@
 <script lang="ts">
-  import IconPaperAirplane from '~icons/heroicons-outline/paper-airplane'
   let status: string = ''
   let statusText: string = ''
   let input: string = ''
@@ -50,7 +49,7 @@
           class:input-error={status === 'error'}
           class="input input-bordered transition-all flex-1" />
         <button type="submit" class="btn btn-square">
-          <IconPaperAirplane class="h-6 w-6 rotate-90" />
+          <span class="i-heroicons-outline-paper-airplane rotate-90" />
         </button>
       </label>
       {#if statusText}

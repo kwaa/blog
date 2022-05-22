@@ -39,7 +39,7 @@
     {/if}
   </div>
   <div slot="middle-bottom">
-    <h1 itemprop="name headline" class="card-title text-3xl mb-8 p-name">{title ?? path.slice(1)}</h1>
+    <h1 itemprop="name headline" class="card-title text-3xl mt-2 mb-8 p-name">{title ?? path.slice(1)}</h1>
     {#if summary}
       <p class="hidden p-summary">{summary}</p>
     {/if}
