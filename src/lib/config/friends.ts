@@ -35,7 +35,36 @@ export const friends: Friend[] = [
     link: 'https://lensual.space',
     descr: '優しい人になりたいです',
     avatar: 'https://secure.gravatar.com/avatar/4563b4a0921638620dac23fdd2fa7579?s=160&d=mm&r=g'
+  },
+  {
+    id: 'debula',
+    rel: 'friend',
+    title: '秘密花园',
+    name: '黛布拉Official',
+    link: 'https://blog.debula.ml',
+    descr: '月亮一直跟着我走，它迷路了吗？',
+    avatar: 'https://blog.debula.ml/usr/uploads/violet.jpg'
   }
+  // {
+  //   id: 'kwaa',
+  //   rel: 'friend',
+  //   link: 'https://kwaa.dev',
+  //   html: `<div class="card w-screen max-w-[24rem] bg-base-100 bg-gradient-to-tr from-primary to-accent text-primary-content shadow-lg transition-shadow duration-500 hover:shadow-2xl">
+  //     <div class="absolute top-4 rotate-6 text-4xl font-bold leading-tight opacity-10">藍+85CD<br />./kwaa.dev</div>
+  //     <div class="card-body p-4">
+  //       <div class="flex items-center gap-4">
+  //         <div class="avatar mb-auto w-20 shrink-0">
+  //           <img class="rounded-xl" style="image-rendering:pixelated" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAAVFBMVEUAAADW29T///+5wcc4ODjz8OZVVVX/7MkVFRXtrpqTJiVHKxPZOjr/+/QICz3/07d1TCNErbkaSXtgERn59vb//OPSzMzuuwKZne20srL0mIyWGwWygNgKAAAAAXRSTlMAQObYZgAAAOtJREFUKM9djwuSwyAMQ2vsBDBJyK/tfu5/z5W6aYZUMB7QQwZuhwIkwnq7KIgqTFQJV3/USQX+OoE0fqfLIh0kCtKC31VGEEGqBezdydixfAARnNeRKZDmClE4mFE/gAKpTjFOcgEde01fa4wrDjRAlGNf7vdF5QKEzSJUCRpftmFwrbW6vEGYXwEzHzi2BvCF1ve9/7hvDSgqBJYQeHxrA4oqAskA9ocpwUkIkrvbnppvlNnMUkn+9B4r+CdAAACVM5yJnBnA9U+8wCzncPgRynP6V+WGIQZyzMWspwzrTEASSi4F/kHCy/4DaDYJuEU/v5oAAAAASUVORK5CYII=" alt="藍#+85CD" />
+  //         </div>
+  //         <div class="card-title flex-1 flex-col items-end gap-0">
+  //           <span class="p-name text-right">藍+85CD</span>
+  //           <span class="text-right opacity-50">./kwaa.dev</span>
+  //         </div>
+  //       </div>
+  //       <div class="p-note prose opacity-70">ゴミ溜めで埋もれたまま、星空を眺めてるよ</div>
+  //     </div>
+  //   </div>`
+  // },
   // {
   //   id: 'test',
   //   title: 'testtest',

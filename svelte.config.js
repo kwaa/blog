@@ -35,13 +35,13 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
     // },
     prerender: { default: true },
     vite: {
-      build: {
-        rollupOptions: {
-          output: {
-            manualChunks: undefined
-          }
-        }
-      },
+      // build: {
+      //   rollupOptions: {
+      //     output: {
+      //       manualChunks: undefined
+      //     }
+      //   }
+      // },
       mode: process.env.MODE || 'production',
       envPrefix: 'URARA_',
       css: { postcss },
