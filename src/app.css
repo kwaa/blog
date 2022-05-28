@@ -54,6 +54,10 @@ html {
 
 /* .urara-prose misc */
 
+.urara-prose > p img {
+  @apply w-full;
+}
+
 .urara-prose :is(p, li) > code {
   @apply bg-base-200 px-2;
 }
@@ -97,11 +101,11 @@ footer a {
 /* .urara-prose pre */
 
 .urara-prose > pre {
-  @apply -mx-8 rounded-none pb-0
+  @apply -mx-8 rounded-none pb-0;
 }
 
 .urara-prose > pre > div.code-container {
-  @apply pb-5 overflow-x-auto
+  @apply pb-5 overflow-x-auto;
 }
 
 /* shiki */
@@ -147,7 +151,7 @@ pre.shiki:hover div.dim {
 }
 
 pre.shiki div.highlight::before {
-  @apply bg-warning/20 absolute content-[''] w-full h-6
+  @apply bg-warning/20 absolute content-[''] w-full h-6;
 }
 
 pre.twoslash data-lsp {

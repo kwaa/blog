@@ -14,5 +14,5 @@
     <source srcset="{name}_768.{ext} 1x" media="(max-width: 425px)" />
     <source srcset="{name}_768.{ext} 1x, {src} 2x" media="(min-width: 425px)" />
   {/if}
-  <img itemprop="image" class={className ?? 'w-full rounded-lg my-2'} {src} {alt} {loading} {decoding} />
+  <img itemprop="image" class={className ?? 'rounded-lg my-2'} {src} {alt} {loading} {decoding} />
 </picture>
