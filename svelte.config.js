@@ -1,8 +1,8 @@
 import preprocess from 'svelte-preprocess'
-import adapterAuto from '@sveltejs/adapter-auto'
+// import adapterAuto from '@sveltejs/adapter-auto'
 import adapterNode from '@sveltejs/adapter-node'
 import adapterStatic from '@sveltejs/adapter-static'
-// import Icons from 'unplugin-icons/vite'
+import adapterVercel from '@sveltejs/adapter-vercel'
 import { VitePWA } from 'vite-plugin-pwa'
 import { mdsvex } from 'mdsvex'
 import mdsvexConfig from './mdsvex.config.js'
@@ -18,7 +18,8 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
   preprocess: [mdsvex(mdsvexConfig), preprocess()],
   kit: {
     adapter: Object.keys(process.env).some(key => ['VERCEL', 'CF_PAGES', 'NETLIFY'].includes(key))
-      ? adapterAuto()
+      ? // ? adapterAuto()
+        adapterVercel({ edge: true })
       : process.env.ADAPTER === 'node'
       ? adapterNode({ out: 'build' })
       : adapterStatic({
