@@ -27,31 +27,12 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
           assets: 'build',
           fallback: null
         }),
-    // csp: {
-    // mode: 'auto'
-    // directives: {
-    // 'style-src': ['self', 'unsafe-inline'],
-    // 'script-src': ['self', 'https://*.kwaa.dev']
-    // }
-    // },
     prerender: { default: true },
     vite: {
-      // build: {
-      //   rollupOptions: {
-      //     output: {
-      //       manualChunks: undefined
-      //     }
-      //   }
-      // },
       mode: process.env.MODE || 'production',
       envPrefix: 'URARA_',
       css: { postcss },
       plugins: [
-        // Icons({
-        //   autoInstall: true,
-        //   compiler: 'svelte',
-        //   defaultClass: 'inline-block w-6 h-6'
-        // }),
         UnoCSS({
           extractors: [extractorSvelte],
           presets: [
@@ -73,7 +54,11 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
             // })
           ]
         }),
-        VitePWA({ registerType: 'autoUpdate' })
+        VitePWA({
+          srcDir: './build',
+          outDir: './.svelte-kit/output/client',
+          registerType: 'autoUpdate'
+        })
         // VitePWA({
         //   srcDir: './build',
         //   outDir: './.svelte-kit/output/client',

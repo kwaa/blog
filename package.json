@@ -62,12 +62,6 @@
     "unocss": "^0.34.1",
     "vite": "^2.9.9",
     "vite-plugin-pwa": "^0.11.13",
-    "workbox": "^0.0.0",
-    "workbox-cacheable-response": "^6.5.3",
-    "workbox-expiration": "^6.5.3",
-    "workbox-precaching": "^6.5.3",
-    "workbox-routing": "^6.5.3",
-    "workbox-strategies": "^6.5.3",
     "workbox-window": "^6.5.3"
   },
   "type": "module",
