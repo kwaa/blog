@@ -73,7 +73,7 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
             // })
           ]
         }),
-        VitePWA()
+        VitePWA({ registerType: 'autoUpdate' })
         // VitePWA({
         //   srcDir: './build',
         //   outDir: './.svelte-kit/output/client',

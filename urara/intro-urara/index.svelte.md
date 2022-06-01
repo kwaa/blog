@@ -13,6 +13,8 @@ tags:
   import GitHub from '$lib/components/extra/github.svelte'
 </script>
 
+> 由于本文于 2021 年 9 月发布，内容已和新版本有所差异：建议阅读 [RE: Introducing Urara](/intro-urara/re)
+
 如果你看到这篇文章，就说明我的博客现在已经由 Urara 生成。
 
 一个||隐藏||样式测试
