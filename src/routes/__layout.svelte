@@ -29,7 +29,6 @@
       !dev &&
       browser &&
       registerSW({
-        onNeedRefresh() {},
         onOfflineReady() {}
       })
   )
