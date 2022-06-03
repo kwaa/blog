@@ -45,13 +45,6 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
                 }
               }
             })
-            // presetWebFonts({
-            //   provider: 'google',
-            //   fonts: {
-            //     sans: 'Poppins',
-            //     mono: 'Fira Code'
-            //   }
-            // })
           ]
         }),
         VitePWA({
@@ -59,50 +52,8 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
           outDir: './.svelte-kit/output/client',
           registerType: 'autoUpdate',
           scope: '/',
-          base: '/',
-          workbox: {
-            globPatterns: ['**/*.{js,css,html,png,webp,avif,svg,webmanifest}', 'index.html'],
-            globIgnores: ['**/sw*', '**/workbox-*']
-          }
+          base: '/'
         })
-        // VitePWA({
-        //   srcDir: './build',
-        //   outDir: './.svelte-kit/output/client',
-        //   registerType: 'autoUpdate',
-        //   scope: '/',
-        //   base: '/',
-        //   manifest: false,
-        //   workbox: {
-        //     navigateFallback: '/',
-        //     dontCacheBustURLsMatching: /-[a-f0-9]{8}\./,
-        //     globDirectory: './build/',
-        //     globPatterns: ['**/*.{js,css,html,ico,png,svg,webmanifest}'],
-        //     globIgnores: ['**/sw*', '**/workbox-*'],
-        //     runtimeCaching: [
-        //       {
-        //         urlPattern: /(.*?)\.html/,
-        //         handler: 'NetworkOnly',
-        //         options: {
-        //           cacheName: 'html-cache'
-        //         }
-        //       },
-        //       {
-        //         urlPattern: /(.*?)\.(js|json)/,
-        //         handler: 'StaleWhileRevalidate',
-        //         options: {
-        //           cacheName: 'js-cache'
-        //         }
-        //       },
-        //       {
-        //         urlPattern: /(.*?)\.(png|jpe?g|svg|gif|webp|avif)/,
-        //         handler: 'CacheFirst',
-        //         options: {
-        //           cacheName: 'image-cache'
-        //         }
-        //       }
-        //     ]
-        //   }
-        // })
       ]
     }
   }
