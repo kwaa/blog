@@ -15,7 +15,6 @@
   import { genTags } from '$lib/utils/posts'
   import { posts, tags } from '$lib/stores/posts'
   import { registerSW } from 'virtual:pwa-register'
-  // import { useRegisterSW } from 'virtual:pwa-register/svelte'
   import Head from '$lib/components/head_static.svelte'
   import Header from '$lib/components/header.svelte'
   import '../app.css'
