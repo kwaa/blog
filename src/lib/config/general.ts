@@ -105,7 +105,7 @@ export const footer: FooterConfig = {
       link: '/sitemap.xml'
     }
   ],
-  html: '<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><br><a href="https://xn--sr8hvo.ws/%F0%9F%8C%A4%E2%8C%9A%EF%B8%8F%F0%9F%92%A5/previous">⏮️</a>&nbsp;&nbsp;&nbsp;&nbsp;🕸💍&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://xn--sr8hvo.ws/%F0%9F%8C%A4%E2%8C%9A%EF%B8%8F%F0%9F%92%A5/next">⏭️</a>'
+  html: '<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><br><a href="https://xn--sr8hvo.ws/%F0%9F%8C%A4%E2%8C%9A%EF%B8%8F%F0%9F%92%A5/previous">⏮️</a><span>&nbsp;&nbsp;&nbsp;&nbsp;🕸💍&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="https://xn--sr8hvo.ws/%F0%9F%8C%A4%E2%8C%9A%EF%B8%8F%F0%9F%92%A5/next">⏭️</a>'
 }
 
 export const date: DateConfig = {
