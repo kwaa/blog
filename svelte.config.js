@@ -59,7 +59,11 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
           outDir: './.svelte-kit/output/client',
           registerType: 'autoUpdate',
           scope: '/',
-          base: '/'
+          base: '/',
+          workbox: {
+            globPatterns: ['**/*.{js,css,html,png,webp,avif,svg,webmanifest}'],
+            globIgnores: ['**/sw*', '**/workbox-*']
+          }
         })
         // VitePWA({
         //   srcDir: './build',
