@@ -15,7 +15,7 @@
   import { genTags } from '$lib/utils/posts'
   import { posts, tags } from '$lib/stores/posts'
   import { registerSW } from 'virtual:pwa-register'
-  import { useRegisterSW } from 'virtual:pwa-register/svelte'
+  // import { useRegisterSW } from 'virtual:pwa-register/svelte'
   import Head from '$lib/components/head_static.svelte'
   import Header from '$lib/components/header.svelte'
   import '../app.css'
@@ -24,21 +24,17 @@
   export let path: string
   posts.set(res)
   tags.set(genTags(res))
-  onMount(() => {
-    if (!dev && browser) {
+  onMount(
+    () =>
+      !dev &&
+      browser &&
       registerSW({
-        onOfflineReady() {}
+        immediate: true,
+        onOfflineReady() {},
+        onRegistered: r => r && setInterval(async () => await r.update(), 60000) && console.log('SW Registered: ' + r),
+        onRegisterError: error => console.log('SW registration error', error)
       })
-      const { offlineReady, updateServiceWorker } = useRegisterSW({
-        onRegistered(r) {
-          r && setInterval(async () => await r.update(), 60000) && console.log('SW Registered: ' + r)
-        },
-        onRegisterError(error) {
-          console.log('SW registration error', error)
-        }
-      })
-    }
-  })
+  )
 </script>
 
 <Head />
