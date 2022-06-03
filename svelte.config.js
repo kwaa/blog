@@ -61,7 +61,7 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
           scope: '/',
           base: '/',
           workbox: {
-            globPatterns: ['**/*.*', '*.*'],
+            globPatterns: ['**/*.{js,css,html,png,webp,avif,svg,webmanifest}', 'index.html'],
             globIgnores: ['**/sw*', '**/workbox-*']
           }
         })
