@@ -8,8 +8,7 @@ import { mdsvex } from 'mdsvex'
 import mdsvexConfig from './mdsvex.config.js'
 import postcss from './postcss.config.js'
 import UnoCSS from 'unocss/vite'
-import { extractorSvelte } from '@unocss/core'
-import { presetIcons } from 'unocss'
+import { presetIcons, extractorSvelte } from 'unocss'
 
 export default /** @type {import('@sveltejs/kit').Config} */ {
   extensions: ['.svelte', ...mdsvexConfig.extensions],

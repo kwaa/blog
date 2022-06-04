@@ -11,7 +11,6 @@ specifiers:
   '@tailwindcss/typography': ^0.5.2
   '@typescript-eslint/eslint-plugin': ^5.27.0
   '@typescript-eslint/parser': ^5.27.0
-  '@unocss/core': ^0.37.2
   autoprefixer: ^10.4.7
   chalk: ^5.0.1
   chokidar: ^3.5.3
@@ -58,11 +57,10 @@ devDependencies:
   '@sveltejs/adapter-node': 1.0.0-next.78
   '@sveltejs/adapter-static': 1.0.0-next.34
   '@sveltejs/adapter-vercel': 1.0.0-next.58
-  '@sveltejs/kit': 1.0.0-next.347_svelte@3.48.0
+  '@sveltejs/kit': 1.0.0-next.348_svelte@3.48.0
   '@tailwindcss/typography': 0.5.2_tailwindcss@3.0.24
   '@typescript-eslint/eslint-plugin': 5.27.0_dszb5tb7atwkjjijmmov4qhi7i
   '@typescript-eslint/parser': 5.27.0_xztl6dhthcahlo6akmb2bmjmle
-  '@unocss/core': 0.37.2
   autoprefixer: 10.4.7_postcss@8.4.14
   chalk: 5.0.1
   chokidar: 3.5.3
@@ -1667,8 +1665,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.347_svelte@3.48.0:
-    resolution: {integrity: sha512-kxan2F8g9nM/4QzLINsPiZdLZLx6X2Tjg+Ft8KR2QPhHKCEQ3jlosnGTzmznt572PTg89UhiUhQWKK4IDk2nSA==}
+  /@sveltejs/kit/1.0.0-next.348_svelte@3.48.0:
+    resolution: {integrity: sha512-K9dfgzIbotWmbcdCsQ6ROGs9R+bsGWwmSdN6l6km1QV5esQehqg1UYHGD9q0VJsg4rJg/zmKVBYo0oBquSHPZw==}
     engines: {node: '>=16.7'}
     hasBin: true
     peerDependencies:
