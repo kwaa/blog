@@ -52,7 +52,8 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
           outDir: './.svelte-kit/output/client',
           registerType: 'autoUpdate',
           scope: '/',
-          base: '/'
+          base: '/',
+          includeAssets: ['posts.json']
         })
       ]
     }
