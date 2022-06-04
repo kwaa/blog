@@ -53,7 +53,10 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
           registerType: 'autoUpdate',
           scope: '/',
           base: '/',
-          includeAssets: ['posts.json']
+          workbox: {
+            globPatterns: ['**/*.{js,css,html,json,webmanifest}'],
+            globIgnores: ['**/sw*', '**/workbox-*', '**/feed.json']
+          }
         })
       ]
     }
