@@ -2,6 +2,7 @@
   // @ts-nocheck
   import Masonry from 'svelte-bricks'
   import { Friend, friends as allFriends } from '$lib/config/friends'
+  import { title as storedTitle } from '$lib/stores/title'
   import Head from '$lib/components/head.svelte'
   import FriendComponent from '$lib/components/extra/friend.svelte'
 
@@ -12,6 +13,7 @@
   }
   let items: { id: string }[] = [...fy(allFriends as { id: string }[]), { id: 'footer' }]
   let width: number, height: number
+  storedTitle.set('')
 </script>
 
 <Head />
