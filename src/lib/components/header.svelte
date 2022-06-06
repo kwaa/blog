@@ -125,6 +125,7 @@
     class="radial-progress text-accent transition-all duration-500 ease-in-out group-hover:text-accent-focus col-start-1 row-start-1"
     style={`--size:4rem; --thickness: 0.25rem; --value:${percent};"`} />
   <div
+    class:border-transparent={percent > 95}
     class="border-4 border-base-content/10 group-hover:border-transparent col-start-1 row-start-1 rounded-full w-full h-full p-4 grid duration-500 ease-in-out">
     <span class="i-heroicons-solid-chevron-up" />
   </div>
