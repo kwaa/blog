@@ -117,7 +117,8 @@
   on:click={() => window.scrollTo(0, 0)}
   class:translate-y-24={!pin || scrollY === 0}
   aria-label="scroll to top"
-  class="fixed grid group btn btn-circle btn-lg backdrop-blur bottom-6 right-6 z-50 duration-500 ease-in-out {percent > 95
+  class="fixed grid group btn btn-circle btn-lg border-none backdrop-blur bottom-6 right-6 z-50 duration-500 ease-in-out {percent >
+  95
     ? 'btn-accent shadow-lg'
     : 'btn-ghost bg-base-100/30 md:bg-base-200/30'}"
   class:opacity-100={scrollY}>
