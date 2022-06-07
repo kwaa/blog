@@ -53,7 +53,7 @@
 <header
   id="header"
   class:-translate-y-32={!pin && scrollY > 0}
-  class="fixed z-50 w-screen bg-base-100/30 md:bg-base-200/30 transition-all duration-500 ease-in-out border-b-2 border-transparent max-h-16 {scrollY >
+  class="fixed z-50 w-screen bg-base-100/30 md:bg-base-200/30 transition-all duration-500 ease-in-out border-b-2 border-transparent max-h-[4.125rem] {scrollY >
     32 && 'backdrop-blur border-base-content/10'}">
   {#if !search}
     <div in:fly={{ x: -50, duration: 300, delay: 300 }} out:fly={{ x: -50, duration: 300 }} class="navbar">
