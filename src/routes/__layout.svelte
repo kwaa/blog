@@ -28,7 +28,7 @@
       !dev &&
       browser &&
       registerSW({
-        onRegistered: r => r && setInterval(async () => await r.update(), 60000) && console.log('SW Registered: ' + r),
+        onRegistered: r => r && setInterval(async () => await r.update(), 198964),
         onRegisterError: error => console.log('SW registration error', error)
       })
   )
