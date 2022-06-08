@@ -10,8 +10,6 @@ tags:
 
 > 图片来源 / Image Source: [r/linuxmasterrace](https://www.reddit.com/r/linuxmasterrace/comments/9luu1l/_/)
 
-<p class="p-bridgy-mastodon-content hidden">只用来当安装盘不是白费了我这 NVMe 固态？那可不行，于是就有了这篇文章——本文通过 Bridgy 发布到 Fediverse。@blog@ovo.st 右边是链接</p>
-
 ## 序言
 
 我去年买了个 A2000 512G 装 Ventoy，ISO 放了不少——什么 Arch, BlackArch, WinPE, Win11... 不过好像也就当安装盘用。
