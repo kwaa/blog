@@ -7,6 +7,7 @@ tags:
   - MDsveX
   - TailwindCSS
 photo: /intro-urara/re.avif
+alt: 测试一下这个功能
 summary: 去年的 Introducting Urara 感觉没写好，索性就重新介绍一下吧。
 ---
 
