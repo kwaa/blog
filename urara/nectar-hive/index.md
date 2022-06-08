@@ -1,7 +1,7 @@
 ---
 title: '静电之梦 - Nectar Hive'
 created: 2022-02-12
-photo: /nectar-hive/hive.avif
+photo: /nectar-hive/hive.webp
 ---
 
 > 世界是静电的。
@@ -46,7 +46,7 @@ photo: /nectar-hive/hive.avif
 
 比较有意思的是默认耳垫内部是圆形开孔，而我选配的耳垫是耳朵形开孔。
 
-![earpads](/nectar-hive/earpads.avif)
+![earpads](/nectar-hive/earpads.webp)
 
 耳垫通过三个小型魔术贴固定（有点简陋），至于两个耳垫之间的区别我真听不出来。
 
@@ -83,7 +83,7 @@ photo: /nectar-hive/hive.avif
 
 > 顺便一提，焊锡用的吃灰 Audio Note... 酱油比鸡贵？不过用量也不多就是
 
-![CAB-SSO](/nectar-hive/sso.avif)
+![CAB-SSO](/nectar-hive/sso.webp)
 
 > 别问，问就是没对好焦
 

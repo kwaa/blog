@@ -8,7 +8,7 @@ tags:
   - Beat Saber
   - ChroMapper
   - Unity
-photo: /beatsaber-mapping-1/beatsaber.avif
+photo: /beatsaber-mapping-1/beatsaber.webp
 summary: 最近一直没什么可以拿来写博客的东西，直到我开始想自制 Beat Saber 谱面；这是本站第一个连载文章。
 ---
 
@@ -32,7 +32,7 @@ summary: 最近一直没什么可以拿来写博客的东西，直到我开始�
 
 所以正常 Unity Hub 的主界面是这样的：
 
-![unityhub1](beatsaber-mapping-1/unityhub1.avif)
+![unityhub1](beatsaber-mapping-1/unityhub1.webp)
 
 截至写这篇文章的时候 ChroMapper 主分支使用的 Unity 版本是 2019.3.0f6，所以我通过 [Unity I tell you](https://unityitellyou.github.io/DownloadInfos/2019.x.json/Unity%202019.x) 找到 2019.3.0 并点击 "Unity Hub 下载"。或者也可以使用[这个链接](unityhub://2019.3.0f6/27ab2135bccf)，它省了你点几下鼠标以及滑动滚轮的事。
 
@@ -46,11 +46,11 @@ summary: 最近一直没什么可以拿来写博客的东西，直到我开始�
 
 将下载的压缩包`ChroMapper-master.zip`解压，得到一个同名文件夹。在 Unity Hub 的 "项目" 中添加项目并选中同名文件夹。导入项目后会是这样：
 
-![unityhub2](beatsaber-mapping-1/unityhub2.avif)
+![unityhub2](beatsaber-mapping-1/unityhub2.webp)
 
 经过几分钟的加载（如果有弹窗，就点击 Continue），进入主界面后在左上角 `File > Build And Run`，选择一个文件夹存放编译后的文件。
 
-![unityeditor](beatsaber-mapping-1/unityeditor.avif)
+![unityeditor](beatsaber-mapping-1/unityeditor.webp)
 
 最后... 既然编译完了那也没什么好说的了，下期见。
 

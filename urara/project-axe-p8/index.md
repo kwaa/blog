@@ -1,7 +1,7 @@
 ---
 title: '一年后的成果：STREIN IEM-AXE_P8'
 created: 2020-09-03 23:54:00
-photo: /project-axe-p8/p8.avif
+photo: /project-axe-p8/p8.webp
 tags:
   - DIY
   - IEM
@@ -17,7 +17,7 @@ summary: 经过十五天，IEM-AXE 吃灰了一年的十六个单元做成耳机
 
 频响：
 
-![Frequency Response 1/24](project-axe-p8/fr.avif)
+![Frequency Response 1/24](project-axe-p8/fr.webp)
 
 听感没什么好说的，人声较远 / 低频略多以外基本满意（话说我也没同档次耳机对比）；100Hz 以下匹配不好大概是单元补焊点导致的。
 

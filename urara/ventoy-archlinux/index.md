@@ -1,6 +1,6 @@
 ---
 title: 在 Ventoy 基础上安装 Arch Linux 并复用引导
-photo: /ventoy-archlinux/arch.avif
+photo: /ventoy-archlinux/arch.webp
 created: 2022-05-05
 summary: 只用来当安装盘不是白费了我这 NVMe 固态？这可不行，于是就有了这篇文章。
 tags:
