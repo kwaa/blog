@@ -6,3 +6,9 @@ export type IconConfig = {
     purpose?: string
   }
 }
+
+export type Icon = {
+  src: string
+  sizes?: string
+  type?: string
+}
