@@ -19,6 +19,9 @@ declare namespace Urara {
       layout: 'article'
       /** post photo */
       photo?: string
+      /** post photo alternative */
+      alt?: string
+      /** table of content - auto generated or set `false` to disable */
       toc?: false | Article.Toc[]
     }
     namespace Article {
@@ -40,6 +43,8 @@ declare namespace Urara {
       layout: 'photo'
       /** post photo */
       photo?: string
+      /** post photo alternative */
+      alt?: string
     }
     // interface Video {
     //   layout: 'video'

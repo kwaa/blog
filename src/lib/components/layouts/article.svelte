@@ -20,6 +20,7 @@
   export let title = undefined
   export let summary = undefined
   export let photo = undefined
+  export let alt = undefined
   export let toc = undefined
 </script>
 
@@ -34,7 +35,10 @@
   <div slot="top">
     {#if photo}
       <figure class="mx-4 md:mx-0 w-auto">
-        <Image class="u-featured rounded-box w-full shadow-xl" src={photo} loading="eager" decoding="auto" />
+        <Image class="u-featured rounded-box w-full shadow-xl" src={photo} alt={alt ?? photo} loading="eager" decoding="auto" />
+        {#if alt}
+          <figcaption>{@html alt}</figcaption>
+        {/if}
       </figure>
     {/if}
   </div>
