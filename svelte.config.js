@@ -53,7 +53,7 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
           scope: '/',
           base: '/',
           workbox: {
-            globPatterns: ['**/*.{js,css,html,json,webmanifest}'],
+            globPatterns: ['**/*.{js,css,html,json}'],
             globIgnores: ['**/sw*', '**/workbox-*', '**/feed.json']
           }
         })
