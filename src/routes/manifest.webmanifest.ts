@@ -13,7 +13,7 @@ export const get: RequestHandler = () => ({
       short_name: site.title,
       lang: site.lang,
       description: site.description,
-      id: `${site.protocol + site.domain}/`,
+      id: site.protocol + site.domain + '/',
       start_url: '/',
       scope: '/',
       display: 'standalone',
