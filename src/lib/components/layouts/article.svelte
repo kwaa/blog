@@ -26,7 +26,7 @@
 
 <Head post={{ layout: 'article', created, updated, published, title, tags, summary, photo, path }} />
 
-<Post layout="article" {path} {flags} {tags} {created} {updated} {published}>
+<Post post={{ layout: 'article', path, created, updated, published, tags, flags, title, summary, photo, alt, toc }}>
   <div slot="right" class="h-full hidden xl:block">
     {#if browser && toc?.length > 1}
       <Toc {toc} />
