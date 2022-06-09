@@ -7,7 +7,7 @@ export const favicon: Icon = {
   type: 'image/x-icon'
 }
 
-export const any: { [key: string]: Icon } = {
+export const any: { [key: number]: Icon } = {
   180: {
     src: site.protocol + site.domain + '/assets/any@180.webp',
     sizes: '180x180',
@@ -25,7 +25,7 @@ export const any: { [key: string]: Icon } = {
   }
 }
 
-export const maskable: { [key: string]: Icon } = {
+export const maskable: { [key: number]: Icon } = {
   192: {
     src: site.protocol + site.domain + '/assets/maskable@192.webp',
     sizes: '192x192',
