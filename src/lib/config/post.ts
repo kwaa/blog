@@ -5,7 +5,7 @@ export const post: PostConfig = {
     post: ['mastodon']
   },
   comment: {
-    use: ['Webmention', 'Giscus', 'Disqus'],
+    use: ['Webmention', 'Giscus'],
     style: 'boxed',
     webmention: {
       username: 'kwaa.dev',
@@ -24,9 +24,6 @@ export const post: PostConfig = {
       lang: 'zh-CN',
       // theme: 'urara'
       theme: 'preferred_color_scheme'
-    },
-    disqus: {
-      shortname: 'kwaa'
     }
   }
 }
