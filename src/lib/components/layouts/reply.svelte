@@ -20,9 +20,9 @@
   export let inReplyTo = undefined
 </script>
 
-<Head post={{ layout: 'reply', created, updated, published, tags, path }} />
+<Head post={{ layout: 'reply', path, created, updated, published, tags, flags }} />
 
-<Post layout="reply" {path} {flags} {tags} {created} {updated} {published}>
+<Post post={{ layout: 'reply', path, created, updated, published, tags, flags }}>
   <Reply {inReplyTo} slot="top" class="mt-4 mx-4" />
   <main slot="content" itemprop="articleBody" class="urara-prose prose p-name p-content">
     <slot />

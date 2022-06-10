@@ -16,7 +16,7 @@
   export let flags = undefined
 </script>
 
-<Head post={{ layout: 'note', created, updated, published, tags, path }} />
+<Head post={{ layout: 'note', path, created, updated, published, tags, flags }} />
 
 <Post post={{ layout: 'note', path, created, updated, published, tags, flags }}>
   <main slot="content" itemprop="articleBody" class="urara-prose prose p-name p-content">

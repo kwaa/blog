@@ -19,7 +19,7 @@
   export let alt = undefined
 </script>
 
-<Head post={{ layout: 'photo', created, updated, published, photo, tags, path }} />
+<Head post={{ layout: 'photo', path, created, updated, published, tags, flags, photo, alt }} />
 
 <Post post={{ layout: 'photo', path, created, updated, published, tags, flags, photo, alt }}>
   <figure slot="top" class="flex-col gap-2 mx-4 md:mx-0 w-auto">
