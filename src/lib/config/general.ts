@@ -71,6 +71,10 @@ export const header: HeaderConfig = {
       link: '/about'
     },
     {
+      text: 'Projects',
+      link: '/projects'
+    },
+    {
       text: 'Urara',
       children: [
         {
