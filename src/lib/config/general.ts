@@ -78,11 +78,11 @@ export const header: HeaderConfig = {
       text: 'Urara',
       children: [
         {
-          text: 'Re: Introducting Urara',
+          text: 'Re: Introducing Urara',
           link: '/intro-urara/re'
         },
         {
-          text: 'Introducting Urara',
+          text: 'Introducing Urara',
           link: '/intro-urara'
         },
         {
