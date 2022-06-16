@@ -7,10 +7,10 @@ tags:
   - MDsveX
   - TailwindCSS
 photo: /intro-urara/re.webp
-summary: 去年的 Introducting Urara 感觉没写好，索性就重新介绍一下吧。
+summary: 去年的 Introducing Urara 感觉没写好，索性就重新介绍一下吧。
 ---
 
-去年的 [Introducting Urara](https://kwaa.dev/intro-urara) 感觉没写好，索性就重新介绍一下吧。
+去年的 [Introducing Urara](https://kwaa.dev/intro-urara) 感觉没写好，索性就重新介绍一下吧。
 
 ## 缘起
 
@@ -183,10 +183,10 @@ tags:
   - SvelteKit
   - MDsveX
   - TailwindCSS
-descr: 去年的 Introducting Urara 感觉没写好，索性就重新介绍一下吧。
+descr: 去年的 Introducing Urara 感觉没写好，索性就重新介绍一下吧。
 ---
 
-去年的 [Introducting Urara](https://kwaa.dev/intro-urara) 感觉没写好，索性就重新介绍一下吧。
+去年的 [Introducing Urara](https://kwaa.dev/intro-urara) 感觉没写好，索性就重新介绍一下吧。
 ```
 
 其他不支持的类型是因为没想好界面设计，同时也欢迎提出建议。
