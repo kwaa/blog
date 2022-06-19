@@ -3,22 +3,41 @@
   import { site } from '$lib/config/site'
   export let post: Urara.Post
   export let index: boolean = false
-  export let photo: boolean = false
-  export let featured: boolean = false
+  // export let photo: boolean = false
+  // export let featured: boolean = false
 
-  const stringPublished = new Date(post.published ?? post.created).toLocaleString(
-    date.toPublishedString.locales,
-    date.toPublishedString.options
-  )
-  const stringUpdated = new Date(post.updated ?? post.published ?? post.created).toLocaleString(
-    date.toUpdatedString.locales,
-    date.toUpdatedString.options
-  )
+  const stringPublished = new Date(post.published ?? post.created).toLocaleString(date.locales, date.options)
+  const stringUpdated = new Date(post.updated ?? post.published ?? post.created).toLocaleString(date.locales, date.options)
   const jsonPublished = new Date(post.published ?? post.created).toJSON()
   const jsonUpdated = new Date(post.updated ?? post.published ?? post.created).toJSON()
 </script>
 
-<div
+<div class="flex font-semibold gap-1.5">
+  <a
+    class:hidden={index}
+    rel="author"
+    class="opacity-75 hover:opacity-100 hover:text-primary duration-500 ease-in-out p-author h-card"
+    href={site.protocol + site.domain}>
+    {site.author.name}
+  </a>
+  <span class:hidden={index} class="opacity-50">/</span>
+  <a href={post.path} class="swap hover:swap-active u-url u-uid">
+    <time
+      class="swap-on uppercase font-semibold text-primary duration-500 ease-in-out mr-auto dt-published"
+      datetime={jsonPublished}
+      itemprop="datePublished">
+      {stringPublished}
+    </time>
+    <time
+      class="swap-off uppercase font-semibold opacity-75 duration-500 ease-in-out mr-auto dt-updated"
+      datetime={jsonUpdated}
+      itemprop="dateModified">
+      {stringUpdated}
+    </time>
+  </a>
+</div>
+
+<!-- <div
   class:mb-8={!index && !post.flags?.includes('hidden-author')}
   class:mb-4={!index}
   class="flex flex-wrap justify-between gap-2">
@@ -39,6 +58,8 @@
   <a
     href={post.path}
     class:ml-auto={!index}
+    class:!tooltip-right={index}
+    class:!tooltip-left={!index && !post.flags?.includes('hidden-author')}
     class="{photo
       ? 'text-neutral-content !bg-neutral/50 hover:!bg-neutral/80'
       : 'text-base-content/75 px-0 hover:underline'} {featured
@@ -53,4 +74,4 @@
       {stringUpdated}
     </time>
   </a>
-</div>
+</div> -->

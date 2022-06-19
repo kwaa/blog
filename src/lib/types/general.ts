@@ -5,7 +5,9 @@ export type ThemeConfig = {
 
 export type HeadConfig = {
   custom?: (params: { dev: boolean; post?: Urara.Post; page?: Urara.Page }) => string[]
-  relMe?: string[]
+  me?: string[]
+  /** @deprecated - use `head.me` instead */
+  relMe?: never
 }
 
 export type HeaderConfig = {
@@ -32,10 +34,7 @@ export type FooterConfig = {
   since?: string
 }
 
-export type DateConfig = {
-  toPublishedString: { locales: string; options: Intl.DateTimeFormatOptions }
-  toUpdatedString: { locales: string; options: Intl.DateTimeFormatOptions }
-}
+export type DateConfig = { locales: string; options: Intl.DateTimeFormatOptions }
 
 export type FeedConfig = {
   /** feed entry limit. */

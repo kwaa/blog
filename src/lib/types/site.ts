@@ -20,12 +20,18 @@ export type SiteConfig = {
     photo?: string
     status?: string
     bio?: string
-    github?: string
-    twitter?: string
-    pgp?: {
+    /** @deprecated - use `metadata` or `head.me` instead */
+    github?: never
+    /** @deprecated - use `metadata` or `head.me` instead */
+    twitter?: never
+    /** @deprecated - use `metadata` or `head.me` instead */
+    pgp?: never
+    metadata?: {
       text: string
-      link: string
-    }
+      icon?: string
+      link?: string
+      rel?: string
+    }[]
   }
   /** for web app manifest only.
    * ```

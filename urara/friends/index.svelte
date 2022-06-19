@@ -1,9 +1,10 @@
 <script lang="ts">
   // @ts-nocheck
-  import Masonry from 'svelte-bricks'
-  import { Friend, friends as allFriends } from '$lib/config/friends'
+  import type { Friend } from '$lib/config/friends'
+  import { friends as allFriends } from '$lib/config/friends'
   import { title as storedTitle } from '$lib/stores/title'
   import Head from '$lib/components/head.svelte'
+  import Masonry from 'svelte-bricks'
   import FriendComponent from '$lib/components/extra/friend.svelte'
 
   const rnd = Math.random()
@@ -16,7 +17,7 @@
   storedTitle.set('')
 </script>
 
-<Head />
+<Head page={{ title: 'Friends', path: '/friends' }} />
 
 <Masonry
   {items}

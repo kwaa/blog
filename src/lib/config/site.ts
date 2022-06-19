@@ -25,15 +25,33 @@ export const site: SiteConfig = {
   lang: 'zh',
   description: '[DATA EXPUNGED]',
   author: {
-    name: '藍',
+    name: '藍+85CD',
     photo: 'https://kwaa.dev/assets/maskable@192.webp',
     status: '🌌',
     bio: bio[~~(Math.random() * bio.length)],
-    github: 'kwaa',
-    pgp: {
-      text: '8964 78D9 78EB 0000',
-      link: 'https://kwaa.dev/pgp/0x896478D978EB0000.asc'
-    }
+    metadata: [
+      {
+        text: 'kwaa',
+        icon: 'i-simple-icons-github',
+        link: 'https://github.com/kwaa'
+      },
+      {
+        text: '@kwaabot',
+        icon: 'i-simple-icons-telegram',
+        link: 'https://t.me/kwaabot'
+      },
+      {
+        text: '@kwaa:matrix.org',
+        icon: 'i-simple-icons-matrix',
+        link: 'https://matrix.to/#/@kwaa:matrix.org'
+      },
+      {
+        text: '0x896478D978EB0000',
+        icon: 'i-heroicons-solid-key',
+        link: 'https://kwaa.dev/pgp/0x896478D978EB0000.asc',
+        rel: 'pgpkey'
+      }
+    ]
   },
   themeColor: '#3D4451'
 }

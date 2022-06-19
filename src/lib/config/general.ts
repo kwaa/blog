@@ -113,21 +113,13 @@ export const footer: FooterConfig = {
 }
 
 export const date: DateConfig = {
-  toPublishedString: {
-    locales: 'ja-JP',
-    options: {
-      weekday: 'long',
-      month: 'long',
-      day: 'numeric'
-    }
-  },
-  toUpdatedString: {
-    locales: 'ja-JP',
-    options: {
-      weekday: 'long',
-      month: 'long',
-      day: 'numeric'
-    }
+  locales: 'en-US',
+  options: {
+    // weekday: 'short',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'Asia/Taipei'
   }
 }
 
