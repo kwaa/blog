@@ -33,6 +33,7 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
       css: { postcss },
       plugins: [
         UnoCSS({
+          include: [/\.svelte$/, /\.md?$/, /\.ts$/],
           extractors: [extractorSvelte],
           presets: [
             presetIcons({
