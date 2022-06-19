@@ -63,7 +63,7 @@
   </div>
   <div slot="middle" class="flex flex-col">
     {#if photo}
-      <figure class="flex-col gap-2 -mx-4 mb-4 w-auto -mt-8 md:mt-0 md:order-last">
+      <figure class="flex-col gap-2 -mx-4 mb-4 w-auto -mt-8 md:mt-0 md:mb-8 md:order-last">
         <Image class="u-featured rounded-box w-full shadow-xl" src={photo} alt={alt ?? photo} loading="eager" decoding="auto" />
         {#if alt}
           <figcaption>{@html alt}</figcaption>
