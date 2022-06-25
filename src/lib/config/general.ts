@@ -58,7 +58,7 @@ export const head: HeadConfig = {
           // Block Baiduspider
           '<meta name="baiduspider" content="noindex, noarchive">'
         ],
-  relMe: ['https://kwaa.moe/@kwa']
+  me: ['https://kwaa.moe/@kwa']
 }
 
 export const header: HeaderConfig = {
