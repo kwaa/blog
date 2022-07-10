@@ -67,11 +67,11 @@ gpg --fetch-keys https://kwaa.dev/pgp/0x896478D978EB0000.asc
 
 #### 语言
 
-`++ JavaScript (+ TypeScript)` `++ HTML` `+ CSS` `- Python`
+`++ JavaScript / TypeScript` `++ HTML` `+ CSS` `- Python`
 
 #### 前端框架 / 库
 
-`++ MDUI/Bootstrap` `++ Svelte/SvelteKit` `++ WindiCSS/TailwindCSS/DaisyUI` `- jQuery`
+`++ MDUI/Bootstrap` `++ Svelte/SvelteKit` `++ TailwindCSS/UnoCSS/DaisyUI` `+ Astro` `- MDUI.jq/jQuery`
 
 #### 后端框架 / 库
 
@@ -79,7 +79,7 @@ gpg --fetch-keys https://kwaa.dev/pgp/0x896478D978EB0000.asc
 
 #### 环境
 
-`++ Nodejs/NPM` `++ Linux` `+ Docker` `+ GitHub` `- Git`
+`++ Nodejs/NPM` `++ Linux` `+ Docker` `+ GitHub` `- Git` `- Deno`
 
 ### 游戏
 
@@ -89,6 +89,8 @@ gpg --fetch-keys https://kwaa.dev/pgp/0x896478D978EB0000.asc
 - 讨厌那些不在地球上的服
 
 > 2022-04: 去年整了三年 XGPU，今年坐等 Starfield
+
+> 2022-06: XGPU 翻车了
 
 ### 音乐
 
