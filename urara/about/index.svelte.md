@@ -202,7 +202,7 @@ export const kwaa: Friend = {
   id: 'kwaa',
   link: 'https://kwaa.dev',
   title: './kwaa.dev',
-  name: '藍' || '藍#+85CD',
+  name: '藍' || '藍+85CD',
   avatar: [
     'https://kwaa.dev/assets/any@512.webp' // 头像面积不大时使用，分辨率可选 192/512/1024
     'https://kwaa.dev/assets/maskable@512.webp' // 头像面积较大时使用，分辨率可选 192/512/1024
