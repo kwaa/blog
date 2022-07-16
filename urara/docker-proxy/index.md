@@ -117,6 +117,7 @@ docker run -d \\
 -p 443:443 \\
 -v /etc/caddy/:/etc/caddy/ \\
 -v /root/.local/share/caddy:/root/.local/share/caddy \\
+--sysctl net.ipv4.tcp_congestion_control=bbr \\
 --restart unless-stopped \\
 kwaabot/caddy
 ```
@@ -159,6 +160,7 @@ docker run -dt \\
 -p 443:443/udp \\
 -v /etc/hysteria.json:/etc/hysteria.json \\
 -v /root/.local/share/caddy/certificates/acme-v02.api.letsencrypt.org-directory/:/etc/hysteria/ \\
+--sysctl net.ipv4.tcp_congestion_control=bbr \\
 --restart unless-stopped \\
 tobyxdd/hysteria -config /etc/hysteria.json server
 ```
