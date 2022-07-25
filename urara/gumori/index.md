@@ -8,12 +8,6 @@ summary: 大道至简的博客启动模板。
 
 <p class="p-bridgy-mastodon-content hidden">「Introducing Gumori」在发布一个多月后，终于写完了这篇介绍文章！但好像介绍了又好像什么都没介绍——本文通过 Bridgy 发布到 Fediverse。 @blog@ovo.st </p>
 
-> TTS 测试，限时三天
-
-<audio controls>
-  <source src="/gumori/gumori.mp3" type="audio/mpeg">
-</audio>
-
 在 Gumori 发布一个多月后，终于写完了这篇介绍文章！
 
 但好像介绍了又好像什么都没介绍。
