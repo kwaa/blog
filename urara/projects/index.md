@@ -9,16 +9,18 @@ flags:
 
 由于暂未发布的项目也会被计入，所以可能会有一些特别的东西？
 
+有时效性的会加上时间，需要注意的是起始时间是从**创建文件夹**而不是 Initial commit 计算的。
+
 ## Static / 静态网页
 
 没有后端的会被我归类到这里。
 
-### Urara
+### Urara 2021.3 ~ now
 
 `SvelteKit` `Vite` `TypeScript` `TailwindCSS` `UnoCSS` `daisyUI`
 
-- [GitHub - importantimport/urara](https://github.com/importantimport/urara)
-- [GitHub - importantimport/urara-docs](https://github.com/importantimport/urara-docs)
+- [importantimport/urara - GitHub](https://github.com/importantimport/urara)
+- [importantimport/urara-docs - GitHub](https://github.com/importantimport/urara-docs)
 - [Introducing Urara](/intro-urara)
 - [RE:Introducing Urara](/intro-urara/re)
 
@@ -26,17 +28,27 @@ flags:
 
 尝试了当时的最新框架 SvelteKit，并把我想要的功能和设计全部混在一起，就有了现在你看到的这个——不太纯粹，但足够强大。
 
-### Gumori
+### Gumori 2022.5 ~ now
 
-`Astro` `Vite` `TypeScript` `UnoCSS`
+`Astro` `Vite` `TypeScript`
 
-- [GitHub - importantimport/gumori](https://github.com/importantimport/gumori)
+- [importantimport/gumori - GitHub](https://github.com/importantimport/gumori)
 
 基于 Astro 的极简博客启动器。可以看作 Urara 把能砍掉的功能全部砍掉，并补上一些我出于各种原因没法加上去的功能的之后的样子。
 
-### Hexo Theme-M
+#### Gumori You 2022.6 ~ now
 
-- [GitHub - kwaa/m](https://github.com/kwaa/m)
+`Astro` `Vite` `TypeScript` `UnoCSS` `Material 3`
+
+- [importantimport/gumori-you - GitHub](https://github.com/importantimport/gumori-you)
+
+Gumori 的变种，带来了「基于内容的色彩方案」和 Material Design 3 风格
+
+是一个致敬 MDL Blog Template 和 Typecho/Hexo Theme Material 的作品。
+
+### Hexo Theme-M 2020.6 ~ 2021.1
+
+- [kwaa/m - GitHub](https://github.com/kwaa/m)
 
 `Hexo` `EJS` `MDUI` `PJAX`
 
@@ -60,7 +72,11 @@ flags:
 
 ### M3UI
 
-Coming s∞n...  -->
+已死，由 Gumori You 继承遗产
+
+### Shiraha
+
+Coming s∞n... -->
 
 ## Dockerize / 容器化
 
@@ -68,8 +84,8 @@ Coming s∞n...  -->
 
 ### Caddy - kwaabot/caddy
 
-- [DockerHub - kwaabot/caddy](https://hub.docker.com/r/kwaabot/caddy)
-- [GitHub - kwaa/caddy](https://github.com/kwaa/caddy)
+- [kwaabot/caddy - DockerHub](https://hub.docker.com/r/kwaabot/caddy)
+- [kwaa/caddy - GitHub](https://github.com/kwaa/caddy)
 
 `Docker` `Caddy` `GitHub Actions`
 
@@ -79,8 +95,8 @@ Caddy 用到 v2 之后需要自行编译的产物。
 
 ### DKit - kwaabot/dkit
 
-- [DockerHub - kwaabot/dkit](https://hub.docker.com/r/kwaabot/dkit)
-- [GitHub - kwaa/dkit](https://github.com/kwaa/dkit)
+- [kwaabot/dkit - DockerHub](https://hub.docker.com/r/kwaabot/dkit)
+- [kwaa/dkit - GitHub](https://github.com/kwaa/dkit)
 
 `Docker` `pnpm` `SvelteKit` `GitHub Actions`
 
@@ -90,10 +106,21 @@ Caddy 用到 v2 之后需要自行编译的产物。
 
 ## Scripts / 脚本
 
-### Workers Hexo Search
+### Workers Hexo Search 2020.12 ~ 2021.1
 
-- [GitHub - kwaa/workers-hexo-search](https://github.com/kwaa/workers-hexo-search)
+- [kwaa/workers-hexo-search - GitHub](https://github.com/kwaa/workers-hexo-search)
 
 `Hexo` `Cloudflare Workers`
 
 我在 Hexo 的最后一作，多站点搜索处理脚本：虽简陋，但能用。（现在能不能用那就不好说了）
+
+## Others / 其他
+
+### FFF Flavored Frontmatter 2022.7 ~ now
+
+- [fff.js.org](https://fff.js.org)
+- [importantimport/fff - GitHub](https://github.com/importantimport/fff)
+
+将 Urara 和 Gumori 的 Frontmatter 格式整理并总结而成的规范。
+
+目前它的最大优点就是能在我的数个博客模板之间无修改迁移，也许之后有可能包括其他博客？
