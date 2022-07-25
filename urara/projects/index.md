@@ -119,6 +119,8 @@ Caddy 用到 v2 之后需要自行编译的产物。
 ### FFF Flavored Frontmatter 2022.7 ~ now
 
 - [fff.js.org](https://fff.js.org)
+- [fff-flavored-frontmatter - npm](https://www.npmjs.com/package/fff-flavored-frontmatter)
+- [fff - Deno](https://deno.land/x/fff)
 - [importantimport/fff - GitHub](https://github.com/importantimport/fff)
 
 将 Urara 和 Gumori 的 Frontmatter 格式整理并总结而成的规范。
