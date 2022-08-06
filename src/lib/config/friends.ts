@@ -44,6 +44,15 @@ export const friends: Friend[] = [
     link: 'https://blog.debula.ml',
     descr: '月亮一直跟着我走，它迷路了吗？',
     avatar: 'https://blog.debula.ml/usr/uploads/violet.jpg'
+  },
+  {
+    id: 'dylanwu',
+    rel: 'friend',
+    title: '瓠樽',
+    name: 'DylanWu',
+    link: 'https://blog.dylanwu.space',
+    descr: '以瓠為樽而浮乎江湖',
+    avatar: 'https://rss3.mypinata.cloud/ipfs/QmcvPuCTeNzcwuyNUKsapibsfALsQc7mqyA3BxfnozPydF'
   }
   // {
   //   id: 'kwaa',
