@@ -26,7 +26,7 @@ export default /** @type {import('@sveltejs/kit').Config} */ {
           assets: 'build',
           fallback: null
         }),
-    prerender: { default: true },
+    // prerender: { default: true },
     vite: {
       mode: process.env.MODE || 'production',
       envPrefix: 'URARA_',
