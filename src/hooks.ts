@@ -1,6 +1,6 @@
 import type { Handle } from '@sveltejs/kit'
 import { site } from '$lib/config/site'
-import { dev } from '$app/env'
+import { prerendering, dev } from '$app/env'
 
 export const handle: Handle = async ({ event, resolve }) =>
   // await resolve(event, {
@@ -11,8 +11,9 @@ export const handle: Handle = async ({ event, resolve }) =>
     const url = event.request.url
     if (
       !dev &&
-      ['application/activity+json', 'application/ld+json', 'application/json'].some(x => accept.includes(x)) &&
-      !url.endsWith('.json')
+      !prerendering &&
+      !url.endsWith('.json') &&
+      ['application/activity+json', 'application/ld+json', 'application/json'].some(x => accept.includes(x))
     )
       return new Response('Redirect', {
         status: 303,
