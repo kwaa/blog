@@ -51,7 +51,7 @@ export const head: HeadConfig = {
       : [
           // Activity Streams 2.0 Alternate
           `<link rel="alternate" type="application/activity+json" href="https://granary.io/url?input=html&output=as2&url=${
-            site.protocol + site.domain + (post.path ?? page.path ?? '')
+            site.protocol + site.domain + (post?.path ?? page?.path ?? '')
           }">`,
           // IndieAuth
           '<link rel="authorization_endpoint" href="https://indieauth.com/auth">',
