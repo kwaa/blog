@@ -9,7 +9,6 @@ export const handle: Handle = async ({ event, resolve }) =>
   {
     const accept = event.request.headers.get('Accept')
     const url = event.request.url
-    console.log(accept.split(','), url)
     if (
       !dev &&
       ['application/activity+json', 'application/ld+json', 'application/json'].some(x => accept.includes(x)) &&
