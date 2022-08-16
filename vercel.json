@@ -5,7 +5,7 @@
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",
-          "value": "https://kwaa.dev"
+          "value": "*"
         },
         {
           "key": "X-Frame-Options",

@@ -9,6 +9,7 @@ export const handle: Handle = async ({ event, resolve }) =>
   {
     const accept = event.request.headers.get('Accept')
     const url = event.request.url
+    if (!dev && !prerendering) console.log(accept, url)
     if (
       !dev &&
       !prerendering &&
@@ -17,7 +18,8 @@ export const handle: Handle = async ({ event, resolve }) =>
     )
       return new Response('Redirect', {
         status: 303,
-        headers: { Location: 'https://granary.io/url?input=html&output=as2&url=' + encodeURIComponent(url) }
+        headers: { Location: 'https://granary.io/url?input=html&output=as2&url=' + url }
+        // headers: { Location: 'https://granary.io/url?input=html&output=as2&url=' + 'https://kwaa.dev/intro-urara/re' }
       })
     else
       return await resolve(event, {
