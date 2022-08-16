@@ -9,12 +9,13 @@ export const handle: Handle = async ({ event, resolve }) =>
   {
     const accept = event.request.headers.get('Accept')
     const url = event.request.url
-    if (!dev && !prerendering) console.log(accept, url)
+    // if (!dev && !prerendering) console.log(accept, url)
     if (
-      !dev &&
+      // !dev &&
       !prerendering &&
       !url.endsWith('.json') &&
-      ['application/activity+json', 'application/ld+json', 'application/json'].some(x => accept.includes(x))
+      // ['application/activity+json', 'application/ld+json', 'application/json'].some(x => accept.includes(x))
+      accept.includes('json')
     )
       return new Response('Redirect', {
         status: 303,
