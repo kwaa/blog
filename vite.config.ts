@@ -41,7 +41,8 @@ export default defineConfig({
     }),
     VitePWA({
       srcDir: './build',
-      outDir: './.svelte-kit/output/client',
+      outDir: './build',
+      //   outDir: './.svelte-kit/output/client',
       registerType: 'autoUpdate',
       scope: '/',
       base: '/',
