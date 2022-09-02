@@ -19,6 +19,7 @@ const render = (): string => `<?xml version='1.0' encoding='utf-8'?>
       .join('')}
 </urlset>`
 
+export const prerender = true
 export const GET: RequestHandler = async () =>
   new Response(render(), {
     headers: {

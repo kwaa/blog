@@ -41,6 +41,7 @@ const render = (
   .join('')}
 </feed>`
 
+export const prerender = true
 export const GET: RequestHandler = async () =>
   new Response(render(), {
     headers: {

@@ -41,6 +41,7 @@ const render = (posts = genPosts({ postHtml: true, postLimit: feed.limit, filter
   }))
 })
 
+export const prerender = true
 export const GET: RequestHandler = async () =>
   new Response(JSON.stringify(render(), null, 2), {
     headers: {
