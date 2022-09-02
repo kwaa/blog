@@ -1,4 +1,6 @@
+// @ts-ignore Could not find a declaration file for module '@tailwindcss/typography'.
 import typography from '@tailwindcss/typography'
+// @ts-ignore Could not find a declaration file for module 'daisyui'.
 import daisyui from 'daisyui'
 
 export default /** @type {import('tailwindcss/tailwind-config').TailwindConfig} */ {
