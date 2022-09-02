@@ -31,22 +31,22 @@ export const site: SiteConfig = {
     bio: bio[~~(Math.random() * bio.length)],
     metadata: [
       {
-        text: 'kwaa',
+        // text: 'kwaa',
         icon: 'i-simple-icons-github',
         link: 'https://github.com/kwaa'
       },
       {
-        text: '@kwaabot',
+        // text: '@kwaabot',
         icon: 'i-simple-icons-telegram',
         link: 'https://t.me/kwaabot'
       },
       {
-        text: '@kwaa:matrix.org',
+        // text: '@kwaa:matrix.org',
         icon: 'i-simple-icons-matrix',
         link: 'https://matrix.to/#/@kwaa:matrix.org'
       },
       {
-        text: '0x896478D978EB0000',
+        // text: '0x896478D978EB0000',
         icon: 'i-heroicons-solid-key',
         link: 'https://kwaa.dev/pgp/0x896478D978EB0000.asc',
         rel: 'pgpkey'
