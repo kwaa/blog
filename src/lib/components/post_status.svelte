@@ -20,13 +20,13 @@
   <span class:hidden={preview} class="opacity-50">/</span>
   <a href={post.path} class="swap hover:swap-active u-url u-uid">
     <time
-      class="swap-off font-semibold opacity-75 duration-500 ease-in-out mr-auto dt-published"
+      class="swap-off uppercase font-semibold opacity-75 duration-500 ease-in-out mr-auto dt-published"
       datetime={jsonPublished}
       itemprop="datePublished">
       {stringPublished}
     </time>
     <time
-      class="swap-on font-semibold text-primary duration-500 ease-in-out mr-auto dt-updated"
+      class="swap-on uppercase font-semibold text-primary duration-500 ease-in-out mr-auto dt-updated"
       datetime={jsonUpdated}
       itemprop="dateModified">
       {stringUpdated}
