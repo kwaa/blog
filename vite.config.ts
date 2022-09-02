@@ -55,8 +55,7 @@ export default defineConfig({
         manualChunks: (id: string) => {
           if (id.includes('node_modules')) return 'vendor'
           else if (id.includes('src/lib/components')) return 'components'
-          else if (id.includes('src/lib')) return 'lib'
-          else return 'urara'
+          else if (id.includes('src/lib')) return 'urara'
         }
       }
     }
