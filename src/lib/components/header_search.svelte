@@ -31,7 +31,7 @@
 </script>
 
 <form
-  action={headerConfig.search.provider === 'duckduckgo' ? '//duckduckgo.com/' : '//google.com/search'}
+  action={headerConfig?.search?.provider === 'duckduckgo' ? '//duckduckgo.com/' : '//google.com/search'}
   method="get"
   accept-charset="UTF-8"
   class="flex-1">
@@ -41,7 +41,7 @@
     class="input input-ghost input-bordered xl:bg-base-100 xl:text-base-content transition-all w-full h-12" />
   <input
     type="hidden"
-    name={headerConfig.search.provider === 'duckduckgo' ? 'sites' : 'sitesearch'}
+    name={headerConfig?.search?.provider === 'duckduckgo' ? 'sites' : 'sitesearch'}
     value={site.protocol + site.domain} />
   {#if headerConfig.search.provider === 'duckduckgo'}
     <!-- header -->
