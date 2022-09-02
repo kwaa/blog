@@ -41,7 +41,7 @@ const RebuildPWA = async (): Plugin => ({
     if (pwaPlugin?.generateSW) {
       console.log('Generating PWA...')
       await pwaPlugin.generateSW()
-      copyFileSync('./.svelte-kit/output/client/sw.js', './build/sw.js')
+      copyFileSync('.svelte-kit/output/client/sw.js', './build/sw.js')
       console.log('Generation of PWA complete')
     }
   }
