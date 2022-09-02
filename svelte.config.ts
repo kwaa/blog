@@ -6,7 +6,7 @@ import adapterStatic from '@sveltejs/adapter-static'
 import adapterVercel from '@sveltejs/adapter-vercel'
 // svelte preprocessor
 import { mdsvex } from 'mdsvex'
-import mdsvexConfig from './mdsvex.config'
+import mdsvexConfig from './mdsvex.config.js'
 import preprocess from 'svelte-preprocess'
 
 const defineConfig = (config: Config) => config
