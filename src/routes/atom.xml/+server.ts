@@ -4,9 +4,9 @@ import { feed } from '$lib/config/general'
 import { favicon } from '$lib/config/icon'
 import { genPosts, genTags } from '$lib/utils/posts'
 
-const render = async (
+const render = (
   posts = genPosts({ postHtml: true, postLimit: feed.limit, filterUnlisted: true })
-): Promise<string> => `<?xml version='1.0' encoding='utf-8'?>
+): string => `<?xml version='1.0' encoding='utf-8'?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>${site.protocol + site.domain}/</id>
   <title><![CDATA[${site.title}]]></title>${site.subtitle ? `\n  <subtitle><![CDATA[${site.subtitle}]]></subtitle>` : ''}${
@@ -42,7 +42,7 @@ const render = async (
 </feed>`
 
 export const GET: RequestHandler = async () =>
-  new Response(await render(), {
+  new Response(render(), {
     headers: {
       'content-type': 'application/atom+xml; charset=utf-8'
     }
