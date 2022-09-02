@@ -10,6 +10,7 @@ specifiers:
   '@sveltejs/adapter-vercel': 1.0.0-next.58
   '@sveltejs/kit': next
   '@tailwindcss/typography': ^0.5.2
+  '@types/unist': ^2.0.6
   '@typescript-eslint/eslint-plugin': ^5.27.1
   '@typescript-eslint/parser': ^5.27.1
   autoprefixer: ^10.4.7
@@ -64,6 +65,7 @@ devDependencies:
   '@sveltejs/adapter-vercel': 1.0.0-next.58
   '@sveltejs/kit': 1.0.0-next.463_fhgkwirxvgjw2igda6zmhiisma
   '@tailwindcss/typography': 0.5.6_tailwindcss@3.1.8
+  '@types/unist': 2.0.6
   '@typescript-eslint/eslint-plugin': 5.36.1_lbwfnm54o3pmr3ypeqp3btnera
   '@typescript-eslint/parser': 5.36.1_yqf6kl63nyoq5megxukfnom5rm
   autoprefixer: 10.4.8_postcss@8.4.16
