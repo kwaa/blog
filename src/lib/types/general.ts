@@ -6,8 +6,6 @@ export type ThemeConfig = {
 export type HeadConfig = {
   custom?: (params: { dev: boolean; post?: Urara.Post; page?: Urara.Page }) => string[]
   me?: string[]
-  /** @deprecated - use `head.me` instead */
-  relMe?: never
 }
 
 export type HeaderConfig = {
