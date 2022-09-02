@@ -158,7 +158,7 @@ articleObserver 检测是否在浏览文章并返回布尔值，headingObserver 
 
 ```ts
 import { onMount, onDestroy } from 'svelte'
-import { browser } from '$app/env'
+import { browser } from '$app/environment'
 
 let intersecting: string[] = []
 let intersectingArticle: boolean = true

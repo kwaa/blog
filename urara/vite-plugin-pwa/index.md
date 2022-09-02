@@ -79,7 +79,7 @@ registerSW({
 ```svelte
 <script lang="ts">
   import { onMount } from 'svelte'
-  import { browser, dev } from '$app/env'
+  import { browser, dev } from '$app/environment'
   import { registerSW } from 'virtual:pwa-register'
   // 非开发环境的浏览器访问
   onMount(() => !dev && browser && registerSW(...options))
