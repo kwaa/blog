@@ -10,7 +10,7 @@ import chalk from 'chalk'
 import sharp from 'sharp'
 
 const config = {
-  extensions: ['svelte', 'md', 'js', 'ts'],
+  extensions: ['md'],
   rename: ['404'],
   catch: ['ENOENT', 'EEXIST']
 }
