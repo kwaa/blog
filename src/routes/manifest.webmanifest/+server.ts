@@ -1,4 +1,4 @@
-import type { RequestHandler } from '@sveltejs/kit'
+import type { RequestHandler } from './$types'
 import { site } from '$lib/config/site'
 import { header } from '$lib/config/general'
 import { any, maskable } from '$lib/config/icon'
@@ -41,7 +41,7 @@ export const GET: RequestHandler = () =>
     ),
     {
       headers: {
-        'Content-Type': 'application/manifest+json; charset=utf-8'
+        'content-type': 'application/manifest+json; charset=utf-8'
       }
     }
   )

@@ -1,4 +1,4 @@
-import type { RequestHandler } from '@sveltejs/kit'
+import type { RequestHandler } from './$types'
 import { site } from '$lib/config/site'
 import { feed } from '$lib/config/general'
 import { favicon } from '$lib/config/icon'
@@ -44,6 +44,6 @@ const render = async (
 export const GET: RequestHandler = async () =>
   new Response(await render(), {
     headers: {
-      'Content-Type': 'application/atom+xml; charset=utf-8'
+      'content-type': 'application/atom+xml; charset=utf-8'
     }
   })
