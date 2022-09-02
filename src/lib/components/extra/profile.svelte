@@ -19,7 +19,7 @@
     <div class="rounded-full border-2 border-white shadow-xl w-16 h-16">
       <img
         class="hover:rotate-[360deg] transition-transform duration-1000 ease-in-out m-0"
-        src={avatar ?? site.author.photo}
+        src={avatar ?? site.author.avatar}
         alt={name ?? site.author.name}
         loading="lazy"
         decoding="async" />
