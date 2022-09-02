@@ -21,6 +21,7 @@ specifiers:
   eslint-config-prettier: ^8.5.0
   eslint-plugin-svelte3: ^4.0.0
   fenceparser: ^2.0.0
+  fff-flavored-frontmatter: ^0.3.0
   github-slugger: ^1.4.0
   mdast-util-to-string: ^3.1.0
   mdsvex: ^0.10.6
@@ -33,6 +34,7 @@ specifiers:
   rehype-external-links: ^1.0.1
   rehype-slug: ^5.0.1
   remark: ^14.0.2
+  remark-footnotes: ~2.0.0
   sharp: ^0.30.6
   shiki-twoslash: ^3.0.2
   svelte: ^3.48.0
@@ -72,6 +74,7 @@ devDependencies:
   eslint-config-prettier: 8.5.0_eslint@8.23.0
   eslint-plugin-svelte3: 4.0.0_sfdub7vxhxkt5wmgvhhmmgyu2e
   fenceparser: 2.2.0
+  fff-flavored-frontmatter: 0.3.0
   github-slugger: 1.4.0
   mdast-util-to-string: 3.1.0
   mdsvex: 0.10.6_svelte@3.49.0
@@ -84,6 +87,7 @@ devDependencies:
   rehype-external-links: 1.0.1
   rehype-slug: 5.0.1
   remark: 14.0.2
+  remark-footnotes: 2.0.0
   shiki-twoslash: 3.1.0
   svelte: 3.49.0
   svelte-bricks: 0.1.7
@@ -3562,6 +3566,10 @@ packages:
       web-streams-polyfill: 3.2.1
     dev: true
 
+  /fff-flavored-frontmatter/0.3.0:
+    resolution: {integrity: sha512-6EIuC+QbJuVWaQWO/MeRCRsYtz69lsncXt/bnBROGbGLzxBER9d/kP1bAj7ZLxY6e56+aVDkSugdcsYTiQVmXg==}
+    dev: true
+
   /file-entry-cache/6.0.1:
     resolution: {integrity: sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg==}
     engines: {node: ^10.12.0 || >=12.0.0}
@@ -5984,6 +5992,10 @@ packages:
       hast-util-to-string: 2.0.0
       unified: 10.1.2
       unist-util-visit: 4.1.1
+    dev: true
+
+  /remark-footnotes/2.0.0:
+    resolution: {integrity: sha512-3Clt8ZMH75Ayjp9q4CorNeyjwIxHFcTkaektplKGl2A1jNGEUey8cKL0ZC5vJwfcD5GFGsNLImLG/NGzWIzoMQ==}
     dev: true
 
   /remark-parse/10.0.1:
