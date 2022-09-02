@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { dev } from '$app/env'
+  import { dev } from '$app/environment'
   import { site } from '$lib/config/site'
   import { header as headerConfig } from '$lib/config/general'
   import { hslToHex } from '$lib/utils/color'
