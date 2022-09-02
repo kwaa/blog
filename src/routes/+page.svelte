@@ -7,7 +7,7 @@
   import { title as storedTitle } from '$lib/stores/title'
   import Head from '$lib/components/head.svelte'
   import Footer from '$lib/components/footer.svelte'
-  import Post from '$lib/components/index_post.svelte'
+  import Post from '$lib/components/post_card.svelte'
   import Profile from '$lib/components/index_profile.svelte'
   import RemoteFollow from '$lib/components/extra/follow.svelte'
 
@@ -109,7 +109,7 @@
             in:fly={{ x: index % 2 ? 100 : -100, duration: 300, delay: 500 }}
             out:fly={{ x: index % 2 ? -100 : 100, duration: 300 }}
             class="rounded-box transition-all duration-500 ease-in-out hover:z-30 hover:shadow-lg md:shadow-xl md:hover:shadow-2xl md:hover:-translate-y-0.5">
-            <Post {post} loading={index < 5 ? 'eager' : 'lazy'} decoding={index < 5 ? 'auto' : 'async'} />
+            <Post {post} preview={true} loading={index < 5 ? 'eager' : 'lazy'} decoding={index < 5 ? 'auto' : 'async'} />
           </div>
         {/each}
       </main>
