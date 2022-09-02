@@ -29,7 +29,7 @@ const pwaConfiguration = {
 
 const RebuildPWA = async (): Plugin => ({
   name: 'rebuild-pwa',
-  writeBundle: async () => {
+  closeBundle: async () => {
     const config = await resolveConfig(
       {
         plugins: [VitePWA(pwaConfiguration)]
