@@ -1,14 +1,12 @@
 ---
 title: '如何制作一张 Beat Saber 谱面（一）准备篇'
-date: 2021-02-28 22:22:22
+created: 2021-02-28 22:22:22
 updated: 2021-03-06 05:45:55
-categories:
-  - 笔记
 tags:
   - Beat Saber
   - ChroMapper
   - Unity
-photo: /beatsaber-mapping-1/beatsaber.webp
+image: /beatsaber-mapping-1/beatsaber.webp
 summary: 最近一直没什么可以拿来写博客的东西，直到我开始想自制 Beat Saber 谱面；这是本站第一个连载文章。
 ---
 

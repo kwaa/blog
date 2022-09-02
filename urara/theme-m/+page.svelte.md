@@ -1,9 +1,9 @@
 ---
 title: 'Introducing Theme-M'
-date: 2020-07-26 15:00:00
+created: 2020-07-26 15:00:00
 updated: 2020-08-14 05:42:00
 comment: true
-photo: /theme-m/cover.webp
+image: /theme-m/cover.webp
 categories:
   - 折腾
 tags:

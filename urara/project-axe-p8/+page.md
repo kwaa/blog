@@ -1,7 +1,7 @@
 ---
 title: '一年后的成果：STREIN IEM-AXE_P8'
 created: 2020-09-03 23:54:00
-photo: /project-axe-p8/p8.webp
+image: /project-axe-p8/p8.webp
 tags:
   - DIY
   - IEM

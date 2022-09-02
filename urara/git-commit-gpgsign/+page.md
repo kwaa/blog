@@ -2,15 +2,13 @@
 title: '使用 GPG 为 Git commit 签名'
 created: 2021-11-23
 updated: 2022-01-12
-categories:
-  - 笔记
 tags:
   - GitHub
   - GitHub Desktop
   - Git
   - GPG
 summary: 为了好看，我为 Urara 的所有 commit 设置了 GPG 签名。
-photo: /git-commit-gpgsign/cover.webp
+image: /git-commit-gpgsign/cover.webp
 ---
 
 为了好看，我为 [Urara](https://github.com/importantimport/urara) 的所有 commit 设置了 GPG 签名。

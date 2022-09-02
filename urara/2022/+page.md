@@ -1,7 +1,7 @@
 ---
 title: '2021 总结 & 2022 目标 & Refresh IEM Design'
-date: 2021-12-31
-photo: /2022/2022.webp
+created: 2021-12-31
+image: /2022/2022.webp
 ---
 
 其实这是把两篇文章凑一起了。
