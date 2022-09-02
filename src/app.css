@@ -36,6 +36,12 @@ html {
   @apply text-primary;
 }
 
+/* .urara-prose list */
+
+.urara-prose > ul > li > input {
+  @apply my-auto;
+}
+
 /* .urara-prose table */
 
 .urara-prose div > table > thead {
@@ -49,7 +55,7 @@ html {
 /* .urara-prose a */
 
 .urara-prose :is(p, li) > a {
-  @apply bg-[length:100%_0.2em] hover:bg-[length:100%_100%] bg-[position:0_88%] bg-gradient-to-t from-secondary/50 to-primary/25 bg-no-repeat transition-all ease-in-out !no-underline;
+  @apply bg-[length:100%_0.2em] hover:bg-[length:100%_100%] bg-[position:0_88%] bg-gradient-to-t from-secondary/50 to-secondary/40 bg-no-repeat transition-all ease-in-out !no-underline;
 }
 
 /* .urara-prose misc */
@@ -100,8 +106,14 @@ footer a {
 
 /* .urara-prose pre */
 
+@media (max-width: 768px) {
+  .urara-prose > pre {
+    @apply -mx-8 rounded-none;
+  }
+}
+
 .urara-prose > pre {
-  @apply -mx-8 rounded-none pb-0;
+  @apply pb-0;
 }
 
 .urara-prose > pre > div.code-container {
