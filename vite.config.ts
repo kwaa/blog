@@ -49,17 +49,6 @@ const RebuildPWA = async (): Plugin => ({
 
 export default defineConfig({
   envPrefix: 'URARA_',
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks: (id: string) => {
-          if (id.includes('node_modules')) return 'vendor'
-          else if (id.includes('src/lib/components')) return 'components'
-          else if (id.includes('src/lib')) return 'urara'
-        }
-      }
-    }
-  },
   css: {
     postcss: {
       plugins: [
