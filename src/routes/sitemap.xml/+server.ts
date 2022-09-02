@@ -19,9 +19,9 @@ const render = async (): Promise<string> => `<?xml version='1.0' encoding='utf-8
       .join('')}
 </urlset>`
 
-export const get: RequestHandler = async () => ({
-  headers: {
-    'Content-Type': 'application/xml; charset=utf-8'
-  },
-  body: await render()
-})
+export const GET: RequestHandler = async () =>
+  new Response(await render(), {
+    headers: {
+      'Content-Type': 'application/xml; charset=utf-8'
+    }
+  })

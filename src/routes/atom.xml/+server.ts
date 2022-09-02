@@ -29,9 +29,7 @@ const render = async (
     <id>${site.protocol + site.domain + post.path}</id>
     <published>${new Date(post.published ?? post.created).toJSON()}</published>
     <updated>${new Date(post.updated ?? post.published ?? post.created).toJSON()}</updated>${
-      post.layout === 'article' && post.summary
-        ? `\n    <summary type="html"><![CDATA[${post.summary.toString()}]]></summary>`
-        : ''
+      post.summary ? `\n    <summary type="html"><![CDATA[${post.summary.toString()}]]></summary>` : ''
     }
     <content type="html">
       <![CDATA[${post.html}]]>
@@ -43,9 +41,9 @@ const render = async (
   .join('')}
 </feed>`
 
-export const get: RequestHandler = async () => ({
-  headers: {
-    'Content-Type': 'application/atom+xml; charset=utf-8'
-  },
-  body: await render()
-})
+export const GET: RequestHandler = async () =>
+  new Response(await render(), {
+    headers: {
+      'Content-Type': 'application/atom+xml; charset=utf-8'
+    }
+  })

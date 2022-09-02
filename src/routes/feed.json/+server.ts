@@ -16,7 +16,7 @@ const render = async (posts = genPosts({ postHtml: true, postLimit: feed.limit, 
     {
       name: site.author.name,
       url: site.protocol + site.domain,
-      avatar: site.author.photo
+      avatar: site.author.avatar
     }
   ],
   language: site.lang ?? 'en',
@@ -30,19 +30,20 @@ const render = async (posts = genPosts({ postHtml: true, postLimit: feed.limit, 
     title: post.title,
     content_html: post.html,
     summary: post['summary'],
-    image: post['photo'],
+    image: post['image'],
     date_published: post.published ?? post.created,
     date_modified: post.updated ?? post.published ?? post.created,
     tags: post.tags,
     _indieweb: {
-      type: post.layout ?? 'article'
+      type: post.type,
+      'in-reply-to': post.in_reply_to
     }
   }))
 })
 
-export const get: RequestHandler = async () => ({
-  headers: {
-    'Content-Type': 'application/feed+json; charset=utf-8'
-  },
-  body: JSON.stringify(await render(), null, 2)
-})
+export const GET: RequestHandler = async () =>
+  new Response(JSON.stringify(await render(), null, 2), {
+    headers: {
+      'Content-Type': 'application/feed+json; charset=utf-8'
+    }
+  })

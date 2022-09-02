@@ -1,44 +1,36 @@
-<script lang="ts" context="module">
-  export const prerender = true
-  export const load = async ({ url, fetch }) => ({
-    props: {
-      path: url.pathname,
-      res: await (await fetch('/posts.json')).json()
-    }
-  })
-</script>
-
 <script lang="ts">
+  import type { LayoutData } from './$types'
   import { onMount } from 'svelte'
-  import { browser, dev } from '$app/env'
+  import { browser, dev } from '$app/environment'
   import { fly } from 'svelte/transition'
   import { genTags } from '$lib/utils/posts'
   import { posts, tags } from '$lib/stores/posts'
   import { registerSW } from 'virtual:pwa-register'
   import Head from '$lib/components/head_static.svelte'
   import Header from '$lib/components/header.svelte'
-  import '../app.css'
   import 'uno.css'
-  export let res: Urara.Post[]
-  export let path: string
-  posts.set(res)
-  tags.set(genTags(res))
+  import '../app.css'
+
+  export let data: LayoutData
+  
+  posts.set(data.res)
+  tags.set(genTags(data.res))
   onMount(
     () =>
       !dev &&
       browser &&
       registerSW({
         onRegistered: r => r && setInterval(async () => await r.update(), 198964),
-        onRegisterError: error => console.log('SW registration error', error)
+        onRegisterError: error => console.error(error)
       })
   )
 </script>
 
 <Head />
 
-<Header {path} />
+<Header path={data.path} />
 
-{#key path}
+{#key data.path}
   <div
     class="bg-base-100 md:bg-base-200 min-h-screen pt-16 md:pb-8 lg:pb-16"
     in:fly={{ y: 100, duration: 300, delay: 300 }}
