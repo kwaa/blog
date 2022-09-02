@@ -26,7 +26,7 @@ export const site: SiteConfig = {
   description: '[DATA EXPUNGED]',
   author: {
     name: '藍+85CD',
-    photo: 'https://kwaa.dev/assets/maskable@192.webp',
+    avatar: 'https://kwaa.dev/assets/maskable@192.webp',
     status: '🌌',
     bio: bio[~~(Math.random() * bio.length)],
     metadata: [
