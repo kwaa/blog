@@ -16,7 +16,8 @@ export default defineConfig({
   preprocess: [mdsvex(mdsvexConfig), preprocess({ preserve: ['partytown'] })],
   kit: {
     adapter: Object.keys(process.env).some(key => ['VERCEL', 'CF_PAGES', 'NETLIFY'].includes(key))
-      ? adapterVercel({ edge: true })
+      ? //   ? adapterVercel({ edge: true })
+        adapterVercel()
       : process.env.ADAPTER === 'node'
       ? adapterNode({ out: 'build' })
       : adapterStatic({
