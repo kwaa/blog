@@ -13,7 +13,7 @@ const defineConfig = (config: Config) => config
 
 export default defineConfig({
   extensions: ['.svelte', ...(mdsvexConfig.extensions as string[])],
-  preprocess: [mdsvex(mdsvexConfig), preprocess()],
+  preprocess: [mdsvex(mdsvexConfig), preprocess({ preserve: ['partytown'] })],
   kit: {
     adapter: Object.keys(process.env).some(key => ['VERCEL', 'CF_PAGES', 'NETLIFY'].includes(key))
       ? adapterVercel({ edge: true })

@@ -59,7 +59,7 @@ export const head: HeadConfig = {
           // Microsub
           '<link rel="microsub" href="https://aperture.p3k.io/microsub/741">',
           // Plausible Analytics
-          '<script defer data-domain="kwaa.dev" src="https://plausible.kwaa.dev/js/plausible.js"></script>',
+          '<script defer type="text/partytown" data-domain="kwaa.dev" src="https://plausible.kwaa.dev/js/plausible.js"></script>',
           // Block Baiduspider
           '<meta name="baiduspider" content="noindex, noarchive">'
         ],
