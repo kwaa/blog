@@ -1,9 +1,11 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@builder.io/partytown': ^0.7.0
   '@iconify-json/heroicons-outline': ^1.1.4
   '@iconify-json/heroicons-solid': ^1.1.5
   '@iconify-json/simple-icons': ^1.1.24
+  '@importantimport/material-color-utilities': ^0.2.0
   '@sveltejs/adapter-node': 1.0.0-next.88
   '@sveltejs/adapter-static': 1.0.0-next.41
   '@sveltejs/adapter-vercel': 1.0.0-next.72
@@ -52,16 +54,18 @@ specifiers:
   workbox-window: ^6.5.4
 
 dependencies:
+  '@builder.io/partytown': 0.7.0
   sharp: 0.30.7
 
 devDependencies:
   '@iconify-json/heroicons-outline': 1.1.4
   '@iconify-json/heroicons-solid': 1.1.5
   '@iconify-json/simple-icons': 1.1.24
+  '@importantimport/material-color-utilities': 0.2.0
   '@sveltejs/adapter-node': 1.0.0-next.88
   '@sveltejs/adapter-static': 1.0.0-next.41
   '@sveltejs/adapter-vercel': 1.0.0-next.72
-  '@sveltejs/kit': 1.0.0-next.463_fhgkwirxvgjw2igda6zmhiisma
+  '@sveltejs/kit': 1.0.0-next.464_fhgkwirxvgjw2igda6zmhiisma
   '@tailwindcss/typography': 0.5.6_tailwindcss@3.1.8
   '@types/unist': 2.0.6
   '@typescript-eslint/eslint-plugin': 5.36.1_lbwfnm54o3pmr3ypeqp3btnera
@@ -1276,6 +1280,11 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
+  /@builder.io/partytown/0.7.0:
+    resolution: {integrity: sha512-Mw2KeiPglCZujE99ntbJfZq52dJktzhfifWav4UJYgDx81L/hWMQXg/bNqsYlz9cnopDBqYewy+6qbv3b1DcyQ==}
+    hasBin: true
+    dev: false
+
   /@csstools/postcss-cascade-layers/1.0.5_postcss@8.4.16:
     resolution: {integrity: sha512-Id/9wBT7FkgFzdEpiEWrsVd4ltDxN0rI0QS0SChbeQiSuux3z21SJCRLu6h2cvCEUmaRi+VD0mHFj+GJD4GFnw==}
     engines: {node: ^12 || ^14 || >=16}
@@ -1516,6 +1525,11 @@ packages:
       - supports-color
     dev: true
 
+  /@importantimport/material-color-utilities/0.2.0:
+    resolution: {integrity: sha512-3zv/dChKxOENtmYxzN564+bK3rpXh+rrRHZ6bzO4A19LG9qdVekvMmxYEPjlPkmA+ATBazkbm4yYmL8SivCxEg==}
+    requiresBuild: true
+    dev: true
+
   /@jridgewell/gen-mapping/0.1.1:
     resolution: {integrity: sha512-sQXCasFk+U8lWYEe66WxRDOE9PjVz4vSM51fTu3Hw+ClTpUSQb718772vH3pyS5pShp6lvQM7SxgIDXXXmOX7w==}
     engines: {node: '>=6.0.0'}
@@ -1695,8 +1709,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.463_fhgkwirxvgjw2igda6zmhiisma:
-    resolution: {integrity: sha512-r08t2FTbWC/eem1j70HcdsRPj+L0X/aXiTqQkyUgn5/3yBxxx4jXQqlkzBtYsjxZ4x+94yWQxYQTYXD6PxWM5g==}
+  /@sveltejs/kit/1.0.0-next.464_fhgkwirxvgjw2igda6zmhiisma:
+    resolution: {integrity: sha512-QV0IE8ShRC5ndP0fQN4/3bg8PMkjnhvLo0C4gULJ14LFPw5fgDbwuVM4uXmM+nfzT8hTkf9F27J3uZSoJmHaeg==}
     engines: {node: '>=16.14'}
     hasBin: true
     requiresBuild: true

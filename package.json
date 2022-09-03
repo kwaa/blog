@@ -23,6 +23,7 @@
     "@iconify-json/heroicons-outline": "^1.1.4",
     "@iconify-json/heroicons-solid": "^1.1.5",
     "@iconify-json/simple-icons": "^1.1.24",
+    "@importantimport/material-color-utilities": "^0.2.0",
     "@sveltejs/adapter-node": "1.0.0-next.88",
     "@sveltejs/adapter-static": "1.0.0-next.41",
     "@sveltejs/adapter-vercel": "1.0.0-next.72",
@@ -71,6 +72,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@builder.io/partytown": "^0.7.0",
     "sharp": "^0.30.7"
   }
 }
