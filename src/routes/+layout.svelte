@@ -16,6 +16,9 @@
   
   posts.set(data.res)
   tags.set(genTags(data.res))
+
+  // partytown
+  let scriptEl
   onMount(
     () => scriptEl &&
       (scriptEl.textContent = partytownSnippet())
