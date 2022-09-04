@@ -4,16 +4,14 @@ import { type Plugin, defineConfig, resolveConfig } from 'vite'
 import UnoCSS from 'unocss/vite'
 import { presetTagify, presetIcons, extractorSvelte } from 'unocss'
 import { VitePWA } from 'vite-plugin-pwa'
-import { partytownVite } from '@builder.io/partytown/utils'
 import { sveltekit } from '@sveltejs/kit/vite'
 // postcss & tailwindcss
 import TailwindCSS from 'tailwindcss'
 import tailwindConfig from './tailwind.config'
 import autoprefixer from 'autoprefixer'
 import cssnano from 'cssnano'
-// rebuild pwa / utils
+// rebuild pwa
 import { copyFileSync } from 'fs'
-import { join } from 'path'
 
 const pwaConfiguration = {
   srcDir: './build',
@@ -79,9 +77,6 @@ export default defineConfig({
     }),
     VitePWA(pwaConfiguration),
     // RebuildPWA(),
-    partytownVite({
-      dest: join(process.cwd(), 'static', '~partytown')
-    }),
     sveltekit()
   ]
 })
