@@ -66,17 +66,40 @@ Gumori 的变种，带来了「基于内容的色彩方案」和 Material Design
 
 基于 Elixir / Phoenix / LiveView 的服务器探针，客户端直接复用了 node_explorer。
 
-由于 prometheus 格式太过阴间而进展缓慢
+由于 prometheus 格式太过阴间而进展缓慢 -->
 
 ## Library / 库
 
-### M3UI
+### FFF Flavored Frontmatter 2022.7 ~ now
 
-已死，由 Gumori You 继承遗产
+- [fff.js.org](https://fff.js.org)
+- [fff-flavored-frontmatter - npm](https://www.npmjs.com/package/fff-flavored-frontmatter)
+- [fff - Deno](https://deno.land/x/fff)
+- [importantimport/fff - GitHub](https://github.com/importantimport/fff)
+
+`TypeScript` `Turborepo`
+
+将 Urara 和 Gumori 的 Frontmatter 格式整理并总结而成的规范。
+
+目前它的最大优点就是能在我的数个博客模板之间无修改迁移，也许之后有可能包括其他博客？
 
 ### Shiraha
 
-Coming s∞n... -->
+- [importantimport/shiraha - GitHub](https://github.com/importantimport/shiraha)
+
+`SugarSS` `PostCSS` `Classless` `CSS Framework`
+
+使用 SugarSS 的无类 CSS 框架，以好玩和易于扩展为目标！缓慢发展中...
+
+### Hexo Partytown
+
+- [hexo-partytown - npm](https://www.npmjs.com/package/hexo-partytown)
+- [kwaa/hexo-partytown - GitHub](https://github.com/kwaa/hexo-partytown)
+
+`Hexo` `Partytown` `TypeScript`
+
+Hexo 的 Partytown 集成，胶水代码。
+值得一提的是这个包是用 TypeScript 写的，并同时兼容 ESM 和 CJS... 虽然并没有什么用。~~玩一圈回来，给 Hexo 写东西是真的没什么 DX 可言~~
 
 ## Dockerize / 容器化
 
@@ -112,17 +135,4 @@ Caddy 用到 v2 之后需要自行编译的产物。
 
 `Hexo` `Cloudflare Workers`
 
-我在 Hexo 的最后一作，多站点搜索处理脚本：虽简陋，但能用。（现在能不能用那就不好说了）
-
-## Others / 其他
-
-### FFF Flavored Frontmatter 2022.7 ~ now
-
-- [fff.js.org](https://fff.js.org)
-- [fff-flavored-frontmatter - npm](https://www.npmjs.com/package/fff-flavored-frontmatter)
-- [fff - Deno](https://deno.land/x/fff)
-- [importantimport/fff - GitHub](https://github.com/importantimport/fff)
-
-将 Urara 和 Gumori 的 Frontmatter 格式整理并总结而成的规范。
-
-目前它的最大优点就是能在我的数个博客模板之间无修改迁移，也许之后有可能包括其他博客？
+~~我在 Hexo 的最后一作，~~ 多站点搜索处理脚本：虽简陋，但能用。（现在能不能用那就不好说了）
