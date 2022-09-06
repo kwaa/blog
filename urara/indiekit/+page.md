@@ -76,6 +76,8 @@ remarkPlugins: [
 
 在本文我使用了 `@indiekit/preset-hugo` 和 `@indiekit/store-github` 两个插件。
 
+由于 pnpm 安装 indiekit 会有莫名其妙的读取 bug，这里通过 npm 来安装。
+
 ```bash
 mkdir /home/indiekit
 cd /home/indiekit
