@@ -194,12 +194,12 @@ indiekit.example.com {
 ```
 
 ```bash
-docker run -d \
---name caddy \
---network=host \
--v /etc/caddy/:/etc/caddy/ \
--v /root/.local/share/caddy:/root/.local/share/caddy \
---restart unless-stopped \
+docker run -d \\
+--name caddy \\
+--network=host \\
+-v /etc/caddy/:/etc/caddy/ \\
+-v /root/.local/share/caddy:/root/.local/share/caddy \\
+--restart unless-stopped \\
 kwaabot/caddy
 ```
 
