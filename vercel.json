@@ -34,12 +34,6 @@
       ]
     }
   ],
-  "rewrites": [
-    {
-      "source": "/partytown/plausible",
-      "destination": "https://plausible.kwaa.dev/js/plausible.js"
-    }
-  ],
   "redirects": [
     {
       "source": "/.well-known/host-meta",

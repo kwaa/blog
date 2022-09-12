@@ -34,10 +34,9 @@
 <svelte:head>
   <script>
     partytown = {
-      forward: ['plausible'],
+      forward: ['plausible']
     }
   </script>
-  <!-- resolveUrl: (url) => new URL('https://kwaa.dev/partytown/plausible') -->
   <script bind:this={scriptEl}></script>
 </svelte:head>
 
