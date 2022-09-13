@@ -1,6 +1,5 @@
 import type { RequestHandler } from './$types'
 import { site } from '$lib/config/site'
-import { header } from '$lib/config/general'
 import { any, maskable } from '$lib/config/icon'
 
 export const prerender = true
@@ -24,25 +23,14 @@ export const GET: RequestHandler = () =>
             .filter(icon => icon.sizes !== '180x180')
             .map(icon => ({ ...icon, purpose: 'any' })),
           ...Object.values(maskable).map(icon => ({ ...icon, purpose: 'maskable' }))
-        ],
-        shortcuts: header.nav.flatMap(shortcut =>
-          shortcut.link
-            ? {
-                name: shortcut.text,
-                url: shortcut.link
-              }
-            : shortcut.children.map(shortcut => ({
-                name: shortcut.text,
-                url: shortcut.link
-              }))
-        )
+        ]
       },
       null,
       2
     ),
     {
       headers: {
-        'content-type': 'application/manifest+json; charset=utf-8'
+        'Content-Type': 'application/manifest+json; charset=utf-8'
       }
     }
   )
