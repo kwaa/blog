@@ -1,5 +1,5 @@
 // vite define config
-import { type Plugin, defineConfig, resolveConfig } from 'vite'
+import { defineConfig } from 'vite'
 // vite plugin
 import UnoCSS from 'unocss/vite'
 import { presetTagify, presetIcons, extractorSvelte } from 'unocss'
@@ -10,42 +10,6 @@ import TailwindCSS from 'tailwindcss'
 import tailwindConfig from './tailwind.config'
 import autoprefixer from 'autoprefixer'
 import cssnano from 'cssnano'
-// rebuild pwa
-import { copyFileSync } from 'fs'
-
-const pwaConfiguration = {
-  srcDir: './build',
-  outDir: './.svelte-kit/output/client',
-  registerType: 'autoUpdate',
-  base: '/',
-  scope: '/',
-  workbox: {
-    dontCacheBustURLsMatching: /-[a-f0-9]{8}\./,
-    globDirectory: './build/',
-    globPatterns: ['robots.txt', '**/*.{js,css,html,ico,png,svg,webmanifest}'],
-    globIgnores: ['**/sw*', '**/workbox-*']
-  }
-} as const
-
-const RebuildPWA = async (): Plugin => ({
-  name: 'rebuild-pwa',
-  closeBundle: async () => {
-    const config = await resolveConfig(
-      {
-        plugins: [VitePWA(pwaConfiguration)]
-      },
-      'build',
-      'production'
-    )
-    const pwaPlugin = config.plugins.find(i => i.name === 'vite-plugin-pwa')?.api
-    if (pwaPlugin?.generateSW) {
-      console.log('Generating PWA...')
-      await pwaPlugin.generateSW()
-      copyFileSync('.svelte-kit/output/client/sw.js', './build/sw.js')
-      console.log('Generation of PWA complete')
-    }
-  }
-})
 
 export default defineConfig({
   envPrefix: 'URARA_',
@@ -75,8 +39,19 @@ export default defineConfig({
         presetIcons({ scale: 1.5 })
       ]
     }),
-    VitePWA(pwaConfiguration),
-    // RebuildPWA(),
+    VitePWA({
+      srcDir: './build',
+      outDir: './.svelte-kit/output/client',
+      registerType: 'autoUpdate',
+      base: '/',
+      scope: '/',
+      workbox: {
+        dontCacheBustURLsMatching: /-[a-f0-9]{8}\./,
+        globDirectory: './build/',
+        globPatterns: ['robots.txt', '**/*.{js,css,html,ico,png,svg,webmanifest}'],
+        globIgnores: ['**/sw*', '**/workbox-*']
+      }
+    }),
     sveltekit()
   ]
 })
