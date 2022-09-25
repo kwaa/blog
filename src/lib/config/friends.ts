@@ -53,6 +53,15 @@ export const friends: Friend[] = [
     link: 'https://blog.dylanwu.space',
     descr: '以瓠為樽而浮乎江湖',
     avatar: 'https://rss3.mypinata.cloud/ipfs/QmcvPuCTeNzcwuyNUKsapibsfALsQc7mqyA3BxfnozPydF'
+  },
+  {
+    id: 'sevichecc',
+    rel: 'friend',
+    title: 'Seviche.cc',
+    name: '酸橘汁腌鱼',
+    link: 'https://seviche.cc',
+    descr: 'Code / Tech / Living a Random Life',
+    avatar: 'https://seviche.cc/assets/avatar.jpg'
   }
   // {
   //   id: 'kwaa',
