@@ -5,6 +5,7 @@ import UnoCSS from 'unocss/vite'
 import { presetTagify, presetIcons, extractorSvelte } from 'unocss'
 import { VitePWA } from 'vite-plugin-pwa'
 import { sveltekit } from '@sveltejs/kit/vite'
+import { visualizer } from 'rollup-plugin-visualizer'
 // postcss & tailwindcss
 import TailwindCSS from 'tailwindcss'
 import tailwindConfig from './tailwind.config'
@@ -52,6 +53,10 @@ export default defineConfig({
         globIgnores: ['**/sw*', '**/workbox-*']
       }
     }),
-    sveltekit()
+    sveltekit(),
+    visualizer({
+      emitFile: true,
+      file: 'stats.html'
+    })
   ]
 })
