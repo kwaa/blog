@@ -40,19 +40,19 @@ export default defineConfig({
         presetIcons({ scale: 1.5 })
       ]
     }),
-    VitePWA({
-      srcDir: './build',
-      outDir: './.svelte-kit/output/client',
-      registerType: 'autoUpdate',
-      base: '/',
-      scope: '/',
-      workbox: {
-        dontCacheBustURLsMatching: /-[a-f0-9]{8}\./,
-        globDirectory: './build/',
-        globPatterns: ['robots.txt', '**/*.{js,css,html,ico,png,svg,webmanifest}'],
-        globIgnores: ['**/sw*', '**/workbox-*']
-      }
-    }),
+    // VitePWA({
+    //   srcDir: './build',
+    //   outDir: './.svelte-kit/output/client',
+    //   registerType: 'autoUpdate',
+    //   base: '/',
+    //   scope: '/',
+    //   workbox: {
+    //     dontCacheBustURLsMatching: /-[a-f0-9]{8}\./,
+    //     globDirectory: './build/',
+    //     globPatterns: ['robots.txt', '**/*.{js,css,html,ico,png,svg,webmanifest}'],
+    //     globIgnores: ['**/sw*', '**/workbox-*']
+    //   }
+    // }),
     sveltekit(),
     visualizer({
       emitFile: true,
