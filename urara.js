@@ -79,14 +79,14 @@ const rmDir = (src, { dest = [path.join('src/routes', src.slice(6)), path.join('
 //   })
 
 const build = async () => {
-  makeDir({ dest: ['static', 'src/posts'] })
+  makeDir({ dest: ['static'] })
   // cpDir('urara')
   copyDir((await scanDir('urara')).flat())
 }
 
 const clean = async () => {
   cleanDir(cleanDirExtra((await scanDir('urara')).flat()))
-  removeDir({ dest: ['static', 'src/posts'] })
+  removeDir({ dest: ['static'] })
 }
 
 // TODO: LATEST VERSION
