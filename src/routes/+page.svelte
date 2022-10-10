@@ -1,9 +1,9 @@
 <script lang="ts">
-  import type { PageData } from './$types'
   import { onMount } from 'svelte'
   import { fly } from 'svelte/transition'
   import { page } from '$app/stores'
   import { browser } from '$app/environment'
+  import { posts as storedPosts, tags as storedTags } from '$lib/stores/posts'
   import { title as storedTitle } from '$lib/stores/title'
   import Head from '$lib/components/head.svelte'
   import Footer from '$lib/components/footer.svelte'
@@ -11,18 +11,22 @@
   import Profile from '$lib/components/index_profile.svelte'
   import RemoteFollow from '$lib/components/extra/follow.svelte'
 
-  export let data: PageData
-
-  const { posts: allPosts, tags: allTags } = data
-
+  let allPosts: Urara.Post[]
+  let allTags: string[]
   let loaded: boolean
   let [posts, tags, years] = [[], [], []]
 
   storedTitle.set('')
 
+  $: storedPosts.subscribe(
+    storedPosts => (allPosts = (storedPosts as Urara.Post[]).filter(post => !post.flags?.includes('unlisted')))
+  )
+
+  $: storedTags.subscribe(storedTags => (allTags = storedTags as string[]))
+
   $: if (posts.length > 1) years = [new Date(posts[0].published ?? posts[0].created).getFullYear()]
 
-  $: if (allPosts && tags) {
+  $: if (tags) {
     posts = !tags ? allPosts : allPosts.filter(post => tags.every(tag => post.tags?.includes(tag)))
     if (browser && window.location.pathname === '/')
       window.history.replaceState({}, '', tags.length > 0 ? `?tags=${tags.toString()}` : `/`)

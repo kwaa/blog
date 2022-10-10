@@ -18,7 +18,6 @@ pnpm-debug.log*
 .DS_Store
 
 # temp file
-src/posts
 src/routes/**/+page.svelte.md
 src/routes/**/+page.md
 *.config.js
