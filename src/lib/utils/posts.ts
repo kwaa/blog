@@ -5,6 +5,8 @@ interface GenPostsOptions {
   modules?: { [path: string]: Urara.Post.Module }
   /** set to true to output html */
   postHtml?: boolean
+  /** set to true to output content */
+  postContent?: boolean
   /** limit a certain number of posts */
   postLimit?: number
   /** hide posts with 'unlisted' flag */
@@ -47,8 +49,9 @@ export const typeOfPost = (
  * @returns - posts list
  */
 export const genPosts: GenPostsFunction = ({
-  modules = import.meta.glob<Urara.Post.Module>('/src/routes/**/*.{md,svelte.md}', { eager: true }),
+  modules = import.meta.glob<Urara.Post.Module>('/src/posts/**/*.{md,svelte.md}', { eager: true }),
   postHtml = false,
+  postContent = false,
   postLimit = undefined,
   filterUnlisted = false
 } = {}) =>
@@ -69,7 +72,8 @@ export const genPosts: GenPostsFunction = ({
               .replace(/( style=")(.*?)(")/gi, '')
               .replace(/(<span>)(.*?)(<\/span>)/gi, '$2')
               .replace(/(<main>)(.*?)(<\/main>)/gi, '$2')
-          : ''
+          : '',
+      content: postContent ? module.default : ''
     }))
     .filter((post, index) => (!filterUnlisted || !post.flags?.includes('unlisted')) && (!postLimit || index < postLimit))
     .sort((a, b) => Date.parse(b.published ?? b.created) - Date.parse(a.published ?? a.created))

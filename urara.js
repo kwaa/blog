@@ -15,7 +15,7 @@ const config = {
   catch: ['ENOENT', 'EEXIST']
 }
 
-const check = ext => (config.extensions.includes(ext) ? 'src/routes' : 'static')
+const check = ext => (config.extensions.includes(ext) ? 'src/posts' : 'static')
 
 const log = (color, msg, dest) =>
   console.log(
@@ -62,11 +62,11 @@ const rmFile = (src, { dest = path.join(check(path.parse(src).ext.slice(1)), src
 //     })
 //   )
 
-const mkDir = (src, { dest = [path.join('src/routes', src.slice(6)), path.join('static', src.slice(6))] } = {}) => {
+const mkDir = (src, { dest = [path.join('src/posts', src.slice(6)), path.join('static', src.slice(6))] } = {}) => {
   dest.forEach(path => fs.mkdir(path).then(log('green', 'make dir', path)).catch(error))
 }
 
-const rmDir = (src, { dest = [path.join('src/routes', src.slice(6)), path.join('static', src.slice(6))] } = {}) => {
+const rmDir = (src, { dest = [path.join('src/posts', src.slice(6)), path.join('static', src.slice(6))] } = {}) => {
   dest.forEach(path => fs.rm(path, { force: true, recursive: true }).then(log('yellow', 'remove dir', path)).catch(error))
 }
 
@@ -97,7 +97,7 @@ const copyFile = ({ src, stat = 'copy', dest = path.join(check(path.parse(src).e
     .then(log('green', `${stat} file`, dest))
     .catch(error)
 
-const removeDir = async ({ src, dest = [path.join('src/routes', src.slice(6)), path.join('static', src.slice(6))] } = {}) =>
+const removeDir = async ({ src, dest = [path.join('src/posts', src.slice(6)), path.join('static', src.slice(6))] } = {}) =>
   // {
   //   for await (const files of dest.map(async path => await fs.readdir(path))) {
   //     if (!files.length || files.length < 1) {
@@ -168,7 +168,7 @@ const removeFile = async ({ src, dest = path.join(check(path.parse(src).ext.slic
   await removeDir({ dest: [path.parse(dest).dir] })
 }
 
-const makeDir = ({ src, dest = [path.join('src/routes', src.slice(6)), path.join('static', src.slice(6))] } = {}) =>
+const makeDir = ({ src, dest = [path.join('src/posts', src.slice(6)), path.join('static', src.slice(6))] } = {}) =>
   dest.forEach(path => fs.mkdir(path).then(log('green', 'make dir', path)).catch(error))
 
 const scanDir = async src =>
@@ -180,7 +180,7 @@ const scanDir = async src =>
             ? [
                 {
                   src: path.join(src, file.name),
-                  dest: path.join('src/routes', src.slice(5), file.name),
+                  dest: path.join('src/posts', src.slice(5), file.name),
                   type: 'dir',
                   depth: path.join(src.slice(6), file.name).split('/').length - 1
                 },

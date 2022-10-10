@@ -82,7 +82,12 @@ declare global {
         metadata: Frontmatter
       }
     }
-    type Post = Post.Frontmatter & { html?: string }
+    type Post = Post.Frontmatter & {
+      html?: string
+      content?: unknown
+      prev?: Post
+      next?: Post
+    }
     type Page = { title?: string; path: string }
   }
 }

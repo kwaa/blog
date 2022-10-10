@@ -24,7 +24,7 @@ type VALUE = { [key in string | number]: VALUE } | Array<VALUE> | string | boole
 const remarkUraraFm =
   () =>
   (tree: Node<Data>, { data, filename }: { data: { fm?: Record<string, unknown> }; filename?: string }) => {
-    const filepath = (filename as string).split('/src/routes')[1]
+    const filepath = filename.split('/src/posts')[1]
     const { dir, name } = parse(filepath)
     if (!data.fm) data.fm = {}
     // Generate slug & path

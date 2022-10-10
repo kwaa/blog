@@ -1,6 +1,5 @@
 import type { LayoutLoad } from './$types'
 export const prerender = true
-export const load: LayoutLoad = async ({ url, fetch }) => ({
-  path: url.pathname,
-  res: await fetch('/posts.json').then(res => res.json())
+export const load: LayoutLoad = async ({ url }) => ({
+  path: url.pathname
 })

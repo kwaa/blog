@@ -12,20 +12,6 @@
   export let preview: boolean = false
   export let loading: 'eager' | 'lazy' = 'lazy'
   export let decoding: 'async' | 'sync' | 'auto' = 'async'
-  // pagination
-  let index: number
-  let prev: Urara.Post | undefined = undefined
-  let next: Urara.Post | undefined = undefined
-  if (browser && !preview)
-    storedPosts.subscribe((storedPosts: Urara.Post[]) => {
-      index = storedPosts.findIndex(storedPost => storedPost.path === post.path)
-      prev = storedPosts
-        .slice(0, index)
-        .reverse()
-        .find(post => !post.flags?.includes('unlisted'))
-      next = storedPosts.slice(index + 1).find(post => !post.flags?.includes('unlisted'))
-      storedTitle.set(post.title ?? post.path.slice(1))
-    })
 </script>
 
 <svelte:element
@@ -118,8 +104,8 @@
     {/if}
   </div>
   {#if !preview}
-    {#if (prev || next) && !post.flags?.includes('pagination-disabled') && !post.flags?.includes('unlisted')}
-      <Pagination {next} {prev} />
+    {#if (post.prev || post.next) && !post.flags?.includes('pagination-disabled') && !post.flags?.includes('unlisted')}
+      <Pagination next={post.next} prev={post.prev} />
     {/if}
     {#if browser && postConfig.comment && !post.flags?.includes('comment-disabled')}
       <Comment {post} config={postConfig.comment} />
