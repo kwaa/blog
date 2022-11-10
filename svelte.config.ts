@@ -25,6 +25,9 @@ export default defineConfig({
           assets: 'build',
           fallback: undefined
         }),
+    prerender: {
+      handleMissingId: 'warn'
+    },
     csp: { mode: 'auto' }
   }
 })
