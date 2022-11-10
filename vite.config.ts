@@ -3,9 +3,10 @@ import { defineConfig } from 'vite'
 // vite plugin
 import UnoCSS from 'unocss/vite'
 import { presetTagify, presetIcons, extractorSvelte } from 'unocss'
-import { VitePWA } from 'vite-plugin-pwa'
+// import { VitePWA } from 'vite-plugin-pwa'
 import { sveltekit } from '@sveltejs/kit/vite'
-import { visualizer } from 'rollup-plugin-visualizer'
+import { SvelteKitPWA } from '@vite-pwa/sveltekit'
+// import { visualizer } from 'rollup-plugin-visualizer'
 // postcss & tailwindcss
 import TailwindCSS from 'tailwindcss'
 import tailwindConfig from './tailwind.config'
@@ -54,9 +55,13 @@ export default defineConfig({
     //   }
     // }),
     sveltekit(),
-    visualizer({
-      emitFile: true,
-      file: 'stats.html'
+    SvelteKitPWA({
+      registerType: 'autoUpdate',
+      scope: '/'
     })
+    // visualizer({
+    //   emitFile: true,
+    //   file: 'stats.html'
+    // })
   ]
 })
