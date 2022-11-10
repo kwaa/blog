@@ -102,7 +102,7 @@ export default defineConfig({
     }
   },
   remarkPlugins: [
-    [remarkFFF, { presets: ['hugo'], target: 'mdsvex' }],
+    // [remarkFFF, { presets: ['hugo'], target: 'mdsvex' }],
     remarkUraraFm,
     remarkUraraSpoiler,
     [remarkFootnotes, { inlineNotes: true }]
