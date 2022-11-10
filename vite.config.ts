@@ -57,6 +57,7 @@ export default defineConfig({
     sveltekit(),
     SvelteKitPWA({
       registerType: 'autoUpdate',
+      manifest: false,
       scope: '/'
     })
     // visualizer({
