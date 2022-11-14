@@ -109,7 +109,7 @@ export default defineConfig({
         target: 'mdsvex',
         autofill: {
           provider: 'fs',
-          path: 'urara'
+          path: (path: string) => new URL(`./urara${path.split('/src/routes')[1]}`, import.meta.url)
         }
       }
     ],
