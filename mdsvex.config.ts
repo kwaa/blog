@@ -8,7 +8,7 @@ import rehypeExternalLinks from 'rehype-external-links'
 
 // urara remark plugins
 import type { Node, Data } from 'unist'
-import { statSync } from 'fs'
+// import { statSync } from 'fs'
 import { parse, join } from 'path'
 import { visit } from 'unist-util-visit'
 import { toString } from 'mdast-util-to-string'
@@ -49,11 +49,11 @@ const remarkUraraFm =
     if (data.fm.cover) data.fm.photo = data.fm.cover
     if (data.fm.descr) data.fm.summary = data.fm.descr
     // Auto-read created & updated
-    if (!data.fm.created || !data.fm.updated) {
-      const { ctime, mtime } = statSync(new URL(`./urara${filepath}`, import.meta.url))
-      if (!data.fm.created) data.fm.created = ctime
-      if (!data.fm.updated) data.fm.updated = mtime
-    }
+    // if (!data.fm.created || !data.fm.updated) {
+    //   const { ctime, mtime } = statSync(new URL(`./urara${filepath}`, import.meta.url))
+    //   if (!data.fm.created) data.fm.created = ctime
+    //   if (!data.fm.updated) data.fm.updated = mtime
+    // }
   }
 
 // Better type definitions needed
@@ -102,13 +102,23 @@ export default defineConfig({
     }
   },
   remarkPlugins: [
-    // [remarkFFF, { presets: ['hugo'], target: 'mdsvex' }],
+    [
+      remarkFFF as any,
+      {
+        presets: ['hugo'],
+        target: 'mdsvex',
+        autofill: {
+          provider: 'fs',
+          path: 'urara'
+        }
+      }
+    ],
     remarkUraraFm,
     remarkUraraSpoiler,
     [remarkFootnotes, { inlineNotes: true }]
   ],
   rehypePlugins: [
-    rehypeSlug,
+    rehypeSlug as any,
     [rehypeAutolinkHeadings, { behavior: 'wrap' }],
     [
       rehypeExternalLinks,
