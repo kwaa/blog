@@ -108,7 +108,7 @@ export default defineConfig({
         presets: ['hugo'],
         target: 'mdsvex',
         autofill: {
-          provider: 'fs',
+          provider: 'git',
           path: (path: string) => new URL(`./urara${path.split('/src/routes')[1]}`, import.meta.url)
         }
       }
