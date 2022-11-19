@@ -49,13 +49,17 @@ export const head: HeadConfig = {
 
 ### Remark FFF
 
-安装 Remark FFF 插件，此插件在之后的 Urara 中可能会预装。
+> Remark FFF 插件已在 Urara 中预装！
+>
+> 不再需要本节中的任何操作。
+
+~~安装 Remark FFF 插件，此插件在之后的 Urara 中可能会预装。~~
 
 ```bash
 pnpm add -D remark-fff
 ```
 
-在 `mdsvex.config.ts` 中配置：
+~~在 `mdsvex.config.ts` 中配置：~~
 
 ```ts title="mdsvex.config.ts"
 remarkPlugins: [
@@ -64,7 +68,7 @@ remarkPlugins: [
 ],
 ```
 
-由于它默认使用 Hugo 预设和 MDsveX 目标，所以在本文的环境下不需要配置。
+~~由于它默认使用 Hugo 预设和 MDsveX 目标，所以在本文的环境下不需要配置。~~
 
 ## 搭建 Indiekit
 
@@ -109,7 +113,7 @@ Indiekit 支持很多方式配置，但唯独不支持 ESM 和 TypeScript。
         "type": "article",
         "name": "Article",
         "post": {
-          "path": "urara/{slug}/index.md",
+          "path": "urara/{slug}/+page.md",
           "url": "{slug}"
         },
         "media": {
@@ -121,7 +125,7 @@ Indiekit 支持很多方式配置，但唯独不支持 ESM 和 TypeScript。
         "type": "note",
         "name": "Note",
         "post": {
-          "path": "urara/{slug}/index.md",
+          "path": "urara/{slug}/+page.md",
           "url": "{slug}"
         }
       },
@@ -129,7 +133,7 @@ Indiekit 支持很多方式配置，但唯独不支持 ESM 和 TypeScript。
         "type": "photo",
         "name": "Photo",
         "post": {
-          "path": "urara/{slug}/index.md",
+          "path": "urara/{slug}/+page.md",
           "url": "{slug}"
         },
         "media": {
@@ -141,7 +145,7 @@ Indiekit 支持很多方式配置，但唯独不支持 ESM 和 TypeScript。
         "type": "reply",
         "name": "Reply",
         "post": {
-          "path": "urara/{slug}/index.md",
+          "path": "urara/{slug}/+page.md",
           "url": "{slug}/{filename}"
         }
       }
