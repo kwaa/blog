@@ -15,6 +15,16 @@ flags:
 
 没有后端的会被我归类到这里。
 
+### Hsno 2022.10 ~ now
+
+`Qwik City` `Vite` `TypeScript`
+
+- [importantimport/hsno](https://github.com/importantimport/hsno)
+
+Wow! 这是我为未来准备的博客模板。
+
+它目前还不太可用，但以后会成为此博客的新底层...
+
 ### Urara 2021.3 ~ now
 
 `SvelteKit` `Vite` `TypeScript` `TailwindCSS` `UnoCSS` `daisyUI`
@@ -36,25 +46,29 @@ flags:
 
 基于 Astro 的极简博客启动器。可以看作 Urara 把能砍掉的功能全部砍掉，并补上一些我出于各种原因没法加上去的功能的之后的样子。
 
-#### Gumori You 2022.6 ~ now
+#### Gumori You 2022.6 ~ 2022.8
 
 `Astro` `Vite` `TypeScript` `UnoCSS` `Material 3`
 
 - [importantimport/gumori-you - GitHub](https://github.com/importantimport/gumori-you)
 
+> Astro 模板语法阴间，加上 Material 3 组件有点难写故停更
+
 Gumori 的变种，带来了「基于内容的色彩方案」和 Material Design 3 风格
 
 是一个致敬 MDL Blog Template 和 Typecho/Hexo Theme Material 的作品。
 
-### Hexo Theme-M 2020.6 ~ 2021.1
+### Hexo Theme-M 2020.6 ~ ~~2021.1~~2022.10
 
-- [kwaa/m - GitHub](https://github.com/kwaa/m)
+- [kwaa/hexo-theme-m - GitHub](https://github.com/kwaa/hexo-theme-m)
 
 `Hexo` `EJS` `MDUI` `PJAX`
 
 值得纪念的我的第一个自制博客主题。和现在的 Urara 比起来设计不太好看，功能也稍显稚嫩；但谁让当时的我就这水平呢？
 
 稍好的是很多地方都提供了自定义选项，并且尽可能减少了依赖。
+
+更新：我进行了两周年翻新，现在支持 Hexo 6 并增加了一些小功能。（同时改为 monorepo，非常先进）
 
 <!-- ## Dynamic / 动态网页
 
@@ -101,6 +115,16 @@ Gumori 的变种，带来了「基于内容的色彩方案」和 Material Design
 Hexo 的 Partytown 集成，胶水代码。
 值得一提的是这个包是用 TypeScript 写的，并同时兼容 ESM 和 CJS... 虽然并没有什么用。~~玩一圈回来，给 Hexo 写东西是真的没什么 DX 可言~~
 
+### Hexo LightningCSS
+
+- [hexo-lightningcss - npm](https://www.npmjs.com/package/hexo-lightningcss)
+- [kwaa/hexo-lightningcss - GitHub](https://github.com/kwaa/hexo-lightningcss)
+
+`Hexo` `LightningCSS` `TypeScript`
+
+Hexo 插件第二作，这次是 LightningCSS。
+貌似没什么可说的了... 就这样吧。
+
 ## Dockerize / 容器化
 
 这边的 Dockerfile 和持续集成脚本是我写的，程序一般不是。
@@ -115,6 +139,16 @@ Hexo 的 Partytown 集成，胶水代码。
 Caddy 用到 v2 之后需要自行编译的产物。
 
 写了脚本来检测上游更新，加上了一些我喜欢的模块并提供 `amd64` 和 `arm64` 双版本。
+
+### NaiveProxy - kwaabot/naive
+
+- [kwaabot/naive - DockerHub](https://hub.docker.com/r/kwaabot/naive)
+- [kwaa/naive - GitHub](https://github.com/kwaa/naive)
+
+`Docker` `NaiveProxy` `GitHub Actions`
+
+作为客户端的单独 NaiveProxy，闲着没事便写了这么一个脚本来每月更新。
+尽管可以从 AUR 获取 `naiveproxy-bin`，但确实不如 Docker 来得方便...
 
 ### DKit - kwaabot/dkit
 
