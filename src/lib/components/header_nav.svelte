@@ -6,6 +6,8 @@
   export let pin: boolean
 </script>
 
+<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+<!-- reference: https://github.com/saadeghi/daisyui/issues/1285 -->
 <div class="dropdown lg:hidden">
   <label for="navbar-dropdown" tabindex="0" class="btn btn-square btn-ghost">
     <span class="i-heroicons-outline-menu-alt-1" />
@@ -52,12 +54,13 @@
           <a data-sveltekit-prefetch class="rounded-btn" class:font-bold={link === path} href={link}>{text}</a>
         </li>
       {:else if children}
-        <li tabindex="0">
+        <li>
           <span class:font-bold={children.some(({ link }) => link === path)} class="rounded-btn gap-1">
             {text}
             <span class="i-heroicons-solid-chevron-down -mr-1" />
           </span>
-          <ul class="bg-base-100 text-base-content shadow-lg p-2">
+          <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+          <ul tabindex="0" class="menu rounded-box bg-base-100 text-base-content shadow-lg p-2">
             {#each children as { text, link }}
               <li>
                 <a data-sveltekit-prefetch class:font-bold={link === path} href={link}>{text}</a>
