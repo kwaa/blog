@@ -58,7 +58,11 @@ export default defineConfig({
     SvelteKitPWA({
       registerType: 'autoUpdate',
       manifest: false,
-      scope: '/'
+      scope: '/',
+      workbox: {
+        globPatterns: ['robots.txt', 'posts.json', '**/*.{js,css,html,svg,ico,png,webp,avif}'],
+        globIgnores: ['**/sw*', '**/workbox-*']
+      }
     })
     // visualizer({
     //   emitFile: true,
