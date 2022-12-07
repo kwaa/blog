@@ -61,7 +61,7 @@ export default defineConfig({
       scope: '/',
       workbox: {
         globPatterns: ['robots.txt', 'posts.json', '**/*.{js,css,html,svg,ico,png,webp,avif}'],
-        globIgnores: ['**/sw*', '**/workbox-*']
+        globIgnores: ['**/sw*', '**/workbox-*', '*.xml', 'feed.json', 'tags.json']
       }
     })
     // visualizer({
