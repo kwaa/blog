@@ -56,6 +56,7 @@ export default defineConfig({
     // }),
     sveltekit(),
     SvelteKitPWA({
+      outDir: '.svelte-kit/output/client',
       registerType: 'autoUpdate',
       manifest: false,
       scope: '/',
