@@ -51,7 +51,7 @@ gpg --fetch-keys https://kwaa.dev/pgp/0x896478D978EB0000.asc
 
 #### 签名策略
 
-截至目前（2022 年 5 月）我不会对任何公钥进行签名。
+截至目前（2022 年 12 月）我不会对任何公钥进行签名。
 
 ### 编程
 
@@ -67,11 +67,11 @@ gpg --fetch-keys https://kwaa.dev/pgp/0x896478D978EB0000.asc
 
 #### 语言
 
-`++ JavaScript / TypeScript` `++ HTML` `+ CSS` `- Python`
+`+++ JavaScript / TypeScript` `++ HTML` `+ CSS` `- Python` `- Elixir`
 
 #### 前端框架 / 库
 
-`++ MDUI/Bootstrap` `++ Svelte/SvelteKit` `++ TailwindCSS/UnoCSS/DaisyUI` `+ Astro` `- MDUI.jq/jQuery`
+`+++ TailwindCSS/UnoCSS/DaisyUI` `++ MDUI/Bootstrap` `++ Svelte/SvelteKit` `+ Astro` `- React` `- MDUI.jq/jQuery`
 
 #### 后端框架 / 库
 
@@ -79,7 +79,7 @@ gpg --fetch-keys https://kwaa.dev/pgp/0x896478D978EB0000.asc
 
 #### 环境
 
-`++ Nodejs/NPM` `++ Linux` `+ Docker` `+ GitHub` `- Git` `- Deno`
+`++ Nodejs/PNPM` `++ Linux` `++ Docker` `+ GitHub` `- Git` `- Deno`
 
 ### 游戏
 
@@ -228,7 +228,8 @@ export const kwaa: Friend = {
 
 - ETH/xDAI/BSC: 0xaBdB3f715198A4d7e6591b6ebBE8Ccf235e5D752
   - 唯一指定钱包地址，建议使用 xDAI（因为 gas 费低）
-- XMR: 4BBo16A619wCSWS4rsS2gMihjfhi4nTLdabTAwadJFVoBrGU3qhn6kRXSHmBXXfgURJa5mngD5QekDnNkUPhprGv2VwVPqA
+- XMR: kwaa.dev
+  - 设置了 OpenAlias，直接搜就好
   - 基本没在用，最好先跟我说一声
 
 ## 留言板
