@@ -44,6 +44,8 @@ image: /2023/2023.webp
 
 前者顾名思义是 [Partytown](https://partytown.builder.io/) 的集成，这个库也在本站有使用（虽然并没有很多第三方脚本用于发挥）。
 
+后者则是 [hexo-autoprefixer](https://github.com/hexojs/hexo-autoprefixer) 的现代替代品，之后会补完它的功能。
+
 ### Hexo Theme M
 
 两年前的旧项目，最近被我掏出来翻新了一下；
