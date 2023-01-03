@@ -77,7 +77,7 @@ NPM 包喜加一！
 
 但是假如拼接没问题，废料是可以利用的！于是就有了这么两种废料轴：
 
-#### Smokey Black Switch / 黑透轴
+#### Smokey Black Switch / 烟熏黑轴
 
 HG 黑轴补上 Durock T1 的上盖，就这么成了。颜值略有提升？
 
