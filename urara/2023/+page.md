@@ -54,6 +54,18 @@ image: /2023/2023.webp
 
 NPM 包喜加一！
 
+### MCUS - Material Color Utilities as a Service
+
+作为 Gumori You 替代方案的实验品，我尝试了独立计算来减小体积。
+
+不过感觉确实不如在客户端跑来得方便... 于是就有了 Shiraha Colors。
+
+感觉放错地方了，之后会迁移到个人账号上，即 `kwaa/mcus`
+
+### ToDoLi
+
+纯练手项目：我在这里尝试了 React, DnD 和 Mantine。也许还是有那么点用处的？
+
 ## 硬件
 
 ### Project 1ST Refresh
