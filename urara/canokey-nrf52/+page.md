@@ -15,10 +15,23 @@ CanoKey 是 YubiKey 的平替。虽然我感觉都很贵... 不过最近无意�
 
 开始！
 
+## 警告
+
+来自 [README](https://github.com/canokeys/canokey-nrf52/blob/master/README.md) 的警告：
+
+- 该代码未经过严格测试，并且可能完全无法工作，请自行承担使用风险
+- 使用 nRF52 版本绝对没有安全保证或担保
+- 任何能物理访问的人都可以从设备中检索到任何数据（包括秘钥）
+- 它也很容易受到侧信道攻击
+
+但这有什么关系？在 CanoKey Pigeon 五分之一的价格面前，它没有缺点！
+
 ## 下载
 
+这里通过 Arch Linux 软件仓库和 AUR 下载依赖，其他系统请自行查找依赖安装方式。
+
 ```bash
-# 依赖，考虑到会看这篇文章的应该都装了 git 就没写上去
+# 考虑到会看这篇文章的应该都装了 git 就没写上去
 yay -S cmake gcc-arm-none-eabi-bin nrf5-sdk python
 
 git clone https://github.com/canokeys/canokey-nrf52.git
