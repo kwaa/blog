@@ -95,9 +95,11 @@ make canokey_flash.uf2
 
 README 里推荐了 [Adafruit_nRF52_Bootloader](https://github.com/adafruit/Adafruit_nRF52_Bootloader)，但我可不想这么麻烦。
 
-下载 [nRF Connect for Desktop](https://www.nordicsemi.com/Products/Development-tools/nrf-connect-for-desktop)，打开 Programmer 选中设备（正确的会正常显示 Device memory layout），把之前的 `canokey.hex` 文件扔进去点击 Write 按钮。搞定！
+下载 [nRF Connect for Desktop](https://www.nordicsemi.com/Products/Development-tools/nrf-connect-for-desktop)，打开 Programmer 选中设备（正确的会正常显示 Device memory layout，没记错的话叫 DFU Bootloader），把之前的 `canokey.hex` 文件扔进去点击 Write 按钮。搞定！
 
 ## 初始化和测试
+
+Linux 下记得注意 udev 权限问题，这里不想多写我直接用 sudo 来避免。
 
 > 因为我之前没安装 `ccid` 包，一直显示 Waiting for the first reader...
 >
@@ -109,7 +111,7 @@ yay -S ccid opensc pcscd pcsc_scan usbutils
 sudo pip install scriptor
 
 # 检查一下是否有 "Clay Logic CanoKey"
-lsusb
+sudo lsusb
 
 # 启动 pcscd
 sudo systemctl start pcscd
@@ -170,6 +172,8 @@ Reader ...........: Canokeys Canokey [OpenPGP PIV OATH] (123456) 00 0
 ```
 
 完结！
+
+[CanoKeys 用户指南](https://docs.canokeys.org/userguide/) 里记录了默认 PIN，这部分应该是通用的。
 
 ## 特别感谢
 
