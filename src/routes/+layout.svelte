@@ -13,25 +13,22 @@
   import '../app.pcss'
 
   export let data: LayoutData
-  
+
   posts.set(data.res)
   tags.set(genTags(data.res))
 
   // partytown
   let scriptEl
-  onMount(
-    () => {
-      scriptEl &&
-      (scriptEl.textContent = partytownSnippet())
-      !dev &&
+  onMount(() => {
+    scriptEl && (scriptEl.textContent = partytownSnippet())
+    !dev &&
       browser &&
       registerSW({
         immediate: true,
         onRegistered: r => r && setInterval(async () => await r.update(), 198964),
         onRegisterError: error => console.error(error)
       })
-    }
-  )
+  })
 </script>
 
 <svelte:head>

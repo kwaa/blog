@@ -18,7 +18,9 @@
     href={friend.link}
     class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow h-card u-url">
     <div class="absolute text-4xl font-bold opacity-5 rotate-6 leading-tight top-4">
-      {friend.name ?? ''}<br>{friend.title ?? ''}
+      {friend.name ?? ''}
+      <br />
+      {friend.title ?? ''}
     </div>
     <div class="card-body p-4">
       <div class="flex items-center gap-4">
