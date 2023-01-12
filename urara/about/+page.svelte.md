@@ -31,18 +31,23 @@ flags:
 我目前主要使用的 PGP 密钥：
 
 ```text
-pub   rsa4096/0x896478D978EB0000 2022-01-07 [C] [expires: 2024-04-22]
-      F9D4 3DF6 8ED4 1062 3D89  8619 8964 78D9 78EB 0000
-uid                   [ultimate] 藍+85CD <kwa@kwaa.dev>
-sub   ed25519/0xDE79FF189995830E 2022-04-22 [S]
-sub   cv25519/0x774062A28FBA3BD4 2022-04-22 [E]
-sub   ed25519/0x4D5B17F0943CD268 2022-04-22 [A]
+pub   ed25519/0x4444777733334444 2022-05-16 [C] [expires: 2025-01-07]
+      Key fingerprint = ABCB A12F 1A8E 3CCC F10B  5109 4444 7777 3333 4444
+uid                   [ultimate] 藍+85CD <kwa[a]kwaa.dev>
+uid                   [ultimate] 藍+85CD (GitHub) <50108258+kwaa[a]users.noreply.github.com>
+uid                   [ultimate] [jpeg image of size 889]
+sub   ed25519/0xBCB0111111111111 2022-12-24 [S] [expires: 2025-01-07]
+sub   ed25519/0x6656222222222222 2022-10-27 [A] [expires: 2025-01-07]
+sub   cv25519/0x6EC06EC06EC06EC0 2022-10-05 [E] [expires: 2025-01-07]
 ```
 
-你可以通过以下方式获取对应公钥的最新版本：
+你可以从 [keys.openpgp.org](https://keys.openpgp.org/search?q=4444777733334444) 或本站获取对应公钥的最新版本：
 
 ```bash
-gpg --fetch-keys https://kwaa.dev/pgp/0x896478D978EB0000.asc
+# via keys.openpgp.org
+gpg --keyserver hkps://keys.openpgp.org --recv-keys 4444777733334444
+# via kwaa.dev
+gpg --fetch-keys https://kwaa.dev/pgp/4734.pgp
 ```
 
 #### 加密信息
@@ -51,7 +56,7 @@ gpg --fetch-keys https://kwaa.dev/pgp/0x896478D978EB0000.asc
 
 #### 签名策略
 
-截至目前（2022 年 12 月）我不会对任何公钥进行签名。
+截至目前（2023 年 1 月）我不会对任何公钥进行签名。
 
 ### 编程
 
