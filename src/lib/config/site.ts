@@ -46,9 +46,9 @@ export const site: SiteConfig = {
         link: 'https://matrix.to/#/@kwaa:matrix.org'
       },
       {
-        // text: '0x896478D978EB0000',
+        // text: '0x4444777733334444',
         icon: 'i-heroicons-solid-key',
-        link: 'https://kwaa.dev/pgp/0x896478D978EB0000.asc',
+        link: 'https://kwaa.dev/pgp/4734.pgp',
         rel: 'pgpkey'
       }
     ]
