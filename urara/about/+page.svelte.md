@@ -64,15 +64,13 @@ gpg --fetch-keys https://kwaa.dev/pgp/4734.pgp
 
 面向 Google & MDN & StackOverflow 编程，还点了一些 Linux 技能（Arch & Debian 用户）
 
-进化路线：JavaScript(this 真不会) => ESNext(离不开语法糖) => Node.js/NPM(会用) => TypeScript(新手上路)
-
-开始尝试函数式编程。
+兴趣（但还没怎么学的）列表：`Rust` `Elixir` `Zig`
 
 > `+++` 不敢写精通 / `++` 熟练 / `+` 了解 / `-` 会用
 
 #### 语言
 
-`+++ JavaScript / TypeScript` `++ HTML` `+ CSS` `- Python` `- Elixir`
+`+++ JavaScript / TypeScript` `++ HTML` `+ CSS` `- Python`
 
 #### 前端框架 / 库
 
@@ -80,7 +78,7 @@ gpg --fetch-keys https://kwaa.dev/pgp/4734.pgp
 
 #### 后端框架 / 库
 
-`- Express/Koa`
+`- Phoenix` `- Express/Koa`
 
 #### 环境
 
@@ -90,12 +88,8 @@ gpg --fetch-keys https://kwaa.dev/pgp/4734.pgp
 
 - PC & VR 玩家
 - SteamVR - Valve Index
-- Steam, Uplay, Origin, Epic, Xbox for PC 都在用
+- Steam, Uplay, Origin, Epic, ~~Xbox for PC~~ 都在用
 - 讨厌那些不在地球上的服
-
-> 2022-04: 去年整了三年 XGPU，今年坐等 Starfield
-
-> 2022-06: XGPU 翻车了
 
 ### 音乐
 
@@ -117,6 +111,7 @@ gpg --fetch-keys https://kwaa.dev/pgp/4734.pgp
 
 耳机：
 
+- Truthear ZERO
 - [Nectar Hive](/nectar-hive)
 - [IEM-AXE_P8](/project-axe-p8)
 - SONY XBA-H3
@@ -220,12 +215,6 @@ export const kwaa: Friend = {
 [any@base64-无背景](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAAVFBMVEUAAADW29T///+5wcc4ODjz8OZVVVX/7MkVFRXtrpqTJiVHKxPZOjr/+/QICz3/07d1TCNErbkaSXtgERn59vb//OPSzMzuuwKZne20srL0mIyWGwWygNgKAAAAAXRSTlMAQObYZgAAAOtJREFUKM9djwuSwyAMQ2vsBDBJyK/tfu5/z5W6aYZUMB7QQwZuhwIkwnq7KIgqTFQJV3/USQX+OoE0fqfLIh0kCtKC31VGEEGqBezdydixfAARnNeRKZDmClE4mFE/gAKpTjFOcgEde01fa4wrDjRAlGNf7vdF5QKEzSJUCRpftmFwrbW6vEGYXwEzHzi2BvCF1ve9/7hvDSgqBJYQeHxrA4oqAskA9ocpwUkIkrvbnppvlNnMUkn+9B4r+CdAAACVM5yJnBnA9U+8wCzncPgRynP6V+WGIQZyzMWspwzrTEASSi4F/kHCy/4DaDYJuEU/v5oAAAAASUVORK5CYII=)
 
 [any@base64-有背景](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAAUVBMVEUICz3W29T///+5wccaSXtErbk4ODjz8OZVVVX/7MkVFRXtrpqTJiVHKxPZOjr/+/T/07d1TCNgERn59vb//OPSzMzuuwKZne20srL0mIyWGwVwQ6mkAAAA9UlEQVQoz1WOCbLDIAxDMQYngMna9i/3P2hlGjpEMB7QQzbukoeIrLqbPDHDRCV/91d2TPCDAxn8iWOkCSIGGcF/oBWEkBqB9Z5onazcAfrjPa+WAhlGEMPBTtxBCMEAAzG7lBwBwLzAZL3cT0gp4MEAiG2d8fGITDdA1ixBWweXT8eyKG/bptSB31tARBdbxwDshzLPs/6pHgOoTAYkI/D85Q6ir5UZgSwA51MYIMboopEGsqrKmRl+B7uI5Jr1pTNO8L8AAQBU2/6bKMUCGP/CD0RKaTPgJ6js+aPNLggZKCWVKjKbBOcC0Fr5WmqFfxHfhrwBRawLyITR1qYAAAAASUVORK5CYII=)
-
-交换友链即代表你已知悉并理解：
-
-- 本站**涉政**。
-  - **Politics is everywhere.**
-- 本站作为 Urara 的试验台，随时可能有无法访问，但通常不会持续很久。
 
 ## 捐赠
 
