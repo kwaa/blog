@@ -35,7 +35,7 @@
             <a rel="noopener noreferrer external" target="_blank" href={info.homepage}>{info.homepage}</a>
           </p>
         </div>
-        <img class="w-20 h-20 mt-0 mb-auto rounded-xl flex-initial" alt="owner_avatar" src={info.owner.avatar_url} />
+        <img class="w-20 h-20 mt-0 ml-auto mb-auto rounded-xl flex-initial" alt="owner_avatar" src={info.owner.avatar_url} />
       </div>
       <div class="card-actions -ml-2">
         <button class="btn btn-sm btn-ghost">
