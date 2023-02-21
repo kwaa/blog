@@ -42,12 +42,12 @@ export const site: SiteConfig = {
       },
       {
         // text: '@kwaa:matrix.org',
-        icon: 'i-simple-icons-matrix',
+        icon: 'i-simple-icons-element',
         link: 'https://matrix.to/#/@kwaa:matrix.org'
       },
       {
         // text: '0x4444777733334444',
-        icon: 'i-heroicons-solid-key',
+        icon: 'i-simple-icons-gnuprivacyguard',
         link: 'https://kwaa.dev/pgp/4734.pgp',
         rel: 'pgpkey'
       }
