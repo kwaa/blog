@@ -265,10 +265,10 @@ SDL_IM_MODULE=fcitx
 GLFW_IM_MODULE=ibus
 ``` -->
 
-- fcitx5
+<!-- - fcitx5
 - fcitx5-chinese-addons
 - [fcitx5-pinyin-zhwiki](https://github.com/felixonmars/fcitx5-pinyin-zhwiki)
-- [fcitx5-pinyin-moegirl](https://github.com/outloudvi/mw2fcitx/wiki/fcitx5-pinyin-moegirl)
+- [fcitx5-pinyin-moegirl](https://github.com/outloudvi/mw2fcitx/wiki/fcitx5-pinyin-moegirl) -->
 
 ## 机型推荐
 
