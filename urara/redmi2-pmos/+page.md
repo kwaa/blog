@@ -201,9 +201,9 @@ sudo flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub
 
 如果真的想，可以看看 [Waydroid + postmarketOS 使用教學，Linux 執行 Android APP | Ivon 的部落格](https://ivonblog.com/posts/postmarketos-waydroid/)
 
-### IM
+`waydroid init` 会下载一个很大的 LineageOS 压缩包，做好心理准备。
 
-> 待补充：显然我没怎么使用
+### IM
 
 #### Telegram
 
@@ -222,9 +222,9 @@ Useful:
 
 #### Matrix
 
-```bash
-sudo apk add fractal
-```
+经过尝试，Fractal、Fractal Next、FluffyChat 都无法使用。等待更新...
+
+NeoChat 等基于 Qt 的软件应该会有键盘问题，这里就不考虑了。
 
 ### 截图
 
@@ -244,9 +244,26 @@ sudo apk add gnome-screenshot
 
 推荐阅读 [Fcitx5 rime on pinephone postmarketOS](https://joelboulder.com/posts/2022/04/07/fcitx5-rime-pinephone-postmarketos/)
 
-我决定用和 Linux 桌面同样的 Fcitx5。
+~~我决定用和 Linux 桌面同样的 Fcitx5。~~
 
-TODO...
+经过实测，fcitx5 目前无法使用。
+
+安装并设置环境变量后在终端界面无法打开键盘，浏览器则没有 Ctrl 键...
+
+如果外接键盘应该行得通，但这显然不是本文会考虑的。
+
+<!-- ```bash
+sudo apk add fcitx5 fcitx5-gtk fcitx5-qt fcitx5-chinese-addons
+sudo nano /etc/environment
+```
+
+```text
+GTK_IM_MODULE=fcitx
+QT_IM_MODULE=fcitx
+XMODIFIERS=@im=fcitx
+SDL_IM_MODULE=fcitx
+GLFW_IM_MODULE=ibus
+``` -->
 
 - fcitx5
 - fcitx5-chinese-addons
