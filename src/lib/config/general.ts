@@ -45,14 +45,14 @@ export const theme: ThemeConfig = [
 ]
 
 export const head: HeadConfig = {
-  custom: ({ dev, post, page }) =>
+  custom: ({ dev }) =>
     dev
       ? []
       : [
           // Activity Streams 2.0 Alternate
-          `<link rel="alternate" type="application/activity+json" href="https://granary.io/url?input=html&output=as2&url=${
-            site.protocol + site.domain + (post?.path ?? page?.path ?? '')
-          }">`,
+          // `<link rel="alternate" type="application/activity+json" href="https://granary.io/url?input=html&output=as2&url=${
+          //   site.protocol + site.domain + (post?.path ?? page?.path ?? '')
+          // }">`,
           // IndieAuth
           '<link rel="authorization_endpoint" href="https://indieauth.com/auth">',
           '<link rel="token_endpoint" href="https://tokens.indieauth.com/token">',
