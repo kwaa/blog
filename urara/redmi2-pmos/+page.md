@@ -8,6 +8,10 @@ tags:
   - AsteroidOS
 ---
 
+<svelte:head>
+  <link rel="alternate" type="application/activity+json" href="https://kwaa.moe/objects/2ead478f-aa7e-4bb9-9051-b106b65a81dc">
+</svelte:head>
+
 在一加 6T 翻车小半年后，我终于入了第二部用来刷 pmOS 的手机——红米 2。
 
 那么这次会不会出问题呢？既然这篇文章发出来了，就代表我没有翻车。
