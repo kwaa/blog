@@ -8,6 +8,9 @@ dependencies:
   '@builder.io/partytown':
     specifier: ^0.7.6
     version: 0.7.6
+  '@unocss/extractor-svelte':
+    specifier: ^0.53.6
+    version: 0.53.6
   sharp:
     specifier: ^0.30.7
     version: 0.30.7
@@ -2445,6 +2448,10 @@ packages:
     dependencies:
       '@unocss/core': 0.53.6
     dev: true
+
+  /@unocss/extractor-svelte@0.53.6:
+    resolution: {integrity: sha512-2/sUALLcaq9u/R2gDGNADW12QPv5juYZgIvEqBYTqact7SM/rPguEILCiFOKc+jqLIdQ182BNx+A+mH8ScFsJw==}
+    dev: false
 
   /@unocss/inspector@0.53.6:
     resolution: {integrity: sha512-y9Z6JRKmQU0SBPw115CcTpiAir9qccsPxke070no5Kutnnap/18JtOECEd1Vd5ZBj6HAW0OQuBG7gWm0X6K2IA==}

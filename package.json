@@ -76,6 +76,7 @@
   "type": "module",
   "dependencies": {
     "@builder.io/partytown": "^0.7.6",
+    "@unocss/extractor-svelte": "^0.53.6",
     "sharp": "^0.30.7"
   }
 }
