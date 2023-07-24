@@ -40,9 +40,6 @@ devDependencies:
   '@types/unist':
     specifier: ^2.0.7
     version: 2.0.7
-  '@types/workbox-build':
-    specifier: ^5.1.0
-    version: 5.1.0
   '@typescript-eslint/eslint-plugin':
     specifier: ^5.62.0
     version: 5.62.0(@typescript-eslint/parser@5.62.0)(eslint@8.45.0)(typescript@5.1.6)
@@ -2240,16 +2237,6 @@ packages:
 
   /@types/unist@3.0.0:
     resolution: {integrity: sha512-MFETx3tbTjE7Uk6vvnWINA/1iJ7LuMdO4fcq8UfF0pRbj01aGLduVvQcRyswuACJdpnHgg8E3rQLhaRdNEJS0w==}
-    dev: true
-
-  /@types/workbox-build@5.1.0:
-    resolution: {integrity: sha512-kAu7EuhMG/h10bH9zxaUYLtfOQ7AczNvpzGzfW9ZPhlP6pcrx3gVhhxhTlU6AvIb5Q2udvSzwhRyvLcHHg+HiA==}
-    deprecated: This is a stub types definition. workbox-build provides its own type definitions, so you do not need this installed.
-    dependencies:
-      workbox-build: 7.0.0
-    transitivePeerDependencies:
-      - '@types/babel__core'
-      - supports-color
     dev: true
 
   /@typescript-eslint/eslint-plugin@5.62.0(@typescript-eslint/parser@5.62.0)(eslint@8.45.0)(typescript@5.1.6):

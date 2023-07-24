@@ -30,7 +30,6 @@
     "@sveltejs/kit": "^1.22.3",
     "@tailwindcss/typography": "^0.5.9",
     "@types/unist": "^2.0.7",
-    "@types/workbox-build": "^5.1.0",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "@vite-pwa/sveltekit": "^0.2.5",
