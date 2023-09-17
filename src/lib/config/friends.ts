@@ -62,6 +62,15 @@ export const friends: Friend[] = [
     link: 'https://seviche.cc',
     descr: 'Code / Tech / Living a Random Life',
     avatar: 'https://seviche.cc/assets/avatar.jpg'
+  },
+  {
+    id: '0eac',
+    rel: 'friend',
+    title: '不分西东',
+    name: '0EAC',
+    link: 'https://www.0eac.com',
+    descr: '梦里不分西东',
+    avatar: 'https://www.0eac.com/favicon.png'
   }
   // {
   //   id: 'kwaa',
