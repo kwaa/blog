@@ -9,18 +9,16 @@ import { mdsvex } from 'mdsvex'
 import mdsvexConfig from './mdsvex.config.js'
 import preprocess from 'svelte-preprocess'
 
-const defineConfig = (config: Config) => config
-
-export default defineConfig({
+export default {
   extensions: ['.svelte', ...(mdsvexConfig.extensions as string[])],
   preprocess: [mdsvex(mdsvexConfig), preprocess({ preserve: ['partytown'] })],
   kit: {
     adapter: Object.keys(process.env).some(key => ['VERCEL', 'CF_PAGES', 'NETLIFY'].includes(key))
-      ? //   ? adapterVercel({ edge: true })
-        adapterVercel()
+      ? adapterVercel()
+      // ? adapterVercel({ edge: true })
       : process.env.ADAPTER === 'node'
-      ? adapterNode({ out: 'build' })
-      : adapterStatic({
+        ? adapterNode({ out: 'build' })
+        : adapterStatic({
           pages: 'build',
           assets: 'build',
           fallback: undefined
@@ -30,4 +28,4 @@ export default defineConfig({
     },
     csp: { mode: 'auto' }
   }
-})
+} satisfies Config

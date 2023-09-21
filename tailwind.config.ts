@@ -1,9 +1,8 @@
-// @ts-ignore Could not find a declaration file for module '@tailwindcss/typography'.
+import type { Config } from 'tailwindcss'
 import typography from '@tailwindcss/typography'
-// @ts-ignore Could not find a declaration file for module 'daisyui'.
 import daisyui from 'daisyui'
 
-export default /** @type {import('tailwindcss/tailwind-config').TailwindConfig} */ {
+export default {
   content: ['./src/**/*.{html,md,js,svelte,ts}'],
   theme: {
     extend: {}
@@ -65,4 +64,4 @@ export default /** @type {import('tailwindcss/tailwind-config').TailwindConfig} 
       'winter'
     ]
   }
-}
+} satisfies Config
