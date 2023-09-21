@@ -1,5 +1,5 @@
 ---
-title: '一年后的成果：STREIN IEM-AXE_P8'
+title: '一年后的成果：IEM-AXE_P8'
 created: 2020-09-03 23:54:00
 image: /project-axe-p8/p8.webp
 tags:

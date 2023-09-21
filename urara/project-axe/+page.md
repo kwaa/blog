@@ -44,7 +44,7 @@ Project AXE 最初方案基本照搬 [dhruvmeena96 的设计](https://www.head-f
 
 到这里旧 AXE 和新 AXE 已经不是一个东西了。
 我目前更倾向于先把旧 AXE 做完自用，满足我对旗舰入耳式耳机的需求；新 AXE 考虑到预算不足暂且搁置。
-[一年后的成果：STREIN IEM-AXE_P8](https://kwaa.dev/p/project-axe-p8)
+[一年后的成果：IEM-AXE_P8](https://kwaa.dev/p/project-axe-p8)
 
 IEM-AXE ver2020.9 将中低频改回了并联，并用 RC 低通替代了 L-pad。
 
@@ -62,7 +62,7 @@ IEM-AXE ver2020.9 将中低频改回了并联，并用 RC 低通替代了 L-pad�
 
 ## 外观
 
-~~面板打算使用某宝买的银箔碎碳板，配正反 STREIN 金属贴；
+~~面板打算使用某宝买的银箔碎碳板，配正反金属贴；
 腔体透黑+金属出音嘴，这个还是等样品做完之后放成品图吧。~~ 参见 IEM-AXE_P8
 
 ## 总结
