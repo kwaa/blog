@@ -57,11 +57,11 @@ export const friends: Friend[] = [
   {
     id: 'sevichecc',
     rel: 'friend',
-    title: 'Seviche.cc',
-    name: '酸橘汁腌鱼',
-    link: 'https://seviche.cc',
-    descr: 'Code / Tech / Living a Random Life',
-    avatar: 'https://seviche.cc/assets/avatar.jpg'
+    title: 'sevic.me',
+    name: 'Sevi.C',
+    link: 'https://sevic.me',
+    descr: 'Full-stack wizard.',
+    avatar: 'https://avatars.githubusercontent.com/u/91365763'
   },
   {
     id: '0eac',
