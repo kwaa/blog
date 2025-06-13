@@ -63,15 +63,15 @@ export const friends: Friend[] = [
     descr: 'Full-stack wizard.',
     avatar: 'https://avatars.githubusercontent.com/u/91365763'
   },
-  {
-    id: '0eac',
-    rel: 'friend',
-    title: '不分西东',
-    name: '0EAC',
-    link: 'https://www.0eac.com',
-    descr: '梦里不分西东',
-    avatar: 'https://www.0eac.com/favicon.png'
-  }
+  // {
+  //   id: '0eac',
+  //   rel: 'friend',
+  //   title: '不分西东',
+  //   name: '0EAC',
+  //   link: 'https://www.0eac.com',
+  //   descr: '梦里不分西东',
+  //   avatar: 'https://www.0eac.com/favicon.png'
+  // }
   // {
   //   id: 'kwaa',
   //   rel: 'friend',
