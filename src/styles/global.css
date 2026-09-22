@@ -56,6 +56,13 @@ h4 {
   line-height: 1.3;
 }
 
+h1 > a,
+h2 > a,
+h3 > a,
+h4 > a {
+  color: inherit;
+}
+
 time,
 small {
   color: var(--muted);
@@ -148,10 +155,22 @@ body > header details ul {
   border-radius: var(--radius);
 }
 
-/* profile aside on index */
+/* profile aside + friends list */
 aside img {
   width: 6rem;
   border-radius: 50%;
+}
+
+aside ul,
+main > ul:has(> li > article) {
+  padding: 0;
+  list-style: none;
+}
+
+main > ul:has(> li > article) > li > article {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
 }
 
 /* tag chips */
