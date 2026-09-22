@@ -226,6 +226,12 @@ article > img {
   max-width: 8rem;
 }
 
+/* prev/next nav inside post footer */
+article > footer nav ul {
+  padding: 0;
+  list-style: none;
+}
+
 /* TOC: collapsed <details> block */
 article > details {
   margin: 0 0 1.5em;
