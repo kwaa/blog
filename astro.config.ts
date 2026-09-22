@@ -2,6 +2,7 @@ import sitemap from '@astrojs/sitemap'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeExternalLinks from 'rehype-external-links'
 import rehypeSlug from 'rehype-slug'
+import UnoCSS from 'unocss/astro'
 
 import { unified } from '@astrojs/markdown-remark'
 import { defineConfig } from 'astro/config'
@@ -10,7 +11,7 @@ import { remarkSpoiler } from './src/plugins/remark-spoiler'
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [sitemap()],
+  integrations: [UnoCSS(), sitemap()],
   markdown: {
     processor: unified({
       rehypePlugins: [
