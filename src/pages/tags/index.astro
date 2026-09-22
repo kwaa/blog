@@ -1,0 +1,26 @@
+---
+import Base from '../../layouts/Base.astro'
+import { getPosts, getTags, tagPath } from '../../utils/posts'
+
+const posts = await getPosts()
+const tags = getTags(posts)
+
+const counts = new Map<string, number>()
+for (const post of posts) {
+  for (const tag of post.data.tags ?? [])
+    counts.set(tag, (counts.get(tag) ?? 0) + 1)
+}
+---
+
+<Base title="Tags">
+  <h1>Tags</h1>
+  <ul>
+    {
+      tags.map(tag => (
+        <li>
+          <a href={tagPath(tag)}>#{tag}</a> ({counts.get(tag)})
+        </li>
+      ))
+}
+  </ul>
+</Base>

@@ -1,0 +1,89 @@
+---
+import { footer, header, site } from '../config'
+
+interface Props {
+  title?: string | undefined
+  description?: string | undefined
+  image?: string | undefined
+  type?: 'website' | 'article'
+}
+
+const { title, description = site.description, image, type = 'website' } = Astro.props
+const pageTitle = title ? `${title} | ${site.title}` : site.title
+const canonical = new URL(Astro.url.pathname, site.url)
+---
+
+<!doctype html>
+<html lang={site.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content={site.themeColor} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/assets/any@180.webp" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="alternate" type="application/atom+xml" title={site.title} href="/atom.xml" />
+    <link rel="alternate" type="application/feed+json" title={site.title} href="/feed.json" />
+    {site.head.me.map(me => <link rel="me" href={me} />)}
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={site.title} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    {image && <meta property="og:image" content={new URL(image, site.url)} />}
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/"><strong>{site.title}</strong></a>
+        <ul>
+          {
+            header.nav.map(item => (
+              <li>
+                {item.children
+? (
+                  <details>
+                    <summary>{item.text}</summary>
+                    <ul>
+                      {item.children.map(child => (
+                        <li>
+                          <a href={child.link}>{child.text}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  </details>
+                )
+: (
+                  <a href={item.link}>{item.text}</a>
+                )}
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer>
+      <nav>
+        <ul>
+          {footer.nav.map(item => (
+            <li>
+              <a href={item.link}>{item.text}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <Fragment set:html={footer.html} />
+      <p>
+        &copy; {new Date().getFullYear()} {site.author.name}
+      </p>
+    </footer>
+  </body>
+</html>

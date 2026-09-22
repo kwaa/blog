@@ -1,0 +1,21 @@
+---
+import type { MarkdownHeading } from 'astro'
+import { buildToc } from './toc'
+import TocTree from './TocTree.astro'
+
+interface Props {
+  headings: MarkdownHeading[]
+}
+
+const { headings } = Astro.props
+const tree = buildToc(headings)
+---
+
+{
+  tree.length > 0 && (
+    <nav aria-label="Table of contents">
+      <h2>目录</h2>
+      <TocTree items={tree} />
+    </nav>
+  )
+}

@@ -1,0 +1,44 @@
+---
+import PostCard from '../components/PostCard.astro'
+import Profile from '../components/Profile.astro'
+import Base from '../layouts/Base.astro'
+import { getPosts, getTags, tagPath } from '../utils/posts'
+
+const posts = await getPosts()
+const tags = getTags(posts)
+
+const years = new Set<number>()
+---
+
+<Base>
+  <Profile />
+  {
+    tags.length > 0 && (
+      <nav aria-label="Tags">
+        <ul>
+          {tags.map(tag => (
+            <li>
+              <a href={tagPath(tag)}>#{tag}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    )
+  }
+  <section>
+    {
+      posts.map((post) => {
+        const year = post.data.created?.getFullYear()
+        const showYear = year !== undefined && !years.has(year)
+        if (year !== undefined)
+years.add(year)
+        return (
+          <>
+            {showYear && <h2>{year}</h2>}
+            <PostCard post={post} />
+          </>
+        )
+      })
+    }
+  </section>
+</Base>

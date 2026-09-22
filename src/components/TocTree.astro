@@ -1,0 +1,20 @@
+---
+import type { TocItem } from './toc'
+
+interface Props {
+  items: TocItem[]
+}
+
+const { items } = Astro.props
+---
+
+<ul>
+  {
+    items.map(item => (
+      <li>
+        <a href={`#${item.slug}`}>{item.text}</a>
+        {item.children.length > 0 && <Astro.self items={item.children} />}
+      </li>
+    ))
+  }
+</ul>
