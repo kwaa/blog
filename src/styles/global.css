@@ -169,11 +169,16 @@ ul:has(> li > a[href^='/tags/']) {
   list-style: none;
 }
 
-/* post cards */
+/* post cards / post cover */
 article > a > img,
 article > header > img {
   width: 100%;
   border-radius: var(--radius);
+}
+
+/* friend avatars (direct-child img in article) */
+article > img {
+  max-width: 8rem;
 }
 
 /* TOC */
@@ -202,7 +207,7 @@ nav[aria-label='Table of contents'] ul {
 }
 
 .spoiler:hover {
-  color: inherit;
+  color: var(--bg);
 }
 
 /* footer */

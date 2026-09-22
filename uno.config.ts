@@ -1,5 +1,8 @@
 import { defineConfig, presetWind4 } from 'unocss'
 
 export default defineConfig({
-  presets: [presetWind4()],
+  presets: [
+    // keep UA defaults (bearblog-style element styling relies on them)
+    presetWind4({ preflights: { reset: false } }),
+  ],
 })

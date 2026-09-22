@@ -29,3 +29,10 @@ description: How to run and end-to-end test the kwaa/blog Astro site locally —
 - @astrojs/sitemap emits `sitemap-index.xml` + `sitemap-0.xml` at build only (404s in dev); footer nav link may point at non-existent `/sitemap.xml`.
 - `flags: [unlisted]` posts (`/about`, `/archives`, `/projects`) are excluded from home/feed but still routable — they can appear in prev/next chains.
 - Dev box lacks CJK fonts: Chinese text renders as tofu boxes in screenshots — verify via DOM text, not pixels.
+
+## Styling (b310dd6+)
+
+- UnoCSS via `unocss/astro` + `preset-wind4`; global element-selector CSS in `src/styles/global.css` (bearblog-style: centered 44rem column, light/dark vars, flex tag chips, bordered TOC card, round 6rem avatar, muted bordered footer).
+- In dev, CSS arrives as inline `<style data-vite-dev-id=".../__uno.css">` + `global.css` — no `<link>` stylesheet. Inspect computed styles via browser console.
+- Watch the injected Tailwind-family reset (`injectReset` default): it can strip `h1–h6` size/weight, all `ul/ol` markers+padding, and `p`/`h*` margins site-wide — global.css only restores pieces (e.g. TOC `ul { padding-left }`), so check computed styles of content headings/lists, not just visual vibes.
+- `.spoiler` hides text via `background: var(--fg)` + `color: transparent`; verify the `:hover` rule produces a contrasting `color` — `color: inherit` on a `--fg` background is dark-on-dark and never reveals.
