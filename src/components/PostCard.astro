@@ -12,17 +12,10 @@ const { data } = post
 ---
 
 <article>
-  {data.image && (
-    <a href={postPath(post)}>
-      <img src={data.image} alt={data.title ?? post.id} loading="lazy" decoding="async" />
-    </a>
-  )}
-  <header>
-    <h2>
-      <a href={postPath(post)}>{data.title ?? post.id}</a>
-    </h2>
-    {data.created && <time datetime={data.created.toISOString()}>{formatDate(data.created)}</time>}
-  </header>
+  <h3>
+    <a href={postPath(post)}>{data.title ?? post.id}</a>
+  </h3>
+  {data.created && <time datetime={data.created.toISOString()}>{formatDate(data.created)}</time>}
   {data.summary && <p>{data.summary}</p>}
   <Tags tags={data.tags} />
 </article>

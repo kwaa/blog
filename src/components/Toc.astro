@@ -13,9 +13,11 @@ const tree = buildToc(headings)
 
 {
   tree.length > 0 && (
-    <nav aria-label="Table of contents">
-      <h2>目录</h2>
-      <TocTree items={tree} />
-    </nav>
+    <details>
+      <summary>目录</summary>
+      <nav aria-label="Table of contents">
+        <TocTree items={tree} />
+      </nav>
+    </details>
   )
 }

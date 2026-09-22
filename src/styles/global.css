@@ -16,7 +16,9 @@
   --radius: 0.25rem;
   font-family:
     -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica,
-    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+    Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+    'Noto Sans CJK SC', 'Noto Sans SC', sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji';
   line-height: 1.65;
   color-scheme: light dark;
 }
@@ -188,11 +190,35 @@ ul:has(> li > a[href^='/tags/']) {
   list-style: none;
 }
 
-/* post cards / post cover */
-article > a > img,
+/* post list: compact rows */
+section > article {
+  margin: 1.5em 0;
+}
+
+section > article h3 {
+  margin: 0.25em 0;
+}
+
+section > article p {
+  margin: 0.25em 0;
+}
+
+section > article time {
+  font-size: 0.9em;
+}
+
+/* post cover */
 article > header > img {
   width: 100%;
+  margin-bottom: 1em;
   border-radius: var(--radius);
+}
+
+/* in-content images */
+article > section img {
+  display: block;
+  margin: 1.5em auto;
+  max-width: 100%;
 }
 
 /* friend avatars (direct-child img in article) */
@@ -200,19 +226,22 @@ article > img {
   max-width: 8rem;
 }
 
-/* TOC */
-nav[aria-label='Table of contents'] {
-  padding: 1rem;
+/* TOC: collapsed <details> block */
+article > details {
+  margin: 0 0 1.5em;
+  padding: 0.5em 1em;
+  font-size: 0.9em;
   border: 1px solid var(--border);
   border-radius: var(--radius);
 }
 
-nav[aria-label='Table of contents'] h2 {
-  margin-top: 0;
-  font-size: 1em;
+article > details > summary {
+  color: var(--muted);
+  cursor: pointer;
 }
 
-nav[aria-label='Table of contents'] ul {
+article > details nav ul {
+  margin: 0.5em 0;
   padding-left: 1.25em;
 }
 
