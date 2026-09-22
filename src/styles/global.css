@@ -19,7 +19,7 @@
     Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
     'Noto Sans CJK SC', 'Noto Sans SC', sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji';
-  line-height: 1.65;
+  line-height: 1.7;
   color-scheme: light dark;
 }
 
@@ -49,6 +49,7 @@ img {
 
 a {
   color: var(--link);
+  text-underline-offset: 0.2em;
 }
 
 h1,
@@ -85,6 +86,7 @@ code {
 pre {
   padding: 1rem;
   overflow-x: auto;
+  border: 1px solid var(--border);
   border-radius: var(--radius);
 }
 
@@ -130,7 +132,7 @@ body > header nav ul {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75em;
-  margin: 0;
+  margin: 0 0 0 auto;
   padding: 0;
   list-style: none;
 }
@@ -179,7 +181,14 @@ main > ul:has(> li > article) > li > article {
 nav ul a[href^='/tags/'],
 footer a[href^='/tags/'],
 article a[href^='/tags/'] {
+  color: var(--muted);
+  font-size: 0.85em;
   text-decoration: none;
+}
+
+nav ul a[href^='/tags/']:hover,
+article a[href^='/tags/']:hover {
+  color: var(--link);
 }
 
 ul:has(> li > a[href^='/tags/']) {
@@ -190,20 +199,49 @@ ul:has(> li > a[href^='/tags/']) {
   list-style: none;
 }
 
-/* post list: compact rows */
+/* year-group headings */
+section > h2 {
+  margin: 1.75em 0 0.5em;
+  color: var(--muted);
+  font-size: 1.25em;
+}
+
+/* post list: title-left / date-right baseline rows */
 section > article {
-  margin: 1.5em 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25em 1em;
+  margin: 1em 0;
 }
 
 section > article h3 {
-  margin: 0.25em 0;
-}
-
-section > article p {
-  margin: 0.25em 0;
+  flex: 1;
+  margin: 0;
+  font-size: 1.1em;
 }
 
 section > article time {
+  white-space: nowrap;
+  font-size: 0.85em;
+}
+
+section > article > :not(h3):not(time) {
+  flex-basis: 100%;
+}
+
+section > article p {
+  margin: 0.15em 0 0.25em;
+}
+
+/* post header */
+article > header h1 {
+  margin-bottom: 0.25em;
+}
+
+article > header p {
+  margin: 0 0 1.5em;
+  color: var(--muted);
   font-size: 0.9em;
 }
 
@@ -228,6 +266,9 @@ article > img {
 
 /* prev/next nav inside post footer */
 article > footer nav ul {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
   padding: 0;
   list-style: none;
 }
