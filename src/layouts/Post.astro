@@ -21,7 +21,7 @@ const published = data.created
 const updated = data.updated
 ---
 
-<Base title={data.title} description={data.summary} image={data.image} type="article">
+<Base title={data.title} description={data.summary} type="article">
   <article>
     <header>
       {data.image && <img src={data.image} alt={data.title ?? post.id} />}

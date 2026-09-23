@@ -95,6 +95,27 @@ pre code {
   background: none;
 }
 
+/* shiki dual themes: --shiki-light/--shiki-dark vars switch on media query */
+.astro-code,
+.astro-code span {
+  color: var(--shiki-light);
+}
+
+.astro-code {
+  background-color: var(--shiki-light-bg);
+}
+
+@media (prefers-color-scheme: dark) {
+  .astro-code,
+  .astro-code span {
+    color: var(--shiki-dark);
+  }
+
+  .astro-code {
+    background-color: var(--shiki-dark-bg);
+  }
+}
+
 blockquote {
   margin-left: 0;
   padding-left: 1em;

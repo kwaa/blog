@@ -1,17 +1,30 @@
 ---
+// deep import: the package root re-exports the build hook which pulls in jsdom
+import { getImagePath } from 'astro-takumi/dist/util.js'
+
 import { footer, header, site } from '../config'
 import '../styles/global.css'
 
 interface Props {
   title?: string | undefined
   description?: string | undefined
-  image?: string | undefined
   type?: 'website' | 'article'
 }
 
-const { title, description = site.description, image, type = 'website' } = Astro.props
+const { title, description = site.description, type = 'website' } = Astro.props
 const pageTitle = title ? `${title} | ${site.title}` : site.title
 const canonical = new URL(Astro.url.pathname, site.url)
+// pages build to directory format (dist/<slug>/index.html) but pathname has no
+// trailing slash — append it so getImagePath points at <slug>/index.png
+const ogImage = getImagePath({
+  url: new URL(
+    Astro.url.pathname.endsWith('/')
+      ? Astro.url.pathname
+      : `${Astro.url.pathname}/`,
+    Astro.url,
+  ),
+  site: Astro.site,
+})
 ---
 
 <!doctype html>
@@ -22,7 +35,8 @@ const canonical = new URL(Astro.url.pathname, site.url)
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
-    <meta name="theme-color" content={site.themeColor} />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)" />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" href="/favicon.png" type="image/png" />
@@ -36,7 +50,11 @@ const canonical = new URL(Astro.url.pathname, site.url)
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    {image && <meta property="og:image" content={new URL(image, site.url)} />}
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
   </head>
   <body>
     <header>
