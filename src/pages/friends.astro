@@ -1,0 +1,28 @@
+---
+import { friends } from '../config'
+import Base from '../layouts/Base.astro'
+---
+
+<Base title="Friends">
+  <h1>Friends</h1>
+  <ul>
+    {
+      friends.map(friend => (
+        <li id={friend.id}>
+          <article>
+            {friend.avatar && <img src={friend.avatar} alt="" loading="lazy" decoding="async" />}
+            <header>
+              <h2>
+                <a href={friend.link} rel={friend.rel ?? 'friend noopener external'}>
+                  {friend.name ?? friend.title ?? friend.id}
+                </a>
+              </h2>
+              {friend.title && friend.name && <p>{friend.title}</p>}
+            </header>
+            {friend.descr && <p>{friend.descr}</p>}
+          </article>
+        </li>
+      ))
+    }
+  </ul>
+</Base>

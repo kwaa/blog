@@ -1,0 +1,21 @@
+---
+import type { Post } from '../utils/posts'
+import { formatDate, postPath } from '../utils/posts'
+import Tags from './Tags.astro'
+
+interface Props {
+  post: Post
+}
+
+const { post } = Astro.props
+const { data } = post
+---
+
+<article>
+  <h3>
+    <a href={postPath(post)}>{data.title ?? post.id}</a>
+  </h3>
+  {data.created && <time datetime={data.created.toISOString()}>{formatDate(data.created)}</time>}
+  {data.summary && <p>{data.summary}</p>}
+  <Tags tags={data.tags} />
+</article>

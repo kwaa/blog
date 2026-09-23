@@ -1,0 +1,81 @@
+---
+import type { MarkdownHeading } from 'astro'
+import type { Post } from '../utils/posts'
+import Giscus from '../components/Giscus.astro'
+import Tags from '../components/Tags.astro'
+import Toc from '../components/Toc.astro'
+import { site } from '../config'
+import { formatDate, postPath } from '../utils/posts'
+import Base from './Base.astro'
+
+interface Props {
+  post: Post
+  headings: MarkdownHeading[]
+  prev?: Post | undefined
+  next?: Post | undefined
+}
+
+const { post, headings, prev, next } = Astro.props
+const { data } = post
+const published = data.created
+const updated = data.updated
+---
+
+<Base title={data.title} description={data.summary} type="article">
+  <article>
+    <header>
+      {data.image && <img src={data.image} alt={data.title ?? post.id} />}
+      <h1>{data.title ?? post.id}</h1>
+      <p>
+        <a rel="author" href={site.url}>{site.author.name}</a>
+        {
+          published && (
+            <>
+              {' / '}
+              <time datetime={published.toISOString()} itemprop="datePublished">
+                {formatDate(published)}
+              </time>
+            </>
+          )
+        }
+        {
+          updated && (
+            <>
+              {' ('}
+              <time datetime={updated.toISOString()} itemprop="dateModified">
+                {formatDate(updated)}
+              </time>
+              {' 更新)'}
+            </>
+          )
+        }
+      </p>
+    </header>
+    {data.toc !== false && <Toc headings={headings} />}
+    <section>
+      <slot />
+    </section>
+    <footer>
+      <Tags tags={data.tags} />
+      <nav>
+        <ul>
+          {
+            prev && (
+              <li>
+                上一篇: <a href={postPath(prev)} rel="prev">{prev.data.title ?? prev.id}</a>
+              </li>
+            )
+          }
+          {
+            next && (
+              <li>
+                下一篇: <a href={postPath(next)} rel="next">{next.data.title ?? next.id}</a>
+              </li>
+            )
+          }
+        </ul>
+      </nav>
+    </footer>
+  </article>
+  {data.comment === true && <Giscus />}
+</Base>

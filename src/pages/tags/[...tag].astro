@@ -1,0 +1,24 @@
+---
+import PostCard from '../../components/PostCard.astro'
+import Base from '../../layouts/Base.astro'
+import { getPosts, getTags } from '../../utils/posts'
+
+export const getStaticPaths = async () => {
+  const posts = await getPosts()
+  return getTags(posts).map(tag => ({
+    params: { tag },
+    props: {
+      tag,
+      posts: posts.filter(post => post.data.tags?.includes(tag)),
+    },
+  }))
+}
+
+const { tag, posts } = Astro.props
+---
+
+<Base title={`#${tag}`}>
+  <h1>#{tag}</h1>
+  <p>{posts.length} posts</p>
+  {posts.map(post => <PostCard post={post} />)}
+</Base>

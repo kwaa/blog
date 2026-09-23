@@ -1,0 +1,22 @@
+---
+import { site } from '../config'
+
+const { author } = site
+---
+
+<aside>
+  <img src={author.avatar} alt={author.name} width="192" height="192" />
+  <p>
+    <strong>{author.name}</strong>
+    {author.status}
+  </p>
+  <ul>
+    {
+      author.metadata.map(item => (
+        <li>
+          <a href={item.link} rel="me noopener external">{item.text}</a>
+        </li>
+      ))
+    }
+  </ul>
+</aside>

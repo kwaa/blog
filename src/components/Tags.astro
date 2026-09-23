@@ -1,0 +1,21 @@
+---
+import { tagPath } from '../utils/posts'
+
+interface Props {
+  tags?: string[] | undefined
+}
+
+const { tags = [] } = Astro.props
+---
+
+{
+  tags.length > 0 && (
+    <ul>
+      {tags.map(tag => (
+        <li>
+          <a href={tagPath(tag)}>#{tag}</a>
+        </li>
+      ))}
+    </ul>
+  )
+}

@@ -1,1 +1,3 @@
-# TEMPLATE IS OPEN SOURCE HERE => [👉 Urara 👈](https://github.com/importantimport/urara)
+# kwaa.dev
+
+Personal blog, rebuilt with [Astro](https://astro.build).
