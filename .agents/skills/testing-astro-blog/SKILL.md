@@ -36,3 +36,12 @@ description: How to run and end-to-end test the kwaa/blog Astro site locally —
 - In dev, CSS arrives as inline `<style data-vite-dev-id=".../__uno.css">` + `global.css` — no `<link>` stylesheet. Inspect computed styles via browser console.
 - Watch the injected Tailwind-family reset (`injectReset` default): it can strip `h1–h6` size/weight, all `ul/ol` markers+padding, and `p`/`h*` margins site-wide — global.css only restores pieces (e.g. TOC `ul { padding-left }`), so check computed styles of content headings/lists, not just visual vibes.
 - `.spoiler` hides text via `background: var(--fg)` + `color: transparent`; verify the `:hover` rule produces a contrasting `color` — `color: inherit` on a `--fg` background is dark-on-dark and never reveals.
+
+## Dark mode + OG images (7d9b74b+)
+
+- Dark mode: emulate `prefers-color-scheme` via CDP `Emulation.setEmulatedMedia` (Node 24 global WebSocket, no deps — scripts in /tmp e.g. cdp-dark-capture.mjs). Emulations are session-scoped (clear on WS close + navigation) and the OS window doesn't repaint for them — use `Page.captureScreenshot` in the same session for evidence.
+- Shiki dual themes: `pre.astro-code` carries `--shiki-light`/`--shiki-dark` (+ `-bg`) vars; global.css switches on media query. Verify computed color flips, not just the var's presence.
+- astro-takumi OG images are BUILD-only (`astro:build:done`) — check via `pnpm preview` on dist, not `pnpm dev`. Image sits next to the HTML (`dist/<slug>/index.png` ↔ `og:image` `https://kwaa.dev/<slug>/index.png`); the hook fails the build if they mismatch.
+- @fontsource/noto-sans-sc woff files carry family name "Noto Sans SC Thin" — the integration overrides name+weight in astro.config.ts so `fontFamilies: ['Noto Sans SC']` matches; tofu boxes in OG images mean this regressed.
+- Dev box now has fonts-noto-cjk installed — CJK renders in screenshots (line 31 above is outdated).
+- Note: `getImagePath` must be imported from `astro-takumi/dist/util.js` — the package root re-exports the build hook which pulls jsdom/`__dirname` into the page bundle and breaks the build.
