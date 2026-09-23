@@ -29,13 +29,13 @@ export const renderOg: RenderFunction = ({ title }) => {
       h(
         'div',
         { style: { alignItems: 'center', display: 'flex' } },
-        h('div', {
+        h('img', {
+          src: '/assets/any@1024.png',
           style: {
-            backgroundColor: '#1f2328',
-            borderRadius: '6px',
-            height: '28px',
+            borderRadius: '8px',
+            height: '44px',
             marginRight: '16px',
-            width: '28px',
+            width: '44px',
           },
         }),
         h(

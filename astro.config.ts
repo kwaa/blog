@@ -22,6 +22,16 @@ export default defineConfig({
     astroTakumi({
       options: {
         fontFamilies: ['Noto Sans SC'],
+        images: [
+          {
+            data: readFileSync(
+              fileURLToPath(
+                new URL('./public/assets/any@1024.png', import.meta.url),
+              ),
+            ),
+            src: '/assets/any@1024.png',
+          },
+        ],
         // fontsource's noto-sans-sc woff files carry family name
         // "Noto Sans SC Thin" — override name/weight so fontFamilies matches
         fonts: [
